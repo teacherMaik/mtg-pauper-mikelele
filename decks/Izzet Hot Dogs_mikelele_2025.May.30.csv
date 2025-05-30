@@ -1,0 +1,21 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Ancestral Anger,Sorcery,{R},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2023807.jpg,2025-05-30 07:17:40 UTC,253777,5dee47ab-d603-4346-97f4-a25dc3f47765
+4,Apostle's Blessing,Instant,{1}{WP},Common,$0.31,main,https://s.deckbox.org/system/images/mtg/cards/2083553.jpg,2025-05-22 12:03:49 UTC,39466,9f7c3571-925d-486e-80dd-bac47aa48283
+4,Assault Strobe,Sorcery,{R},Common,$0.48,main,https://s.deckbox.org/system/images/mtg/cards/2083232.jpg,2025-05-30 07:17:42 UTC,36467,9b505c78-5dbd-483d-92bb-5144060e962f
+4,Delver of Secrets // Insectile Aberration,Creature - Human Wizard // Creature - Human Insect,{U},Uncommon,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2117342.jpg,2025-05-30 07:17:29 UTC,248082,abff6c81-65a4-48fa-ba8f-580f87b0344a
+4,Enter the Enigma,Sorcery,{U},Common,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2059269.jpg,2025-05-30 07:17:53 UTC,578054,cf5479c7-9e46-4a57-abe7-8cc670de89e4
+4,Eroded Canyon,Land - Desert,"",Common,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2055221.jpg,2025-05-30 07:18:01 UTC,544233,5c9d080f-28d7-41d6-a4e0-5b3e3a5ed770
+4,Escape Tunnel,Land,"",Common,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2052180.jpg,2025-05-30 07:18:02 UTC,533379,93ddde4f-d35e-4128-8f43-d0eadbd715de
+4,Festival Crasher,Creature - Devil,{1}{R},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2117435.jpg,2025-05-30 07:17:30 UTC,247866,626b0477-6165-443a-8a75-dfeac26ac9f9
+4,Ghitu Amplifier,Creature - Human Wizard,{1}{R},Common,$0.02,main,https://s.deckbox.org/system/images/mtg/cards/2030524.jpg,2025-05-30 07:17:32 UTC,283675,b1845806-7585-40d5-9d3a-f13667e6a9d2
+4,Kiln Fiend,Creature - Elemental Beast,{1}{R},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2082386.jpg,2025-05-30 07:17:33 UTC,34847,0c584268-67c3-411b-a26c-aee3adf23872
+4,Manamorphose,Instant,{1}{RG},Common,$4.63,main,https://s.deckbox.org/system/images/mtg/cards/2069845.jpg,2025-05-22 12:03:53 UTC,18700,50283122-b8c4-4fb3-8eba-6252b72222f4
+4,Mutagenic Growth,Instant,{GP},Common,$1.35,main,https://s.deckbox.org/system/images/mtg/cards/2061119.jpg,2025-05-22 12:03:56 UTC,583085,c75cf36a-a872-478d-9ed7-f4edc7a8c970
+4,Ponder,Sorcery,{U},Common,$1.15,main,https://s.deckbox.org/system/images/mtg/cards/2291047.jpg,2025-05-30 07:17:55 UTC,624168,dc69f960-68ba-4315-8146-6a7a82047503
+4,Reckless Charge,Sorcery,{R},Common,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2075523.jpg,2025-05-30 07:17:56 UTC,9490,0938e686-345e-4411-b564-cf9324ec6b9d
+4,Slip Through Space,Sorcery,{U},Common,$0.35,main,https://s.deckbox.org/system/images/mtg/cards/2092957.jpg,2025-05-30 07:17:58 UTC,111073,2dee6dca-9c7e-4347-bea7-7fecc69e5827
+1,Brainstorm,Instant,{U},Common,$1.46,sideboard,https://s.deckbox.org/system/images/mtg/cards/2071619.jpg,2025-05-22 12:15:44 UTC,2057,1d6603e3-0680-4ba3-951b-cd9919eefd4f
+1,Dispel,Instant,{U},Common,$0.29,sideboard,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2025-05-22 12:16:25 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+4,Flaring Pain,Instant,{1}{R},Common,$0.99,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060991.jpg,2025-05-30 07:18:17 UTC,583284,a57f932c-5560-417a-8ed4-3ba2c582fb28
+1,Steel Sabotage,Instant,{U},Common,$0.20,sideboard,https://s.deckbox.org/system/images/mtg/cards/2083348.jpg,2025-05-22 12:16:31 UTC,39060,bb40de7c-1905-4615-844b-4abc231fb01e
+

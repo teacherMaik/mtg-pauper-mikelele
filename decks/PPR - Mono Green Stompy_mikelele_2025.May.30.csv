@@ -1,0 +1,25 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Bayou Groff,Creature - Plant Dog,{1}{G},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2114319.jpg,2025-05-11 07:51:23 UTC,235985,4a82b032-b1ba-456c-abab-c0f7430b0587
+3,Bequeathal,Enchantment - Aura,{G},Common,$0.57,main,https://s.deckbox.org/system/images/mtg/cards/2078949.jpg,2025-05-11 08:15:32 UTC,4296,20aae577-9683-4d9b-bfd5-52702b38d3a7
+4,Brave the Wilds,Sorcery,{G},Common,$0.04,main,https://s.deckbox.org/system/images/mtg/cards/2046201.jpg,2025-05-11 08:13:38 UTC,512716,821b9e86-d108-42e5-b642-c5e07ab16c37
+4,Darksteel Citadel,Artifact Land,,Uncommon,$1.10,main,https://s.deckbox.org/system/images/mtg/cards/2089710.jpg,2025-05-11 08:19:22 UTC,90989,b0ad4395-5766-44c3-b5af-3d65d49a3333
+5,Forest,Basic Land - Forest,"",BasicLand,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2290725.jpg,2025-05-11 08:18:44 UTC,623978,8100bceb-ffba-487a-bb45-4fe2a156a8dc
+3,Hooting Mandrills,Creature - Ape,{5}{G},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2090086.jpg,2025-05-11 08:17:50 UTC,93026,090d678c-f0e4-4757-8900-93dfe67aefe9
+4,Implement of Ferocity,Artifact,{1},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2095584.jpg,2025-05-11 08:21:00 UTC,126410,bcdee084-0d1a-486a-8361-680d394a5e23
+4,Khalni Garden,Land,"",Common,$0.99,main,https://s.deckbox.org/system/images/mtg/cards/2081898.jpg,2025-05-11 08:19:25 UTC,34391,1cc6a5e6-0b73-4488-8954-4b168ce7106d
+4,Malevolent Rumble,Sorcery,{1}{G},Common,$0.75,main,https://s.deckbox.org/system/images/mtg/cards/2056560.jpg,2025-05-11 08:13:48 UTC,553328,a178cfe8-f9fa-4255-88d0-54a0bed079f5
+2,Nest Invader,Creature - Eldrazi Drone,{1}{G},Common,$0.18,main,https://s.deckbox.org/system/images/mtg/cards/2082334.jpg,2025-05-15 17:53:27 UTC,34895,24517d9c-6cde-41e8-9e82-ee73f069379a
+3,Ram Through,Instant,{1}{G},Common,$0.32,main,https://s.deckbox.org/system/images/mtg/cards/2108946.jpg,2025-05-11 08:14:20 UTC,212717,ac0b24e7-14e7-45ee-b5d8-bdb8674b669c
+4,Rancor,Enchantment - Aura,{G},Uncommon,$0.74,main,https://s.deckbox.org/system/images/mtg/cards/2085601.jpg,2025-05-11 08:14:41 UTC,59810,b982558f-5b82-4918-9b54-c7ac1e6f8da5
+4,Tree of Tales,Artifact Land,"",Common,$0.76,main,https://s.deckbox.org/system/images/mtg/cards/2077819.jpg,2025-05-11 08:18:48 UTC,11309,94db07aa-43d3-41b5-924e-60f1756b9c69
+2,Troublemaker Ouphe,Creature - Ouphe,{1}{G},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2046230.jpg,2025-05-11 08:18:04 UTC,512310,7f7b2fc0-d3f6-4c4d-a163-986a372e5b12
+4,Vines of Vastwood,Instant,{G},Common,$1.05,main,https://s.deckbox.org/system/images/mtg/cards/2061423.jpg,2025-05-11 08:15:51 UTC,583316,2143b037-81b5-4d24-a859-aa990d292c05
+4,Young Wolf,Creature - Wolf,{G},Common,$0.29,main,https://s.deckbox.org/system/images/mtg/cards/2084731.jpg,2025-05-11 08:17:43 UTC,57853,0c39aa40-ef5f-40f1-a6dd-fbce91172c50
+1,Feed the Clan,Instant,{1}{G},Common,$0.23,sideboard,https://s.deckbox.org/system/images/mtg/cards/2090073.jpg,2025-05-16 07:15:40 UTC,93242,52f7c53d-0b53-400f-aa67-967547f3e394
+4,Healer of the Glade,Creature - Elemental,{G},Common,$0.14,sideboard,https://s.deckbox.org/system/images/mtg/cards/2104809.jpg,2025-05-16 07:14:57 UTC,192910,cbe262f2-e35b-4c85-938d-3e9e9c764c1b
+1,Masked Vandal,Creature - Shapeshifter,{1}{G},Common,$0.85,sideboard,https://s.deckbox.org/system/images/mtg/cards/2113265.jpg,2025-05-16 07:14:01 UTC,230134,f0a9c72a-e450-41e3-80e5-06f2f1171245
+1,Ram Through,Instant,{1}{G},Common,$0.32,sideboard,https://s.deckbox.org/system/images/mtg/cards/2108946.jpg,2025-05-16 07:14:05 UTC,212717,ac0b24e7-14e7-45ee-b5d8-bdb8674b669c
+3,Relic of Progenitus,Artifact,{1},Common,$4.72,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2025-05-16 07:15:04 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
+3,Scattershot Archer,Creature - Elf Archer,{G},Common,$0.84,sideboard,https://s.deckbox.org/system/images/mtg/cards/2072010.jpg,2025-05-16 07:15:49 UTC,28598,d74d6cdb-a087-4b3d-bf25-509200ed6d93
+2,Troublemaker Ouphe,Creature - Ouphe,{1}{G},Common,$0.10,sideboard,https://s.deckbox.org/system/images/mtg/cards/2046230.jpg,2025-05-16 07:16:08 UTC,512310,7f7b2fc0-d3f6-4c4d-a163-986a372e5b12
+

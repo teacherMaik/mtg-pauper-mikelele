@@ -1,0 +1,21 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Accursed Marauder,Creature - Zombie Warrior,{1}{B},Common,$0.20,main,https://s.deckbox.org/system/images/mtg/cards/2056479.jpg,2025-05-16 15:21:22 UTC,553204,5da14d86-0780-4821-a799-96f64b377df4
+4,Changeling Outcast,Creature - Shapeshifter,{B},Common,$1.67,main,https://s.deckbox.org/system/images/mtg/cards/2055673.jpg,2025-05-16 15:21:54 UTC,545343,ab499df5-ed76-43ad-81b3-70afd0487ccd
+2,Corrupted Conviction,Instant,{B},Common,$0.16,main,https://s.deckbox.org/system/images/mtg/cards/2055049.jpg,2025-05-16 15:23:49 UTC,544718,8046f892-3317-4ef7-9cf7-97b9060540c8
+4,Gempalm Polluter,Creature - Zombie,{5}{B},Common,$0.37,main,https://s.deckbox.org/system/images/mtg/cards/2076902.jpg,2025-05-16 15:21:39 UTC,10755,8e9943ac-9e3f-4ee0-b5fd-3b0fb17097d8
+4,Ghoulcaller's Chant,Sorcery,{B},Common,$0.25,main,https://s.deckbox.org/system/images/mtg/cards/2084403.jpg,2025-05-16 15:24:17 UTC,56272,2b8c1b10-2155-404a-8f20-eb8f643849d6
+3,Lazotep Reaver,Creature - Zombie Beast,{1}{B},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2104146.jpg,2025-05-16 15:22:38 UTC,187251,594bbe43-a8aa-42aa-bc49-cb4f3bc05cad
+2,Nameless Inversion,Tribal Instant - Shapeshifter,{1}{B},Common,$0.24,main,https://s.deckbox.org/system/images/mtg/cards/2069145.jpg,2025-05-16 15:24:20 UTC,15582,94b4e4d2-2358-48d2-9a2a-3d17afea28f5
+4,Refurbished Familiar,Artifact Creature - Zombie Rat,{3}{B},Common,$0.16,main,https://s.deckbox.org/system/images/mtg/cards/2056504.jpg,2025-05-16 15:22:39 UTC,553237,b338e078-629c-4cac-bd1d-e1f0a132728d
+4,Retrofitted Transmogrant,Artifact Creature - Zombie,{B},Common,$0.04,main,https://s.deckbox.org/system/images/mtg/cards/2056505.jpg,2025-05-16 15:23:04 UTC,553242,12c1b83d-710b-4680-855a-02ba1f72abf0
+4,Shambling Ghast,Creature - Zombie,{B},Common,$0.39,main,https://s.deckbox.org/system/images/mtg/cards/2116319.jpg,2025-05-16 15:23:06 UTC,243154,d96198a7-dd19-4940-bf8f-23135011fc84
+13,Swamp,Basic Land - Swamp,"",BasicLand,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2109044.jpg,2025-05-16 15:26:15 UTC,623972,f0bfdb9e-318f-4acd-9fbd-41b98a8875d6
+4,Vault of Whispers,Artifact Land,"",Common,$1.13,main,https://s.deckbox.org/system/images/mtg/cards/2059974.jpg,2025-05-16 15:26:26 UTC,579360,e85e4098-f872-4aa4-a71a-208b6090be28
+4,Village Rites,Instant,{B},Common,$0.23,main,https://s.deckbox.org/system/images/mtg/cards/2113198.jpg,2025-05-16 15:23:26 UTC,230172,0fab9ee8-776a-48e5-b309-bcd381e67bf7
+4,Walking Sarcophagus,Artifact Creature - Zombie Cat,{2},Common,$0.01,main,https://s.deckbox.org/system/images/mtg/cards/2099926.jpg,2025-05-16 15:23:19 UTC,616129,89ccbd73-9414-48a3-bdcf-e838fcffc08f
+4,Butcher Ghoul,Creature - Zombie,{1}{B},Common,$0.16,sideboard,https://s.deckbox.org/system/images/mtg/cards/2085037.jpg,2025-05-16 15:29:26 UTC,58905,44a91e62-e946-4101-8cef-d1c147caebf2
+4,Duress,Sorcery,{B},Common,$0.12,sideboard,https://s.deckbox.org/system/images/mtg/cards/2062721.jpg,2025-05-16 15:27:14 UTC,589335,34c3a894-ee75-4db9-a69f-711bb3cc150a
+5,Faerie Macabre,Creature - Faerie Rogue,{1}{B}{B},Common,$1.34,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060073.jpg,2025-05-16 15:55:14 UTC,563099,b666a543-6570-4789-9ec4-8d8922181274
+4,Rotten Reunion,Instant,{B},Common,$0.13,sideboard,https://s.deckbox.org/system/images/mtg/cards/2117414.jpg,2025-05-16 15:28:27 UTC,248326,97398ad2-675b-4a34-aab7-935dd6714f1c
+4,Sylvok Lifestaff,Artifact - Equipment,{1},Common,$0.19,sideboard,https://s.deckbox.org/system/images/mtg/cards/2083179.jpg,2025-05-16 15:28:38 UTC,36528,abbc5ae5-8e8b-4106-844f-2d49d2a51ed9
+

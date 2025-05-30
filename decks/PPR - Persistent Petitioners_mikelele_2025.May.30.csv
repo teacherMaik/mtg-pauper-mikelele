@@ -1,0 +1,15 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Bellowing Crier,Creature - Frog Advisor,{1}{U},Common,$0.02,main,https://s.deckbox.org/system/images/mtg/cards/2058046.jpg,2025-05-12 10:23:45 UTC,559561,ca2215dd-6300-49cf-b9b2-3a840b786c31
+4,Deep Analysis,Sorcery,{3}{U},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2291038.jpg,2025-05-12 10:26:09 UTC,624163,2d93b071-d303-4892-bac4-77a75eaa91a1
+2,Generous Ent,Creature - Treefolk,{5}{G},Common,$0.49,main,https://s.deckbox.org/system/images/mtg/cards/2042821.jpg,2025-05-12 10:24:29 UTC,498328,85d22d5d-3875-42ff-b51e-c6e21db201f5
+4,Glistener Seer,Creature - Phyrexian Advisor,{U},Common,$0.03,main,https://s.deckbox.org/system/images/mtg/cards/2037206.jpg,2025-05-12 10:24:16 UTC,479565,c22aaaec-bad5-43e9-8e92-9c4bde95fcfd
+4,Gnaw to the Bone,Instant,{2}{G},Common,$0.28,main,https://s.deckbox.org/system/images/mtg/cards/2084471.jpg,2025-05-12 10:24:53 UTC,56313,416148c8-13d3-46d3-ac93-6eb7cbab2881
+4,Masked Vandal,Creature - Shapeshifter,{1}{G},Common,$0.85,main,https://s.deckbox.org/system/images/mtg/cards/2113265.jpg,2025-05-12 10:24:46 UTC,230134,f0a9c72a-e450-41e3-80e5-06f2f1171245
+12,Persistent Petitioners,Creature - Human Advisor,{1}{U},Common,$0.67,main,https://s.deckbox.org/system/images/mtg/cards/2103612.jpg,2025-05-12 10:21:19 UTC,183310,e93f0c57-eb80-4dde-bdb0-326970491621
+4,Pond Prophet,Creature - Frog Advisor,{GU}{GU},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2058233.jpg,2025-05-12 10:23:49 UTC,558431,fb959e74-61ea-453d-bb9f-ad0183c0e1b1
+1,Rimewood Falls,Snow Land - Forest Island,"",Common,$0.77,main,https://s.deckbox.org/system/images/mtg/cards/2113347.jpg,2025-05-12 10:26:45 UTC,230117,da1db084-f235-4e26-8867-5f0835a0d283
+4,Sibsig Appraiser,Creature - Zombie Advisor,{2}{U},Common,$0.02,main,https://s.deckbox.org/system/images/mtg/cards/2290496.jpg,2025-05-12 10:24:19 UTC,625209,670c5b96-bac6-449b-a2bd-cb43750d3911
+4,Simic Growth Chamber,Land,"",Common,$0.41,main,https://s.deckbox.org/system/images/mtg/cards/2081008.jpg,2025-05-12 10:26:55 UTC,13944,407d0a0c-a6be-4bd5-8355-1715698c6bde
+1,Rimewood Falls,Snow Land - Forest Island,"",Common,$0.77,sideboard,https://s.deckbox.org/system/images/mtg/cards/2113347.jpg,2025-05-12 10:26:22 UTC,230117,da1db084-f235-4e26-8867-5f0835a0d283
+2,Tormod's Crypt,Artifact,{0},Uncommon,$0.28,sideboard,https://s.deckbox.org/system/images/mtg/cards/2109839.jpg,2025-05-12 10:25:03 UTC,215346,9c224bf0-5641-4160-9d5c-46141ea8372a
+

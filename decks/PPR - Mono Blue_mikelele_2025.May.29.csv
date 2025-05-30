@@ -1,0 +1,26 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Brainstorm,Instant,{U},Common,$1.46,main,https://s.deckbox.org/system/images/mtg/cards/2071619.jpg,2025-05-12 06:09:37 UTC,2057,1d6603e3-0680-4ba3-951b-cd9919eefd4f
+4,Counterspell,Instant,{U}{U},Common,$1.73,main,https://s.deckbox.org/system/images/mtg/cards/2059766.jpg,2025-05-12 06:10:22 UTC,577794,4f616706-ec97-4923-bb1e-11a69fbaa1f8
+4,Cryptic Serpent,Creature - Serpent,{5}{U}{U},Uncommon,$0.24,main,https://s.deckbox.org/system/images/mtg/cards/2096170.jpg,2025-05-12 06:07:58 UTC,130043,43d11a24-8abf-46ff-8cc6-57b8ac3013f6
+4,Deem Inferior,Sorcery,{3}{U},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2056456.jpg,2025-05-12 06:11:44 UTC,553172,cc0835c7-58ca-4f16-984a-c590ce6a229a
+2,Deep Analysis,Sorcery,{3}{U},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2291038.jpg,2025-05-12 06:11:41 UTC,624163,2d93b071-d303-4892-bac4-77a75eaa91a1
+4,Delver of Secrets // Insectile Aberration,Creature - Human Wizard // Creature - Human Insect,{U},Uncommon,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2117342.jpg,2020-07-08 15:54:47 UTC,248082,abff6c81-65a4-48fa-ba8f-580f87b0344a
+2,Dispel,Instant,{U},Common,$0.29,main,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2025-05-12 06:09:47 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+16,Island,Basic Land - Island,"",BasicLand,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2290719.jpg,2025-05-12 06:07:32 UTC,623968,1ff6acc9-581c-468f-894d-41f725da7f33
+4,Lórien Revealed,Sorcery,{3}{U}{U},Common,$1.34,main,https://s.deckbox.org/system/images/mtg/cards/2042712.jpg,2025-05-12 06:11:34 UTC,499960,0ce44270-a684-4489-9077-521456e6dfaa
+4,Mental Note,Instant,{U},Common,$4.56,main,https://s.deckbox.org/system/images/mtg/cards/2076092.jpg,2025-05-12 06:10:08 UTC,10206,1f343724-6ecd-494f-8bfc-93676af4e173
+3,Ponder,Sorcery,{U},Common,$1.15,main,https://s.deckbox.org/system/images/mtg/cards/2291047.jpg,2025-05-12 06:09:59 UTC,624168,dc69f960-68ba-4315-8146-6a7a82047503
+1,Spell Pierce,Instant,{U},Uncommon,$0.16,main,https://s.deckbox.org/system/images/mtg/cards/2099744.jpg,2025-05-12 06:10:54 UTC,616070,8dd4374f-0301-4b2e-bc99-2cd19568cb3b
+4,Thought Scour,Instant,{U},Common,$0.30,main,https://s.deckbox.org/system/images/mtg/cards/2084803.jpg,2025-05-12 06:10:49 UTC,57678,88bf1ebb-9d85-4b9b-a614-c7f965c0893d
+4,Tolarian Terror,Creature - Serpent,{6}{U},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2062282.jpg,2025-05-12 06:08:00 UTC,591307,2569d4f3-55ed-4f99-9592-34c7df0aab72
+2,Coral Net,Enchantment - Aura,{U},Common,$0.08,sideboard,https://s.deckbox.org/system/images/mtg/cards/2072647.jpg,2020-07-08 16:08:53 UTC,9678,abe9cf1e-d398-41e0-8b11-afe1015e4fd9
+1,Dispel,Instant,{U},Common,$0.29,sideboard,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2020-07-08 16:07:37 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+1,Echoing Truth,Instant,{1}{U},Common,$0.28,sideboard,https://s.deckbox.org/system/images/mtg/cards/2077894.jpg,2020-07-08 16:06:49 UTC,11722,4aefedd7-1bf5-4148-9084-d7d8f1138140
+1,Fathom Seer,Creature - Illusion,{1}{U},Common,$0.09,sideboard,https://s.deckbox.org/system/images/mtg/cards/2072163.jpg,2020-07-08 16:07:31 UTC,14223,20de275a-2e11-4452-8037-bc397dd53a8c
+3,Gut Shot,Instant,{RP},Uncommon,$1.91,sideboard,https://s.deckbox.org/system/images/mtg/cards/2083513.jpg,2020-07-08 16:08:57 UTC,39528,a54a2a30-b96a-49c7-9151-1f4b0d4a4413
+2,Hydroblast,Instant,{U},Uncommon,$2.09,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070380.jpg,2020-07-08 16:09:00 UTC,2204,89a30b8f-6594-42ea-8e60-13ccb1e7efc0
+2,Rhystic Study,Enchantment,{2}{U},Common,$50.16,sideboard,https://s.deckbox.org/system/images/mtg/cards/2074246.jpg,2020-07-08 16:09:24 UTC,7357,3394cefd-a3c6-4917-8f46-234e441ecfb6
+1,Spire Golem,Artifact Creature - Golem,{6},Common,$0.14,sideboard,https://s.deckbox.org/system/images/mtg/cards/2072133.jpg,2020-07-08 16:08:40 UTC,11652,19239c7b-add3-4537-bdfd-a0f7d38d4d8e
+1,Stormbound Geist,Creature - Spirit,{1}{U}{U},Common,$0.16,sideboard,https://s.deckbox.org/system/images/mtg/cards/2084664.jpg,2020-07-08 16:08:32 UTC,57874,040eddb0-fca2-41eb-ab07-c48d49385973
+1,Vulshok Morningstar,Artifact - Equipment,{2},Uncommon,$0.19,sideboard,https://s.deckbox.org/system/images/mtg/cards/2080271.jpg,2020-07-08 16:08:09 UTC,12880,289d5f79-2346-4150-9be9-ca49efa2652b
+
