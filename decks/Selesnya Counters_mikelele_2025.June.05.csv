@@ -1,0 +1,23 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+3,Bloom Hulk,Creature - Plant Elemental,{3}{G},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2104080.jpg,2025-05-15 20:45:09 UTC,188215,fd1c9129-254d-4d1d-9d95-112292bd6bcc
+4,Commune with Nature,Sorcery,{G},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2046202.jpg,2025-05-15 20:39:20 UTC,513883,5224eec3-2941-4d16-a713-099e34e93eee
+2,Feat of Resistance,Instant,{1}{W},Common,$0.02,main,https://s.deckbox.org/system/images/mtg/cards/2109617.jpg,2025-05-15 20:48:06 UTC,215848,73148b3b-73d3-4f57-8b67-1e91fbe112b9
+14,Forest,Basic Land - Forest,"",BasicLand,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2290725.jpg,2025-05-15 20:59:14 UTC,623978,8100bceb-ffba-487a-bb45-4fe2a156a8dc
+4,Gnarlid Colony,Creature - Beast,{1}{G},Common,$0.02,main,https://s.deckbox.org/system/images/mtg/cards/2062339.jpg,2025-05-15 20:46:31 UTC,591827,47565d10-96bf-4fb0-820f-f20a44a76b6f
+3,Guiding Voice,Sorcery,{W},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2114217.jpg,2025-05-15 20:44:29 UTC,235517,d6fb3163-12ca-4a7f-a0c7-b8ddfc9408a0
+3,Inspiring Paladin,Creature - Human Knight,{2}{W},Common,$0.02,main,https://s.deckbox.org/system/images/mtg/cards/2062133.jpg,2025-05-15 20:59:45 UTC,591754,0763be06-25b2-4d6b-ab33-a1af85aeb443
+4,Iron Apprentice,Artifact Creature - Construct,{1},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2025744.jpg,2025-05-15 20:39:22 UTC,262708,13d6d9fc-509b-42db-8ac1-85066eb6e9c4
+1,Moldering Gym // Weight Room,Enchantment - Room // Enchantment - Room,{2}{G} // {5}{G},Common,$0.04,main,https://s.deckbox.org/system/images/mtg/cards/2059407.jpg,2025-05-15 20:46:09 UTC,578893,245d5a61-c40c-4039-aea8-3ad61415b8f0
+4,Pollenbright Druid,Creature - Elf Druid,{1}{G},Common,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2104125.jpg,2025-05-15 20:45:01 UTC,188216,4b0f478c-54f8-4087-ad52-d089e2049dda
+4,Radiant Grove,Land - Forest Plains,"",Common,$0.16,main,https://s.deckbox.org/system/images/mtg/cards/2030650.jpg,2025-05-15 20:59:29 UTC,283637,e0f9dca6-e5ae-4714-8a59-2ef1d8f1e82d
+2,Rubblebelt Maverick,Creature - Human Detective,{G},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2052093.jpg,2025-05-15 20:48:48 UTC,534172,81c7ff67-b9e1-4d2e-b1ae-da9b946da00b
+4,Servant of the Scale,Creature - Human Soldier,{G},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2091208.jpg,2025-05-15 20:41:25 UTC,96717,ca887c41-a8ee-4751-a902-87149c29a9df
+4,Snakeskin Veil,Instant,{G},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2290599.jpg,2025-05-15 20:41:03 UTC,624592,a3d2c692-7566-468e-9c86-47a9f768fde2
+2,Survivors' Bond,Sorcery,{1}{G},Common,$0.02,main,https://s.deckbox.org/system/images/mtg/cards/2108948.jpg,2025-05-15 21:00:00 UTC,212707,530ff2a1-6447-4653-a661-d9a39156d6fa
+2,Unbounded Potential,Instant,{1}{W},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2061523.jpg,2025-05-15 20:47:47 UTC,582517,2599c530-0d31-4b6e-92e9-c01f4a8439b8
+1,Environmental Sciences,Sorcery - Lesson,{2},Common,$0.07,sideboard,https://s.deckbox.org/system/images/mtg/cards/2114199.jpg,2025-05-15 21:00:34 UTC,235526,46b394fc-a99c-44e7-9226-da0699167541
+3,Expanded Anatomy,Sorcery - Lesson,{3},Common,$0.06,sideboard,https://s.deckbox.org/system/images/mtg/cards/2114200.jpg,2025-05-15 21:01:34 UTC,235194,c5642b9d-0daa-4e6b-ad48-f88dd37d6574
+2,Introduction to Annihilation,Sorcery - Lesson,{5},Common,$0.09,sideboard,https://s.deckbox.org/system/images/mtg/cards/2114201.jpg,2025-05-15 21:01:55 UTC,235206,b0bc4682-bcaf-4f51-be0b-9f2851a16e3b
+4,Introduction to Prophecy,Sorcery - Lesson,{3},Common,$0.07,sideboard,https://s.deckbox.org/system/images/mtg/cards/2114202.jpg,2025-05-15 21:01:18 UTC,235205,7820923e-bad2-4d6a-92b3-97b9737d2ca9
+2,Unbounded Potential,Instant,{1}{W},Common,$0.08,sideboard,https://s.deckbox.org/system/images/mtg/cards/2061523.jpg,2025-05-15 21:00:25 UTC,582517,2599c530-0d31-4b6e-92e9-c01f4a8439b8
+

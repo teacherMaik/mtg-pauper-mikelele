@@ -1,0 +1,26 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+1,Ardent Elementalist,Creature - Human Shaman,{3}{R},Common,$0.14,main,https://s.deckbox.org/system/images/mtg/cards/2117423.jpg,2025-06-04 13:55:54 UTC,248253,f58592f7-1df5-428d-9dde-e6acd9a5d1d5
+4,Barren Moor,Land,"",Common,$0.28,main,https://s.deckbox.org/system/images/mtg/cards/2072831.jpg,2023-04-01 09:36:38 UTC,10501,45be3811-a223-4c45-9b24-0317f2d53c60
+1,Blood Celebrant,Creature - Human Cleric,{B},Common,$0.73,main,https://s.deckbox.org/system/images/mtg/cards/2077081.jpg,2023-04-01 08:01:06 UTC,10746,805de325-6f14-4a52-bb85-f9a9545d82a4
+4,Cabal Ritual,Instant,{1}{B},Common,$12.57,main,https://s.deckbox.org/system/images/mtg/cards/2075463.jpg,2023-04-01 09:34:04 UTC,9616,5403b49d-03a7-4cc3-af3c-df098c1c9c2e
+4,Dark Ritual,Instant,{B},Common,$3.03,main,https://s.deckbox.org/system/images/mtg/cards/2072800.jpg,2025-06-04 13:52:04 UTC,5508,bf4708e8-2149-4990-987c-2ea55fc6c508
+4,Drannith Healer,Creature - Human Cleric,{1}{W},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2108786.jpg,2023-04-01 08:04:32 UTC,212616,ff5a821c-eaec-4f69-97c7-8299cdebc2f4
+4,Drannith Stinger,Creature - Human Wizard,{1}{R},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2108889.jpg,2023-04-01 08:05:03 UTC,212012,612ee4be-e7a2-423c-a37c-7c6ca97f630e
+4,Fanatical Offering,Instant,{1}{B},Common,$0.56,main,https://s.deckbox.org/system/images/mtg/cards/2048467.jpg,2025-06-04 13:56:21 UTC,526191,d896dd52-b134-4b55-ab91-ccb05ecc50f4
+3,Great Furnace,Artifact Land,"",Common,$4.47,main,https://s.deckbox.org/system/images/mtg/cards/2077818.jpg,2025-06-04 13:53:59 UTC,11312,2877281d-c85d-4f32-b40d-828b93c4ee8e
+1,Horror of the Broken Lands,Creature - Horror,{4}{B},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2096191.jpg,2025-06-04 13:51:16 UTC,130236,35828576-124a-45d6-ad4c-af2926314953
+4,Imposing Vantasaur,Creature - Dinosaur,{5}{W},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2108793.jpg,2023-04-01 08:28:06 UTC,212797,b6fa5feb-f5e9-4079-acc9-84e458044769
+4,Lotus Petal,Artifact,{0},Common,$22.05,main,https://s.deckbox.org/system/images/mtg/cards/2077880.jpg,2023-04-01 08:28:37 UTC,5615,6c877da3-68fa-41d0-8a24-8c79fcd8ecc1
+4,Monstrous Carabid,Creature - Insect,{3}{B}{R},Common,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2071961.jpg,2025-06-04 13:51:55 UTC,31779,b09e668d-02ca-4164-88ee-c7ea6c665975
+4,Reaping the Graves,Instant,{2}{B},Common,$0.66,main,https://s.deckbox.org/system/images/mtg/cards/2077731.jpg,2025-06-04 13:56:43 UTC,10898,760a66bd-2821-4710-8f02-3c30772dd884
+2,Rowan's Grim Search,Instant,{2}{B},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2046140.jpg,2025-06-04 13:56:36 UTC,512210,1be6786e-0569-42dd-b03c-82da7b32a14f
+4,Songs of the Damned,Instant,{B},Common,$1.12,main,https://s.deckbox.org/system/images/mtg/cards/2071885.jpg,2023-04-01 09:35:16 UTC,4890,6cff3547-8c72-439a-91fe-ebe729dab748
+4,Street Wraith,Creature - Wraith,{3}{B}{B},Uncommon,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2107067.jpg,2023-04-01 07:55:30 UTC,204399,900503de-080d-43a7-b8d3-ebefd414d876
+4,Vault of Whispers,Artifact Land,"",Common,$1.57,main,https://s.deckbox.org/system/images/mtg/cards/2077817.jpg,2023-04-01 09:36:13 UTC,11311,73866487-33f4-4f64-b100-2c4ddadcd74e
+1,Dihada's Ploy,Instant,{1}{U}{B},Common,$0.05,sideboard,https://s.deckbox.org/system/images/mtg/cards/2115620.jpg,2025-06-04 13:57:25 UTC,240409,9091e8dc-b546-4b74-9dc9-aef55f60d13a
+3,Duress,Sorcery,{B},Common,$0.12,sideboard,https://s.deckbox.org/system/images/mtg/cards/2062721.jpg,2025-06-04 13:57:02 UTC,589335,34c3a894-ee75-4db9-a69f-711bb3cc150a
+2,Flaring Pain,Instant,{1}{R},Common,$1.05,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060991.jpg,2025-06-04 13:58:05 UTC,583284,a57f932c-5560-417a-8ed4-3ba2c582fb28
+4,Ingot Chewer,Creature - Elemental,{4}{R},Common,$0.28,sideboard,https://s.deckbox.org/system/images/mtg/cards/2072069.jpg,2025-06-04 13:57:43 UTC,15538,9ceb9ae9-d153-446f-8835-1c53672fc9ca
+1,Mountain,Basic Land - Mountain,"",BasicLand,$0.07,sideboard,https://s.deckbox.org/system/images/mtg/cards/2290723.jpg,2025-06-04 13:58:16 UTC,623975,bfa10a88-12e0-4b79-80bb-6f4620277e20
+4,Pyroblast,Instant,{R},Uncommon,$4.45,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070395.jpg,2025-06-04 13:57:42 UTC,2332,15d2d7cd-d29d-4f19-8490-88bd526ff1c5
+

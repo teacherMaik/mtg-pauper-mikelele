@@ -1,0 +1,21 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+1,Dawnbringer Cleric,Creature - Human Cleric,{1}{W},Common,$0.17,main,https://s.deckbox.org/system/images/mtg/cards/2116209.jpg,2025-05-10 14:13:42 UTC,243085,c00856f7-fef5-4ba5-9079-59a81d452c82
+1,Eagles of the North,Creature - Bird Soldier,{5}{W},Common,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2042659.jpg,2025-05-10 09:15:58 UTC,499404,c1bd3bc0-77bd-40fe-b4f1-835a04cb6e41
+3,Glint Hawk,Creature - Bird,{W},Common,$1.00,main,https://s.deckbox.org/system/images/mtg/cards/2083108.jpg,2025-05-10 09:15:13 UTC,36362,284c4710-4183-4743-9c8b-515cc98cbbb8
+3,Guardians' Pledge,Instant,{1}{W}{W},Common,$0.52,main,https://s.deckbox.org/system/images/mtg/cards/2084205.jpg,2025-05-10 09:18:07 UTC,47632,e7e6105c-8633-46f7-a7ca-2a5c36c6d548
+2,Idyllic Grange,Land - Plains,"",Common,$0.18,main,https://s.deckbox.org/system/images/mtg/cards/2105823.jpg,2025-05-10 09:19:13 UTC,199256,ca2c611c-3a6f-44b0-9daa-837a465845e0
+3,Kor Skyfisher,Creature - Kor Soldier,{1}{W},Common,$0.37,main,https://s.deckbox.org/system/images/mtg/cards/2081815.jpg,2025-05-10 09:14:59 UTC,33349,bb2e9465-f5ba-4c7b-9f03-d40dc8394acd
+4,Lunarch Veteran // Luminous Phantom,Creature - Human Cleric // Creature - Spirit Cleric,{W},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2117322.jpg,2025-05-10 09:05:57 UTC,248261,d2704743-2e23-40b9-a367-c73d2db45afc
+2,Militia Bugler,Creature - Human Soldier,{2}{W},Uncommon,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2101027.jpg,2025-05-10 09:16:38 UTC,168606,43c5bf25-937c-4e17-9ed4-b4c4579fa9dc
+4,Novice Inspector,Creature - Human Detective,{W},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2051948.jpg,2025-05-10 14:13:00 UTC,530008,0ad38866-fc5f-4f62-89c1-afc0f50765aa
+18,Plains,Basic Land - Plains,"",BasicLand,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2290717.jpg,2025-05-10 09:19:00 UTC,623965,12cff32a-a365-43ee-a196-8ce32b3bb9fd
+3,Prismatic Strands,Instant,{2}{W},Common,$1.49,main,https://s.deckbox.org/system/images/mtg/cards/2075831.jpg,2025-05-10 09:18:47 UTC,10170,3454ef42-2e0b-4ce4-945f-e4ec3e83c39d
+1,Riling Dawnbreaker // Signaling Roar,Creature - Dragon // Sorcery - Omen,{4}{W} // {1}{W},Common,$0.03,main,https://s.deckbox.org/system/images/mtg/cards/2290461.jpg,2025-05-10 09:16:02 UTC,624398,312f7072-3bf8-449f-bfb7-93727ef26c66
+3,Salt Road Packbeast,Creature - Beast,{5}{W},Common,$0.04,main,https://s.deckbox.org/system/images/mtg/cards/2290463.jpg,2025-05-10 09:15:35 UTC,623956,98d548c9-42bc-4155-8211-0aea801c3724
+4,Thraben Charm,Instant,{1}{W},Common,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2056444.jpg,2025-05-10 09:14:07 UTC,552284,dd28a646-f38f-4cdf-948c-969cd979e5e6
+5,Thraben Inspector,Creature - Human Soldier,{W},Common,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2093330.jpg,2025-05-10 09:14:40 UTC,114876,d140c3b7-ca78-483d-baeb-307b624fea8b
+1,Destroy Evil,Instant,{1}{W},Common,$0.65,sideboard,https://s.deckbox.org/system/images/mtg/cards/2030414.jpg,2025-05-10 09:21:43 UTC,283655,4f7862ef-2c8d-4d28-9e50-7cc41861f245
+1,Dust to Dust,Sorcery,{1}{W}{W},Uncommon,$5.01,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070321.jpg,2025-05-10 09:21:32 UTC,2119,6e8a9a5c-0e5f-4498-88d8-6aac465923b1
+1,Hoard Hauler,Artifact - Vehicle,{3}{R},Rare,$0.27,sideboard,https://s.deckbox.org/system/images/mtg/cards/2026556.jpg,2025-05-10 09:22:01 UTC,268788,19f190e9-52f3-4e34-8fb6-88174c189ee7
+1,Revoke Existence,Sorcery,{1}{W},Common,$0.06,sideboard,https://s.deckbox.org/system/images/mtg/cards/2108174.jpg,2025-05-10 09:22:06 UTC,206202,9dbb9f86-f487-44b1-815f-30d87868b531
+

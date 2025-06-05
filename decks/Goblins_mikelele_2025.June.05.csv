@@ -1,0 +1,17 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+2,Fireblast,Instant,{4}{R}{R},Common,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2060928.jpg,2022-09-08 15:26:07 UTC,583235,ff45073c-5ac1-4295-833e-58b253319c9b
+4,Foundry Street Denizen,Creature - Goblin Warrior,{R},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2089456.jpg,2022-09-08 14:54:14 UTC,90938,08835364-f82d-4047-8f35-bd8b64760dfc
+4,Goblin Bushwhacker,Creature - Goblin Warrior,{R},Common,$1.24,main,https://s.deckbox.org/system/images/mtg/cards/2081522.jpg,2022-09-08 14:54:46 UTC,33304,4085a5bf-a71b-4c73-9b39-0dcc328fe11b
+3,Goblin Cohort,Creature - Goblin Warrior,{R},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2070020.jpg,2025-06-01 16:47:39 UTC,12269,8964afec-50a9-45c4-bd2b-d06f8e75f4ae
+4,Goblin Grenade,Sorcery,{R},Uncommon,$0.63,main,https://s.deckbox.org/system/images/mtg/cards/2084234.jpg,2022-09-08 15:24:15 UTC,47243,394cc2aa-0318-4ccd-a550-99a7eac933c3
+3,Goblin Sledder,Creature - Goblin,{R},Common,$0.25,main,https://s.deckbox.org/system/images/mtg/cards/2070233.jpg,2025-06-01 16:48:49 UTC,10594,3a9a1ecf-29f6-474e-bbcf-3455d388aa94
+4,Goblin Tomb Raider,Creature - Goblin Pirate,{R},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2048520.jpg,2025-05-10 07:58:17 UTC,526337,018160fe-f602-43f5-8495-241a08eaa69c
+3,Goblin War Strike,Sorcery,{R},Common,$3.04,main,https://s.deckbox.org/system/images/mtg/cards/2077106.jpg,2025-06-01 16:47:43 UTC,10917,dce59945-37a2-4f09-8831-9d44b4a59ea7
+4,Great Furnace,Artifact Land,"",Common,$4.47,main,https://s.deckbox.org/system/images/mtg/cards/2077818.jpg,2025-06-01 16:44:26 UTC,11312,2877281d-c85d-4f32-b40d-828b93c4ee8e
+4,Lightning Bolt,Instant,{R},Uncommon,$0.85,main,https://s.deckbox.org/system/images/mtg/cards/2052873.jpg,2022-09-08 15:25:51 UTC,534658,77c6fa74-5543-42ac-9ead-0e890b188e99
+3,Mogg Conscripts,Creature - Goblin,{R},Common,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2078199.jpg,2025-06-01 16:47:36 UTC,5635,73719325-b091-4464-b0b0-77dfbb19562a
+3,Mogg Raider,Creature - Goblin,{R},Common,$0.31,main,https://s.deckbox.org/system/images/mtg/cards/2078205.jpg,2025-05-10 08:15:30 UTC,5638,94e9cc0a-c210-4525-8c7f-9c6306cc21b0
+3,Mogg War Marshal,Creature - Goblin Warrior,{1}{R},Common,$0.22,main,https://s.deckbox.org/system/images/mtg/cards/2070024.jpg,2025-05-10 08:12:35 UTC,14297,8b9e0bdb-b615-447a-b80d-d7244c25c56e
+12,Mountain,Basic Land - Mountain,"",BasicLand,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2290723.jpg,2025-06-01 16:44:29 UTC,623975,bfa10a88-12e0-4b79-80bb-6f4620277e20
+4,Voldaren Epicure,Creature - Vampire,{R},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2024001.jpg,2025-06-01 16:48:18 UTC,253792,feda6bb3-ee22-489c-bcfd-52ef04841024
+

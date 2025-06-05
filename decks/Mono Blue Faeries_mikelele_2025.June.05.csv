@@ -1,0 +1,22 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+2,Bind the Monster,Enchantment - Aura,{U},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2113129.jpg,2025-05-16 15:17:20 UTC,230938,080be8d1-e453-4250-b917-f0eb26644895
+4,Counterspell,Instant,{U}{U},Common,$1.33,main,https://s.deckbox.org/system/images/mtg/cards/2072006.jpg,2025-05-16 15:16:24 UTC,5503,dacdd380-71cf-4832-bd02-3697501325f3
+4,Faerie Miscreant,Creature - Faerie Rogue,{U},Common,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2104830.jpg,2025-05-16 13:52:14 UTC,192784,28aa0337-94bd-4274-b2ee-6f43747c77b3
+4,Faerie Seer,Creature - Faerie Wizard,{U},Common,$0.39,main,https://s.deckbox.org/system/images/mtg/cards/2063038.jpg,2025-05-16 13:52:16 UTC,590537,f0b96dc7-d046-4b64-b3a8-8bf5ac7c8f9b
+2,Force Spike,Instant,{U},Common,$0.60,main,https://s.deckbox.org/system/images/mtg/cards/2066528.jpg,2025-05-16 15:16:26 UTC,2907,1d03d73f-0530-4125-8689-1c43e502e331
+4,Humbling Elder,Creature - Human Monk,{U},Common,$0.04,main,https://s.deckbox.org/system/images/mtg/cards/2290488.jpg,2025-05-16 15:18:13 UTC,625120,3a84c3f8-0030-4653-880e-b2d19272f5fa
+18,Island,Basic Land - Island,"",BasicLand,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2290720.jpg,2025-05-16 15:17:34 UTC,623969,15be7923-6efc-4650-b8d1-f61cb33ef81d
+4,Moon-Circuit Hacker,Enchantment Creature - Human Ninja,{1}{U},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2025830.jpg,2025-05-16 13:51:37 UTC,262194,75c43923-7280-4ccb-810b-e8c38dd8a26f
+4,Ninja of the Deep Hours,Creature - Human Ninja,{3}{U},Common,$1.18,main,https://s.deckbox.org/system/images/mtg/cards/2079435.jpg,2025-05-16 13:52:32 UTC,12315,367a67c7-54db-4336-b55a-3fa27625172a
+4,Of One Mind,Sorcery,{2}{U},Common,$0.20,main,https://s.deckbox.org/system/images/mtg/cards/2108836.jpg,2025-05-16 15:16:57 UTC,212617,c95fb136-f21d-4f3a-82b7-bcf490b7e90c
+3,Snap,Instant,{1}{U},Common,$2.18,main,https://s.deckbox.org/system/images/mtg/cards/2067041.jpg,2025-05-16 15:16:22 UTC,6389,f7e0549e-2d23-4ea8-b8d1-ae21af2c9091
+2,Spell Pierce,Instant,{U},Uncommon,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2099744.jpg,2025-05-16 15:16:27 UTC,616070,8dd4374f-0301-4b2e-bc99-2cd19568cb3b
+4,Spellstutter Sprite,Creature - Faerie Wizard,{1}{U},Common,$3.78,main,https://s.deckbox.org/system/images/mtg/cards/2068896.jpg,2025-05-16 13:51:27 UTC,15633,4e5ba4a9-a282-4d4b-b25a-179e05e458f4
+1,Unable to Scream,Enchantment - Aura,{U},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2059295.jpg,2025-05-16 15:17:25 UTC,577663,7c59e0cd-10a8-4a32-9c0a-a2c6ef1ed9a6
+4,Annul,Instant,{U},Common,$0.18,sideboard,https://s.deckbox.org/system/images/mtg/cards/2113123.jpg,2025-05-16 15:18:34 UTC,230186,4b1d4a59-11a0-4a55-8ac0-07377a9e6dc8
+3,Dispel,Instant,{U},Common,$0.31,sideboard,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2025-05-16 15:18:35 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+2,Hermetic Study,Enchantment - Aura,{1}{U},Common,$0.19,sideboard,https://s.deckbox.org/system/images/mtg/cards/2080565.jpg,2025-05-16 15:19:41 UTC,6907,8321888a-a450-4c15-9461-255cfaa05367
+3,Relic of Progenitus,Artifact,{1},Common,$4.64,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2025-05-16 15:19:12 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
+2,Unable to Scream,Enchantment - Aura,{U},Common,$0.11,sideboard,https://s.deckbox.org/system/images/mtg/cards/2059295.jpg,2025-05-16 15:18:51 UTC,577663,7c59e0cd-10a8-4a32-9c0a-a2c6ef1ed9a6
+1,Viridian Longbow,Artifact - Equipment,{1},Common,$0.67,sideboard,https://s.deckbox.org/system/images/mtg/cards/2061477.jpg,2025-05-16 15:19:26 UTC,583200,6f10358e-4639-4873-9d0d-18f1b092b365
+
