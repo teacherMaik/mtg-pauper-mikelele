@@ -1,0 +1,25 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+2,Bojuka Bog,Land,"",Common,$0.76,main,https://s.deckbox.org/system/images/mtg/cards/2299327.jpg,2025-06-04 14:57:08 UTC,642036,b0c6fb5e-07e2-4d22-be19-60592f00584a
+4,Cast Down,Instant,{1}{B},Uncommon,$0.29,main,https://s.deckbox.org/system/images/mtg/cards/2099205.jpg,2025-06-04 14:55:41 UTC,162900,116ce944-6871-4f51-a889-d9c4a5d7cff2
+1,Chainer's Edict,Sorcery,{1}{B},Uncommon,$0.22,main,https://s.deckbox.org/system/images/mtg/cards/2060802.jpg,2025-06-04 14:56:26 UTC,582616,a836c84f-e26e-4b68-8a67-a1aceeb6c975
+4,Chittering Rats,Creature - Rat,{1}{B}{B},Common,$0.29,main,https://s.deckbox.org/system/images/mtg/cards/2077842.jpg,2025-06-04 14:54:39 UTC,11670,980135d5-dfaa-4beb-b4b3-1e256bb46e61
+1,Crypt Rats,Creature - Rat,{2}{B},Common,$0.79,main,https://s.deckbox.org/system/images/mtg/cards/2074481.jpg,2025-06-04 14:53:39 UTC,5820,736455f6-c1b3-4a5a-a91f-a0cd3986ed53
+4,Defile,Instant,{B},Common,$0.88,main,https://s.deckbox.org/system/images/mtg/cards/2104457.jpg,2025-06-04 14:55:50 UTC,191582,5bcb4398-edd1-41a7-a496-b12bce22ceb6
+4,Exhume,Sorcery,{1}{B},Common,$3.88,main,https://s.deckbox.org/system/images/mtg/cards/2073486.jpg,2025-06-04 14:56:13 UTC,6864,a88b23ce-ce19-47da-b9f2-055a4d6bdc79
+1,Extract a Confession,Sorcery,{1}{B},Common,$0.17,main,https://s.deckbox.org/system/images/mtg/cards/2052003.jpg,2025-06-04 14:56:34 UTC,532879,256c8b6e-4031-458b-8eb9-bbfe58405a0c
+4,Gray Merchant of Asphodel,Creature - Zombie,{3}{B}{B},Uncommon,$0.90,main,https://s.deckbox.org/system/images/mtg/cards/2108186.jpg,2025-06-04 14:54:10 UTC,206460,7c1a7dd8-8034-4f59-a351-33666b26ff5a
+4,Phyrexian Rager,Creature - Phyrexian Horror,{2}{B},Common,$0.04,main,https://s.deckbox.org/system/images/mtg/cards/2030496.jpg,2025-06-04 14:54:29 UTC,283486,6fd574e7-705f-4a65-aad0-68ff6d63bf0f
+4,Sign in Blood,Sorcery,{B}{B},Common,$0.35,main,https://s.deckbox.org/system/images/mtg/cards/2089437.jpg,2025-06-04 14:56:20 UTC,90915,9f9cead6-7806-4c51-abd1-62c3b8f366b5
+14,Swamp,Basic Land - Swamp,"",BasicLand,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2301289.jpg,2025-06-04 15:05:04 UTC,662980,f0b234d8-d6bb-48ec-8a4d-d8a570a69c62
+2,Thorn of the Black Rose,Creature - Human Assassin,{3}{B},Common,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2107076.jpg,2025-06-04 14:54:53 UTC,204408,560fbefe-d534-4e07-9f2c-fd12eecaa929
+4,Tithing Blade // Consuming Sepulcher,Artifact // Artifact,{1}{B},Common,$0.32,main,https://s.deckbox.org/system/images/mtg/cards/2048492.jpg,2025-06-04 14:55:35 UTC,526379,dbaa9a2d-e9fd-4746-a26c-f99ae731f024
+4,Troll of Khazad-dûm,Creature - Troll,{5}{B},Common,$0.43,main,https://s.deckbox.org/system/images/mtg/cards/2042763.jpg,2025-06-04 14:55:06 UTC,498752,a6539e26-b63b-4725-9407-caaf451de084
+3,Witch's Cottage,Land - Swamp,"",Common,$0.78,main,https://s.deckbox.org/system/images/mtg/cards/2105826.jpg,2025-06-04 14:57:05 UTC,198390,b87891cd-b457-4dff-8d18-a7eaf6748fc6
+3,Contaminated Ground,Enchantment - Aura,{1}{B},Common,$0.08,sideboard,https://s.deckbox.org/system/images/mtg/cards/2086018.jpg,2025-06-04 15:01:41 UTC,67534,c2384356-0a62-499a-8b28-085974331368
+3,Cuombajj Witches,Creature - Human Wizard,{B}{B},Uncommon,$0.11,sideboard,https://s.deckbox.org/system/images/mtg/cards/2112378.jpg,2025-06-04 15:01:29 UTC,226860,6a26e910-275a-4981-831b-bfed936a7e3f
+1,Oubliette,Enchantment,{1}{B}{B},Uncommon,$2.33,sideboard,https://s.deckbox.org/system/images/mtg/cards/2112001.jpg,2025-06-04 15:03:48 UTC,222767,96ccfecd-0dab-426a-8897-86c73934d21d
+1,Pestilence,Enchantment,{2}{B}{B},Uncommon,$0.47,sideboard,https://s.deckbox.org/system/images/mtg/cards/2073481.jpg,2025-06-04 15:03:44 UTC,2679,29d852c4-bd53-4a3b-b1e2-896917cbc27f
+2,Shrivel,Sorcery,{1}{B},Common,$0.12,sideboard,https://s.deckbox.org/system/images/mtg/cards/2086789.jpg,2025-06-04 15:02:14 UTC,69980,47b2ffdd-f8a4-49e4-aab1-a8096ba2b7cb
+2,Spinning Darkness,Instant,{4}{B}{B},Common,$0.61,sideboard,https://s.deckbox.org/system/images/mtg/cards/2077178.jpg,2025-06-04 15:01:23 UTC,6103,58e64a8e-84b1-416c-9fa7-8b10130dc9e9
+4,Trespasser's Curse,Enchantment - Aura Curse,{1}{B},Common,$0.30,sideboard,https://s.deckbox.org/system/images/mtg/cards/2096329.jpg,2025-06-04 15:02:08 UTC,130292,f6ef4c59-ab84-4d84-b795-015b21ae3fe0
+

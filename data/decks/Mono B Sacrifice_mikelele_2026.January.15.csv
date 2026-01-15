@@ -1,0 +1,21 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+2,Accursed Marauder,Creature - Zombie Warrior,{1}{B},Common,$0.28,main,https://s.deckbox.org/system/images/mtg/cards/2056479.jpg,2025-11-11 16:40:11 UTC,553204,5da14d86-0780-4821-a799-96f64b377df4
+4,Bloodthrone Vampire,Creature - Vampire,{1}{B},Common,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2085527.jpg,2025-11-11 16:42:05 UTC,59959,7c0b87e0-d5e4-44f2-8220-325443ee9f31
+4,Carrion Feeder,Creature - Zombie,{B},Uncommon,$2.79,main,https://s.deckbox.org/system/images/mtg/cards/2104365.jpg,2025-11-11 16:40:23 UTC,191578,0a19da90-880e-4eca-8cf7-6d7baf090d53
+2,Corrupted Conviction,Instant,{B},Common,$0.23,main,https://s.deckbox.org/system/images/mtg/cards/2055049.jpg,2025-11-11 16:42:21 UTC,544718,8046f892-3317-4ef7-9cf7-97b9060540c8
+4,Infestation Sage,Creature - Elf Warlock,{B},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2062179.jpg,2025-11-11 16:40:36 UTC,591764,d40c73de-7a5f-46f2-a70b-449bc8ecfe24
+4,Mortician Beetle,Creature - Insect,{B},Rare,$1.45,main,https://s.deckbox.org/system/images/mtg/cards/2082387.jpg,2025-11-11 16:40:17 UTC,34811,a19ee3e4-5f76-4c28-bee6-f1c063ec0cb3
+4,Nested Shambler,Creature - Zombie,{B},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2058616.jpg,2025-11-11 16:40:47 UTC,559982,202011d5-755e-497b-b4a7-f2b6e6a0b464
+4,Nezumi Linkbreaker,Creature - Rat Warlock,{B},Common,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2055061.jpg,2025-11-11 16:41:13 UTC,544673,6dd0095b-6136-4368-94cb-4c82621aaf37
+4,Perigee Beckoner,Creature - Horror,{4}{B},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2298880.jpg,2025-11-11 16:41:52 UTC,644747,f3666a08-d449-496f-969a-bf21d4afbd77
+2,Rite of Consumption,Sorcery,{1}{B},Common,$2.66,main,https://s.deckbox.org/system/images/mtg/cards/2060903.jpg,2025-11-11 16:43:02 UTC,582835,67cc5d9a-fba5-4a42-a3fa-d41e20b7b8fd
+3,Shambling Ghast,Creature - Zombie,{B},Common,$0.45,main,https://s.deckbox.org/system/images/mtg/cards/2116319.jpg,2025-11-11 16:41:33 UTC,243154,d96198a7-dd19-4940-bf8f-23135011fc84
+2,Supernatural Stamina,Instant,{B},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2096227.jpg,2025-11-11 16:43:18 UTC,130282,8cac5753-54e7-45a8-b486-4860533ce93c
+17,Swamp,Basic Land - Swamp,"",BasicLand,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2301289.jpg,2025-11-11 16:43:30 UTC,662980,f0b234d8-d6bb-48ec-8a4d-d8a570a69c62
+4,Village Rites,Instant,{B},Common,$0.44,main,https://s.deckbox.org/system/images/mtg/cards/2113198.jpg,2025-11-11 16:42:24 UTC,230172,0fab9ee8-776a-48e5-b309-bcd381e67bf7
+1,Mesmeric Fiend,Creature - Nightmare Horror,{1}{B},Common,$0.95,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060866.jpg,2025-11-11 16:44:17 UTC,582741,c2debda1-542e-4f28-b984-da79de35eab3
+1,Sadistic Glee,Enchantment - Aura,{B},Common,$1.21,sideboard,https://s.deckbox.org/system/images/mtg/cards/2073484.jpg,2025-11-11 16:44:22 UTC,5703,d9e1959c-b87b-4e17-a0d2-0489ea79220b
+1,Snuff Out,Instant,{3}{B},Common,$4.88,sideboard,https://s.deckbox.org/system/images/mtg/cards/2072573.jpg,2025-11-11 16:45:22 UTC,6703,18a3cca1-e50e-49b6-9e1a-f86640e3b177
+1,Spinning Darkness,Instant,{4}{B}{B},Common,$0.61,sideboard,https://s.deckbox.org/system/images/mtg/cards/2077178.jpg,2025-11-11 16:45:16 UTC,6103,58e64a8e-84b1-416c-9fa7-8b10130dc9e9
+1,Vampiric Link,Enchantment - Aura,{B},Common,$1.18,sideboard,https://s.deckbox.org/system/images/mtg/cards/2066988.jpg,2025-11-11 16:45:11 UTC,14832,a9be1058-0668-4938-8801-e9a98464651c
+

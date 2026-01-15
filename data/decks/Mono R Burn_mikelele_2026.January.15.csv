@@ -1,0 +1,26 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Chain Lightning,Sorcery,{R},Common,$0.32,main,https://s.deckbox.org/system/images/mtg/cards/2060086.jpg,2019-08-28 15:17:28 UTC,563250,fda4c062-4227-486b-875d-b310573ee72b
+2,Fireblast,Instant,{4}{R}{R},Common,$0.38,main,https://s.deckbox.org/system/images/mtg/cards/2060928.jpg,2025-05-30 06:35:09 UTC,583235,ff45073c-5ac1-4295-833e-58b253319c9b
+2,Forgotten Cave,Land,"",Common,$0.17,main,https://s.deckbox.org/system/images/mtg/cards/2070585.jpg,2019-08-28 15:21:57 UTC,10492,c5202668-a32c-4473-b272-e86264992576
+4,Guttersnipe,Creature - Goblin Shaman,{2}{R},Uncommon,$0.27,main,https://s.deckbox.org/system/images/mtg/cards/2062831.jpg,2025-05-30 06:35:01 UTC,591657,dde674d6-f4e7-410b-acf0-34021290576d
+4,Kessig Flamebreather,Creature - Human Shaman,{1}{R},Common,$2.38,main,https://s.deckbox.org/system/images/mtg/cards/2023832.jpg,2025-05-30 06:34:40 UTC,253555,303ad78a-b02a-44dc-afe6-7f95781a5062
+4,Lava Spike,Sorcery - Arcane,{R},Common,$1.00,main,https://s.deckbox.org/system/images/mtg/cards/2079583.jpg,2019-08-28 15:17:48 UTC,12083,60b2fae1-242b-45e0-a757-b1adc02c06f3
+4,Lightning Bolt,Instant,{R},Uncommon,$0.45,main,https://s.deckbox.org/system/images/mtg/cards/2296316.jpg,2019-08-28 15:19:26 UTC,632180,e89794ab-6070-4916-936f-2b42fe41d31b
+15,Mountain,Basic Land - Mountain,"",BasicLand,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2301290.jpg,2019-08-28 15:21:04 UTC,662981,c44f81ca-f72f-445c-8901-3a894a2a47f9
+4,Needle Drop,Instant,{R},Common,$1.31,main,https://s.deckbox.org/system/images/mtg/cards/2069288.jpg,2019-08-28 15:19:08 UTC,15588,d3f89bcf-46f8-4598-a949-7f10134606aa
+4,Reckless Impulse,Sorcery,{1}{R},Common,$0.65,main,https://s.deckbox.org/system/images/mtg/cards/2023843.jpg,2025-05-30 06:35:47 UTC,253542,6943c07f-ab0d-4f5a-bbe9-c0a83dc98546
+4,Rift Bolt,Sorcery,{2}{R},Common,$0.35,main,https://s.deckbox.org/system/images/mtg/cards/2066270.jpg,2019-08-28 15:18:13 UTC,14340,88dde96e-6824-4d26-9fb5-86b9f3c50959
+4,Searing Blaze,Instant,{R}{R},Common,$0.94,main,https://s.deckbox.org/system/images/mtg/cards/2081963.jpg,2019-08-28 15:19:55 UTC,34429,301f13dd-39b8-4a93-9c05-3dc4fa1f1c75
+4,Skewer the Critics,Sorcery,{2}{R},Common,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2103541.jpg,2019-08-28 15:18:40 UTC,183223,97295660-6bea-46ae-9a3b-0fc6abba407f
+4,Thermo-Alchemist,Creature - Human Shaman,{1}{R},Uncommon,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2117459.jpg,2025-05-30 06:34:43 UTC,247873,b4c68bad-c7ee-4dbc-ad06-8c4d9446884e
+4,Wrenn's Resolve,Sorcery,{1}{R},Common,$1.21,main,https://s.deckbox.org/system/images/mtg/cards/2040785.jpg,2023-05-03 09:59:11 UTC,491759,9a47999c-12d5-4e1a-a9c1-40a1757007f1
+1,Blazing Volley,Sorcery,{R},Common,$0.12,sideboard,https://s.deckbox.org/system/images/mtg/cards/2108883.jpg,2019-08-28 15:22:50 UTC,212766,3adc0288-acdf-4a99-9bfb-919cae1aeb69
+1,Circle of Protection: Red,Enchantment,{1}{W},Uncommon,$0.20,sideboard,https://s.deckbox.org/system/images/mtg/cards/2079811.jpg,2019-08-28 15:26:31 UTC,12600,d7920b6d-ff71-4802-9589-e1df0c58b9ff
+2,Electrickery,Instant,{R},Common,$0.26,sideboard,https://s.deckbox.org/system/images/mtg/cards/2085730.jpg,2019-08-28 15:23:17 UTC,66558,5ed81ee8-d5e4-4127-876e-9bff81f9c726
+1,Firebrand Archer,Creature - Human Archer,{1}{R},Common,$0.15,sideboard,https://s.deckbox.org/system/images/mtg/cards/2062311.jpg,2019-08-28 15:25:15 UTC,591775,fe0312f1-4c98-4b7f-8a34-0059ea80edef
+3,Gorilla Shaman,Creature - Ape Shaman,{R},Common,$0.42,sideboard,https://s.deckbox.org/system/images/mtg/cards/2071790.jpg,2023-05-03 09:59:28 UTC,81826,5a16231c-1f73-4dec-9d88-e3d62e93a70f
+3,Keldon Marauders,Creature - Human Warrior,{1}{R},Common,$0.11,sideboard,https://s.deckbox.org/system/images/mtg/cards/2067157.jpg,2019-08-28 15:26:51 UTC,14747,677c28db-34d2-4325-99d1-9b689753802f
+2,Martyr of Ashes,Creature - Human Shaman,{R},Common,$0.16,sideboard,https://s.deckbox.org/system/images/mtg/cards/2066860.jpg,2019-08-28 15:23:58 UTC,14077,600a2cd2-166a-4fd8-838d-e513534b7cb0
+4,Relic of Progenitus,Artifact,{1},Common,$4.89,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2023-05-03 10:01:30 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
+4,Smash to Smithereens,Instant,{1}{R},Common,$0.17,sideboard,https://s.deckbox.org/system/images/mtg/cards/2091721.jpg,2019-08-28 15:26:18 UTC,100330,655c489f-bffb-45a4-8e7c-2d1a35220197
+

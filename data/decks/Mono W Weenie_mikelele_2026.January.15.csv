@@ -1,0 +1,23 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Battle Screech,Sorcery,{2}{W}{W},Uncommon,$0.16,main,https://s.deckbox.org/system/images/mtg/cards/2060475.jpg,2025-09-17 06:14:39 UTC,581555,1c71de34-fb9c-47f6-8586-e45d897d0f85
+1,Dawnbringer Cleric,Creature - Human Cleric,{1}{W},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2116209.jpg,2025-11-27 10:11:10 UTC,243085,c00856f7-fef5-4ba5-9079-59a81d452c82
+1,Eagles of the North,Creature - Bird Soldier,{5}{W},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2042659.jpg,2025-05-10 09:15:58 UTC,499404,c1bd3bc0-77bd-40fe-b4f1-835a04cb6e41
+1,Greatsword of Tyr,Artifact - Equipment,{1}{W},Common,$0.16,main,https://s.deckbox.org/system/images/mtg/cards/2028151.jpg,2025-09-17 06:16:11 UTC,272908,50088a60-642b-47ed-a289-ef0b617b688f
+1,Guardians' Pledge,Instant,{1}{W}{W},Common,$0.64,main,https://s.deckbox.org/system/images/mtg/cards/2084205.jpg,2025-11-27 10:09:47 UTC,47632,e7e6105c-8633-46f7-a7ca-2a5c36c6d548
+2,Idyllic Grange,Land - Plains,"",Common,$0.20,main,https://s.deckbox.org/system/images/mtg/cards/2105823.jpg,2025-05-10 09:19:13 UTC,199256,ca2c611c-3a6f-44b0-9daa-837a465845e0
+4,Kor Skyfisher,Creature - Kor Soldier,{1}{W},Common,$0.44,main,https://s.deckbox.org/system/images/mtg/cards/2081815.jpg,2025-09-17 05:36:37 UTC,33349,bb2e9465-f5ba-4c7b-9f03-d40dc8394acd
+2,Lunarch Veteran // Luminous Phantom,Creature - Human Cleric // Creature - Spirit Cleric,{W},Common,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2117322.jpg,2025-11-27 10:11:03 UTC,248261,d2704743-2e23-40b9-a367-c73d2db45afc
+4,Novice Inspector,Creature - Human Detective,{W},Common,$0.18,main,https://s.deckbox.org/system/images/mtg/cards/2051948.jpg,2025-09-17 06:15:58 UTC,530008,0ad38866-fc5f-4f62-89c1-afc0f50765aa
+3,Prismatic Strands,Instant,{2}{W},Common,$1.92,main,https://s.deckbox.org/system/images/mtg/cards/2060561.jpg,2025-05-10 09:18:47 UTC,582444,b977be9b-4848-4144-9a70-2e18fa6c22c9
+4,Raffine's Informant,Creature - Human Wizard,{1}{W},Common,$0.16,main,https://s.deckbox.org/system/images/mtg/cards/2026473.jpg,2025-09-17 06:15:09 UTC,268648,4e64ff87-2099-4360-94f6-164277b7b514
+2,Salt Road Packbeast,Creature - Beast,{5}{W},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2290463.jpg,2025-11-27 10:12:47 UTC,623956,98d548c9-42bc-4155-8211-0aea801c3724
+18,Snow-Covered Plains,Basic Snow Land - Plains,"",Common,$0.34,main,https://s.deckbox.org/system/images/mtg/cards/2113357.jpg,2025-12-12 07:36:19 UTC,230147,afd2730f-878e-47ee-ad2a-73f8fa4e0794
+3,"Spider-Man, Web-Slinger",Legendary Creature - Spider Human Hero,{2}{W},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2299907.jpg,2025-11-27 10:11:00 UTC,646016,897418bc-df8c-4c97-b6bf-7c9133a8a577
+3,Summon: Choco/Mog,Enchantment Creature - Saga Bird Moogle,{2}{W},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2295117.jpg,2025-11-27 10:10:12 UTC,634384,00546117-018a-4286-bc20-b5446c5be56f
+3,Thraben Charm,Instant,{1}{W},Common,$0.27,main,https://s.deckbox.org/system/images/mtg/cards/2056444.jpg,2025-11-27 10:09:44 UTC,552284,dd28a646-f38f-4cdf-948c-969cd979e5e6
+4,Thraben Inspector,Creature - Human Soldier,{W},Common,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2093330.jpg,2025-09-17 05:36:51 UTC,114876,d140c3b7-ca78-483d-baeb-307b624fea8b
+2,Destroy Evil,Instant,{1}{W},Common,$0.15,sideboard,https://s.deckbox.org/system/images/mtg/cards/2030414.jpg,2025-09-17 06:16:53 UTC,283655,4f7862ef-2c8d-4d28-9e50-7cc41861f245
+1,Dust to Dust,Sorcery,{1}{W}{W},Uncommon,$5.98,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070321.jpg,2025-05-10 09:21:32 UTC,2119,6e8a9a5c-0e5f-4498-88d8-6aac465923b1
+1,Revoke Existence,Sorcery,{1}{W},Common,$0.06,sideboard,https://s.deckbox.org/system/images/mtg/cards/2108174.jpg,2025-05-10 09:22:06 UTC,206202,9dbb9f86-f487-44b1-815f-30d87868b531
+1,Salt Road Packbeast,Creature - Beast,{5}{W},Common,$0.06,sideboard,https://s.deckbox.org/system/images/mtg/cards/2290463.jpg,2025-09-17 06:16:22 UTC,623956,98d548c9-42bc-4155-8211-0aea801c3724
+
