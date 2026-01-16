@@ -85,6 +85,11 @@ def load_all_decks(path):
     if all_deck_data:
         master_df = pd.concat(all_deck_data, ignore_index=True)        
         master_df.rename(columns={'Count': 'Qty', 'Cost': 'Mana'}, inplace=True)
+        if df['Price'].dtype == 'object':
+            df['Price'] = df['Price'].str.replace('$', '', regex=False).str.replace(',', '', regex=False)
+        
+        df['Price'] = pd.to_numeric(df['Price'], errors='coerce').fillna(0.00)
+        df.drop(columns=['TcgPlayer ID'], inplace=True, errors='ignore')
         return master_df
     return pd.DataFrame()
 

@@ -3,11 +3,11 @@
 import streamlit as st
 import pandas as pd
 
-def render_inventory_view(df_inventory, df_all_decks, last_update):
+def render_inventory_view(df_inventory, df_all_decks):
     col_left, col_right = st.columns([1.5, 1], gap="large")
 
     with col_left:
-        st.caption(f"*Last update on {last_update}")
+        
         search = st.text_input("Search card name...", key="inv_search")
         display_df = df_inventory
         if search:

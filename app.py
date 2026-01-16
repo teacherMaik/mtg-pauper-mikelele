@@ -110,9 +110,10 @@ with st.sidebar:
         st.plotly_chart(fig_bar, use_container_width=True, config={'displayModeBar': False})
 
 st.title("Mikelele's Pauper Playground")
+st.caption(f"*Last update on {last_update}*")
 
 if st.session_state.view == "inventory":
-    render_inventory_view(df_inventory, df_all_decks, last_update)
+    render_inventory_view(df_inventory, df_all_decks)
 elif st.session_state.view == "decks_menu":
     render_decks_view(df_inventory, df_all_decks)
 ## elif st.session_state.view.startswith("deck_"):
