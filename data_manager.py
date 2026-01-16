@@ -1,12 +1,21 @@
 import streamlit as st
 import pandas as pd
+from datetime import datetime
 import os
 
 @st.cache_data
 def load_inventory():
-    # Path updated to point into the data folder
-    path = os.path.join("data", "Inventory_mikelele_2026.January.15.csv")
+    filename = "Inventory_mikelele_2026.January.15.csv" # Your file name
+    path = os.path.join("data", filename)
     df = pd.read_csv(path)
+
+    raw_date = filename.split("_")[-1].replace(".csv", "")
+    # raw_date is "2026.January.15"
+    try:
+        date_obj = datetime.strptime(raw_date, "%Y.%B.%d")
+        last_update = date_obj.strftime("%b %d, %Y") # Result: Jan 15, 2026
+    except:
+        last_update = raw_date # Fallback
     
     # Cleaning Logic
     df['Card Number'] = pd.to_numeric(df['Card Number'], errors='coerce').fillna(0).astype(int).astype(str)
@@ -33,7 +42,7 @@ def load_inventory():
 
     print("--- INVENTORY HEAD ---")
     print(df.head())
-    return df
+    return df, last_update
 
 @st.cache_data
 def load_all_decks():

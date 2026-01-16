@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
 
-def render_inventory_view(df_inventory, df_all_decks):
+def render_inventory_view(df_inventory, df_all_decks, last_update):
     col_left, col_right = st.columns([1.5, 1], gap="large")
 
     with col_left:
+        st.caption(f"*Last update on {last_update}")
         search = st.text_input("Search card name...", key="inv_search")
         display_df = df_inventory
         if search:
@@ -15,9 +16,7 @@ def render_inventory_view(df_inventory, df_all_decks):
         # Define how columns should look
         # This adds the $ sign and ensures 2 decimal places natively
         column_configuration = {
-            ## "Name": st.column_config.TextColumn("Name", width="small"),
-            
-            # Use format="%d" to treat it as an integer and width=60 to clamp it
+            "Name": st.column_config.TextColumn("Name", width="medium"),
             "Qty": st.column_config.NumberColumn("Qty", format="%d", width=42),
             "Price": st.column_config.NumberColumn("Price", format="$%.2f", width=63),
             "Total": st.column_config.NumberColumn("Total", format="$%.2f", width=63),
