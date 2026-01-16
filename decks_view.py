@@ -1,154 +1,193 @@
 import streamlit as st
 import pandas as pd
 
+# Path to the card back placeholder
+CARD_BACK_URL = "https://gamepedia.cursecdn.com/mtgsalvation_gamepedia/f/f8/Magic_card_back.jpg"
+
 def render_decks_view(df_inventory, df_all_decks):
+    # 1. State Initialization
     if 'deck_selector_key' not in st.session_state:
         st.session_state.deck_selector_key = 0
     if 'selected_card_name' not in st.session_state:
         st.session_state.selected_card_name = None
 
-    col_left, col_right = st.columns([1.5, 1], gap="large")
+    # Layout: Top Row [1.5, 1]
+    top_col_left, top_col_right = st.columns([1.5, 1], gap="large")
 
-    with col_left:
+    with top_col_left:
         deck_options = ["Select Deck..."] + sorted(df_all_decks['DeckName'].unique().tolist())
-        
         selected_deck = st.selectbox(
-            "Select a Deck", 
+            "Search or Select Deck", 
             options=deck_options,
-            key=f"deck_select_{st.session_state.deck_selector_key}"
+            key=f"ds_{st.session_state.deck_selector_key}"
         )
 
-        if selected_deck != "Select Deck...":
-            sub_col1, sub_col2 = st.columns([1, 1], gap="medium")
+    if selected_deck != "Select Deck...":
+        # Data Preparation & Global Price Cleaning
+        full_deck = df_all_decks[df_all_decks['DeckName'] == selected_deck].copy()
+        full_deck['Price'] = pd.to_numeric(
+            full_deck['Price'].astype(str).str.replace('$', '').str.replace(',', ''), 
+            errors='coerce'
+        ).fillna(0.0)
+        
+        main_df = full_deck[full_deck['Section'].str.lower() == 'main'].copy()
+        side_df = full_deck[full_deck['Section'].str.lower() == 'sideboard'].copy()
+
+        with top_col_right:
+            st.title(f"{selected_deck}")
+
+        # --- Render Mainboard Tables ---
+        with top_col_left:
+            st.markdown("### 🏰 Mainboard")
+            sub1, sub2 = st.columns([1, 1], gap="medium")
             
-            full_main_df = df_all_decks[
-                (df_all_decks['DeckName'] == selected_deck) & 
-                (df_all_decks['Section'].str.lower() == 'main')
-            ].copy()
-            
-            working_df = full_main_df.copy()
-
-            # Column configurations for sizing
-            # Fixed: Use Column for generic text/mana, NumberColumn for Price/Qty
-            main_table_conf = {
-                "Qty": st.column_config.NumberColumn(width=42),
-                "Mana": st.column_config.Column(width=42),
-                "Name": st.column_config.Column(width="auto")
-            }
-
-            def render_type_table(target_df, type_label):
-                st.markdown(f"**{type_label}s** ({target_df['Qty'].sum()})")
-                calc_height = (len(target_df) * 35) + 40
-                
-                event = st.dataframe(
-                    target_df[['Qty', 'Name', 'Mana']], 
-                    use_container_width=True, 
-                    hide_index=True, 
-                    height=int(calc_height),
-                    on_select="rerun",
-                    selection_mode="single-row",
-                    column_config=main_table_conf,
-                    key=f"table_{type_label}_{selected_deck}" # Unique key per table
-                )
-                
-                if event.selection.rows:
-                    selected_idx = event.selection.rows[0]
-                    st.session_state.selected_card_name = target_df.iloc[selected_idx]['Name']
-
             col1_types = ['Creature', 'Instant', 'Sorcery']
             col2_types = ['Artifact', 'Enchantment', 'Land']
 
-            with sub_col1:
+            with sub1:
                 for t in col1_types:
-                    type_df = working_df[working_df['Type'].str.contains(t, na=False)]
-                    if not type_df.empty:
-                        render_type_table(type_df, t)
-                        working_df = working_df.drop(type_df.index)
-                    else:
-                        st.markdown(f"**{t}s** (0)")
-                        st.caption("_No cards of this type_")
-
-            with sub_col2:
+                    t_df = main_df[main_df['Type'].str.contains(t, na=False)]
+                    if not t_df.empty:
+                        render_list_table(t_df, f"{t}s", t, selected_deck)
+            
+            with sub2:
                 for t in col2_types:
-                    type_df = working_df[working_df['Type'].str.contains(t, na=False)]
-                    if not type_df.empty:
-                        render_type_table(type_df, t)
-                        working_df = working_df.drop(type_df.index)
-                    else:
-                        st.markdown(f"**{t}s** (0)")
-                        st.caption("_No cards of this type_")
+                    t_df = main_df[main_df['Type'].str.contains(t, na=False)]
+                    if not t_df.empty:
+                        render_list_table(t_df, f"{t}s", t, selected_deck)
 
-    with col_right:
-        if selected_deck != "Select Deck...":
-            # 1. Deck Analysis Logic
-            missing_df = render_deck_analysis(selected_deck, df_inventory, full_main_df)
-            
-            if missing_df is not None and not missing_df.empty:
-                st.subheader("🛒 Missing Cards")
-                # Fixed Column Config for Missing Table
-                missing_conf = {
-                    "Need": st.column_config.NumberColumn(width=42),
-                    "Avg Price": st.column_config.NumberColumn("Price", width=42, format="$%.2f"),
-                    "Card": st.column_config.Column(width="auto")
-                }
+        # --- Render Sideboard Section (Bottom Row) ---
+        st.divider()
+        bot_left, bot_right = st.columns([1.5, 1], gap="large")
 
-                m_event = st.dataframe(
-                    missing_df[['Need', 'Card', 'Avg Price']],
-                    use_container_width=True,
-                    hide_index=True,
-                    on_select="rerun",
-                    selection_mode="single-row",
-                    column_config=missing_conf,
-                    key=f"missing_table_{selected_deck}"
-                )
-                if m_event.selection.rows:
-                    idx = m_event.selection.rows[0]
-                    st.session_state.selected_card_name = missing_df.iloc[idx]['Card']
-
-            st.divider()
-            
-            # 2. Card Preview Logic
-            if st.session_state.selected_card_name:
-                name = st.session_state.selected_card_name
-                st.subheader(f"🔍 {name}")
-                
-                inv_match = df_inventory[df_inventory['Name'] == name]
-                deck_match = full_main_df[full_main_df['Name'] == name]
-                
-                # Fetch Data
-                img_url = inv_match.iloc[0]['Image URL'] if not inv_match.empty else deck_match.iloc[0]['Image URL']
-                price = inv_match.iloc[0]['Price'] if not inv_match.empty else 0.0
-                
-                p_col1, p_col2 = st.columns([1, 1.2])
-                with p_col1:
-                    st.image(img_url) if img_url else st.warning("No image")
-                with p_col2:
-                    st.metric("Market Price", f"${price:.2f}")
-                    if st.button("Clear Selection", type="primary"):
-                        st.session_state.selected_card_name = None
-                        st.rerun()
+        with bot_left:
+            st.markdown("### 🃏 Sideboard")
+            if not side_df.empty:
+                render_list_table(side_df, "Sideboard Cards", "side_list", selected_deck)
             else:
-                st.info("Select a card to view details.")
+                st.info("No sideboard cards defined.")
 
-def render_deck_analysis(deck_name, df_inventory, main_deck):
-    st.title(f"{deck_name}")
-    total_needed = main_deck['Qty'].sum()
-    missing_list = []
-    owned_in_deck = 0
+        with bot_right:
+            st.markdown("#### 📊 Sideboard Analysis")
+            render_section_analysis(selected_deck, df_inventory, side_df, "side_analysis")
 
-    for _, row in main_deck.iterrows():
+        # --- Render Top Right Analysis & Preview (LATEST in code flow to fix lag) ---
+        with top_col_right:
+            st.markdown("#### 📊 Mainboard Analysis")
+            render_section_analysis(selected_deck, df_inventory, main_df, "main_analysis")
+            
+            st.divider()
+            # This will now correctly reflect changes from any table click immediately
+            render_card_preview(st.session_state.selected_card_name, df_inventory, full_deck)
+
+# --- HELPER FUNCTIONS ---
+
+def render_list_table(target_df, label, key_suffix, deck_name):
+    st.markdown(f"**{label}** ({target_df['Qty'].sum()})")
+    
+    # Calculate height to fit content exactly
+    calc_height = int((len(target_df) * 35) + 40)
+    
+    event = st.dataframe(
+        target_df[['Qty', 'Name', 'Mana']], 
+        use_container_width=True, 
+        hide_index=True, 
+        height=calc_height,
+        on_select="rerun", 
+        selection_mode="single-row",
+        column_config={
+            "Qty": st.column_config.NumberColumn(width=42), 
+            "Mana": st.column_config.Column(width=42),
+            "Name": st.column_config.Column(width="auto")
+        },
+        key=f"tab_{key_suffix}_{deck_name}"
+    )
+    
+    if event.selection.rows:
+        new_selection = target_df.iloc[event.selection.rows[0]]['Name']
+        if st.session_state.selected_card_name != new_selection:
+            st.session_state.selected_card_name = new_selection
+            st.rerun()
+
+def render_section_analysis(deck_name, df_inventory, section_df, key_prefix):
+    if section_df.empty:
+        return
+    
+    missing_data = []
+    owned_count = 0
+    total_needed = section_df['Qty'].sum()
+
+    for _, row in section_df.iterrows():
         name = row['Name']
         needed = row['Qty']
+        price = row['Price']
+        
         inv_match = df_inventory[df_inventory['Name'] == name]
         owned = inv_match['Qty'].sum()
-        owned_in_deck += min(needed, owned)
+        owned_count += min(needed, owned)
         
         if owned < needed:
-            avg_p = inv_match['Price'].mean() if not inv_match.empty else 0.0
-            missing_list.append({"Card": name, "Need": needed - owned, "Avg Price": avg_p})
+            missing_data.append({
+                "Need": needed - owned,
+                "Card": name,
+                "Price": float(price)
+            })
 
-    pct = owned_in_deck / total_needed if total_needed > 0 else 0
-    st.write(f"**Deck Completion: {owned_in_deck} / {total_needed}**")
-    st.progress(pct)
+    # UI: Progress and Metrics
+    st.progress(owned_count / total_needed if total_needed > 0 else 0)
+    m1, m2 = st.columns(2)
     
-    return pd.DataFrame(missing_list) if missing_list else None
+    total_val = (section_df['Qty'] * section_df['Price']).sum()
+    m1.metric("Value", f"${total_val:.2f}")
+    
+    if missing_data:
+        m_df = pd.DataFrame(missing_data)
+        buy_total = (m_df['Need'] * m_df['Price']).sum()
+        m2.metric("To Buy", f"${buy_total:.2f}")
+        
+        m_event = st.dataframe(
+            m_df, use_container_width=True, hide_index=True,
+            on_select="rerun", selection_mode="single-row",
+            column_config={
+                "Need": st.column_config.NumberColumn(width=42), 
+                "Price": st.column_config.NumberColumn(width=42, format="$%.2f"),
+                "Card": st.column_config.Column(width="auto")
+            },
+            key=f"miss_{key_prefix}_{deck_name}"
+        )
+        if m_event.selection.rows:
+            new_m_selection = m_df.iloc[m_event.selection.rows[0]]['Card']
+            if st.session_state.selected_card_name != new_m_selection:
+                st.session_state.selected_card_name = new_m_selection
+                st.rerun()
+    else:
+        m2.metric("To Buy", "$0.00")
+        st.success("Complete!")
+
+def render_card_preview(name, df_inventory, full_deck):
+    img_url = CARD_BACK_URL
+    price = 0.0
+    display_name = "Selection Preview"
+
+    if name:
+        display_name = name
+        inv_match = df_inventory[df_inventory['Name'] == name]
+        deck_match = full_deck[full_deck['Name'] == name]
+        
+        # Priority: Inventory Image/Price -> Decklist Image/Price
+        if not inv_match.empty:
+            img_url = inv_match.iloc[0].get('Image URL', CARD_BACK_URL)
+            price = inv_match.iloc[0].get('Price', 0.0)
+        elif not deck_match.empty:
+            img_url = deck_match.iloc[0].get('Image URL', CARD_BACK_URL)
+            price = deck_match.iloc[0].get('Price', 0.0)
+
+    st.markdown(f"#### 🔎 {display_name}")
+    p1, p2 = st.columns([1, 1.2])
+    with p1:
+        # Handle cases where URL might be NaN or Empty
+        final_img = img_url if pd.notna(img_url) and img_url else CARD_BACK_URL
+        st.image(final_img)
+    with p2:
+        st.metric("Market Price", f"${float(price):.2f}")
+        st.caption("Click any row to update preview.")
