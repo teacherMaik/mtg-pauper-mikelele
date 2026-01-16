@@ -66,15 +66,20 @@ def clean_inventory(path):
 def load_all_decks(path):
     all_deck_data = []
     if os.path.exists(path):
-        # We find unique base names for decks (e.g., "Burn", "Elves")
-        base_names = set(f.split("_")[0] for f in os.listdir(path) if f.endswith(".csv"))
+        # Change: split by '_mikelele' to get the full deck name
+        # This keeps "Mono B Devotion" separate from "Mono B Sacrifice"
+        files = [f for f in os.listdir(path) if f.endswith(".csv")]
         
-        for base in base_names:
-            # For each deck type, get the latest file
-            latest_deck = get_latest_file(path, rf"^{base}")
+        # Identify unique deck prefixes (e.g., "Mono B Devotion")
+        # Using a regex to catch everything before the first underscore followed by 'mikelele'
+        prefixes = set(re.split(r'_mikelele', f)[0] for f in files)
+        
+        for prefix in prefixes:
+            # Get the latest version for this specific deck name
+            latest_deck = get_latest_file(path, rf"^{re.escape(prefix)}_mikelele")
             if latest_deck:
                 df = pd.read_csv(latest_deck)
-                df['DeckName'] = base
+                df['DeckName'] = prefix
                 all_deck_data.append(df)
     
     if all_deck_data:

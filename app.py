@@ -1,6 +1,7 @@
+## app.py
 import streamlit as st
 import pandas as pd
-import features  # Your new file
+import features 
 import plotly.express as px
 from data_manager import load_inventory, load_all_decks
 from inventory_view import render_inventory_view
@@ -48,7 +49,7 @@ with st.sidebar:
     if not color_data.empty:
         color_map = {
             'White': '#F0F0F0', 'Blue': '#0000FF', 'Black': '#000000',
-            'Red': '#FF0000', 'Green': '#008000', 'Colorless': '#90ADBB'
+            'Red': '#FF0000', 'Green': '#008000', 'Colorless': '#90ADBB', 'Land': "#6D5025"
         }
 
         fig = px.pie(
@@ -63,7 +64,7 @@ with st.sidebar:
         # FIXED: Pass the array directly to customdata to prevent NaN
         fig.update_traces(
             customdata=color_data['Value'],
-            hovertemplate="<b>%{label}</b><br>Pips: %{value}<br>Value: $%{customdata:,.2f}<extra></extra>",
+            hovertemplate="<b>%{label}</b><br>Qty: %{value}<br>Value: $%{customdata:,.2f}<extra></extra>",
             textinfo='none',
             # THIS ADDS THE SLICE BORDERS
             marker=dict(line=dict(color='#444444', width=1.5)) 
@@ -78,20 +79,20 @@ with st.sidebar:
         st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
 
     # --- SECTION 3: TYPE DISTRIBUTION (BELOW PIE) ---
-    if not type_data.empty:
-        # Create a horizontal bar chart
-        fig_bar = px.bar(
+        if not type_data.empty:
+            # Create a horizontal bar chart
+            fig_bar = px.bar(
             type_data,
             x='Count',
             y='Type',
             orientation='h',
-            text_auto=True # Shows the number inside the bar
+            text_auto=True,
+            custom_data=['Value'] # Add the new Value column here
         )
 
         fig_bar.update_traces(
-            marker_color="#ED72F1", # Clean blue color
-            marker_line=dict(color='#000000', width=1),
-            hovertemplate="<b>%{y}</b><br>Total: %{x}<extra></extra>"
+            marker_color="#ED72F1",
+            hovertemplate="<b>%{y}</b><br>Cards: %{x}<br>Value: $%{customdata[0]:,.2f}<extra></extra>"
         )
 
         fig_bar.update_layout(
