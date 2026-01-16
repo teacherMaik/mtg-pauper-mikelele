@@ -38,7 +38,7 @@ def render_decks_view(df_inventory, df_all_decks):
 
         # --- Render Mainboard Tables ---
         with top_col_left:
-            st.markdown("### 🏰 Mainboard")
+            st.markdown("### Mainboard")
             sub1, sub2 = st.columns([1, 1], gap="medium")
             
             col1_types = ['Creature', 'Instant', 'Sorcery']
@@ -61,19 +61,19 @@ def render_decks_view(df_inventory, df_all_decks):
         bot_left, bot_right = st.columns([1.5, 1], gap="large")
 
         with bot_left:
-            st.markdown("### 🃏 Sideboard")
+            st.markdown("### Sideboard")
             if not side_df.empty:
                 render_list_table(side_df, "Sideboard Cards", "side_list", selected_deck)
             else:
                 st.info("No sideboard cards defined.")
 
         with bot_right:
-            st.markdown("#### 📊 Sideboard Analysis")
+            st.markdown("#### Sideboard Analysis")
             render_section_analysis(selected_deck, df_inventory, side_df, "side_analysis")
 
         # --- Render Top Right Analysis & Preview (LATEST in code flow to fix lag) ---
         with top_col_right:
-            st.markdown("#### 📊 Mainboard Analysis")
+            st.markdown("#### Mainboard Analysis")
             render_section_analysis(selected_deck, df_inventory, main_df, "main_analysis")
             
             st.divider()
