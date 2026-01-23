@@ -1,9 +1,8 @@
-## Inventory View
-
+## Card Search View View
 import streamlit as st
 import pandas as pd
 
-def render_inventory_view(df_inventory, df_all_decks):
+def render_card_search_view(df_inventory, df_all_decks):
     col_left, col_right = st.columns([1.5, 1], gap="large")
 
     with col_left:

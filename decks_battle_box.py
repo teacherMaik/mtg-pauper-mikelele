@@ -1,5 +1,55 @@
+##decks_battle_box
+
 import streamlit as st
 import pandas as pd
+
+def render_decks_menu(df_inventory, df_all_decks):
+    # ROUTER: Decide what to show
+    current_view = st.session_state.get("view", "battle_box")
+
+    if current_view == "battle_box":
+        render_battle_box_gallery(df_all_decks)
+    elif current_view.startswith("deck_"):
+        # Extract name: "deck_Burn" -> "Burn"
+        deck_name = current_view.replace("deck_", "")
+        render_deck_detail(deck_name, df_inventory, df_all_decks)
+
+
+# --- 1. GALLERY VIEW (The 3-column Grid) ---
+def render_battle_box_gallery(df_all_decks):
+    st.title("🗃️ My Battle Box")
+    
+    # Filter Logic
+    tags = ["Competitive", "Popular", "My Brew"]
+    selected_tags = st.multiselect("Filter Decks", tags, default=tags)
+    
+    # Filter the dataframe (assuming you added a 'Category' column)
+    decks = sorted(df_all_decks[df_all_decks['Category'].isin(selected_tags)]['DeckName'].unique())
+
+    # Create the 3-column responsive grid
+    for i in range(0, len(decks), 3):
+        cols = st.columns(3)
+        for j in range(3):
+            if i + j < len(decks):
+                deck_name = decks[i + j]
+                with cols[j]:
+                    with st.container(border=True): # Creates the "Card" look
+                        # Get first card image for the deck background
+                        img = df_all_decks[df_all_decks['DeckName'] == deck_name]['Image URL'].iloc[0]
+                        st.image(img, use_container_width=True)
+                        st.subheader(deck_name)
+                        if st.button(f"View {deck_name}", key=f"btn_{deck_name}", use_container_width=True):
+                            st.session_state.view = f"deck_{deck_name}"
+                            st.rerun()
+
+# --- 2. DETAIL VIEW (Your Existing Code) ---
+def render_deck_detail(selected_deck, df_inventory, df_all_decks):
+    if st.button("⬅️ Back to Gallery"):
+        st.session_state.view = "battle_box"
+        st.rerun()
+    
+    # ... PASTE YOUR EXISTING CODE HERE ...
+    # (The layout with top_col_left, top_col_right, etc.)
 
 # Path to the card back placeholder
 CARD_BACK_URL = "https://gamepedia.cursecdn.com/mtgsalvation_gamepedia/f/f8/Magic_card_back.jpg"

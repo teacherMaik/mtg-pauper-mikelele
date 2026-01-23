@@ -1,121 +1,91 @@
-## app.py
 import streamlit as st
 import pandas as pd
 import features 
 import plotly.express as px
 from data_manager import load_inventory, load_all_decks
-from inventory_view import render_inventory_view
-from decks_view import render_decks_view
+
+# Ensure these function names match exactly what is inside decks_battle_box.py
+from decks_battle_box import (
+    render_decks_menu,  # This will likely be your Gallery logic
+    render_decks_view   # This is your detailed [1.5, 1] layout
+)
+
+from inventory_full import render_inventory_stats_view
+from inventory_search import render_card_search_view
 
 st.set_page_config(page_title="MTG Pauper Playground", layout="wide")
 
+# Load data
 df_inventory, last_update = load_inventory()
 df_all_decks = load_all_decks()
 
-if 'view' not in st.session_state:
-    st.session_state.view = "inventory"
+# 1. INITIALIZATION
+if "view" not in st.session_state:
+    st.session_state.view = "battle_box" 
+if "selected_card_name" not in st.session_state:
+    st.session_state.selected_card_name = None
 
+# 2. SIDEBAR NAVIGATION (Your code is perfect here)
 with st.sidebar:
-    st.header("Play Around")
-    color_data, type_data = features.get_sidebar_stats(df_inventory)
-
-    # Navigation (Same as yours)
-    if st.button("Full Collection", use_container_width=True, 
-                 type="primary" if st.session_state.view == "inventory" else "secondary"):
-        st.session_state.view = "inventory"
-        st.rerun()
+    st.header('Decks')
+    current_view = st.session_state.get("view", "")
     
-    deck_active = st.session_state.view == "decks_menu" or st.session_state.view.startswith("deck_")
-    if st.button("Decks", use_container_width=True, 
-                 type="primary" if deck_active else "secondary"):
-        st.session_state.view = "decks_menu"
+    # UI Highlight Logic: Active if in any deck-related view
+    # We use .get() to avoid errors if the key is missing
+    current_view = st.session_state.get("view", "")
+    deck_active = current_view in ["battle_box", "battle_box_stats", "test-deck"] or current_view.startswith("deck_")
+
+    if st.button("My Battle Box", use_container_width=True, 
+                 type="primary" if current_view == "battle_box" else "secondary"):
+        st.session_state.view = "battle_box"
+        st.rerun()
+
+    if st.button("Deck Stats", use_container_width=True, 
+                 type="primary" if current_view == "battle_box_stats" else "secondary"):
+        st.session_state.view = "battle_box_stats"
+        st.rerun()
+
+    if st.button("Play Around", use_container_width=True, 
+                 type="primary" if current_view == "test-deck" else "secondary"):
+        st.session_state.view = "test-deck"
         st.rerun()
 
     st.divider()
+    st.header("Collection")
 
-    # --- SECTION 1: STATS TABLE (STAYS ON TOP) ---
-    st.subheader("Collection Stats")
-    total_qty = df_inventory['Qty'].sum()
-    total_val = df_inventory['Total'].sum()
-    total_decks = df_all_decks['DeckName'].nunique() if not df_all_decks.empty else 0
+    if st.button("Inventory Stats", use_container_width=True, 
+                 type="primary" if current_view == "inventory_stats" else "secondary"):
+        st.session_state.view = "inventory_stats"
+        st.rerun()
 
-    summary_df = pd.DataFrame({
-        "Summary": ["Total Cards", "Total Value", "Total Decks"],
-        "Stats": [f"{total_qty:,}", f"${total_val:,.2f}", f"{total_decks}"]
-    })
-    st.dataframe(summary_df, use_container_width=True, hide_index=True)
-
-    # --- SECTION 2: COLOR IDENTITY PIE CHART ---
-    if not color_data.empty:
-        color_map = {
-            'White': '#F0F0F0', 'Blue': '#0000FF', 'Black': '#000000',
-            'Red': '#FF0000', 'Green': '#008000', 'Colorless': '#90ADBB', 'Land': "#6D5025"
-        }
-
-        fig = px.pie(
-            color_data, 
-            values='Count', 
-            names='Color',
-            color='Color',
-            color_discrete_map=color_map,
-            hole=0.4
-        )
-
-        # FIXED: Pass the array directly to customdata to prevent NaN
-        fig.update_traces(
-            customdata=color_data['Value'],
-            hovertemplate="<b>%{label}</b><br>Qty: %{value}<br>Value: $%{customdata:,.2f}<extra></extra>",
-            textinfo='none',
-            # THIS ADDS THE SLICE BORDERS
-            marker=dict(line=dict(color='#444444', width=1.5)) 
-        )
-
-        fig.update_layout(
-            showlegend=False, 
-            height=220, 
-            margin=dict(l=10, r=10, t=10, b=10)
-        )
-
-        st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
-
-    # --- SECTION 3: TYPE DISTRIBUTION (BELOW PIE) ---
-        if not type_data.empty:
-            # Create a horizontal bar chart
-            fig_bar = px.bar(
-            type_data,
-            x='Count',
-            y='Type',
-            orientation='h',
-            text_auto=True,
-            custom_data=['Value'] # Add the new Value column here
-        )
-
-        fig_bar.update_traces(
-            marker_color="#ED72F1",
-            hovertemplate="<b>%{y}</b><br>Cards: %{x}<br>Value: $%{customdata[0]:,.2f}<extra></extra>"
-        )
-
-        fig_bar.update_layout(
-            height=250,
-            margin=dict(l=10, r=10, t=10, b=10),
-            xaxis_title=None,
-            yaxis_title=None,
-            # Remove gridlines for a cleaner sidebar look
-            xaxis=dict(showgrid=False, showticklabels=False),
-            paper_bgcolor='rgba(0,0,0,0)',
-            plot_bgcolor='rgba(0,0,0,0)'
-        )
-
-
-        st.plotly_chart(fig_bar, use_container_width=True, config={'displayModeBar': False})
+    if st.button("Search Cards", use_container_width=True, 
+                 type="primary" if current_view == "inventory_search" else "secondary"):
+        st.session_state.view = "inventory_search"
+        st.rerun()
 
 st.title("Mikelele's Pauper Playground")
 st.caption(f"*Last update on {last_update}*")
 
-if st.session_state.view == "inventory":
-    render_inventory_view(df_inventory, df_all_decks)
-elif st.session_state.view == "decks_menu":
+# 3. MAIN CONTENT ROUTER
+# Syncing the names called here with the names imported above
+if st.session_state.view == "battle_box":
+    # Calling the Gallery function from your component
+    render_decks_menu(df_inventory, df_all_decks)
+    
+elif st.session_state.view == "battle_box_stats":
+    st.write("### Battle Box Overview")
+    # render_battle_box_overview(df_all_decks) # Define this in a component
+
+elif st.session_state.view == "test-deck":
+    st.write("### Draw Machine")
+    # render_play_around(df_all_decks) # Define this in a component
+    
+elif st.session_state.view.startswith("deck_"):
+    # Pass the variables to your detailed layout
     render_decks_view(df_inventory, df_all_decks)
-## elif st.session_state.view.startswith("deck_"):
-##    deck_name = st.session_state.view.replace("deck_", "")
-##    render_deck_detail(deck_name)
+
+elif st.session_state.view == "inventory_stats":
+    render_inventory_stats_view(df_inventory, df_all_decks)
+
+elif st.session_state.view == "inventory_search":
+    render_card_search_view(df_inventory, df_all_decks)

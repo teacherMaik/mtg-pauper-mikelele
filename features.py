@@ -1,7 +1,13 @@
 import re
 import pandas as pd
 
-def get_sidebar_stats(df):
+def get_full_invetory_stats(df):
+
+
+    return
+
+
+def get_stats(df):
     # --- SETUP ---
     pattern = r'\{(.*?)\}'
     valid_types = ['Creature', 'Instant', 'Sorcery', 'Artifact', 'Enchantment', 'Planeswalker', 'Land', 'Battle']
