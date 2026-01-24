@@ -1,243 +1,114 @@
-##decks_battle_box
-
 import streamlit as st
 import pandas as pd
+import requests
+import base64
+from io import BytesIO
+from PIL import Image
+from deck_details import render_deck_detail
 
-def render_decks_menu(df_inventory, df_all_decks):
-    # ROUTER: Decide what to show
-    current_view = st.session_state.get("view", "battle_box")
+CARD_BACK_URL = "https://gamepedia.cursecdn.com/mtgsalvation_gamepedia/f/f8/Magic_card_back.jpg"
 
-    if current_view == "battle_box":
-        render_battle_box_gallery(df_all_decks)
-    elif current_view.startswith("deck_"):
-        # Extract name: "deck_Burn" -> "Burn"
-        deck_name = current_view.replace("deck_", "")
-        render_deck_detail(deck_name, df_inventory, df_all_decks)
+# --- HELPERS ---
+def img_to_bytes(img):
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    return base64.b64encode(buf.getvalue()).decode()
 
+@st.cache_data(show_spinner=False)
+def create_deck_tile(url, opacity=1.0):
+    try:
+        response = requests.get(url, timeout=5)
+        img = Image.open(BytesIO(response.content)).convert("RGBA")
+        img.thumbnail((300, 300))
+        return img
+    except Exception:
+        return None
 
-# --- 1. GALLERY VIEW (The 3-column Grid) ---
-def render_battle_box_gallery(df_all_decks):
-    st.title("🗃️ My Battle Box")
+# --- GALLERY VIEW ---
+def render_battle_box_gallery(df_battle_box):
+    st.markdown("""
+        <style>
+        /* Progress Bar Styling */
+        .pb-bg {
+            width: 100%;
+            background-color: #262730;
+            border-radius: 2px;
+            height: 6px;
+            margin-top: 8px;
+        }
+        .pb-fill {
+            height: 6px;
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+        /* Standardizing container height so buttons align */
+        [data-testid="stVerticalBlockBorderWrapper"] {
+            min-height: 220px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Filtering Logic
+    col_s, _ = st.columns([1, 3])
+    with col_s:
+        filter_type = st.select_slider("Filter Decks", options=["Meta", "My Brews"])
     
-    # Filter Logic
-    tags = ["Competitive", "Popular", "My Brew"]
-    selected_tags = st.multiselect("Filter Decks", tags, default=tags)
-    
-    # Filter the dataframe (assuming you added a 'Category' column)
-    decks = sorted(df_all_decks[df_all_decks['Category'].isin(selected_tags)]['DeckName'].unique())
+    target_val = "Brew" if filter_type == "My Brews" else "Meta"
+    # Ensure column exists
+    if 'Brew' not in df_battle_box.columns:
+        df_battle_box['Brew'] = 'Meta'
+        
+    filtered_df = df_battle_box[df_battle_box['Brew'] == target_val].sort_values("Priority")
+    decks = filtered_df['DeckName'].unique()
 
-    # Create the 3-column responsive grid
+    if len(decks) == 0:
+        st.info(f"No decks categorized as {filter_type} found.")
+        return
+
+    # Grid Rendering
     for i in range(0, len(decks), 3):
         cols = st.columns(3)
         for j in range(3):
             if i + j < len(decks):
                 deck_name = decks[i + j]
+                deck_data = filtered_df[filtered_df['DeckName'] == deck_name].iloc[0]
+                
+                img_url = deck_data['Thumbnail'] if pd.notna(deck_data['Thumbnail']) else CARD_BACK_URL
+                pct = int(deck_data.get('CompletionPct', 0))
+                bar_color = "#ff4b4b" if pct < 50 else "#ffa500" if pct < 100 else "#00cc66"
+                
                 with cols[j]:
-                    with st.container(border=True): # Creates the "Card" look
-                        # Get first card image for the deck background
-                        img = df_all_decks[df_all_decks['DeckName'] == deck_name]['Image URL'].iloc[0]
-                        st.image(img, use_container_width=True)
-                        st.subheader(deck_name)
-                        if st.button(f"View {deck_name}", key=f"btn_{deck_name}", use_container_width=True):
+                    with st.container(border=True):
+                        tile = create_deck_tile(img_url)
+                        img_src = f"data:image/png;base64,{img_to_bytes(tile)}" if tile else CARD_BACK_URL
+
+                        # THE ROW: Name + Bar (Left) | Image (Right)
+                        st.markdown(f"""
+                            <div style="display: flex; gap: 12px; align-items: flex-start; min-height: 120px;">
+                                <div style="flex-grow: 1;">
+                                    <div style="font-weight: bold; font-size: 1.15rem; line-height: 1.2; margin-bottom: 4px;">
+                                        {deck_name}
+                                    </div>
+                                    <div style="font-size: 0.8rem; color: #888;">{pct}% Complete (Main)</div>
+                                    <div class="pb-bg">
+                                        <div class="pb-fill" style="width: {pct}%; background-color: {bar_color};"></div>
+                                    </div>
+                                </div>
+                                <div style="flex-shrink: 0;">
+                                    <img src="{img_src}" style="width: 85px; height: 115px; object-fit: cover; border: 1px solid #444;">
+                                </div>
+                            </div>
+                        """, unsafe_allow_html=True)
+                        
+                        st.write("") # Spacer
+                        if st.button(f"View Deck", key=f"btn_{deck_name}", use_container_width=True):
                             st.session_state.view = f"deck_{deck_name}"
                             st.rerun()
 
-# --- 2. DETAIL VIEW (Your Existing Code) ---
-def render_deck_detail(selected_deck, df_inventory, df_all_decks):
-    if st.button("⬅️ Back to Gallery"):
-        st.session_state.view = "battle_box"
-        st.rerun()
-    
-    # ... PASTE YOUR EXISTING CODE HERE ...
-    # (The layout with top_col_left, top_col_right, etc.)
-
-# Path to the card back placeholder
-CARD_BACK_URL = "https://gamepedia.cursecdn.com/mtgsalvation_gamepedia/f/f8/Magic_card_back.jpg"
+def render_decks_menu(df_battle_box):
+    render_battle_box_gallery(df_battle_box)
 
 def render_decks_view(df_inventory, df_all_decks):
-    # 1. State Initialization
-    if 'deck_selector_key' not in st.session_state:
-        st.session_state.deck_selector_key = 0
-    if 'selected_card_name' not in st.session_state:
-        st.session_state.selected_card_name = None
-
-    # Layout: Top Row [1.5, 1]
-    top_col_left, top_col_right = st.columns([1.5, 1], gap="large")
-
-    with top_col_left:
-        deck_options = ["Select Deck..."] + sorted(df_all_decks['DeckName'].unique().tolist())
-        selected_deck = st.selectbox(
-            "Search or Select Deck", 
-            options=deck_options,
-            key=f"ds_{st.session_state.deck_selector_key}"
-        )
-
-    if selected_deck != "Select Deck...":
-        # Data Preparation & Global Price Cleaning
-        full_deck = df_all_decks[df_all_decks['DeckName'] == selected_deck].copy()
-        full_deck['Price'] = pd.to_numeric(
-            full_deck['Price'].astype(str).str.replace('$', '').str.replace(',', ''), 
-            errors='coerce'
-        ).fillna(0.0)
-        
-        main_df = full_deck[full_deck['Section'].str.lower() == 'main'].copy()
-        side_df = full_deck[full_deck['Section'].str.lower() == 'sideboard'].copy()
-
-        with top_col_right:
-            st.title(f"{selected_deck}")
-
-        # --- Render Mainboard Tables ---
-        with top_col_left:
-            st.markdown("### Mainboard")
-            sub1, sub2 = st.columns([1, 1], gap="medium")
-            
-            col1_types = ['Creature', 'Instant', 'Sorcery']
-            col2_types = ['Artifact', 'Enchantment', 'Land']
-
-            with sub1:
-                for t in col1_types:
-                    t_df = main_df[main_df['Type'].str.contains(t, na=False)]
-                    if not t_df.empty:
-                        render_list_table(t_df, f"{t}s", t, selected_deck)
-            
-            with sub2:
-                for t in col2_types:
-                    t_df = main_df[main_df['Type'].str.contains(t, na=False)]
-                    if not t_df.empty:
-                        render_list_table(t_df, f"{t}s", t, selected_deck)
-
-        # --- Render Sideboard Section (Bottom Row) ---
-        st.divider()
-        bot_left, bot_right = st.columns([1.5, 1], gap="large")
-
-        with bot_left:
-            st.markdown("### Sideboard")
-            if not side_df.empty:
-                render_list_table(side_df, "Sideboard Cards", "side_list", selected_deck)
-            else:
-                st.info("No sideboard cards defined.")
-
-        with bot_right:
-            st.markdown("#### Sideboard Analysis")
-            render_section_analysis(selected_deck, df_inventory, side_df, "side_analysis")
-
-        # --- Render Top Right Analysis & Preview (LATEST in code flow to fix lag) ---
-        with top_col_right:
-            st.markdown("#### Mainboard Analysis")
-            render_section_analysis(selected_deck, df_inventory, main_df, "main_analysis")
-            
-            st.divider()
-            # This will now correctly reflect changes from any table click immediately
-            render_card_preview(st.session_state.selected_card_name, df_inventory, full_deck)
-
-# --- HELPER FUNCTIONS ---
-
-def render_list_table(target_df, label, key_suffix, deck_name):
-    st.markdown(f"**{label}** ({target_df['Qty'].sum()})")
-    
-    # Calculate height to fit content exactly
-    calc_height = int((len(target_df) * 35) + 40)
-    
-    event = st.dataframe(
-        target_df[['Qty', 'Name', 'Mana']], 
-        use_container_width=True, 
-        hide_index=True, 
-        height=calc_height,
-        on_select="rerun", 
-        selection_mode="single-row",
-        column_config={
-            "Qty": st.column_config.NumberColumn(width=42), 
-            "Mana": st.column_config.Column(width=42),
-            "Name": st.column_config.Column(width="auto")
-        },
-        key=f"tab_{key_suffix}_{deck_name}"
-    )
-    
-    if event.selection.rows:
-        new_selection = target_df.iloc[event.selection.rows[0]]['Name']
-        if st.session_state.selected_card_name != new_selection:
-            st.session_state.selected_card_name = new_selection
-            st.rerun()
-
-def render_section_analysis(deck_name, df_inventory, section_df, key_prefix):
-    if section_df.empty:
-        return
-    
-    missing_data = []
-    owned_count = 0
-    total_needed = section_df['Qty'].sum()
-
-    for _, row in section_df.iterrows():
-        name = row['Name']
-        needed = row['Qty']
-        price = row['Price']
-        
-        inv_match = df_inventory[df_inventory['Name'] == name]
-        owned = inv_match['Qty'].sum()
-        owned_count += min(needed, owned)
-        
-        if owned < needed:
-            missing_data.append({
-                "Need": needed - owned,
-                "Card": name,
-                "Price": float(price)
-            })
-
-    # UI: Progress and Metrics
-    st.progress(owned_count / total_needed if total_needed > 0 else 0)
-    m1, m2 = st.columns(2)
-    
-    total_val = (section_df['Qty'] * section_df['Price']).sum()
-    m1.metric("Value", f"${total_val:.2f}")
-    
-    if missing_data:
-        m_df = pd.DataFrame(missing_data)
-        buy_total = (m_df['Need'] * m_df['Price']).sum()
-        m2.metric("To Buy", f"${buy_total:.2f}")
-        
-        m_event = st.dataframe(
-            m_df, use_container_width=True, hide_index=True,
-            on_select="rerun", selection_mode="single-row",
-            column_config={
-                "Need": st.column_config.NumberColumn(width=42), 
-                "Price": st.column_config.NumberColumn(width=42, format="$%.2f"),
-                "Card": st.column_config.Column(width="auto")
-            },
-            key=f"miss_{key_prefix}_{deck_name}"
-        )
-        if m_event.selection.rows:
-            new_m_selection = m_df.iloc[m_event.selection.rows[0]]['Card']
-            if st.session_state.selected_card_name != new_m_selection:
-                st.session_state.selected_card_name = new_m_selection
-                st.rerun()
-    else:
-        m2.metric("To Buy", "$0.00")
-        st.success("Complete!")
-
-def render_card_preview(name, df_inventory, full_deck):
-    img_url = CARD_BACK_URL
-    price = 0.0
-    display_name = "Selection Preview"
-
-    if name:
-        display_name = name
-        inv_match = df_inventory[df_inventory['Name'] == name]
-        deck_match = full_deck[full_deck['Name'] == name]
-        
-        # Priority: Inventory Image/Price -> Decklist Image/Price
-        if not inv_match.empty:
-            img_url = inv_match.iloc[0].get('Image URL', CARD_BACK_URL)
-            price = inv_match.iloc[0].get('Price', 0.0)
-        elif not deck_match.empty:
-            img_url = deck_match.iloc[0].get('Image URL', CARD_BACK_URL)
-            price = deck_match.iloc[0].get('Price', 0.0)
-
-    st.markdown(f"#### 🔎 {display_name}")
-    p1, p2 = st.columns([1, 1.2])
-    with p1:
-        # Handle cases where URL might be NaN or Empty
-        final_img = img_url if pd.notna(img_url) and img_url else CARD_BACK_URL
-        st.image(final_img)
-    with p2:
-        st.metric("Market Price", f"${float(price):.2f}")
-        st.caption("Click any row to update preview.")
+    current_view = st.session_state.get("view", "")
+    deck_name = current_view.replace("deck_", "")
+    render_deck_detail(deck_name, df_inventory, df_all_decks)

@@ -1,51 +1,45 @@
 import streamlit as st
 import pandas as pd
-import features 
-import plotly.express as px
-from data_manager import load_inventory, load_all_decks
+import os
+from data_manager import load_inventory, load_all_decks, load_battle_box
 
-# Ensure these function names match exactly what is inside decks_battle_box.py
-from decks_battle_box import (
-    render_decks_menu,  # This will likely be your Gallery logic
-    render_decks_view   # This is your detailed [1.5, 1] layout
-)
-
+# --- COMPONENT IMPORTS ---
+from decks_battle_box import render_decks_menu, render_decks_view
 from inventory_full import render_inventory_stats_view
 from inventory_search import render_card_search_view
 
+# --- PAGE CONFIG ---
 st.set_page_config(page_title="MTG Pauper Playground", layout="wide")
 
-# Load data
+# --- DATA LOADING ---
 df_inventory, last_update = load_inventory()
 df_all_decks = load_all_decks()
+df_battle_box = load_battle_box()
 
-# 1. INITIALIZATION
+# --- INITIALIZATION ---
 if "view" not in st.session_state:
     st.session_state.view = "battle_box" 
-if "selected_card_name" not in st.session_state:
-    st.session_state.selected_card_name = None
 
-# 2. SIDEBAR NAVIGATION (Your code is perfect here)
+# --- SIDEBAR NAVIGATION ---
 with st.sidebar:
-    st.header('Decks')
     current_view = st.session_state.get("view", "")
-    
-    # UI Highlight Logic: Active if in any deck-related view
-    # We use .get() to avoid errors if the key is missing
-    current_view = st.session_state.get("view", "")
-    deck_active = current_view in ["battle_box", "battle_box_stats", "test-deck"] or current_view.startswith("deck_")
 
+    st.header('Decks')
+    
+    # 1. My Battle Box (The Gallery)
     if st.button("My Battle Box", use_container_width=True, 
                  type="primary" if current_view == "battle_box" else "secondary"):
         st.session_state.view = "battle_box"
         st.rerun()
 
-    if st.button("Deck Stats", use_container_width=True, 
+    # 2. Battle Box Stats
+    if st.button("Battle Box Stats", use_container_width=True, 
                  type="primary" if current_view == "battle_box_stats" else "secondary"):
         st.session_state.view = "battle_box_stats"
         st.rerun()
 
-    if st.button("Play Around", use_container_width=True, 
+    # 3. Test a Deck
+    if st.button("Test a Deck", use_container_width=True, 
                  type="primary" if current_view == "test-deck" else "secondary"):
         st.session_state.view = "test-deck"
         st.rerun()
@@ -53,39 +47,53 @@ with st.sidebar:
     st.divider()
     st.header("Collection")
 
-    if st.button("Inventory Stats", use_container_width=True, 
+    # 4. Inventory Stats
+    if st.button("Stats", use_container_width=True, 
                  type="primary" if current_view == "inventory_stats" else "secondary"):
         st.session_state.view = "inventory_stats"
         st.rerun()
 
-    if st.button("Search Cards", use_container_width=True, 
+    # 5. Search a Card
+    if st.button("Search a Card", use_container_width=True, 
                  type="primary" if current_view == "inventory_search" else "secondary"):
         st.session_state.view = "inventory_search"
         st.rerun()
 
+    # Debugging helper (Optional - can be commented out)
+    st.divider()
+    st.caption(f"DEBUG: {current_view}")
+
+# --- HEADER ---
 st.title("Mikelele's Pauper Playground")
 st.caption(f"*Last update on {last_update}*")
 
-# 3. MAIN CONTENT ROUTER
-# Syncing the names called here with the names imported above
-if st.session_state.view == "battle_box":
-    # Calling the Gallery function from your component
-    render_decks_menu(df_inventory, df_all_decks)
-    
-elif st.session_state.view == "battle_box_stats":
-    st.write("### Battle Box Overview")
-    # render_battle_box_overview(df_all_decks) # Define this in a component
+# --- MAIN CONTENT ROUTER ---
+view = st.session_state.view
 
-elif st.session_state.view == "test-deck":
-    st.write("### Draw Machine")
-    # render_play_around(df_all_decks) # Define this in a component
-    
-elif st.session_state.view.startswith("deck_"):
-    # Pass the variables to your detailed layout
+# Handle Gallery
+if view == "battle_box":
+    render_decks_menu(df_battle_box)
+
+# Handle Dynamic Deck Detail Views
+elif view.startswith("deck_"):
     render_decks_view(df_inventory, df_all_decks)
 
-elif st.session_state.view == "inventory_stats":
+# Handle Other Sections
+elif view == "battle_box_stats":
+    st.write("### Battle Box Stats")
+    # render_battle_box_stats(df_all_decks, df_battle_box)
+
+elif view == "test-deck":
+    st.write("### Draw Machine / Playtesting")
+    # render_test_deck_view(df_all_decks)
+
+elif view == "inventory_stats":
     render_inventory_stats_view(df_inventory, df_all_decks)
 
-elif st.session_state.view == "inventory_search":
+elif view == "inventory_search":
     render_card_search_view(df_inventory, df_all_decks)
+
+else:
+    st.warning("Section not found. Returning to Battle Box.")
+    st.session_state.view = "battle_box"
+    st.rerun()

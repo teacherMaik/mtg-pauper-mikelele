@@ -7,124 +7,139 @@ from datetime import datetime
 # --- CONFIGURATION ---
 DB_PATH = os.path.join("data", "mtg_pauper.db")
 DATA_DIR = "data"
+CLASSIFICATION_DIR = "data" 
 DECKS_DIR = os.path.join("data", "decks")
 
-def get_latest_file(directory, pattern):
-    """
-    Finds files matching a pattern, sorts them by date in filename, 
-    returns the latest and deletes the others.
-    """
-    files = [f for f in os.listdir(directory) if re.search(pattern, f) and f.endswith(".csv")]
-    if not files:
-        return None
+def get_match_name(name):
+    """Aggressively cleans card names for matching across sources."""
+    if not isinstance(name, str): return ""
+    # Remove content in parens/brackets and lowercase
+    name = re.sub(r'\(.*?\)|\[.*?\]', '', name)
+    return name.lower().strip()
 
-    # Helper to extract date from your format: Name_YYYY.Month.DD.csv
+def get_latest_file(directory, pattern):
+    files = [f for f in os.listdir(directory) if re.search(pattern, f) and f.endswith(".csv")]
+    if not files: return None
     def extract_date(filename):
         match = re.search(r"(\d{4})\.(\w+)\.(\d{1,2})", filename)
         if match:
-            try:
-                return datetime.strptime(f"{match.group(1)} {match.group(2)} {match.group(3)}", "%Y %B %d")
-            except:
-                return datetime.min
+            try: return datetime.strptime(f"{match.group(1)} {match.group(2)} {match.group(3)}", "%Y %B %d")
+            except: return datetime.min
         return datetime.min
-
-    # Sort files by the parsed date
     files.sort(key=extract_date, reverse=True)
-    
-    latest_file = os.path.join(directory, files[0])
-    
-    # Delete the older versions
-    for old_file in files[1:]:
-        old_path = os.path.join(directory, old_file)
-        print(f"🗑️ Deleting old version: {old_file}")
-        os.remove(old_path)
-        
-    return latest_file
+    return os.path.join(directory, files[0])
 
 def clean_inventory(path):
     df = pd.read_csv(path)
-    df['Card Number'] = pd.to_numeric(df['Card Number'], errors='coerce').fillna(0).astype(int).astype(str)
-    df['Code'] = df['Edition Code'].astype(str) + "-" + df['Card Number']
-    df.rename(columns={'Count': 'Qty', 'Cost': 'Mana'}, inplace=True)
-    
-    if 'Price' not in df.columns and 'My Price' in df.columns:
-        df.rename(columns={'My Price': 'Price'}, inplace=True)
-    
-    if df['Price'].dtype == 'object':
-        df['Price'] = df['Price'].str.replace('$', '', regex=False).str.replace(',', '', regex=False)
-    
+    df.rename(columns={'Count': 'Qty', 'Cost': 'Mana'}, inplace=True, errors='ignore')
+    df['MatchName'] = df['Name'].apply(get_match_name)
     df['Price'] = pd.to_numeric(df['Price'], errors='coerce').fillna(0.00)
-    df['Total'] = df['Price'] * df['Qty']
-
-    to_drop = ['Tradelist Count', 'Decks Count Built', 'Condition', 'Language',
-               'Foil', 'Signed', 'Artist Proof', 'Altered Art', 'Misprint',
-               'Promo', 'Textless', 'Printing Id', 'Printing Note','My Price', 'Tags', 
-               'Edition Code', 'Card Number', 'TcgPlayer ID', 'Last Updated', 'Decks Count All']
-    df.drop(columns=to_drop, inplace=True, errors='ignore')
     return df
 
-def load_all_decks(path):
+def load_all_decks_cards(path):
     all_deck_data = []
-    if os.path.exists(path):
-        # Change: split by '_mikelele' to get the full deck name
-        # This keeps "Mono B Devotion" separate from "Mono B Sacrifice"
-        files = [f for f in os.listdir(path) if f.endswith(".csv")]
-        
-        # Identify unique deck prefixes (e.g., "Mono B Devotion")
-        # Using a regex to catch everything before the first underscore followed by 'mikelele'
-        prefixes = set(re.split(r'_mikelele', f)[0] for f in files)
-        
-        for prefix in prefixes:
-            # Get the latest version for this specific deck name
-            latest_deck = get_latest_file(path, rf"^{re.escape(prefix)}_mikelele")
-            if latest_deck:
-                df = pd.read_csv(latest_deck)
-                df['DeckName'] = prefix
-                all_deck_data.append(df)
+    if not os.path.exists(path): return pd.DataFrame()
+    files = [f for f in os.listdir(path) if f.endswith(".csv")]
+    prefixes = set(re.split(r'_mikelele', f)[0] for f in files)
     
-    if all_deck_data:
-        master_df = pd.concat(all_deck_data, ignore_index=True)        
-        master_df.rename(columns={'Count': 'Qty', 'Cost': 'Mana'}, inplace=True)
-        if df['Price'].dtype == 'object':
-            df['Price'] = df['Price'].str.replace('$', '', regex=False).str.replace(',', '', regex=False)
+    for prefix in prefixes:
+        latest_deck = get_latest_file(path, rf"^{re.escape(prefix)}_mikelele")
+        if latest_deck:
+            df = pd.read_csv(latest_deck)
+            df['DeckName'] = prefix.strip()
+            df.rename(columns={'Count': 'Qty', 'Cost': 'Mana'}, inplace=True, errors='ignore')
+            df['MatchName'] = df['Name'].apply(get_match_name)
+            
+            # Flexible Section column
+            if 'Section' not in df.columns and 'Board' in df.columns:
+                df.rename(columns={'Board': 'Section'}, inplace=True)
+            
+            all_deck_data.append(df)
+    return pd.concat(all_deck_data, ignore_index=True) if all_deck_data else pd.DataFrame()
+
+def calculate_priority_buildability(df_inventory, df_all_decks, df_battle_box):
+    virtual_inv = df_inventory.groupby('MatchName')['Qty'].sum().to_dict()
+    
+    df_bb = df_battle_box.copy()
+    df_bb['DeckName'] = df_bb['DeckName'].str.strip()
+    df_bb = df_bb.sort_values('Priority')
+    
+    completion_rates = []
+
+    print("\n" + "="*50)
+    print("      BATTLE BOX BUILDABILITY AUDIT")
+    print("="*50)
+
+    for _, row in df_bb.iterrows():
+        deck_name = row['DeckName']
         
-        df['Price'] = pd.to_numeric(df['Price'], errors='coerce').fillna(0.00)
-        df.drop(columns=['TcgPlayer ID'], inplace=True, errors='ignore')
-        return master_df
-    return pd.DataFrame()
+        # Filter for Deck + Section containing 'Main' (handles Main, Mainboard, etc)
+        deck_cards = df_all_decks[
+            (df_all_decks['DeckName'] == deck_name) & 
+            (df_all_decks['Section'].str.contains('Main', case=False, na=False))
+        ]
+        
+        total_needed = deck_cards['Qty'].sum()
+        
+        if total_needed == 0:
+            found_sections = df_all_decks[df_all_decks['DeckName'] == deck_name]['Section'].unique()
+            print(f"❌ {deck_name.upper()}: No 'Main' cards found! (Sections found: {list(found_sections)})")
+            completion_rates.append(0)
+            continue
+            
+        acquired = 0
+        missing_report = []
+
+        for _, card in deck_cards.iterrows():
+            m_name = card['MatchName']
+            real_name = card['Name']
+            needed = card['Qty']
+            available = virtual_inv.get(m_name, 0)
+            
+            taken = min(needed, available)
+            acquired += taken
+            
+            # If we didn't get enough, log what's missing
+            if taken < needed:
+                missing_report.append(f"   - {needed - taken}x {real_name}")
+            
+            # Subtract from virtual pool
+            virtual_inv[m_name] = available - taken
+            
+        calc_pct = int((acquired / total_needed) * 100)
+        completion_rates.append(calc_pct)
+        
+        status_icon = "✅" if calc_pct == 100 else "⚠️"
+        print(f"{status_icon} {deck_name}: {calc_pct}% ({acquired}/{total_needed})")
+        
+        if missing_report:
+            print("\n".join(missing_report))
+            print("-" * 30)
+
+    df_bb['CompletionPct'] = completion_rates
+    return df_bb
 
 def build_database():
-    print("--- Starting Version-Controlled ETL ---")
+    print("--- Initializing ETL ---")
+    inv_path = get_latest_file(DATA_DIR, r"Inventory_mikelele")
+    df_inventory = clean_inventory(inv_path)
+    df_all_decks = load_all_decks_cards(DECKS_DIR)
     
-    # 1. FIND LATEST & CLEANUP
-    inventory_path = get_latest_file(DATA_DIR, r"Inventory_mikelele")
-    if not inventory_path:
-        print("❌ Error: No Inventory CSV found.")
-        return
+    class_path = os.path.join(CLASSIFICATION_DIR, "Pauper_Playground_Decks_Classification.csv")
+    df_bb_raw = pd.read_csv(class_path)
+    df_bb_raw.columns = df_bb_raw.columns.str.strip()
 
-    df_inventory = clean_inventory(inventory_path)
-    df_decks = load_all_decks(DECKS_DIR)
-    
-    # 2. TRANSFORM (Strictly Pauper Filter)
-    if not df_decks.empty:
-        deck_card_names = df_decks['Name'].unique()
-        df_inventory = df_inventory[
-            (df_inventory['Rarity'] == 'Common') | 
-            (df_inventory['Name'].isin(deck_card_names))
-        ]
+    df_battle_box = calculate_priority_buildability(df_inventory, df_all_decks, df_bb_raw)
 
-    # 3. LOAD
     conn = sqlite3.connect(DB_PATH)
     df_inventory.to_sql('inventory', conn, if_exists='replace', index=False)
-    if not df_decks.empty:
-        df_decks.to_sql('decks', conn, if_exists='replace', index=False)
+    df_all_decks.to_sql('all_decks', conn, if_exists='replace', index=False)
+    df_battle_box.to_sql('battle_box', conn, if_exists='replace', index=False)
     
-    # Save Metadata
     update_date = datetime.now().strftime("%b %d, %Y")
     pd.DataFrame([{'last_update': update_date}]).to_sql('metadata', conn, if_exists='replace', index=False)
-    
     conn.close()
-    print(f"--- SUCCESS: DB built with {len(df_inventory)} cards. ---")
+    print(f"\nDB Update Complete: {update_date}")
 
 if __name__ == "__main__":
     build_database()
