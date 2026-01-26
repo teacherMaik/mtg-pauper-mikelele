@@ -31,8 +31,42 @@ def get_latest_file(directory, pattern):
 
 def clean_inventory(path):
     df = pd.read_csv(path)
+
+    # Strip whitespace and fill empty values to avoid 'nan' strings
+    df['Edition Code'] = df['Edition Code'].astype(str).str.strip().fillna('')
+    df['Card Number'] = df['Card Number'].astype(str).str.strip().fillna('')
+    df['Code'] = df['Edition Code'] + " - " + df['Card Number']
+    
+    # Convert Price to string first to use .str.replace, then to numeric
+    df['Price'] = (
+        df['Price']
+        .astype(str)
+        .str.replace('$', '', regex=False)
+        .str.replace(',', '', regex=False)
+    )
+    df['Price'] = pd.to_numeric(df['Price'], errors='coerce').fillna(0.00)
+
+    # 3. Calculate Total (Using 'Count' before it gets renamed to 'Qty')
+    # We ensure Count is numeric just in case
+    df['Count'] = pd.to_numeric(df['Count'], errors='coerce').fillna(0).astype(int)
+    df['Total'] = df['Count'] * df['Price']
+
+    # 4. Standardize Remaining Columns
     df.rename(columns={'Count': 'Qty', 'Cost': 'Mana'}, inplace=True, errors='ignore')
+
+    df.drop(columns=
+            ['Tradelist Count', 'Decks Count Built', 'Decks Count All',
+             'Edition Code', 'Card Number','Condition', 'Language', 'Foil',
+             'Signed', 'Artist Proof', 'Altered Art', 'Misprint', 'Promo',
+             'Textless', 'Printing Id','Printing Note', 'Tags', 'My Price',
+             'Last Updated', 'TcgPlayer Id'], inplace=True, errors='ignore')
+    
+
+    # Appends cleaned name card names col for matching against decks for availability
     df['MatchName'] = df['Name'].apply(get_match_name)
+
+    df.rename(columns={'Count': 'Qty', 'Cost': 'Mana'}, inplace=True, errors='ignore')
+
     df['Price'] = pd.to_numeric(df['Price'], errors='coerce').fillna(0.00)
     return df
 
@@ -47,7 +81,26 @@ def load_all_decks_cards(path):
         if latest_deck:
             df = pd.read_csv(latest_deck)
             df['DeckName'] = prefix.strip()
-            df.rename(columns={'Count': 'Qty', 'Cost': 'Mana'}, inplace=True, errors='ignore')
+
+            # Convert Price to string first to use .str.replace, then to numeric
+            df['Price'] = (
+                df['Price']
+                .astype(str)
+                .str.replace('$', '', regex=False)
+                .str.replace(',', '', regex=False)
+            )
+            df['Price'] = pd.to_numeric(df['Price'], errors='coerce').fillna(0.00)
+
+            # Clean Count & Calculate Total
+            # Standardize 'Count' or 'Qty' column name early to avoid errors
+            if 'Count' in df.columns:
+                df.rename(columns={'Count': 'Qty'}, inplace=True)
+            
+            df['Qty'] = pd.to_numeric(df['Qty'], errors='coerce').fillna(0).astype(int)
+            df['Total'] = df['Qty'] * df['Price']
+            
+            # 3. Final Standardizations
+            df.rename(columns={'Cost': 'Mana'}, inplace=True, errors='ignore')
             df['MatchName'] = df['Name'].apply(get_match_name)
             
             # Flexible Section column

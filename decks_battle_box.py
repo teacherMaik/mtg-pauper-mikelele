@@ -86,16 +86,16 @@ def render_battle_box_gallery(df_battle_box):
                         st.markdown(f"""
                             <div style="display: flex; gap: 12px; align-items: flex-start; min-height: 120px;">
                                 <div style="flex-grow: 1;">
-                                    <div style="font-weight: bold; font-size: 1.15rem; line-height: 1.2; margin-bottom: 4px;">
+                                    <div style="margin-top: 14%;font-weight: bold; font-size: 1.15rem; line-height: 1.2; margin-bottom: 4px;">
                                         {deck_name}
                                     </div>
-                                    <div style="font-size: 0.8rem; color: #888;">{pct}% Complete (Main)</div>
+                                    <div style="margin-top: 7%; font-size: 0.8rem; color: #888;">{pct}% Complete (Main)</div>
                                     <div class="pb-bg">
                                         <div class="pb-fill" style="width: {pct}%; background-color: {bar_color};"></div>
                                     </div>
                                 </div>
                                 <div style="flex-shrink: 0;">
-                                    <img src="{img_src}" style="width: 85px; height: 115px; object-fit: cover; border: 1px solid #444;">
+                                    <img src="{img_src}" style="width: 100px; object-fit: cover; border: 1px solid #444;">
                                 </div>
                             </div>
                         """, unsafe_allow_html=True)
