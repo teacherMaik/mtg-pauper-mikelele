@@ -3,6 +3,8 @@ import pandas as pd
 import os
 import re
 from datetime import datetime
+# Add this to your existing imports
+from sync_git import sync_to_github
 
 # --- CONFIGURATION ---
 DB_PATH = os.path.join("data", "mtg_pauper.db")
@@ -49,8 +51,20 @@ def get_latest_file(directory, pattern):
             except: return datetime.min
         return datetime.min
     
+    # Sort files by date descending
     files.sort(key=extract_date, reverse=True)
-    return os.path.join(directory, files[0])
+    latest_file = files[0]
+    
+    # --- DELETE OLDER VERSIONS ---
+    for old_file in files[1:]:
+        try:
+            os.remove(os.path.join(directory, old_file))
+            print(f"🗑️ Deleted old version: {old_file}")
+        except Exception as e:
+            print(f"⚠️ Could not delete {old_file}: {e}")
+
+    return os.path.join(directory, latest_file), True
+    
 
 def clean_inventory(path):
     df = pd.read_csv(path)
@@ -68,14 +82,23 @@ def clean_inventory(path):
     df.drop(columns=drop_cols, inplace=True, errors='ignore')
     return df
 
+
 def load_all_decks_cards(path):
-    if not os.path.exists(path): return pd.DataFrame()
+    if not os.path.exists(path): return pd.DataFrame(), False
+
     all_deck_data = []
     files = [f for f in os.listdir(path) if f.endswith(".csv")]
+
+    if not files: return pd.DataFrame(), False
+
     prefixes = set(re.split(r'_mikelele', f)[0] for f in files)
     
+    any_new_deck = False
     for prefix in prefixes:
-        latest_deck = get_latest_file(path, rf"^{re.escape(prefix)}_mikelele")
+
+        latest_deck, status = get_latest_file(path, rf"^{re.escape(prefix)}_mikelele")
+        
+        if status: any_new_deck = True
         if latest_deck:
             df = pd.read_csv(latest_deck)
             df['DeckName'] = prefix.strip()
@@ -86,7 +109,10 @@ def load_all_decks_cards(path):
             df['MatchName'] = df['Name'].apply(get_match_name)
             df.drop(['Last Updated', 'TcgPlayer ID'], axis=1, inplace=True, errors='ignore')
             all_deck_data.append(df)
-    return pd.concat(all_deck_data, ignore_index=True) if all_deck_data else pd.DataFrame()
+
+        final_df = pd.concat(all_deck_data, ignore_index=True) if all_deck_data else pd.DataFrame()
+    return final_df, any_new_deck
+
 
 def calculate_priority_buildability(df_inventory, df_all_decks, df_bb):
     virtual_inv = df_inventory.groupby('MatchName')['Count'].sum().to_dict()
@@ -169,9 +195,15 @@ def get_card_cmc_and_color(df):
 
 def build_database():
     print("--- Initializing ETL ---")
-    inv_path = get_latest_file(DATA_DIR, r"Inventory_mikelele")
-    df_inventory = clean_inventory(inv_path)
-    df_all_decks = load_all_decks_cards(DECKS_DIR)
+    inv_path, inv_sync = get_latest_file(DATA_DIR, r"Inventory_mikelele")
+
+    if not inv_path:
+        print("❌ Critical: No Inventory file found.")
+        return
+    else:
+        df_inventory = clean_inventory(inv_path)
+
+    df_all_decks, decks_sync = load_all_decks_cards(DECKS_DIR)
     
     print(df_inventory.columns)
     print(df_all_decks.columns)
@@ -206,6 +238,12 @@ def build_database():
     print(df_inventory.head())
     print(df_all_decks.head())
     print(df_battle_box.head())
+
+    if inv_sync or decks_sync:
+        print("🚀 Changes detected in source files. Triggering GitHub Sync...")
+        sync_to_github()
+    else:
+        print("ℹ️ No source changes detected. Repository is already up to date.")
 
 if __name__ == "__main__":
     build_database()
