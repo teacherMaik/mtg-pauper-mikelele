@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 
+METALLIC_GRAY = "#2c3e50"
+
 def render_card_search_view(df_inventory, df_all_decks):
     col_left, col_right = st.columns([1.5, 1], gap="large")
 
@@ -8,7 +10,6 @@ def render_card_search_view(df_inventory, df_all_decks):
         search = st.text_input("Search card name...", key="inv_search")
         
         # --- DATA CLEANUP ---
-        # Ensure code doesn't show as 211.0
         display_df = df_inventory.copy()
         display_df['code'] = display_df['code'].astype(str).str.replace(r'\.0$', '', regex=True)
         
@@ -17,7 +18,6 @@ def render_card_search_view(df_inventory, df_all_decks):
 
         st.markdown("### Inventory List")
         
-        # --- UPDATED COLUMN CONFIGURATION ---
         column_configuration = {
             "name": st.column_config.TextColumn("Name", width="medium"),
             "code": st.column_config.TextColumn("Code", width="small"),
@@ -52,7 +52,6 @@ def render_card_search_view(df_inventory, df_all_decks):
                     {"Attribute": "Mana", "Value": card_data.get('mana')},
                     {"Attribute": "Price", "Value": f"${card_data.get('price', 0.0):,.2f}"}
                 ]
-                # Removing headers by setting labels to empty strings
                 st.dataframe(
                     pd.DataFrame(specs_list), 
                     use_container_width=True, 
@@ -83,17 +82,30 @@ def render_card_search_view(df_inventory, df_all_decks):
                     for _, deck_row in matching_decks.iterrows():
                         deck_specs_list.append({
                             "Attribute": f"{deck_row['DeckName']}", 
-                            "Value": int(deck_row['qty'])
+                            "Value": str(int(deck_row['qty']))
                         })
 
                     deck_specs_list.append({"Attribute": "Cards Missing", "Value": str(needed_to_buy)})
                     deck_specs_list.append({"Attribute": "$ Needed", "Value": f"~ ${money_needed:,.2f}"})
                 else:
-                    deck_specs_list.append({"Attribute": "In Deck", "Value": "None"})
+                    deck_specs_list.append({"Attribute": "In Decks", "Value": "None"})
 
-                # Removing headers by setting labels to empty strings
+                # --- STYLING LOGIC ---
+                df_specs = pd.DataFrame(deck_specs_list)
+
+                def style_deck_specs(row):
+                    n = len(df_specs)
+                    if row.name == 0:
+                        return [f'background-color: {METALLIC_GRAY}; color: white;'] * len(row)
+                    elif row.name == 1:
+                        return ['background-color: #516a89; color: white;'] * len(row)
+                    elif row.name >= n - 2 and n > 2:
+                        return ['background-color: #ff4b4b; color: white;'] * len(row)
+                    return [''] * len(row)
+
+                # --- RENDER ---
                 st.dataframe(
-                    pd.DataFrame(deck_specs_list), 
+                    df_specs.style.apply(style_deck_specs, axis=1), 
                     use_container_width=True, 
                     hide_index=True,
                     column_config={
@@ -101,6 +113,7 @@ def render_card_search_view(df_inventory, df_all_decks):
                         "Value": st.column_config.TextColumn(label="")
                     }
                 )
+
                 st.caption(f"*'In Collection' counts all printings of {card_name}. Price used: ${price_each:,.2f}")
     with col_right:
         if event.selection.rows:

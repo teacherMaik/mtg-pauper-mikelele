@@ -7,8 +7,10 @@ from data_manager import load_inventory, load_all_decks, load_battle_box
 # --- COMPONENT IMPORTS ---
 from decks_battle_box import render_decks_menu, render_decks_view
 from decks_stats import render_bb_stats_view
+from deck_details import render_deck_detail
 from inventory_full import render_inventory_stats_view
 from inventory_search import render_card_search_view
+
 
 st.set_page_config(page_title="MTG Pauper Playground", layout="wide")
 
@@ -63,12 +65,14 @@ view = st.session_state.view
 if view == "battle_box":
     render_decks_menu(df_battle_box)
 elif view.startswith("deck_"):
-    render_decks_view(df_inventory, df_all_decks)
+    # Strip the prefix to get the actual deck name
+    deck_name = view.replace("deck_", "")
+    # Call the detail view directly or ensure the intermediary has all 3
+    render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box)
 elif view == "battle_box_stats":
     render_bb_stats_view(df_all_decks)
 elif view == "test_deck":
-    # render_deck_detail("Test Deck", df_inventory, df_all_decks)
-    pass
+    render_deck_detail("Test Deck", df_inventory, df_all_decks)
 elif view == "inventory_stats":
     render_inventory_stats_view(df_inventory, df_all_decks)
 elif view == "inventory_search":

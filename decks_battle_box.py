@@ -49,7 +49,7 @@ def render_battle_box_gallery(df_battle_box):
     # 2. Filter Logic
     col_s, _ = st.columns([1, 2])
     with col_s:
-        filter_type = st.select_slider("Filter Decks", options=["Meta", "My Brews"])
+        filter_type = st.radio("Filter Decks", options=["Meta", "My Brews"], horizontal=True)
     
     target_val = "Brew" if filter_type == "My Brews" else "Meta"
     if 'Brew' not in df_battle_box.columns:
