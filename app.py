@@ -6,7 +6,7 @@ from data_manager import load_inventory, load_all_decks, load_battle_box
 
 # --- COMPONENT IMPORTS ---
 from decks_battle_box import render_decks_menu, render_decks_view
-from decks_stats import render_deck_full_view
+from decks_stats import render_bb_stats_view
 from inventory_full import render_inventory_stats_view
 from inventory_search import render_card_search_view
 
@@ -65,7 +65,7 @@ if view == "battle_box":
 elif view.startswith("deck_"):
     render_decks_view(df_inventory, df_all_decks)
 elif view == "battle_box_stats":
-    render_deck_full_view(df_all_decks)
+    render_bb_stats_view(df_all_decks)
 elif view == "test_deck":
     # render_deck_detail("Test Deck", df_inventory, df_all_decks)
     pass
