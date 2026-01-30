@@ -96,7 +96,7 @@ elif view.startswith("deck_"):
     # Call the detail view directly or ensure the intermediary has all 3
     render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box)
 elif view == "battle_box_stats":
-    render_bb_stats_view(df_all_decks)
+    render_bb_stats_view(df_all_decks, df_battle_box)
 elif view == "test_deck":
     render_deck_detail("Test Deck", df_inventory, df_all_decks)
 elif view == "inventory_stats":

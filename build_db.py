@@ -56,15 +56,18 @@ def get_latest_file(directory, pattern):
     files.sort(key=extract_date, reverse=True)
     latest_file = files[0]
     
+    sync_github = False
     # --- DELETE OLDER VERSIONS ---
-    for old_file in files[1:]:
-        try:
-            os.remove(os.path.join(directory, old_file))
-            print(f"🗑️ Deleted old version: {old_file}")
-        except Exception as e:
-            print(f"⚠️ Could not delete {old_file}: {e}")
+    if len(files) > 1:
+        for old_file in files[1:]:
+            try:
+                sync_github = True
+                os.remove(os.path.join(directory, old_file))
+                print(f"🗑️ Deleted old version: {old_file}")
+            except Exception as e:
+                print(f"⚠️ Could not delete {old_file}: {e}")
 
-    return os.path.join(directory, latest_file), True
+    return os.path.join(directory, latest_file), sync_github
     
 
 def clean_inventory(path):
