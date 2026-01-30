@@ -39,6 +39,7 @@ def get_match_name(name):
     name = re.sub(r'\(.*?\)|\[.*?\]', '', name)
     return name.lower().strip()
 
+
 def get_latest_file(directory, pattern):
     if not os.path.exists(directory): return None
     files = [f for f in os.listdir(directory) if re.search(pattern, f) and f.endswith(".csv")]

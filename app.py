@@ -56,8 +56,34 @@ with st.sidebar:
         st.rerun()
 
 # --- HEADER ---
-st.title("Mikelele's Pauper Playground")
-st.caption(f"*Last update on {last_update}*")
+if st.session_state.get('view', '').startswith("deck_"):
+    # Split header: Title on left, Back button on right
+    h_c1, h_c2 = st.columns([4, 1], vertical_alignment="center")
+    with h_c1:
+        st.title("Mikelele's Pauper Playground")
+        st.caption(f"*Last update on {last_update}*")
+    with h_c2:
+        st.markdown("""
+            <style>
+            button[kind="secondary"] {
+                background-color: #2c3e50 !important;
+                color: white !important;
+                border: none !important;
+            }
+            button[kind="secondary"]:hover {
+                background-color: #34495e !important;
+                color: white !important;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+
+        if st.button("⬅ Battle Box"):
+            st.session_state.view = "battle_box"
+            st.rerun()
+else:
+    # Standard view: Full width title
+    st.title("Mikelele's Pauper Playground")
+    st.caption(f"*Last update on {last_update}*")
 
 # --- ROUTER ---
 view = st.session_state.view
