@@ -1,14 +1,18 @@
 import re
 import pandas as pd
 import streamlit as st
+import utility_maps
 
 @st.cache_data
 def get_stats(df):
     if df is None or df.empty:
         return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
 
-    # 1. Color Stats (WUBRG + C)
-    # We map the UI names and check the 'color' column for presence
+    # 1. Color Stats (WUBRG + C + Land)
+    # We remove Lands from the WUBRG/C check first so they don't double count
+    df_no_lands = df[~df['type'].str.contains('Land', na=False, case=False)]
+    df_only_lands = df[df['type'].str.contains('Land', na=False, case=False)]
+
     color_map = {'White': 'W', 'Blue': 'U', 'Black': 'B', 'Red': 'R', 'Green': 'G', 'Colorless': 'C'}
     color_rows = []
     
@@ -22,6 +26,15 @@ def get_stats(df):
                 'Count': subset['qty'].sum(),
                 'Value': subset['total_cards_value'].sum()
             })
+    
+    # Process Lands separately
+    if not df_only_lands.empty:
+        color_rows.append({
+            'Color': 'Land',
+            'Count': df_only_lands['qty'].sum(),
+            'Value': df_only_lands['total_cards_value'].sum()
+        })
+        
     df_color = pd.DataFrame(color_rows)
 
     # 2. Type Stats (Same logic as before)
@@ -79,9 +92,11 @@ def get_land_breakdown(df):
         
     return pd.DataFrame([{'Stat': k, 'Count': cat[k], 'Value': vals[k]} for k in cat.keys()])
 
+
 @st.cache_data
 def get_set_stats(df):
     return df.groupby('edition').agg(qty=('qty', 'sum'), total_cards_value=('total_cards_value', 'sum')).reset_index()
+
 
 @st.cache_data
 def get_rarity_stats(df):
@@ -140,23 +155,6 @@ def get_battle_box_stats(df_battle_box, df_all_decks, section):
     return pd.DataFrame(stats_list)
 
 
-# features.py
-
-COLOR_NAME_MAP = {
-    frozenset(['W']): 'White', frozenset(['U']): 'Blue', frozenset(['B']): 'Black', 
-    frozenset(['R']): 'Red', frozenset(['G']): 'Green',
-    frozenset(['W', 'U']): 'Azorius', frozenset(['U', 'B']): 'Dimir', 
-    frozenset(['B', 'R']): 'Rakdos', frozenset(['R', 'G']): 'Gruul', 
-    frozenset(['G', 'W']): 'Selesnya', frozenset(['W', 'B']): 'Orzhov', 
-    frozenset(['U', 'R']): 'Izzet', frozenset(['B', 'G']): 'Golgari', 
-    frozenset(['R', 'W']): 'Boros', frozenset(['G', 'U']): 'Simic',
-    frozenset(['W', 'U', 'B']): 'Esper', frozenset(['U', 'B', 'R']): 'Grixis', 
-    frozenset(['B', 'R', 'G']): 'Jund', frozenset(['R', 'G', 'W']): 'Naya', 
-    frozenset(['G', 'W', 'U']): 'Bant', frozenset(['W', 'B', 'G']): 'Abzan', 
-    frozenset(['U', 'R', 'W']): 'Jeskai', frozenset(['B', 'G', 'U']): 'Sultai', 
-    frozenset(['R', 'W', 'B']): 'Mardu', frozenset(['G', 'U', 'R']): 'Temur'
-}
-
 @st.cache_data
 def get_color_identity_stats(df_all_decks, df_battle_box, section):
     # 1. Identity based ONLY on the filtered section (e.g., 'main')
@@ -167,7 +165,7 @@ def get_color_identity_stats(df_all_decks, df_battle_box, section):
             if char in all_mana: colors.add(char)
         if not colors: return "Colorless"
         if len(colors) >= 4: return "4+ Colors"
-        return COLOR_NAME_MAP.get(frozenset(colors), "Unknown")
+        return utility_maps.COLOR_NAME_MAP.get(frozenset(colors), "Unknown")
 
     # Filter by section before calculating identity
     df_filtered = df_all_decks[df_all_decks['section'] == section]
