@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import features
 
 def render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box):
 
@@ -29,9 +30,10 @@ def render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box):
     if deck_view_mode == "Deck":
         render_deck_list_view(deck_cards)
     elif deck_view_mode == "Analysis":
-        st.info("Analysis View - Coming next")
+        render_deck_stats_view(deck_cards)
     elif deck_view_mode == "Test":
         st.info("Test View - Coming next")
+
 
 def render_deck_list_view(deck_cards):
 
@@ -139,18 +141,96 @@ def render_deck_list_view(deck_cards):
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
+            
             st.dataframe(
-                sideboard[['status', 'qty', 'name', 'type', 'mana']].sort_values("name"),
+                sideboard[['qty', 'name', 'type', 'mana', 'total_cards_value', 'status', ]].sort_values("name"),
                 use_container_width=True,
                 hide_index=True,
                 column_config={
-                    "status": st.column_config.TextColumn("", width=45),
+                    "status": st.column_config.TextColumn("Collected", width=45),
                     "qty": st.column_config.NumberColumn("Qty", format="%d", width=35),
                     "name": st.column_config.TextColumn("Name"),
                     "type": st.column_config.TextColumn("Type"),
-                    "mana": st.column_config.TextColumn("Cost", width=60)
+                    "mana": st.column_config.TextColumn("Mana", width=60),
+                    "total_cards_value": st.column_config.NumberColumn("Value", format="$ %.2f", width=60)
                 }
             )
 
         with side_col_right:
             pass
+
+
+def render_deck_stats_view(deck_cards):
+    """Renders the Row 2 Analysis layout for a specific deck."""
+    
+    # ROW 2: ANALYSIS WIDGETS
+    row_2_col_left, row_2_col_right = st.columns(2)
+
+    # --- LEFT COLUMN: COLOR SATURATION ---
+    with row_2_col_left:
+        with st.container(border=True):
+            # Header
+            st.markdown('''
+                <div style="display: flex; justify-content: flex-start; align-items: flex-end; flex-wrap: wrap; margin-bottom: 10px;">
+                    <h3 style="margin: 0; padding-bottom: 0">Cards by Colors</h3>
+                    <p style="padding-bottom: 0; margin-bottom: 0; margin-left: 10px;">
+                        <em style="font-size: 0.85rem; color: #888;">*Lands Excluded</em>
+                    </p>
+                </div>
+            ''', unsafe_allow_html=True)
+            
+            is_trans = st.toggle("Transpose", key="ds_trans")
+            c1, c2 = st.columns(2)
+            with c1:
+                sel_r = st.multiselect("Filter Rarity:", ['Common', 'Uncommon', 'Rare', 'Mythic'], key="ds_rarity")
+            with c2:
+                v_mode = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="ds_view")
+
+            # One-line call to your refactored features
+            fig_color = features.get_color_saturation_widget(deck_cards, sel_r, v_mode, is_trans)
+            st.plotly_chart(fig_color, use_container_width=True, key="ds_color_plot")
+
+    # --- RIGHT COLUMN: TYPE DISTRIBUTION ---
+    with row_2_col_right:
+        with st.container(border=True):
+            st.markdown('<h3 style="margin: 0; margin-bottom: 10px;">Cards by Type</h3>', unsafe_allow_html=True)
+            
+            t1, t2 = st.columns(2)
+            with t1:
+                sel_c = st.multiselect(
+                    "Filter Color:", 
+                    ['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless', 'Multicolor'], 
+                    key="ds_type_col"
+                )
+            with t2:
+                v_mode_t = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="ds_type_view")
+
+            # One-line call to your refactored features
+            fig_type = features.get_type_distribution_widget(deck_cards, sel_c, v_mode_t)
+            if fig_type:
+                st.plotly_chart(fig_type, use_container_width=True, key="ds_type_plot")
+            else:
+                st.info("No cards match the selected type filters.")
+
+    # ROW 3: TOP SETS (Full Width or Column based on your preference)
+    with st.container(border=True):
+        # Header & Filter Row
+        c_head, c_f1, c_f2, c_f3 = st.columns([1, 1.5, 1.5, 0.8])
+        with c_head: 
+            st.markdown("### Mana Curve")
+        with c_f1:
+            s_type = st.multiselect("Filter by Type:", options=['Creature', 'Instant', 'Sorcery', 'Artifact', 'Enchantment'], key="ds_cmc_type", label_visibility="collapsed")
+        with c_f2:
+            s_color = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="ds_cmc_color", label_visibility="collapsed")
+        with c_f3:
+            is_trans = st.toggle("Transpose", key="ds_cmc_trans")
+
+        # The clean refactored call
+        fig_cmc = features.get_mana_curve_widget(deck_cards, s_type, s_color, is_trans)
+
+        if fig_cmc:
+            st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False}, key="ds_cmc_chart")
+        else:
+            st.info("No cards match these filters...")
+
+    return

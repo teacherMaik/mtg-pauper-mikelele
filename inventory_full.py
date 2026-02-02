@@ -6,270 +6,198 @@ import plotly.express as px
 METALLIC_GRAY = "#2c3e50"
 
 def render_row_1(df_inventory, df_all_decks):
-    # --- Aggregation for Main Table ---
-    rarity_inv = features.get_rarity_stats(df_inventory).rename(
-        columns={'rarity': 'Stat', 'qty': 'Count', 'total_cards_value': 'Value'}
-    )
-    rarity_deck = features.get_rarity_stats(df_all_decks).rename(
-        columns={'rarity': 'Stat', 'qty': 'In_Decks_Qty', 'total_cards_value': 'In_Decks_Val'}
-    )
-    rarity_combined = pd.merge(rarity_inv, rarity_deck, on='Stat', how='left').fillna(0)
-    rarity_combined['Usage_Pct'] = ((rarity_combined['In_Decks_Qty'] / rarity_combined['Count']) * 100).fillna(0)
-
-    # Main Summary Row
-    total_qty, deck_qty = df_inventory['qty'].sum(), df_all_decks['qty'].sum()
-    summary_data = pd.DataFrame([{
-        'Stat': 'Total Cards',
-        'Count': total_qty,
-        'Value': df_inventory['total_cards_value'].sum(),
-        'Usage_Pct': ((deck_qty / total_qty) * 100) if total_qty > 0 else 0,
-        'In_Decks_Qty': deck_qty,
-        'In_Decks_Val': df_all_decks['total_cards_value'].sum()
-    }])
-    
-    # Sort the rarity rows by Count before adding the summary row at the top
-    rarity_sorted = rarity_combined.sort_values(by='Count', ascending=False)
-    full_rarity_df = pd.concat([summary_data, rarity_sorted], ignore_index=True)
-
-    # --- Aggregation for Land Table ---
-    land_inv = features.get_land_breakdown(df_inventory)
-    land_deck = features.get_land_breakdown(df_all_decks).rename(
-        columns={'Count': 'In_Decks_Qty', 'Value': 'In_Decks_Val'}
-    )
-    
-    land_combined = pd.merge(land_inv, land_deck, on='Stat', how='left').fillna(0)
-    land_combined['Usage_Pct'] = ((land_combined['In_Decks_Qty'] / land_combined['Count']) * 100).fillna(0)
-
     # --- Shared Column Configuration ---
-    # --- Define a unified width for each column to force alignment ---
-    COL_WIDTHS = {
-        "Stat": 120,
-        "Count": 60,
-        "Value": 80,
-        "Usage_Pct": 120,
-        "In_Decks_Qty": 100,
-        "In_Decks_Val": 120
+    COL_WIDTHS = {"Stat": 120, "Short": 70, "Med": 90, "Long": 110}
+
+    config_depth = {
+        "Stat": st.column_config.TextColumn("Rarity", width=COL_WIDTHS["Stat"]),
+        "Unique": st.column_config.NumberColumn("Unq", format="%d", width=COL_WIDTHS["Short"]),
+        "Unq_Val": st.column_config.NumberColumn("Unq Val", format="$%.2f", width=COL_WIDTHS["Med"]),
+        "Depth": st.column_config.NumberColumn("Depth", format="%.1fx", width=COL_WIDTHS["Short"]),
+        "Count": st.column_config.NumberColumn("Total Qty", format="%d", width=COL_WIDTHS["Short"]),
+        "Value": st.column_config.NumberColumn("Total Val", format="$%.2f", width=COL_WIDTHS["Med"]),
     }
 
-    # --- Shared Configuration for both tables ---
-    shared_config = {
-        "Stat": st.column_config.TextColumn(" ", width=COL_WIDTHS["Stat"]),
-        "Count": st.column_config.NumberColumn("Qty", format="%d", width=COL_WIDTHS["Count"]),
-        "Value": st.column_config.NumberColumn("Value", format="$%.2f", width=COL_WIDTHS["Value"]),
-        "Usage_Pct": st.column_config.ProgressColumn("% in Decks", format="%.1f%%", min_value=0, max_value=100, width=COL_WIDTHS["Usage_Pct"]),
-        "In_Decks_Qty": st.column_config.NumberColumn("Qty in Decks", format="%d", width=COL_WIDTHS["In_Decks_Qty"]),
-        "In_Decks_Val": st.column_config.NumberColumn("Value in Decks", format="$%.2f", width=COL_WIDTHS["In_Decks_Val"])
+    config_decks = {
+        "Stat": st.column_config.TextColumn("Rarity", width=COL_WIDTHS["Stat"]),
+        "In_Decks_Unq": st.column_config.NumberColumn("Unq in Deck", format="%d", width=COL_WIDTHS["Long"]),
+        "Usage_Unq_Pct": st.column_config.ProgressColumn("% Unq Used", format="%.1f%%", min_value=0, max_value=100, width=COL_WIDTHS["Long"]),
+        "In_Decks_Qty": st.column_config.NumberColumn("Total in Deck", format="%d", width=COL_WIDTHS["Long"]),
+        "Usage_Pct": st.column_config.ProgressColumn("% Total Used", format="%.1f%%", min_value=0, max_value=100, width=COL_WIDTHS["Long"]),
+        "In_Decks_Val": st.column_config.NumberColumn("Val in Decks", format="$%.2f", width=COL_WIDTHS["Long"])
     }
 
-    # UI columns
-    c1, c2 = st.columns([1, 1], gap="large")
-    with c1:
-        st.markdown("## Collection & Decks")
-        # Main Table
-        st.dataframe(
-            full_rarity_df.style.apply(lambda s: [f'background-color: {METALLIC_GRAY}; color: white;' if s.name == 0 else '' for _ in s], axis=1),
-            use_container_width=True, hide_index=True,
-            column_config=shared_config
-        )
+    row_1_col_left, row_1_col_right = st.columns([1, 1], gap="small")
+
+    # --- COLUMN 1: Comparative Tables ---
+    with row_1_col_left:
         
-        # Land Table (Directly beneath, no visible headers)
+        # 1. PREP INVENTORY DATA (Total & Unique)
+        inv_total = df_inventory.groupby('rarity').agg(
+            Count=('qty', 'sum'),
+            Value=('total_cards_value', 'sum')
+        ).reset_index()
+
+        # Calculate Unique counts and Unique Value (Price of 1 copy per card)
+        inv_unq_base = df_inventory.assign(unq_qty=1)
+        inv_unq_base['unit_price'] = inv_unq_base['total_cards_value'] / df_inventory['qty']
+        
+        inv_unq_agg = inv_unq_base.groupby('rarity').agg(
+            Unique=('unq_qty', 'sum'),
+            Unq_Val=('unit_price', 'sum')
+        ).reset_index()
+
+        # Merge for Depth Table
+        df_depth = pd.merge(inv_total, inv_unq_agg, on='rarity').rename(columns={'rarity': 'Stat'})
+        df_depth['Depth'] = (df_depth['Count'] / df_depth['Unique']).fillna(0)
+
+        # 2. PREP DECK DATA
+        deck_stats = df_all_decks.assign(unq_in_deck=1).groupby('rarity').agg(
+            In_Decks_Unq=('unq_in_deck', 'sum'),
+            In_Decks_Qty=('qty', 'sum'),
+            In_Decks_Val=('total_cards_value', 'sum')
+        ).reset_index().rename(columns={'rarity': 'Stat'})
+
+        # 3. MERGE FOR INTEGRATION PERCENTAGES
+        # We merge only the columns we need for math to avoid extra 'None' columns in the UI
+        df_usage = pd.merge(deck_stats, df_depth[['Stat', 'Unique', 'Count']], on='Stat', how='left')
+        
+        df_usage['Usage_Unq_Pct'] = (df_usage['In_Decks_Unq'] / df_usage['Unique'] * 100).fillna(0)
+        df_usage['Usage_Pct'] = (df_usage['In_Decks_Qty'] / df_usage['Count'] * 100).fillna(0)
+        
+        # Drop helper columns used for math before display
+        df_usage_clean = df_usage.drop(columns=['Unique', 'Count'])
+
+        # --- SUMMARY ROWS ---
+        summary_depth = pd.DataFrame([{
+            'Stat': 'Total Cards',
+            'Unique': df_depth['Unique'].sum(),
+            'Unq_Val': df_depth['Unq_Val'].sum(),
+            'Depth': (df_depth['Count'].sum() / df_depth['Unique'].sum()) if df_depth['Unique'].sum() > 0 else 0,
+            'Count': df_depth['Count'].sum(),
+            'Value': df_depth['Value'].sum()
+        }])
+
+        summary_usage = pd.DataFrame([{
+            'Stat': 'Total Cards',
+            'In_Decks_Unq': df_usage['In_Decks_Unq'].sum(),
+            'Usage_Unq_Pct': (df_usage['In_Decks_Unq'].sum() / df_depth['Unique'].sum() * 100) if df_depth['Unique'].sum() > 0 else 0,
+            'In_Decks_Qty': df_usage['In_Decks_Qty'].sum(),
+            'Usage_Pct': (df_usage['In_Decks_Qty'].sum() / df_depth['Count'].sum() * 100) if df_depth['Count'].sum() > 0 else 0,
+            'In_Decks_Val': df_usage['In_Decks_Val'].sum()
+        }])
+
+        # --- RENDER TABLES ---
+        st.subheader("Collection Depth")
         st.dataframe(
-            land_combined, 
-            use_container_width=True, 
-            hide_index=True, 
-            column_order=("Stat", "Count", "Value", "Usage_Pct", "In_Decks_Qty", "In_Decks_Val"),
-            column_config=shared_config
+            pd.concat([summary_depth, df_depth.sort_values('Count', ascending=False)], ignore_index=True).style.apply(
+                lambda s: [f'background-color: {METALLIC_GRAY}; color: white;' if s.name == 0 else '' for _ in s], axis=1
+            ),
+            use_container_width=True, hide_index=True, column_config=config_depth
         )
-    
-    with c2:
+
+        st.subheader("Deck Integration")
+        st.dataframe(
+            pd.concat([summary_usage, df_usage_clean.sort_values('In_Decks_Qty', ascending=False)], ignore_index=True).style.apply(
+                lambda s: [f'background-color: {METALLIC_GRAY}; color: white;' if s.name == 0 else '' for _ in s], axis=1
+            ),
+            use_container_width=True, hide_index=True, column_config=config_decks
+        )
+
+    # --- COLUMN 2: Top 12 Sets ---
+    with row_1_col_right:
         with st.container(border=True):
             st.markdown("### Top 12 Sets")
-            metallic_gradient = [
-                '#2c3e50', '#34495e', '#415a77', '#516a89', 
-                '#617a9b', '#718aad', '#829abf', '#93abd1', 
-                '#a4bce3', '#b5cdf5', '#c6def7', '#d7efff'
-            ]
+    
+            f_col1, f_col2 = st.columns(2)
+            with f_col1:
+                sort_m = st.radio("Rank Sets:", options=["Qty", "Val"], horizontal=True, key="set_rank_unique")
+            with f_col2:
+                view_m = st.radio("Count Mode:", options=["All", "Unique"], horizontal=True, key="set_view_unique")
 
-            sort_metric = st.radio("Rank Sets:", options=["Qty", "Val"], horizontal=True, label_visibility="collapsed", key="set_sort")
-            col_key = 'qty' if sort_metric == "Qty" else 'total_cards_value'
-            set_data = features.get_set_stats(df_inventory).sort_values(by=col_key, ascending=False).head(12)
-            fig = px.pie(set_data, values=col_key, names='edition', hole=0.4, color_discrete_sequence=metallic_gradient)
-            # Custom hover: Bold Name, clean Qty/Value labels
-
-            # Determine formatting based on metric
-            if sort_metric == "Qty":
-                # Shows: 474
-                htemplete = "<b>%{label}</b><br>Qty: %{value}<extra></extra>"
+            # The clean one-line call
+            fig_sets = features.get_top_sets_donut(df_inventory, sort_m, view_m)
+            
+            if fig_sets:
+                st.plotly_chart(fig_sets, use_container_width=True, key="sets_plot_unique")
             else:
-                # Shows: $123.45 (:.2f adds two decimals)
-                htemplete = "<b>%{label}</b><br>Value: $%{value:.2f}<extra></extra>"
-                
-            fig.update_traces(hovertemplate=htemplete)
-            fig.update_layout(showlegend=True, legend=dict(orientation="h", yanchor="bottom", y=-0.7, xanchor="center", x=0.5), height=500, margin=dict(t=0, b=0))
-            st.plotly_chart(fig, use_container_width=True)
+                st.info("No set data available for this selection.")
+
 
 def render_row_2(df_inventory):
-    row_2_col_left, row_2_col_right = st.columns([1, 1], gap="large")
+
+    row_2_col_left, row_2_col_right = st.columns([1, 1], gap="small")
 
     with row_2_col_left:
-        with st.container(border=True):
-            st.markdown("### Collection By Color")
-            # Filter Pie by Rarity
-            all_rarities = df_inventory['rarity'].unique()
-            sel_rarity = st.multiselect("Filter Pie by Rarity:", options=all_rarities, key="color_rarity_filter")
-            
-            df_p = df_inventory[df_inventory['rarity'].isin(sel_rarity)] if sel_rarity else df_inventory
-            
-            # Message logic for Rarity Filter
-            if df_p.empty and sel_rarity:
-                st.write("")
-                st.info("Mikelele has no such cards...")
-                st.write("")
-            else:
-                color_data, _, _ = features.get_stats(df_p)
 
-                if not color_data.empty:
-                    color_map = {
-                        'White': '#F0F0F0', 'Blue': '#0000FF', 'Black': '#000000', 
-                        'Red': '#FF0000', 'Green': '#008000', 'Colorless': '#90ADBB', 'Land': "#6D5025"
-                    }
-                    fig_pie = px.pie(color_data, values='Count', names='Color', color='Color', color_discrete_map=color_map, hole=0.4)
-                    fig_pie.update_traces(
-                        customdata=color_data['Value'], 
-                        hovertemplate="<b>%{label}</b><br>Qty: %{value}<br>Value: $%{customdata:,.2f}<extra></extra>", 
-                        textinfo='none', 
-                        marker=dict(line=dict(color='#444444', width=1.5))
-                    )
-                    fig_pie.update_layout(showlegend=True, height=350, margin=dict(l=10, r=10, t=10, b=10))
-                    st.plotly_chart(fig_pie, use_container_width=True, config={'displayModeBar': False})
+        with st.container(border=True):
+            # Custom Header
+            st.markdown(f'''
+                <div style="display: flex; justify-content: flex-start; align-items: flex-end; flex-wrap: wrap; margin-bottom: 10px;">
+                    <h3 style="margin: 0; padding-bottom: 0">Cards by Colors</h3>
+                    <p style="padding-bottom: 0; margin-bottom: 0; margin-left: 10px;">
+                        <em style="font-size: 0.85rem; color: #888;">*Lands Excluded</em>
+                    </p>
+                </div>
+            ''', unsafe_allow_html=True)
+            
+            is_trans = st.toggle("Transpose", key="inv_trans")
+
+            filter_col_left, filter_col_right = st.columns(2)
+
+            with filter_col_left:
+                rarity_select = st.multiselect("Filter Rarity:", ['Common', 'Uncommon', 'Rare', 'Mythic'], key="inv_rarity")
+            with filter_col_right:
+                count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_view")
+
+            # Calling the single refactored function
+            fig_colors = features.get_color_saturation_widget(df_inventory, rarity_select, count_select, is_trans)
+            if fig_colors:
+                st.plotly_chart(fig_colors, use_container_width=True, key="inv_color_plot")
+            else:
+                st.info("No cards found for this selection.")
 
     with row_2_col_right:
+
         with st.container(border=True):
-            st.markdown("### Collection By Type")
-            # Multiselect options
-            sel_color = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="typ_f")
+            # Custom Header
+            st.markdown('<h3 style="margin: 0; margin-bottom: 10px;">Cards By Type</h3>', unsafe_allow_html=True)
             
-            df_b = df_inventory.copy()
-            if sel_color:
-                # Map UI names to DB codes
-                ui_to_db = {
-                    'White': 'W', 'Blue': 'U', 'Black': 'B', 
-                    'Red': 'R', 'Green': 'G', 'Colorless': 'C'
-                }
-                selected_codes = [ui_to_db[c] for c in sel_color if c in ui_to_db]
-                
-                if selected_codes:
-                    # Functional identity: {W}{B} or {WB} matches both White and Black filters
-                    pattern = '|'.join(selected_codes)
-                    df_b = df_b[df_b['color'].str.contains(pattern, na=False)]
-            
-            # Message logic for Color Filter
-            if df_b.empty and sel_color:
-                st.write("")
-                st.info("Mikelele has no such cards...")
-                st.write("")
+            filter_col_left, filter_col_right = st.columns(2)
+            with filter_col_left:
+                color_select = st.multiselect("Filter Color:", ['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless', 'Multicolor'], key="inv_type_col")
+            with filter_col_right:
+                count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_type_view")
+
+            fig_types = features.get_type_distribution_widget(df_inventory, color_select, count_select)
+            if fig_types:
+                st.plotly_chart(fig_types, use_container_width=True, key="inv_type_plot")
             else:
-                _, type_data, _ = features.get_stats(df_b)
-
-                if not type_data.empty:
-                    # Sort ascending for highest count at top of horizontal chart
-                    type_data = type_data.sort_values(by='Count', ascending=True)
-
-                    fig_bar = px.bar(
-                        type_data, 
-                        x='Count', 
-                        y='Type', 
-                        orientation='h', 
-                        text='Count', 
-                        custom_data=['Value'], 
-                        color_discrete_sequence=[METALLIC_GRAY]
-                    )
-                    
-                    fig_bar.update_traces(
-                        textposition='inside', 
-                        textfont=dict(color='white'), 
-                        hovertemplate="<b>%{y}</b><br>Qty: %{x}<br>Total Value: $%{customdata[0]:,.2f}<extra></extra>"
-                    )
-                    
-                    fig_bar.update_layout(
-                        showlegend=False, 
-                        height=350, 
-                        margin=dict(l=10, r=10, t=10, b=10), 
-                        xaxis_title=None, 
-                        yaxis_title=None,
-                        yaxis={'categoryorder': 'trace'} # Respect dataframe sort
-                    )
-                    st.plotly_chart(fig_bar, use_container_width=True)
+                st.info("No cards found for this selection.")
 
 
 def render_row_3(df_inventory):
+
     with st.container(border=True):
+
+        # Header & Filter Row
         c_head, c_f1, c_f2, c_f3 = st.columns([1, 1.5, 1.5, 0.8])
         with c_head: 
             st.markdown("### Mana Curve")
         with c_f1:
-            sel_type = st.multiselect("Filter by Type:", options=['Creature', 'Instant', 'Sorcery', 'Artifact', 'Enchantment'], key="cmc_t_f", label_visibility="collapsed")
+            s_type = st.multiselect("Filter by Type:", options=['Creature', 'Instant', 'Sorcery', 'Artifact', 'Enchantment'], key="ds_cmc_type", label_visibility="collapsed")
         with c_f2:
-            sel_color = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="cmc_c_f", label_visibility="collapsed")
+            s_color = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="ds_cmc_color", label_visibility="collapsed")
         with c_f3:
-            is_transposed = st.toggle("Transpose", key="cmc_transpose")
+            is_trans = st.toggle("Transpose", key="ds_cmc_trans")
 
-        # 1. Apply Filtering
-        df_c = df_inventory.copy()
-        
-        if sel_type:
-            df_c = df_c[df_c['type'].str.contains('|'.join(sel_type), case=False, na=False)]
-            
-        if sel_color:
-            # Map UI to DB Codes
-            ui_to_db = {
-                'White': 'W', 'Blue': 'U', 'Black': 'B', 
-                'Red': 'R', 'Green': 'G', 'Colorless': 'C'
-            }
-            selected_codes = [ui_to_db[c] for c in sel_color if c in ui_to_db]
-            
-            if selected_codes:
-                # Regex 'OR' check: a {W}{B} or {WB} card matches if 'White' OR 'Black' is selected
-                pattern = '|'.join(selected_codes)
-                df_c = df_c[df_c['color'].str.contains(pattern, na=False)]
+        # The clean refactored call
+        fig_cmc = features.get_mana_curve_widget(df_inventory, s_type, s_color, is_trans)
 
-        # 2. Check for empty results AFTER filtering
-        filters_active = any([sel_type, sel_color])
-
-        if df_c.empty and filters_active:
-            st.write("") 
-            st.info("Mikelele has no such cards...")
-            st.write("")
+        if fig_cmc:
+            st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False}, key="ds_cmc_chart")
         else:
-            # 3. Get Stats and Render Chart
-            _, _, cmc_data = features.get_stats(df_c)
-            
-            if not cmc_data.empty:
-                # Ensure CMC is treated as a category for proper discrete axis spacing
-                cmc_data = cmc_data.sort_values(by='CMC', ascending=not is_transposed)
-                
-                if is_transposed:
-                    fig_cmc = px.bar(cmc_data, x='Count', y='CMC', orientation='h', text_auto=True, custom_data=['Value'])
-                    fig_cmc.update_layout(yaxis=dict(type='category', title="CMC"))
-                    # Hover adjustment for horizontal mode
-                    h_template = "<b>CMC %{y}</b><br>Qty: %{x}<br>Value: $%{customdata[0]:,.2f}<extra></extra>"
-                else:
-                    fig_cmc = px.bar(cmc_data, x='CMC', y='Count', text_auto=True, custom_data=['Value'])
-                    fig_cmc.update_layout(xaxis=dict(tickmode='linear', dtick=1, title="CMC"))
-                    h_template = "<b>CMC %{x}</b><br>Qty: %{y}<br>Value: $%{customdata[0]:,.2f}<extra></extra>"
-
-                fig_cmc.update_traces(
-                    marker_color=METALLIC_GRAY, 
-                    hovertemplate=h_template
-                )
-                
-                fig_cmc.update_layout(
-                    height=400, 
-                    margin=dict(l=20, r=20, t=10, b=10), 
-                    paper_bgcolor='rgba(0,0,0,0)', 
-                    plot_bgcolor='rgba(0,0,0,0)'
-                )
-                st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False})
+            st.info("No cards match these filters...")
 
 
 def render_inventory_stats_view(df_inventory, df_all_decks):

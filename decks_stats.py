@@ -2,15 +2,16 @@ import streamlit as st
 import pandas as pd
 import features
 import plotly.express as px
+import plotly.graph_objects as go
 
 METALLIC_GRAY = "#2c3e50"
 
 def render_row_1(df_all_decks, df_battle_box):
 
-    df_main_stats = features.get_battle_box_stats(df_battle_box, df_all_decks, 'main')
-    df_side_stats = features.get_battle_box_stats(df_battle_box, df_all_decks, 'sideboard')
+    df_main_stats = features.summarize_battle_box(df_battle_box, df_all_decks, 'main')
+    df_side_stats = features.summarize_battle_box(df_battle_box, df_all_decks, 'sideboard')
 
-    row_1_col_left, row_1_col_right = st.columns([1, 1], gap="large")
+    row_1_col_left, row_1_col_right = st.columns([1, 1], gap="small")
     
     # --- ROW 1: COMPOSITION ---
     with row_1_col_left:
@@ -62,12 +63,8 @@ def render_row_1(df_all_decks, df_battle_box):
         with st.container(border=True):
             st.markdown("## Top 12 Staples")
             
-            # --- TWO ROW RADIO FILTERS ---
-            
             section_filter = st.radio("Section:", ["Main", "Sideboard"], horizontal=True, label_visibility="collapsed")
-        
-            # Archetype options
-            archetype_filter = st.radio("Archetype:", ["All", "Aggro", "Midrange", "Tempo", "Control"], horizontal=True, label_visibility="collapsed")
+            archetype_filter = st.radio("Archetype:", ["All", "Aggro", "Midrange", "Tempo", "Control", "Combo"], horizontal=True, label_visibility="collapsed")
 
             # 1. MERGE deck metadata to get Archetypes for the cards
             # We merge df_all_decks with df_battle_box on the deck name column
@@ -109,7 +106,7 @@ def render_row_1(df_all_decks, df_battle_box):
                     values='qty',
                     color=deck_col,
                     # Metallic gray gradient as requested
-                    color_continuous_scale=[[0, '#bdc3c7'], [1, '#34495e']], 
+                    color_continuous_scale=[[0, 'rgba(44, 62, 80, 0.2)'], [1, 'rgba(44, 62, 80, 1.0)']], 
                     custom_data=['qty', deck_col]
                 )
                 
@@ -129,44 +126,48 @@ def render_row_1(df_all_decks, df_battle_box):
 
 
 def render_row_2(df_all_decks, df_battle_box):
+
     with st.container(border=True):
-        # Header Row with Transpose Toggle
-        col_head, col_empty, col_transpose = st.columns([2, 3, 1])
+        # 1. Header and Archetype Filter
+        st.markdown("## Deck Colors (Main)")
         
-        with col_head:
-            st.markdown("## Deck Colors (Main)")
-        
-        with col_transpose:
-            is_transposed = st.toggle("Transpose", key="ident_transpose")
+        archetypes = ["All", "Aggro", "Midrange", "Tempo", "Control", "Combo"]
+        selected_arch = st.radio(
+            "Filter by Archetype", 
+            options=archetypes, 
+            horizontal=True, 
+            key="stats_arch_filter"
+        )
 
-        # Fetch the data
-        df_ident_stats = features.get_color_identity_stats(df_all_decks, df_battle_box, 'main')
+        # 2. Filter the Battle Box dataframe based on selection
+        # This ensures the stats only count decks within the chosen archetype
+        df_filtered_bb = df_battle_box.copy()
 
-        if is_transposed:
-            # Transposing logic: Flip the dataframe and use 'Identity' as headers
-            df_display = df_ident_stats.set_index('Identity').T.reset_index()
-            # Rename the index column for clarity
-            df_display.rename(columns={'index': 'Metric'}, inplace=True)
-            
-            st.dataframe(
-                df_display,
-                use_container_width=True,
-                hide_index=True
-            )
+        if selected_arch != "All":
+            if 'Archetype' in df_filtered_bb.columns:
+                df_filtered_bb = df_filtered_bb[df_filtered_bb['Archetype'] == selected_arch]
+            else:
+                st.warning("Archetype column not found in data.")
+
+        # 3. Fetch the data using the filtered Battle Box
+        df_ident_stats = features.summarize_color_identity(df_all_decks, df_filtered_bb, 'main')
+
+        # 4. Standard View Rendering (Transpose removed)
+        if df_ident_stats.empty:
+            st.info(f"No data available for archetype: {selected_arch}")
         else:
-            # Standard View
             st.dataframe(
                 df_ident_stats,
                 use_container_width=True,
                 hide_index=True,
                 column_config={
-                    "Identity": "MTG Identity",
-                    "nº": st.column_config.NumberColumn("Decks", format="%d"),
-                    "nº complete": st.column_config.NumberColumn("Complete", format="%d"),
-                    "cards": st.column_config.NumberColumn("Main Qty", format="%d"),
-                    "cards collected": st.column_config.NumberColumn("Main Collected", format="%d"),
+                    "Identity": "Identity",
+                    "nº": st.column_config.NumberColumn("Nº Decks", format="%d"),
+                    "nº complete": st.column_config.NumberColumn("Nº Complete", format="%d"),
+                    "cards": st.column_config.NumberColumn("Total Cards", format="%d"),
+                    "cards collected": st.column_config.NumberColumn("Cards Collected", format="%d"),
                     "% cards": st.column_config.ProgressColumn(
-                        "Overall %", 
+                        "% Cards Collected", 
                         format="%.1f%%", 
                         min_value=0, 
                         max_value=100
@@ -176,120 +177,75 @@ def render_row_2(df_all_decks, df_battle_box):
 
 
 def render_row_3(df_all_decks):
-    row_2_col_left, row_2_col_right = st.columns([1, 1], gap="large")
+
+    row_2_col_left, row_2_col_right = st.columns([1, 1], gap="small")
 
     with row_2_col_left:
         with st.container(border=True):
-            st.markdown("## Cards By Colors")
-            # Filter Pie by Rarity
-            all_rarities = df_all_decks['rarity'].unique()
-            sel_rarity = st.multiselect("Filter Pie by Rarity:", options=all_rarities, key="color_rarity_filter")
+            # Custom Header
+            st.markdown(f'''
+                <div style="display: flex; justify-content: flex-start; align-items: flex-end; flex-wrap: wrap; margin-bottom: 10px;">
+                    <h3 style="margin: 0; padding-bottom: 0">Cards by Colors</h3>
+                    <p style="padding-bottom: 0; margin-bottom: 0; margin-left: 10px;">
+                        <em style="font-size: 0.85rem; color: #888;">*Lands Excluded</em>
+                    </p>
+                </div>
+            ''', unsafe_allow_html=True)
             
-            df_p = df_all_decks[df_all_decks['rarity'].isin(sel_rarity)] if sel_rarity else df_all_decks
-            
-            # Message logic for Rarity Filter
-            if df_p.empty and sel_rarity:
-                st.write("")
-                st.info("Mikelele has no such cards...")
-                st.write("")
-            else:
-                color_data, _, _ = features.get_stats(df_p)
+            is_trans = st.toggle("Transpose", key="inv_trans")
 
-                if not color_data.empty:
-                    color_map = {
-                        'White': '#F0F0F0', 'Blue': '#0000FF', 'Black': '#000000', 
-                        'Red': '#FF0000', 'Green': '#008000', 'Colorless': '#90ADBB', 'Land': "#6D5025"
-                    }
-                    fig_pie = px.pie(color_data, values='Count', names='Color', color='Color', color_discrete_map=color_map, hole=0.4)
-                    fig_pie.update_traces(
-                        customdata=color_data['Value'], 
-                        hovertemplate="<b>%{label}</b><br>Qty: %{value}<br>Value: $%{customdata:,.2f}<extra></extra>", 
-                        textinfo='none', 
-                        marker=dict(line=dict(color='#444444', width=1.5))
-                    )
-                    fig_pie.update_layout(showlegend=True, height=350, margin=dict(l=10, r=10, t=10, b=10))
-                    st.plotly_chart(fig_pie, use_container_width=True, config={'displayModeBar': False})
+            filter_col_left, filter_col_right = st.columns(2)
+
+            with filter_col_left:
+                rarity_select = st.multiselect("Filter Rarity:", ['Common', 'Uncommon', 'Rare', 'Mythic'], key="inv_rarity")
+            with filter_col_right:
+                count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_view")
+
+            # Calling the single refactored function
+            fig_colors = features.get_color_saturation_widget(df_all_decks, rarity_select, count_select, is_trans)
+            if fig_colors:
+                st.plotly_chart(fig_colors, use_container_width=True, key="inv_color_plot")
+            else:
+                st.info("No cards found for this selection.")
 
     with row_2_col_right:
 
         with st.container(border=True):
+            # Custom Header
+            st.markdown('<h3 style="margin: 0; margin-bottom: 10px;">Cards By Type</h3>', unsafe_allow_html=True)
+            
+            filter_col_left, filter_col_right = st.columns(2)
+            with filter_col_left:
+                color_select = st.multiselect("Filter Color:", ['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless', 'Multicolor'], key="inv_type_col")
+            with filter_col_right:
+                count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_type_view")
 
-            st.markdown("## Cards By Type")
-            # Multiselect options
-            sel_color = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="typ_f")
-            
-            df_b = df_all_decks.copy()
-            if sel_color:
-                # Map UI names to DB codes
-                ui_to_db = {
-                    'White': 'W', 'Blue': 'U', 'Black': 'B', 
-                    'Red': 'R', 'Green': 'G', 'Colorless': 'C'
-                }
-                selected_codes = [ui_to_db[c] for c in sel_color if c in ui_to_db]
-                
-                if selected_codes:
-                    # Functional identity: {W}{B} or {WB} matches both White and Black filters
-                    pattern = '|'.join(selected_codes)
-                    df_b = df_b[df_b['color'].str.contains(pattern, na=False)]
-            
-            # Message logic for Color Filter
-            if df_b.empty and sel_color:
-                st.write("")
-                st.info("Mikelele has no such cards...")
-                st.write("")
+            fig_types = features.get_type_distribution_widget(df_all_decks, color_select, count_select)
+            if fig_types:
+                st.plotly_chart(fig_types, use_container_width=True, key="inv_type_plot")
             else:
-                _, type_data, _ = features.get_stats(df_b)
-
-                if not type_data.empty:
-                    # Sort ascending for highest count at top of horizontal chart
-                    type_data = type_data.sort_values(by='Count', ascending=True)
-
-                    fig_bar = px.bar(
-                        type_data, 
-                        x='Count', 
-                        y='Type', 
-                        orientation='h', 
-                        text='Count', 
-                        custom_data=['Value'], 
-                        color_discrete_sequence=[METALLIC_GRAY]
-                    )
-                    
-                    fig_bar.update_traces(
-                        textposition='inside', 
-                        textfont=dict(color='white'), 
-                        hovertemplate="<b>%{y}</b><br>Qty: %{x}<br>Total Value: $%{customdata[0]:,.2f}<extra></extra>"
-                    )
-                    
-                    fig_bar.update_layout(
-                        showlegend=False, 
-                        height=350, 
-                        margin=dict(l=10, r=10, t=10, b=10), 
-                        xaxis_title=None, 
-                        yaxis_title=None,
-                        yaxis={'categoryorder': 'trace'} # Respect dataframe sort
-                    )
-                    st.plotly_chart(fig_bar, use_container_width=True)
+                st.info("No cards found for this selection.")
 
 
 def render_row_4(df_all_decks):
 
     with st.container(border=True):
-
-        col_head, col_filter_1, col_filter_2, col_transpose = st.columns([1, 1.5, 1.5, 0.8])
-        with col_head: 
+        
+        c_head, c_f1, c_f2, c_f3 = st.columns([1, 1.5, 1.5, 0.8])
+        with c_head: 
             st.markdown("### Mana Curve")
-        with col_filter_1:
+        with c_f1:
             sel_type = st.multiselect("Filter by Type:", options=['Creature', 'Instant', 'Sorcery', 'Artifact', 'Enchantment'], key="cmc_t_f", label_visibility="collapsed")
-        with col_filter_2:
+        with c_f2:
             sel_color = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="cmc_c_f", label_visibility="collapsed")
-        with col_transpose:
-            is_transposed = st.toggle("Transpose", key="cmc_transpose")
+        with c_f3:
+            is_cmc_transposed = st.toggle("Transpose", key="cmc_transpose")
 
         # 1. Apply Filtering
-        df_cmc = df_all_decks.copy()
+        df_c = df_all_decks.copy()
         
         if sel_type:
-            df_cmc = df_cmc[df_cmc['type'].str.contains('|'.join(sel_type), case=False, na=False)]
+            df_c = df_c[df_c['type'].str.contains('|'.join(sel_type), case=False, na=False)]
             
         if sel_color:
             # Map UI to DB Codes
@@ -302,24 +258,24 @@ def render_row_4(df_all_decks):
             if selected_codes:
                 # Regex 'OR' check: a {W}{B} or {WB} card matches if 'White' OR 'Black' is selected
                 pattern = '|'.join(selected_codes)
-                df_cmc = df_cmc[df_cmc['color'].str.contains(pattern, na=False)]
+                df_c = df_c[df_c['color'].str.contains(pattern, na=False)]
 
         # 2. Check for empty results AFTER filtering
         filters_active = any([sel_type, sel_color])
 
-        if df_cmc.empty and filters_active:
+        if df_c.empty and filters_active:
             st.write("") 
             st.info("Mikelele has no such cards...")
             st.write("")
         else:
             # 3. Get Stats and Render Chart
-            _, _, cmc_data = features.get_stats(df_cmc)
+            cmc_data = features.summarize_by_cmc(df_c)
             
             if not cmc_data.empty:
                 # Ensure CMC is treated as a category for proper discrete axis spacing
-                cmc_data = cmc_data.sort_values(by='CMC', ascending=not is_transposed)
+                cmc_data = cmc_data.sort_values(by='CMC', ascending=not is_cmc_transposed)
                 
-                if is_transposed:
+                if is_cmc_transposed:
                     fig_cmc = px.bar(cmc_data, x='Count', y='CMC', orientation='h', text_auto=True, custom_data=['Value'])
                     fig_cmc.update_layout(yaxis=dict(type='category', title="CMC"))
                     # Hover adjustment for horizontal mode

@@ -2,6 +2,7 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 import os
+from utility_maps import LAND_DATA_MAP
 
 DB_PATH = os.path.join("data", "mtg_pauper.db")
 
@@ -51,3 +52,24 @@ def load_stats_expanded():
     finally:
         conn.close()
     return df
+
+
+def find_unmapped_lands():
+    conn = sqlite3.connect("data/mtg_pauper.db")
+    # Fetch all cards with "Land" in the type line
+    df = pd.read_sql("SELECT name FROM inventory WHERE type LIKE '%Land%'", conn)
+    conn.close()
+
+    # Get unique names from inventory
+    inv_lands = set(df['name'].unique())
+    # Get unique names from your map (ensuring case consistency)
+    mapped_lands = set(LAND_DATA_MAP.keys())
+
+    missing = [l for l in inv_lands if l not in mapped_lands]
+    
+    print(f"🔍 Found {len(missing)} unmapped lands:")
+    for land in sorted(missing):
+        print(f"  - {land}")
+
+if __name__ == "__main__":
+    find_unmapped_lands()

@@ -14,6 +14,7 @@ def img_to_bytes(img):
     img.save(buf, format="PNG")
     return base64.b64encode(buf.getvalue()).decode()
 
+
 @st.cache_data(show_spinner=False)
 def create_deck_tile(url, opacity=1.0):
     try:
@@ -23,6 +24,7 @@ def create_deck_tile(url, opacity=1.0):
         return img
     except Exception:
         return None
+
 
 # --- GALLERY VIEW ---
 def render_battle_box_gallery(df_battle_box):
@@ -47,15 +49,30 @@ def render_battle_box_gallery(df_battle_box):
         """, unsafe_allow_html=True)
 
     # 2. Filter Logic
-    col_s, _ = st.columns([1, 2])
+    col_s, _ = st.columns([2, 1])
     with col_s:
         filter_type = st.radio("Filter Decks", options=["Meta", "My Brews"], horizontal=True)
-    
+
+        archetypes = ["All", "Aggro", "Midrange", "Tempo", "Control", "Combo"]
+        selected_arch = st.radio("Archetype", options=archetypes, horizontal=True)
+
+    # Apply Meta/Brew filtering
     target_val = "Brew" if filter_type == "My Brews" else "Meta"
     if 'Brew' not in df_battle_box.columns:
         df_battle_box['Brew'] = 'Meta'
         
-    filtered_df = df_battle_box[df_battle_box['Brew'] == target_val].sort_values("Priority")
+    filtered_df = df_battle_box[df_battle_box['Brew'] == target_val]
+
+    # Apply Archetype filtering
+    # Assuming your CSV column for this is named 'Archetype'
+    if selected_arch != "All":
+        if 'Archetype' in filtered_df.columns:
+            filtered_df = filtered_df[filtered_df['Archetype'] == selected_arch]
+        else:
+            st.warning("Archetype column not found in database.")
+
+    # Sort by Priority
+    filtered_df = filtered_df.sort_values("Priority")
     
     # --- THE MISSING LINE ---
     decks = filtered_df['DeckName'].unique()

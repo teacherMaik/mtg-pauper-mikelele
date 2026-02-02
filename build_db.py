@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import re
 from datetime import datetime
+from utility_maps import LAND_DATA_MAP
 # Add this to your existing imports
 from sync_git import sync_to_github
 
@@ -152,49 +153,86 @@ def calculate_priority_buildability(df_inventory, df_all_decks, df_bb):
     updated_all_decks = df_all_decks.merge(df_allocs, on=['DeckName', 'MatchName', 'Section'], how='left').fillna({'NumForBuild': 0})
     return df_bb, updated_all_decks
 
+
 def get_card_cmc_and_color(df):
     pattern = r'\{(.*?)\}'
     color_map = {'W':'W', 'U':'U', 'B':'B', 'R':'R', 'G':'G'}
-    cmcs, colors = [], []
+    cmcs, colors, is_multi_colored = [], [], []
 
-    # Use .copy() to avoid SettingWithCopy warnings if this is a slice
     df = df.copy()
 
     for _, row in df.iterrows():
-        # Handle both possible column casings
-        mana_str = str(row.get('Cost')).strip()
-        type_line = str(row.get('Cost'))
+        mana_str = str(row.get('Cost', '')).strip()
+        type_line = str(row.get('Type', ''))
         
+        # Default values for Lands
         if "Land" in type_line:
-            cmc_val = 0 # Store as integer for the chart
+            cmc_val = 0
+            final_color = "L" # 'L' keeps them out of the 'C' (Colorless) slice
+            multi_color = False
         else:
+            # 1. CMC Calculation
             parts = mana_str.split('//')
             parts_cmc = []
             for p in parts:
                 symbols = re.findall(pattern, p)
-                # Ensure CMC is calculated as an integer
                 val = sum(int(s) if s.isdigit() else (0 if s.upper() == 'X' else 1) for s in symbols if s)
                 parts_cmc.append(val)
-            # For the chart to work, use the primary side (index 0) as an integer
             cmc_val = parts_cmc[0] if parts_cmc else 0
-        
-        all_syms = re.findall(pattern, mana_str)
-        found_colors = "".join(sorted(list({color_map[c] for s in all_syms for c in color_map if c in s.upper()})))
-        
-        if not found_colors:
-            final_color = "L" if "Land" in type_line else "C"
-        else:
-            # If multi-colored, you might want "M", otherwise use the string (e.g., "UR")
-            final_color = found_colors if len(found_colors) == 1 else "M"
-
+            
+            # 2. Color Classification
+            all_syms = re.findall(pattern, mana_str)
+            found_colors = "".join(sorted(list({color_map[c] for s in all_syms for c in color_map if c in s.upper()})))
+            
+            if len(found_colors) == 0:
+                final_color = "C"
+                multi_color = False
+            else:
+                if len(found_colors) == 1:
+                    final_color = str(found_colors)
+                    multi_color = False
+                else:
+                    final_color = str(found_colors)
+                    multi_color = True
+        # These MUST run for every single row, including Lands
         cmcs.append(cmc_val)
         colors.append(final_color)
+        is_multi_colored.append(multi_color)
 
-    # Re-assigning using .loc to ensure the original dataframe is updated
     df.loc[:, 'cmc'] = cmcs
     df.loc[:, 'color'] = colors
+    df.loc[:, 'is_multi_colored'] = is_multi_colored
     
     return df
+
+
+def enrich_land_data(df):
+    """
+    The 'Land Fanatic' Logic: 
+    Maps the LAND_DATA_MAP to the dataframe to create boolean columns and 
+    standardize land types for searching.
+    """
+    # Initialize all potential boolean columns based on tags in your map
+    all_tags = set()
+    for data in LAND_DATA_MAP.values():
+        all_tags.update(data['tags'])
+    
+    for tag in all_tags:
+        df[f'is_{tag}'] = False
+
+    df['land_mana'] = ""
+
+    def apply_land_logic(row):
+        name = row['MatchName'].title() # LAND_DATA_MAP uses Title Case keys
+        if name in LAND_DATA_MAP:
+            data = LAND_DATA_MAP[name]
+            row['land_mana'] = data['mana']
+            for tag in data['tags']:
+                row[f'is_{tag}'] = True
+            
+        return row
+
+    return df.apply(apply_land_logic, axis=1)
 
 
 def build_database():
@@ -209,10 +247,11 @@ def build_database():
 
     df_all_decks, decks_sync = load_all_decks_cards(DECKS_DIR)
     
-    print(df_inventory.columns)
-    print(df_all_decks.columns)
+    
     df_inventory = get_card_cmc_and_color(df_inventory)
     df_all_decks = get_card_cmc_and_color(df_all_decks)
+    df_inventory = enrich_land_data(df_inventory)
+    df_all_decks = enrich_land_data(df_all_decks)
     
     class_path = os.path.join(CLASSIFICATION_DIR, "Pauper_Playground_Decks_Classification.csv")
     df_bb_raw = pd.read_csv(class_path)
@@ -239,9 +278,8 @@ def build_database():
     pd.DataFrame([{'last_update': update_date}]).to_sql('metadata', conn, if_exists='replace', index=False)
     conn.close()
     print(f"\nDB Update Complete: {update_date}")
-    print(df_inventory.head())
-    print(df_all_decks.head())
-    print(df_battle_box.head())
+    print(df_inventory.columns)
+    print(df_all_decks.columns)
 
     if inv_sync or decks_sync:
         print("🚀 Changes detected in source files. Triggering GitHub Sync...")
