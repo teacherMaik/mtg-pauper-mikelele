@@ -884,19 +884,25 @@ decks_map = {
                 {"qty": 8, "code": "ELD - 264", "section": "main"},
             ],
             "Cast into the Fire": [
-                {"qty": 3, "code": "LTR - 118", "section": "sideboard"}
+                {"qty": 2, "code": "LTR - 118", "section": "sideboard"}
             ],
             "Pyroblast": [
-                {"qty": 4, "code": "IA - 213", "section": "sideboard"},
+                {"qty": 3, "code": "IA - 213", "section": "sideboard"},
             ],
-            "End the Festivities": [
-                {"qty": 4, "code": "VOW - 155", "section": "sideboard"}
+            "Duress": [
+                {"qty": 2, "code": "M11 - 96", "section": "sideboard"}
             ],
-            "Relic of Progenitus": [
-                {"qty": 2, "code": "ALA - 218", "section": "sideboard"},
+            "Tectonic Hazard": [
+                {"qty": 1, "code": "LCI - 169", "section": "sideboard"},
             ],
-            "Searing Blaze": [
-                {"qty": 2, "code": "WWK - 90", "section": "sideboard"},
+            "Nihil Spellbomb": [
+                {"qty": 2, "code": "SOM - 187", "section": "sideboard"},
+            ],
+            "Extract a Confession": [
+                {"qty": 2, "code": "MKM - 84", "section": "sideboard"},
+            ],
+            "Contaminated Ground": [
+                {"qty": 3, "code": "GTC - 59", "section": "sideboard"},
             ],
         }
     },
