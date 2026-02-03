@@ -1,0 +1,21 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Brainstorm,Instant,{U},Uncommon,$0.51,main,https://s.deckbox.org/system/images/mtg/cards/2296304.jpg,2025-05-12 06:09:37 UTC,631813,c14f8bce-d5b3-4d01-8346-8a4923ec03d9
+1,Consider,Instant,{U},Common,$0.41,main,https://s.deckbox.org/system/images/mtg/cards/2117339.jpg,2026-02-03 15:16:25 UTC,246015,a211d505-4d40-4914-a9da-220770d6ddbc
+4,Counterspell,Instant,{U}{U},Uncommon,$1.06,main,https://s.deckbox.org/system/images/mtg/cards/2296280.jpg,2025-05-12 06:10:22 UTC,633126,e1e48b21-1a4f-4708-a4b4-e2e296df924c
+4,Cryptic Serpent,Creature - Serpent,{5}{U}{U},Uncommon,$0.47,main,https://s.deckbox.org/system/images/mtg/cards/2096170.jpg,2025-05-12 06:07:58 UTC,130043,43d11a24-8abf-46ff-8cc6-57b8ac3013f6
+2,Deem Inferior,Sorcery,{3}{U},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2056456.jpg,2025-10-24 10:06:46 UTC,553172,cc0835c7-58ca-4f16-984a-c590ce6a229a
+2,Deep Analysis,Sorcery,{3}{U},Common,$0.18,main,https://s.deckbox.org/system/images/mtg/cards/2291038.jpg,2025-05-12 06:11:41 UTC,624163,2d93b071-d303-4892-bac4-77a75eaa91a1
+4,Delver of Secrets // Insectile Aberration,Creature - Human Wizard // Creature - Human Insect,{U},Uncommon,$0.18,main,https://s.deckbox.org/system/images/mtg/cards/2117342.jpg,2020-07-08 15:54:47 UTC,248082,abff6c81-65a4-48fa-ba8f-580f87b0344a
+16,Island,Basic Land - Island,"",BasicLand,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2313155.jpg,2025-05-12 06:07:32 UTC,671038,b0da67fb-1cb2-4105-ab5c-b7c680b8116c
+4,Lórien Revealed,Sorcery,{3}{U}{U},Common,$2.71,main,https://s.deckbox.org/system/images/mtg/cards/2042712.jpg,2025-05-12 06:11:34 UTC,499960,0ce44270-a684-4489-9077-521456e6dfaa
+4,Mental Note,Instant,{U},Common,$9.44,main,https://s.deckbox.org/system/images/mtg/cards/2076092.jpg,2025-05-12 06:10:08 UTC,10206,1f343724-6ecd-494f-8bfc-93676af4e173
+3,Ponder,Sorcery,{U},Common,$1.43,main,https://s.deckbox.org/system/images/mtg/cards/2084059.jpg,2026-02-03 15:16:08 UTC,47694,81c908ee-e70a-4406-a32d-ab5ab17e67b1
+2,Sleep of the Dead,Sorcery,{U},Common,$0.14,main,https://s.deckbox.org/system/images/mtg/cards/2108178.jpg,2025-10-24 10:06:40 UTC,207173,4007572b-a6c8-4a56-b1a7-ff099189c9c0
+2,Spell Pierce,Instant,{U},Uncommon,$0.20,main,https://s.deckbox.org/system/images/mtg/cards/2099744.jpg,2025-10-24 10:06:15 UTC,616070,8dd4374f-0301-4b2e-bc99-2cd19568cb3b
+4,Thought Scour,Instant,{U},Common,$0.35,main,https://s.deckbox.org/system/images/mtg/cards/2084803.jpg,2025-05-12 06:10:49 UTC,57678,88bf1ebb-9d85-4b9b-a614-c7f965c0893d
+4,Tolarian Terror,Creature - Serpent,{6}{U},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2062282.jpg,2025-05-12 06:08:00 UTC,591307,2569d4f3-55ed-4f99-9592-34c7df0aab72
+4,Annul,Instant,{U},Uncommon,$0.17,sideboard,https://s.deckbox.org/system/images/mtg/cards/2299162.jpg,2025-10-24 10:07:36 UTC,642436,26dd02c4-569b-437f-b9dd-bd2f1d86a968
+4,Gut Shot,Instant,{RP},Uncommon,$3.89,sideboard,https://s.deckbox.org/system/images/mtg/cards/2083513.jpg,2026-02-03 15:23:29 UTC,39528,a54a2a30-b96a-49c7-9151-1f4b0d4a4413
+4,Hydroblast,Instant,{U},Uncommon,$3.78,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070380.jpg,2025-10-24 10:07:58 UTC,2204,89a30b8f-6594-42ea-8e60-13ccb1e7efc0
+3,Murmuring Mystic,Creature - Human Wizard,{3}{U},Uncommon,$0.32,sideboard,https://s.deckbox.org/system/images/mtg/cards/2102813.jpg,2026-02-03 15:23:58 UTC,175547,5fc6adff-dcb3-456d-a8c2-0e77b784ff89
+
