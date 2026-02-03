@@ -1,0 +1,24 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Barren Moor,Land,"",Common,$0.24,main,https://s.deckbox.org/system/images/mtg/cards/2072831.jpg,2023-04-01 09:36:38 UTC,10501,45be3811-a223-4c45-9b24-0317f2d53c60
+4,Cabal Ritual,Instant,{1}{B},Common,$13.35,main,https://s.deckbox.org/system/images/mtg/cards/2075463.jpg,2023-04-01 09:34:04 UTC,9616,5403b49d-03a7-4cc3-af3c-df098c1c9c2e
+4,Dark Ritual,Instant,{B},Common,$2.77,main,https://s.deckbox.org/system/images/mtg/cards/2072800.jpg,2025-06-04 13:52:04 UTC,5508,bf4708e8-2149-4990-987c-2ea55fc6c508
+4,Drannith Healer,Creature - Human Cleric,{1}{W},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2108786.jpg,2023-04-01 08:04:32 UTC,212616,ff5a821c-eaec-4f69-97c7-8299cdebc2f4
+4,Drannith Stinger,Creature - Human Wizard,{1}{R},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2108889.jpg,2023-04-01 08:05:03 UTC,212012,612ee4be-e7a2-423c-a37c-7c6ca97f630e
+4,Great Furnace,Artifact Land,"",Common,$1.97,main,https://s.deckbox.org/system/images/mtg/cards/2299339.jpg,2026-01-30 14:24:39 UTC,642853,74c5bb44-d72c-4c1a-a38f-86b4a8f49ae1
+4,Horror of the Broken Lands,Creature - Horror,{4}{B},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2096191.jpg,2026-01-30 14:25:22 UTC,130236,35828576-124a-45d6-ad4c-af2926314953
+4,Imposing Vantasaur,Creature - Dinosaur,{5}{W},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2108793.jpg,2023-04-01 08:28:06 UTC,212797,b6fa5feb-f5e9-4079-acc9-84e458044769
+4,Lotus Petal,Artifact,{0},Common,$33.11,main,https://s.deckbox.org/system/images/mtg/cards/2077880.jpg,2025-12-03 11:48:05 UTC,5615,6c877da3-68fa-41d0-8a24-8c79fcd8ecc1
+4,Monstrous Carabid,Creature - Insect,{3}{B}{R},Common,$0.18,main,https://s.deckbox.org/system/images/mtg/cards/2071961.jpg,2025-06-04 13:51:55 UTC,31779,b09e668d-02ca-4164-88ee-c7ea6c665975
+4,Reaping the Graves,Instant,{2}{B},Common,$0.62,main,https://s.deckbox.org/system/images/mtg/cards/2077731.jpg,2025-06-04 13:56:43 UTC,10898,760a66bd-2821-4710-8f02-3c30772dd884
+4,Rowan's Grim Search,Instant,{2}{B},Common,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2046140.jpg,2026-01-30 14:24:18 UTC,512210,1be6786e-0569-42dd-b03c-82da7b32a14f
+4,Songs of the Damned,Instant,{B},Common,$1.24,main,https://s.deckbox.org/system/images/mtg/cards/2071885.jpg,2023-04-01 09:35:16 UTC,4890,6cff3547-8c72-439a-91fe-ebe729dab748
+4,Street Wraith,Creature - Wraith,{3}{B}{B},Common,$0.29,main,https://s.deckbox.org/system/images/mtg/cards/2060080.jpg,2023-04-01 07:55:30 UTC,563222,e1f8989a-0b43-4194-a0d6-f616309e78b0
+4,Vault of Whispers,Artifact Land,"",Common,$2.33,main,https://s.deckbox.org/system/images/mtg/cards/2077817.jpg,2023-04-01 09:36:13 UTC,11311,73866487-33f4-4f64-b100-2c4ddadcd74e
+1,Blood Celebrant,Creature - Human Cleric,{B},Common,$0.68,sideboard,https://s.deckbox.org/system/images/mtg/cards/2077081.jpg,2026-01-30 14:27:12 UTC,10746,805de325-6f14-4a52-bb85-f9a9545d82a4
+4,Chitin Gravestalker,Creature - Insect Warrior,{5}{B},Common,$0.10,sideboard,https://s.deckbox.org/system/images/mtg/cards/2099759.jpg,2026-01-30 14:26:50 UTC,616078,903b4141-04a3-44c4-9d3e-aa2a773d9883
+2,Duress,Sorcery,{B},Common,$0.12,sideboard,https://s.deckbox.org/system/images/mtg/cards/2062721.jpg,2026-01-30 14:26:13 UTC,589335,34c3a894-ee75-4db9-a69f-711bb3cc150a
+2,Faerie Macabre,Creature - Faerie Rogue,{1}{B}{B},Common,$3.85,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060073.jpg,2026-01-30 14:26:59 UTC,563099,b666a543-6570-4789-9ec4-8d8922181274
+3,Pyroblast,Instant,{R},Uncommon,$7.05,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070395.jpg,2026-01-30 14:26:11 UTC,2332,15d2d7cd-d29d-4f19-8490-88bd526ff1c5
+2,Siege Smash,Instant,{1}{R},Common,$0.10,sideboard,https://s.deckbox.org/system/images/mtg/cards/2056535.jpg,2026-01-30 14:27:47 UTC,553303,f33e3b25-76f5-4263-a309-9ea97f2d8248
+1,Swamp,Basic Land - Swamp,"",BasicLand,$0.08,sideboard,https://s.deckbox.org/system/images/mtg/cards/2313156.jpg,2026-01-30 14:26:20 UTC,671040,1dd4d605-02a2-4183-b191-0bca8dfbf962
+

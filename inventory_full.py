@@ -151,7 +151,12 @@ def render_row_2(df_inventory):
                 count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_view")
 
             # Calling the single refactored function
-            fig_colors = features.get_color_saturation_widget(df_inventory, rarity_select, count_select, is_trans)
+            fig_colors = features.get_color_saturation_widget(
+                df_inventory,
+                is_trans,
+                rarity_select,
+                count_select=count_select
+            )
             if fig_colors:
                 st.plotly_chart(fig_colors, use_container_width=True, key="inv_color_plot")
             else:
@@ -163,17 +168,29 @@ def render_row_2(df_inventory):
             # Custom Header
             st.markdown('<h3 style="margin: 0; margin-bottom: 10px;">Cards By Type</h3>', unsafe_allow_html=True)
             
+            # --- INVENTORY VIEW CALL ---
             filter_col_left, filter_col_right = st.columns(2)
+
             with filter_col_left:
-                color_select = st.multiselect("Filter Color:", ['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless', 'Multicolor'], key="inv_type_col")
+                # Inventory usually shows all possible colors
+                color_options = ['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless', 'Multicolor']
+                color_select = st.multiselect("Filter Color:", color_options, key="inv_type_col")
+
             with filter_col_right:
+                # Inventory needs the toggle for Unique cards vs Total Qty
                 count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_type_view")
 
-            fig_types = features.get_type_distribution_widget(df_inventory, color_select, count_select)
+            # The call passes count_select. is_deck remains None (default).
+            fig_types = features.get_type_distribution_widget(
+                df_inventory, 
+                color_select, 
+                count_select=count_select
+            )
+
             if fig_types:
                 st.plotly_chart(fig_types, use_container_width=True, key="inv_type_plot")
             else:
-                st.info("No cards found for this selection.")
+                st.info("No cards found in your inventory for this selection.")
 
 
 def render_row_3(df_inventory):

@@ -2,7 +2,7 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 import os
-from utility_maps import LAND_DATA_MAP
+from maps_utilities import LAND_DATA_MAP
 
 DB_PATH = os.path.join("data", "mtg_pauper.db")
 

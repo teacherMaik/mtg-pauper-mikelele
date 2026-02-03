@@ -1,0 +1,27 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Contentious Plan,Sorcery,{1}{U},Common,$0.40,main,https://s.deckbox.org/system/images/mtg/cards/2104096.jpg,2025-10-11 15:47:14 UTC,188606,8e30deb6-9e1f-4545-ae30-c30ba6c7b3a0
+4,Experimental Augury,Instant,{1}{U},Common,$0.21,main,https://s.deckbox.org/system/images/mtg/cards/2037201.jpg,2025-10-11 16:06:22 UTC,478436,e508ae5d-ffb5-4480-be90-a4394954b559
+1,Forest,Basic Land - Forest,"",BasicLand,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2313158.jpg,2025-10-11 16:07:42 UTC,671047,b460f5f7-c7c9-400c-8419-23d614f45bf9
+4,Hickory Woodlot,Land,"",Common,$4.92,main,https://s.deckbox.org/system/images/mtg/cards/2072613.jpg,2025-10-11 16:08:37 UTC,6553,af7aafb7-6870-4d09-a191-70786766c459
+4,Infectious Inquiry,Sorcery,{2}{B},Common,$0.28,main,https://s.deckbox.org/system/images/mtg/cards/2037249.jpg,2025-10-11 15:47:16 UTC,479616,0a10f284-b043-4307-bdc7-6dad47cc9221
+2,Island,Basic Land - Island,"",BasicLand,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2313155.jpg,2025-10-11 16:08:35 UTC,671038,b0da67fb-1cb2-4105-ab5c-b7c680b8116c
+4,Lórien Revealed,Sorcery,{3}{U}{U},Common,$2.71,main,https://s.deckbox.org/system/images/mtg/cards/2042712.jpg,2025-10-11 16:07:15 UTC,499960,0ce44270-a684-4489-9077-521456e6dfaa
+4,Manamorphose,Instant,{1}{RG},Common,$4.82,main,https://s.deckbox.org/system/images/mtg/cards/2069845.jpg,2025-10-11 16:06:24 UTC,18700,50283122-b8c4-4fb3-8eba-6252b72222f4
+1,Mountain,Basic Land - Mountain,"",BasicLand,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2313157.jpg,2025-10-11 16:08:08 UTC,671046,295b92bc-d66f-45d8-9bbe-5f5f13e39fd4
+2,Peat Bog,Land,"",Common,$1.16,main,https://s.deckbox.org/system/images/mtg/cards/2061602.jpg,2025-10-11 16:09:22 UTC,582774,289344f8-9e1b-4f5f-ab10-451aabb9570a
+4,Pentad Prism,Artifact,{2},Common,$0.33,main,https://s.deckbox.org/system/images/mtg/cards/2079069.jpg,2025-10-11 16:07:12 UTC,11765,672b9b16-daef-44e6-9a3a-cfd9f3c78bc7
+1,Prologue to Phyresis,Instant,{1}{U},Common,$0.43,main,https://s.deckbox.org/system/images/mtg/cards/2037217.jpg,2025-10-11 16:06:39 UTC,479581,ac625f30-ed91-4b21-ada8-aaa5b2ad79b8
+2,Sandstone Needle,Land,"",Common,$8.32,main,https://s.deckbox.org/system/images/mtg/cards/2072612.jpg,2025-10-11 16:09:24 UTC,6680,82bc7c6b-2e3d-42d1-b2bb-b37b6f34d33b
+4,Saprazzan Skerry,Land,"",Common,$2.41,main,https://s.deckbox.org/system/images/mtg/cards/2072610.jpg,2025-10-11 16:09:20 UTC,6688,006871fd-2641-42cb-a2ac-a33d05fc5a35
+3,Snap,Instant,{1}{U},Common,$2.16,main,https://s.deckbox.org/system/images/mtg/cards/2036761.jpg,2025-10-11 16:06:42 UTC,458224,f13406c6-f208-402a-94d3-a94a24f03563
+3,Steady Progress,Instant,{2}{U},Common,$0.25,main,https://s.deckbox.org/system/images/mtg/cards/2083227.jpg,2025-10-11 16:07:20 UTC,36244,6fe212ed-31cb-4f10-8ba7-e97af1d30d24
+1,Swamp,Basic Land - Swamp,"",BasicLand,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2313156.jpg,2025-10-11 16:08:32 UTC,671040,1dd4d605-02a2-4183-b191-0bca8dfbf962
+4,Thirsting Roots,Sorcery,{G},Common,$0.57,main,https://s.deckbox.org/system/images/mtg/cards/2037337.jpg,2025-10-11 15:46:33 UTC,479564,75a4a340-453b-471a-82ba-48ebf20b271a
+4,Vivisurgeon's Insight,Sorcery,{3}{U}{U},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2037229.jpg,2025-10-11 15:47:46 UTC,479591,cd244359-781e-4e1d-946d-243664f40c7c
+4,Weather the Storm,Instant,{1}{G},Common,$0.67,main,https://s.deckbox.org/system/images/mtg/cards/2104595.jpg,2025-10-11 16:06:48 UTC,191064,f6a9fa51-78c3-42e6-8c2e-39658f59ed87
+2,Breath Weapon,Instant,{2}{R},Common,$2.20,sideboard,https://s.deckbox.org/system/images/mtg/cards/2028294.jpg,2025-10-11 16:09:45 UTC,273294,0174e40a-0ef5-4439-91e6-3fc39f482520
+4,Dispel,Instant,{U},Common,$0.33,sideboard,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2025-10-11 16:09:44 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+3,Faerie Macabre,Creature - Faerie Rogue,{1}{B}{B},Common,$3.85,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060073.jpg,2025-10-11 16:10:16 UTC,563099,b666a543-6570-4789-9ec4-8d8922181274
+3,Moment's Peace,Instant,{1}{G},Common,$1.76,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060936.jpg,2025-10-11 16:10:14 UTC,564110,05087bc1-ac45-4405-9074-8272a321ab86
+3,Pyroblast,Instant,{R},Uncommon,$7.05,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070395.jpg,2025-10-11 16:10:28 UTC,2332,15d2d7cd-d29d-4f19-8490-88bd526ff1c5
+

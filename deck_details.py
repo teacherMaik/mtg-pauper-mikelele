@@ -161,14 +161,15 @@ def render_deck_list_view(deck_cards):
 
 
 def render_deck_stats_view(deck_cards):
-    """Renders the Row 2 Analysis layout for a specific deck."""
     
-    # ROW 2: ANALYSIS WIDGETS
+    
+    # Color and Card Type Stats Row
     row_2_col_left, row_2_col_right = st.columns(2)
 
     # --- LEFT COLUMN: COLOR SATURATION ---
     with row_2_col_left:
         with st.container(border=True):
+
             # Header
             st.markdown('''
                 <div style="display: flex; justify-content: flex-start; align-items: flex-end; flex-wrap: wrap; margin-bottom: 10px;">
@@ -179,38 +180,73 @@ def render_deck_stats_view(deck_cards):
                 </div>
             ''', unsafe_allow_html=True)
             
+            # Dynamic Rarity Discovery
+            # Convert 'MythicRare' back to 'Mythic' for UI consistency
+            raw_rarities = deck_cards['rarity'].replace({'MythicRare': 'Mythic'}).unique()
+            # Ensure they stay in a logical order
+            rarity_order = ['Common', 'Uncommon', 'Rare', 'Mythic']
+            dynamic_rarities = [r for r in rarity_order if r in raw_rarities]
+
+            # 2. Controls
             is_trans = st.toggle("Transpose", key="ds_trans")
             c1, c2 = st.columns(2)
+            
             with c1:
-                sel_r = st.multiselect("Filter Rarity:", ['Common', 'Uncommon', 'Rare', 'Mythic'], key="ds_rarity")
+                # Only displays rarities that exist in deck_cards
+                sel_r = st.multiselect("Filter Rarity:", options=dynamic_rarities, key="ds_rarity")
+            
             with c2:
-                v_mode = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="ds_view")
+                # This string ("Main", "Side", or "Both") is passed to the 'is_deck' parameter
+                deck_section_mode = st.radio("Section:", ["Main", "Side", "Both"], horizontal=True, key="ds_view")
 
-            # One-line call to your refactored features
-            fig_color = features.get_color_saturation_widget(deck_cards, sel_r, v_mode, is_trans)
-            st.plotly_chart(fig_color, use_container_width=True, key="ds_color_plot")
+            # 3. The Refactored One-Line Call
+            # Note: count_select defaults to "All", so we don't need to pass it for Decks
+            fig_color = features.get_color_saturation_widget(
+                deck_cards,
+                is_trans,
+                sel_r,
+                is_deck=deck_section_mode
+            )
+            
+            if fig_color:
+                st.plotly_chart(fig_color, use_container_width=True, key="ds_color_plot")
+            else:
+                st.info("No cards match the selected type filters.")
 
     # --- RIGHT COLUMN: TYPE DISTRIBUTION ---
     with row_2_col_right:
         with st.container(border=True):
+
             st.markdown('<h3 style="margin: 0; margin-bottom: 10px;">Cards by Type</h3>', unsafe_allow_html=True)
             
+            # --- DECK VIEW CALL ---
             t1, t2 = st.columns(2)
-            with t1:
-                sel_c = st.multiselect(
-                    "Filter Color:", 
-                    ['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless', 'Multicolor'], 
-                    key="ds_type_col"
-                )
-            with t2:
-                v_mode_t = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="ds_type_view")
 
-            # One-line call to your refactored features
-            fig_type = features.get_type_distribution_widget(deck_cards, sel_c, v_mode_t)
+            with t1:
+                # Logic to only show colors actually present in this specific deck
+                present_codes = deck_cards['color'].unique()
+                db_to_ui = {'W': 'White', 'U': 'Blue', 'B': 'Black', 'R': 'Red', 'G': 'Green', 'C': 'Colorless'}
+                available_colors = [db_to_ui[code] for code in present_codes if code in db_to_ui]
+                if (deck_cards['is_multi_colored'] == True).any():
+                    available_colors.append('Multicolor')
+                
+                sel_c = st.multiselect("Filter Color:", available_colors, key="ds_type_col")
+
+            with t2:
+                # In Deck View, we filter by Section instead of Count Mode
+                ds_section = st.radio("Section:", ["Main", "Side", "Both"], horizontal=True, key="ds_type_sec")
+
+            # The call uses the 'is_deck' parameter. count_select defaults to 'All' internally.
+            fig_type = features.get_type_distribution_widget(
+                deck_cards, 
+                sel_c, 
+                is_deck=ds_section
+            )
+
             if fig_type:
                 st.plotly_chart(fig_type, use_container_width=True, key="ds_type_plot")
             else:
-                st.info("No cards match the selected type filters.")
+                st.info("No cards match the selected filters for this deck.")
 
     # ROW 3: TOP SETS (Full Width or Column based on your preference)
     with st.container(border=True):

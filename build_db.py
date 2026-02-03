@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import re
 from datetime import datetime
-from utility_maps import LAND_DATA_MAP
+from maps_utilities import LAND_DATA_MAP
 # Add this to your existing imports
 from sync_git import sync_to_github
 
@@ -105,7 +105,15 @@ def load_all_decks_cards(path):
         
         if status: any_new_deck = True
         if latest_deck:
+
             df = pd.read_csv(latest_deck)
+
+            # Eliminate any "Scratchpad" cards from decks
+            if 'Section' in df.columns:
+                df = df[df['Section'].str.lower() != 'scratchpad']
+            elif 'section' in df.columns:
+                df = df[df['section'].str.lower() != 'scratchpad']
+
             df['DeckName'] = prefix.strip()
             df['Price'] = df['Price'].astype(str).str.replace('$', '', regex=False).str.replace(',', '', regex=False)
             df['Price'] = pd.to_numeric(df['Price'], errors='coerce').fillna(0.00)
