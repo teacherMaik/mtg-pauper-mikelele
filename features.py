@@ -379,10 +379,14 @@ def summarize_by_cmc(df):
 
 
 @st.cache_data
-def get_mana_curve_widget(df, sel_type, sel_color, is_transposed):
-    """
-    Handles Type/Color filtering and generates the Metallic Mana Curve Bar Chart.
-    """
+def get_mana_curve_widget(
+    df,
+    sel_type,
+    sel_color,
+    is_transposed):
+    
+    if df is None or df.empty: return pd.DataFrame()
+
     df_f = df.copy()
 
     # 1. Type Filtering
@@ -404,7 +408,6 @@ def get_mana_curve_widget(df, sel_type, sel_color, is_transposed):
         return None
 
     # 3. Summarize using your existing internal feature
-    from features import summarize_by_cmc
     cmc_data = summarize_by_cmc(df_f)
     
     if cmc_data.empty:

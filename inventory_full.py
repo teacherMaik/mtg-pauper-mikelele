@@ -29,7 +29,7 @@ def render_row_1(df_inventory, df_all_decks):
 
     row_1_col_left, row_1_col_right = st.columns([1, 1], gap="small")
 
-    # --- COLUMN 1: Comparative Tables ---
+    # Comparative Tables Widget
     with row_1_col_left:
         
         # 1. PREP INVENTORY DATA (Total & Unique)
@@ -104,7 +104,7 @@ def render_row_1(df_inventory, df_all_decks):
             use_container_width=True, hide_index=True, column_config=config_decks
         )
 
-    # --- COLUMN 2: Top 12 Sets ---
+    # Top 12 Sets Widget
     with row_1_col_right:
         with st.container(border=True):
             st.markdown("### Top 12 Sets")
@@ -128,6 +128,7 @@ def render_row_2(df_inventory):
 
     row_2_col_left, row_2_col_right = st.columns([1, 1], gap="small")
 
+    # By Color Widget
     with row_2_col_left:
 
         with st.container(border=True):
@@ -162,6 +163,7 @@ def render_row_2(df_inventory):
             else:
                 st.info("No cards found for this selection.")
 
+    # By Card Type Widget
     with row_2_col_right:
 
         with st.container(border=True):
@@ -195,21 +197,22 @@ def render_row_2(df_inventory):
 
 def render_row_3(df_inventory):
 
+    # CMC widget
     with st.container(border=True):
 
         # Header & Filter Row
-        c_head, c_f1, c_f2, c_f3 = st.columns([1, 1.5, 1.5, 0.8])
-        with c_head: 
+        row_3_col_title, row_3_col_2, row_3_col_3, row_3_col_4 = st.columns([1, 1.5, 1.5, 0.8])
+        with row_3_col_title: 
             st.markdown("### Mana Curve")
-        with c_f1:
-            s_type = st.multiselect("Filter by Type:", options=['Creature', 'Instant', 'Sorcery', 'Artifact', 'Enchantment'], key="ds_cmc_type", label_visibility="collapsed")
-        with c_f2:
-            s_color = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="ds_cmc_color", label_visibility="collapsed")
-        with c_f3:
+        with row_3_col_2:
+            type_select = st.multiselect("Filter by Type:", options=['Creature', 'Instant', 'Sorcery', 'Artifact', 'Enchantment'], key="ds_cmc_type", label_visibility="collapsed")
+        with row_3_col_3:
+            color_select = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="ds_cmc_color", label_visibility="collapsed")
+        with row_3_col_4:
             is_trans = st.toggle("Transpose", key="ds_cmc_trans")
 
         # The clean refactored call
-        fig_cmc = features.get_mana_curve_widget(df_inventory, s_type, s_color, is_trans)
+        fig_cmc = features.get_mana_curve_widget(df_inventory, type_select, color_select, is_trans)
 
         if fig_cmc:
             st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False}, key="ds_cmc_chart")

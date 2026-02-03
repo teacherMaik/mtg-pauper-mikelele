@@ -1,0 +1,21 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Burning-Tree Emissary,Creature - Human Shaman,{RG}{RG},Uncommon,$0.14,main,https://s.deckbox.org/system/images/mtg/cards/2086224.jpg,2025-09-18 16:24:27 UTC,67349,899d5f35-3613-4c69-9176-13baf442fb50
+1,Chain Lightning,Sorcery,{R},Common,$0.34,main,https://s.deckbox.org/system/images/mtg/cards/2060086.jpg,2026-02-03 19:01:48 UTC,563250,fda4c062-4227-486b-875d-b310573ee72b
+4,Clockwork Percussionist,Artifact Creature - Monkey Toy,{R},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2059347.jpg,2025-09-18 16:24:29 UTC,575169,10986e5a-9fc6-41e2-8352-289328245171
+4,Experimental Synthesizer,Artifact,{R},Common,$0.37,main,https://s.deckbox.org/system/images/mtg/cards/2025623.jpg,2025-09-18 16:24:40 UTC,262794,c47931c9-685d-4b83-8299-bc347224b4e8
+1,Fireblast,Instant,{4}{R}{R},Common,$0.47,main,https://s.deckbox.org/system/images/mtg/cards/2060928.jpg,2025-09-18 16:25:58 UTC,583235,ff45073c-5ac1-4295-833e-58b253319c9b
+4,Galvanic Blast,Instant,{R},Common,$1.59,main,https://s.deckbox.org/system/images/mtg/cards/2083080.jpg,2025-09-18 16:25:30 UTC,36340,f5881bbc-8600-464d-9dcd-5a7780918d1d
+4,Goblin Bushwhacker,Creature - Goblin Warrior,{R},Common,$1.69,main,https://s.deckbox.org/system/images/mtg/cards/2081522.jpg,2025-09-18 16:24:31 UTC,33304,4085a5bf-a71b-4c73-9b39-0dcc328fe11b
+4,Goblin Tomb Raider,Creature - Goblin Pirate,{R},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2048520.jpg,2025-09-18 16:24:34 UTC,526337,018160fe-f602-43f5-8495-241a08eaa69c
+4,Great Furnace,Artifact Land,"",Common,$1.97,main,https://s.deckbox.org/system/images/mtg/cards/2299339.jpg,2025-09-18 16:24:42 UTC,642853,74c5bb44-d72c-4c1a-a38f-86b4a8f49ae1
+4,Lightning Bolt,Instant,{R},Uncommon,$0.54,main,https://s.deckbox.org/system/images/mtg/cards/2296316.jpg,2025-09-18 16:24:38 UTC,632180,e89794ab-6070-4916-936f-2b42fe41d31b
+4,Rally at the Hornburg,Sorcery,{1}{R},Common,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2042794.jpg,2025-09-18 16:25:52 UTC,499412,ee7292f7-1c7e-449c-9c52-7584d6a14c2c
+4,Reckless Impulse,Sorcery,{1}{R},Common,$0.88,main,https://s.deckbox.org/system/images/mtg/cards/2023843.jpg,2025-09-18 16:27:48 UTC,253542,6943c07f-ab0d-4f5a-bbe9-c0a83dc98546
+14,Snow-Covered Mountain,Basic Snow Land - Mountain,"",Common,$0.44,main,https://s.deckbox.org/system/images/mtg/cards/2113364.jpg,2025-09-18 16:25:08 UTC,230103,f54aa46b-4b7c-4846-bf19-a289ed36c172
+4,Voldaren Epicure,Creature - Vampire,{R},Common,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2024001.jpg,2025-09-18 16:24:37 UTC,253792,feda6bb3-ee22-489c-bcfd-52ef04841024
+3,Cast into the Fire,Instant,{1}{R},Common,$0.59,sideboard,https://s.deckbox.org/system/images/mtg/cards/2042770.jpg,2026-02-03 19:07:33 UTC,498308,2ef878cb-27b6-47d8-ad11-bd20529b0e7e
+4,End the Festivities,Sorcery,{R},Common,$0.89,sideboard,https://s.deckbox.org/system/images/mtg/cards/2023821.jpg,2026-02-03 19:06:04 UTC,253770,bec748e6-7245-4a71-aeee-cefed8346948
+4,Pyroblast,Instant,{R},Uncommon,$7.05,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070395.jpg,2026-02-03 19:06:42 UTC,2332,15d2d7cd-d29d-4f19-8490-88bd526ff1c5
+2,Relic of Progenitus,Artifact,{1},Common,$4.82,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2026-02-03 19:07:19 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
+2,Searing Blaze,Instant,{R}{R},Common,$0.52,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060999.jpg,2026-02-03 19:06:55 UTC,583436,0008098c-2985-493f-bc37-0a8fb96cad65
+

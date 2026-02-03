@@ -465,7 +465,7 @@ decks_map = {
                 {"qty": 1, "code": "AFR - 9", "section": "main"},
             ],
             "Eagles of the North": [
-                {"qty": 1, "code": "LTR - 7", "section": "main"},
+                {"qty": 2, "code": "LTR - 7", "section": "main"},
             ],
             "Kor Skyfisher": [
                 {"qty": 4, "code": "ZEN - 23", "section": "main"},
@@ -507,7 +507,7 @@ decks_map = {
                 {"qty": 1, "code": "CLB - 22", "section": "main"},
             ],
             "Snow-Covered Plains": [
-                {"qty": 18, "code": "MH1 - 250", "section": "main"},
+                {"qty": 17, "code": "MH1 - 250", "section": "main"},
             ],
             "Idyllic Grange": [
                 {"qty": 2, "code": "ELD - 246", "section": "main"},
@@ -541,80 +541,362 @@ decks_map = {
     "Ruby Storm": {
         "priority": 8,
         "cards": {
-            "Dawnbringer Cleric": [
-                {"qty": 1, "code": "AFR - 9", "section": "main"},
+            "Goblin Anarchomancer": [
+                {"qty": 4, "code": "MH2_E - 421", "section": "main"},
             ],
-            "Eagles of the North": [
-                {"qty": 1, "code": "LTR - 7", "section": "main"},
+            "Spider Manifestation": [
+                {"qty": 2, "code": "spm - 148", "section": "main"},
             ],
-            "Kor Skyfisher": [
-                {"qty": 4, "code": "ZEN - 23", "section": "main"},
+            "Thornscape Familiar": [
+                {"qty": 4, "code": "PS - 95", "section": "main"},
             ],
-            "Lunarch Veteran // Luminous Phantom": [
-                {"qty": 2, "code": "inr - 450", "section": "main"},
+            "Big Score": [
+                {"qty": 4, "code": "SNC - 102", "section": "main"},
             ],
-            "Novice Inspector": [
-                {"qty": 4, "code": "MKM - 29", "section": "main"},
+            "First Day of Class": [
+                {"qty": 3, "code": "STX - 102", "section": "main"},
             ],
-            "Raffine's Informant": [
-                {"qty": 4, "code": "SNC - 26", "section": "main"},
+            "Manamorphose": [
+                {"qty": 4, "code": "SHM - 211", "section": "main"},
             ],
-            "Salt Road Packbeast": [
-                {"qty": 2, "code": "tdm - 23", "section": "main"},
+            "Seething Song": [
+                {"qty": 4, "code": "MRD - 104", "section": "main"},
             ],
-            "Thraben Inspector": [
-                {"qty": 4, "code": "inr - 45", "section": "main"},
+            "Burning Curiosity": [
+                {"qty": 2, "code": "ECL - 129", "section": "main"},
             ],
-            "Spider-Man, Web-Slinger": [
-                {"qty": 3, "code": "spm - 16", "section": "main"},
+            "Glimpse the Impossible": [
+                {"qty": 4, "code": "MH3 - 124", "section": "main"},
             ],
-            "Summon: Choco/Mog": [
-                {"qty": 3, "code": "fin - 35", "section": "main"},
+            "Pirate's Pillage": [
+                {"qty": 4, "code": "RIX - 109", "section": "main"},
             ],
-            "Guardians' Pledge": [
-                {"qty": 1, "code": "M12 - 22", "section": "main"},
+            "Reckless Impulse": [
+                {"qty": 3, "code": "VOW - 174", "section": "main"},
             ],
-            "Prismatic Strands": [
-                {"qty": 3, "code": "JUD - 18", "section": "main"},
+            "Wrenn's Resolve": [
+                {"qty": 3, "code": "MOM - 173", "section": "main"},
+            ],
+            "Seize the Storm": [
+                {"qty": 2, "code": "MID - 158", "section": "main"},
+            ],
+            "Mountain": [
+                {"qty": 4, "code": "M21 - 270", "section": "main"},
+            ],
+            "Forest": [
+                {"qty": 1, "code": "MH2 - 489", "section": "main"},
+            ],
+            "Hickory Woodlot": [
+                {"qty": 4, "code": "MM - 319", "section": "main"},
+            ],
+            "Sandstone Needle": [
+                {"qty": 4, "code": "MM - 326", "section": "main"},
+            ],
+            "Geothermal Crevice": [
+                {"qty": 4, "code": "IN - 323", "section": "main"},
+            ],
+            "Firebending Lesson": [
+                {"qty": 1, "code": "TLA - 138", "section": "sideboard"},
+            ],
+            "Flaring Pain": [
+                {"qty": 1, "code": "JUD - 89", "section": "sideboard"}
+            ],
+            "How to Start a Riot": [
+                {"qty": 1, "code": "TLA - 140", "section": "sideboard"}
+            ],
+            "Origin of Metalbending": [
+                {"qty": 1, "code": "TLA - 187", "section": "sideboard"}
+            ],
+            "Pyroblast": [
+                {"qty": 4, "code": "IA - 213", "section": "sideboard"}
+            ],
+            "Red Elemental Blast": [
+                {"qty": 3, "code": "3E - 170", "section": "sideboard"}
+            ],
+            "Waterbending Lesson": [
+                {"qty": 1, "code": "TLA - 80", "section": "sideboard"}
+            ],
+            "Weather the Storm": [
+                {"qty": 3, "code": "H1R - 24", "section": "sideboard"},
+            ],
+        }
+    },
+    "Slivers": {
+        "priority": 9,
+        "cards": {
+            "Bladeback Sliver": [
+                {"qty": 1, "code": "MH1 - 119", "section": "main"},
+            ],
+            "Gemhide Sliver": [
+                {"qty": 4, "code": "TSR - 205", "section": "main"},
+            ],
+            "Generous Ent": [
+                {"qty": 1, "code": "TE - 182", "section": "main"},
+            ],
+            "Heart Sliver": [
+                {"qty": 2, "code": "PS - 95", "section": "main"},
+            ],
+            "Hunter Sliver": [
+                {"qty": 2, "code": "LGN - 102", "section": "main"},
+            ],
+            "Muscle Sliver": [
+                {"qty": 4, "code": "TE - 132", "section": "main"},
+            ],
+            "Plated Sliver": [
+                {"qty": 4, "code": "LGN - 19", "section": "main"},
+            ],
+            "Predatory Sliver": [
+                {"qty": 4, "code": "M14 - 189", "section": "main"},
+            ],
+            "Sentinel Sliver": [
+                {"qty": 2, "code": "M14 - 30", "section": "main"},
+            ],
+            "Sidewinder Sliver": [
+                {"qty": 4, "code": "TSR - 43", "section": "main"},
+            ],
+            "Sinew Sliver": [
+                {"qty": 4, "code": "TSR - 44", "section": "main"},
+            ],
+            "Two-Headed Sliver": [
+                {"qty": 1, "code": "TSP - 183", "section": "main"},
+            ],
+            "Lead the Stampede": [
+                {"qty": 2, "code": "IMA - 173", "section": "main"},
+            ],
+            "Winding Way": [
+                {"qty": 4, "code": "MH1 - 193", "section": "main"},
+            ],
+            "Abundant Growth": [
+                {"qty": 4, "code": "AVR - 167", "section": "main"},
+            ],
+            "Mountain": [
+                {"qty": 2, "code": "pass", "section": "main"},
+            ],
+            "Forest": [
+                {"qty": 6, "code": "pass", "section": "main"},
+            ],
+            "Plains": [
+                {"qty": 3, "code": "pass", "section": "main"},
+            ],
+            "Blossoming Sands": [
+                {"qty": 3, "code": "M21 - 244", "section": "main"},
+            ],
+            "Rugged Highlands": [
+                {"qty": 1, "code": "M21 - 249", "section": "main"},
+            ],
+            "Holdout Settlement": [
+                {"qty": 2, "code": "OGW - 172", "section": "main"},
+            ],
+            "Crypt Sliver": [
+                {"qty": 2, "code": "LGN - 63", "section": "sideboard"}
+            ],
+            "Masked Vandal": [
+                {"qty": 3, "code": "KHM - 184", "section": "sideboard"},
+            ],
+            "Winged Sliver": [
+                {"qty": 1, "code": "TE - 106", "section": "sideboard"}
             ],
             "Thraben Charm": [
-                {"qty": 3, "code": "MH3 - 45", "section": "main"},
+                {"qty": 2, "code": "MH3 - 45", "section": "sideboard"},
             ],
-            "Battle Screech": [
-                {"qty": 4, "code": "CMM - 17", "section": "main"},
-            ],
-            "Greatsword of Tyr": [
-                {"qty": 1, "code": "CLB - 22", "section": "main"},
-            ],
-            "Snow-Covered Plains": [
-                {"qty": 18, "code": "MH1 - 250", "section": "main"},
-            ],
-            "Idyllic Grange": [
-                {"qty": 2, "code": "ELD - 246", "section": "main"},
-            ],
-            "Dust to Dust": [
-                {"qty": 4, "code": "DK - 78", "section": "sideboard"},
-            ],
-            "Destroy Evil": [
-                {"qty": 1, "code": "j25 - 189", "section": "sideboard"},
-            ],
-            "Journey to Nowhere": [
-                {"qty": 1, "code": "ZEN - 14", "section": "sideboard"}
-            ],
-            "Relic of Progenitus": [
-                {"qty": 2, "code": "ALA - 218", "section": "sideboard"}
-            ],
-            "Revoke Existence": [
-                {"qty": 1, "code": "THB - 34", "section": "sideboard"}
-            ],
-            "Palace Sentinels": [
-                {"qty": 2, "code": "CMM - 48", "section": "sideboard"}
-            ],
-            "Arashin Cleric": [
-                {"qty": 2, "code": "FRF - 5", "section": "sideboard"}
+            "Gut Shot": [
+                {"qty": 2, "code": "MM2 - 117", "section": "sideboard"},
+                {"qty": 1, "code": "NPH - 86", "section": "sideboard"}
             ],
             "Standard Bearer": [
                 {"qty": 2, "code": "AP - 18", "section": "sideboard"}
+            ],
+            "Hallow": [
+                {"qty": 2, "code": "DST - 4", "section": "sideboard"},
+            ],
+        }
+    },
+    "Mono R Rally": {
+        "priority": 10,
+        "cards": {
+            "Burning-Tree Emissary": [
+                {"qty": 4, "code": "2X2 - 189", "section": "main"},
+            ],
+            "Clockwork Percussionist": [
+                {"qty": 4, "code": "DSK - 130", "section": "main"},
+            ],
+            "Goblin Bushwhacker": [
+                {"qty": 4, "code": "ZEN - 125", "section": "main"},
+            ],
+            "Goblin Tomb Raider": [
+                {"qty": 4, "code": "LCI - 151", "section": "main"},
+            ],
+            "Voldaren Epicure": [
+                {"qty": 4, "code": "VOW - -182", "section": "main"},
+            ],
+            "Galvanic Blast": [
+                {"qty": 4, "code": "SOM - 91", "section": "main"},
+            ],
+            "Fireblast": [
+                {"qty": 1, "code": "VI - 79", "section": "main"},
+            ],
+            "Lightning Bolt": [
+                {"qty": 4, "code": "3E - 161", "section": "main"},
+            ],
+            "Reckless Impulse": [
+                {"qty": 4, "code": "VOW - 174", "section": "main"},
+            ],
+            "Rally at the Hornburg": [
+                {"qty": 4, "code": "LTR - 142", "section": "main"},
+            ],
+            "Experimental Synthesizer": [
+                {"qty": 4, "code": "NEO - 138", "section": "main"},
+            ],
+            "Chain Lightning": [
+                {"qty": 1, "code": "DMR - 113", "section": "main"},
+            ],
+            "Snow-Covered Mountain": [
+                {"qty": 14, "code": "MH1 - 253", "section": "main"},
+            ],
+            "Great Furnace": [
+                {"qty": 4, "code": "C18 - 250", "section": "main"},
+            ],
+            "Cast into the Fire": [
+                {"qty": 3, "code": "LTR - 118", "section": "sideboard"}
+            ],
+            "Pyroblast": [
+                {"qty": 4, "code": "IA - 213", "section": "sideboard"},
+            ],
+            "End the Festivities": [
+                {"qty": 4, "code": "VOW - 155", "section": "sideboard"}
+            ],
+            "Relic of Progenitus": [
+                {"qty": 2, "code": "ALA - 218", "section": "sideboard"},
+            ],
+            "Searing Blaze": [
+                {"qty": 2, "code": "WWK - 90", "section": "sideboard"},
+            ],
+        }
+    },
+    "Mono R Madness": {
+        "priority": 11,
+        "cards": {
+            "Guttersnipe": [
+                {"qty": 3, "code": "RVR - 110", "section": "main"},
+            ],
+            "Kessig Flamebreather": [
+                {"qty": 4, "code": "VOW - 164", "section": "main"},
+            ],
+            "Sneaky Snacker": [
+                {"qty": 4, "code": "MH3 - 205", "section": "main"},
+            ],
+            "Voldaren Epicure": [
+                {"qty": 4, "code": "VOW - 308", "section": "main"},
+            ],
+            "Fiery Temper": [
+                {"qty": 4, "code": "SOI - 156", "section": "main"},
+            ],
+            "Lava Dart": [
+                {"qty": 4, "code": "MH1 - 134", "section": "main"},
+            ],
+            "Fireblast": [
+                {"qty": 3, "code": "VI - 79", "section": "main"},
+            ],
+            "Lightning Bolt": [
+                {"qty": 4, "code": "M11 - 149", "section": "main"},
+            ],
+            "Grab the Prize": [
+                {"qty": 4, "code": "DSK - 138", "section": "main"},
+            ],
+            "Highway Robbery": [
+                {"qty": 4, "code": "OTJ - 129", "section": "main"},
+            ],
+            "Faithless Looting": [
+                {"qty": 4, "code": "CMM - 220", "section": "main"},
+            ],
+            "Snow-Covered Mountain": [
+                {"qty": 18, "code": "MH1 - 253", "section": "main"},
+            ],
+            "Cast into the Fire": [
+                {"qty": 3, "code": "LTR - 118", "section": "sideboard"}
+            ],
+            "Pyroblast": [
+                {"qty": 4, "code": "IA - 213", "section": "sideboard"},
+            ],
+            "End the Festivities": [
+                {"qty": 4, "code": "VOW - 155", "section": "sideboard"}
+            ],
+            "Relic of Progenitus": [
+                {"qty": 2, "code": "ALA - 218", "section": "sideboard"},
+            ],
+            "Searing Blaze": [
+                {"qty": 2, "code": "WWK - 90", "section": "sideboard"},
+            ],
+        }
+    },
+    "Rakdos Madness": {
+        "priority": 12,
+        "cards": {
+            "Kitchen Imp": [
+                {"qty": 4, "code": "MH2 - 89", "section": "main"},
+            ],
+            "Sneaky Snacker": [
+                {"qty": 4, "code": "MH3 - 205", "section": "main"},
+            ],
+            "Voldaren Epicure": [
+                {"qty": 4, "code": "VOW - 308", "section": "main"},
+            ],
+            "Fiery Temper": [
+                {"qty": 4, "code": "UMA - 129", "section": "main"},
+            ],
+            "End the Festivities": [
+                {"qty": 1, "code": "VOW - 155", "section": "main"},
+            ],
+            "Lightning Bolt": [
+                {"qty": 4, "code": "E01 - 54", "section": "main"},
+            ],
+            "Grab the Prize": [
+                {"qty": 4, "code": "DSK - 138", "section": "main"},
+            ],
+            "Highway Robbery": [
+                {"qty": 4, "code": "OTJ - 129", "section": "main"},
+            ],
+            "Faithless Looting": [
+                {"qty": 4, "code": "CMM - 220", "section": "main"},
+            ],
+            "Alms of the Vein": [
+                {"qty": 4, "code": "SOI - 98", "section": "main"},
+            ],
+            "Vampire's Kiss": [
+                {"qty": 4, "code": "VOW - 136", "section": "main"},
+            ],
+            "Jagged Barrens": [
+                {"qty": 4, "code": "OTJ - 259", "section": "main"},
+            ],
+            "Razortrap Gorge": [
+                {"qty": 1, "code": "DSK - 267", "section": "main"},
+            ],
+            "Rakdos Carnarium": [
+                {"qty": 2, "code": "CMA - 266", "section": "main"},
+            ],
+            "Bojuka Bog": [
+                {"qty": 1, "code": "BRC - 176", "section": "main"},
+            ],
+            "Swamp": [
+                {"qty": 3, "code": "DOM - 259", "section": "main"},
+            ],
+            "Mountain": [
+                {"qty": 8, "code": "ELD - 264", "section": "main"},
+            ],
+            "Cast into the Fire": [
+                {"qty": 3, "code": "LTR - 118", "section": "sideboard"}
+            ],
+            "Pyroblast": [
+                {"qty": 4, "code": "IA - 213", "section": "sideboard"},
+            ],
+            "End the Festivities": [
+                {"qty": 4, "code": "VOW - 155", "section": "sideboard"}
+            ],
+            "Relic of Progenitus": [
+                {"qty": 2, "code": "ALA - 218", "section": "sideboard"},
+            ],
+            "Searing Blaze": [
+                {"qty": 2, "code": "WWK - 90", "section": "sideboard"},
             ],
         }
     },
@@ -641,8 +923,8 @@ for deck_name, deck_info in decks_map.items():
                 deck_side_total += version['qty']
 
             
-            if ' - ' not in code:
-                print(f"❌ CODE ERROR: [{deck_name}] {card_name} has a comma in code: '{code}'")
+            if ' - ' not in code or ',' in code:
+                print(f"❌ CODE ERROR: [{deck_name}] code: '{code}'")
 
     
     if deck_main_total != 60 or deck_side_total != 15:

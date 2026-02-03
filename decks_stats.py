@@ -13,7 +13,7 @@ def render_row_1(df_all_decks, df_battle_box):
 
     row_1_col_left, row_1_col_right = st.columns([1, 1], gap="small")
     
-    # --- ROW 1: COMPOSITION ---
+    # Comparative Tables Widget
     with row_1_col_left:
         
         st.markdown("## Battle Box Stats")
@@ -59,6 +59,7 @@ def render_row_1(df_all_decks, df_battle_box):
             }
         )
 
+    # Top 12 Staples Widget
     with row_1_col_right:
         with st.container(border=True):
             st.markdown("## Top 12 Staples")
@@ -127,8 +128,10 @@ def render_row_1(df_all_decks, df_battle_box):
 
 def render_row_2(df_all_decks, df_battle_box):
 
+    # Deck Color Identity Table
     with st.container(border=True):
-        # 1. Header and Archetype Filter
+
+        # Header and Archetype Filter
         st.markdown("## Deck Colors (Main)")
         
         archetypes = ["All", "Aggro", "Midrange", "Tempo", "Control", "Combo"]
@@ -139,7 +142,7 @@ def render_row_2(df_all_decks, df_battle_box):
             key="stats_arch_filter"
         )
 
-        # 2. Filter the Battle Box dataframe based on selection
+        # Filter the Battle Box dataframe based on selection
         # This ensures the stats only count decks within the chosen archetype
         df_filtered_bb = df_battle_box.copy()
 
@@ -149,10 +152,10 @@ def render_row_2(df_all_decks, df_battle_box):
             else:
                 st.warning("Archetype column not found in data.")
 
-        # 3. Fetch the data using the filtered Battle Box
-        df_ident_stats = features.summarize_color_identity(df_all_decks, df_filtered_bb, 'main')
+        # Fetch the data using the filtered Battle Box
+        df_ident_stats = features.summarize_deck_color_identity(df_all_decks, df_filtered_bb, 'main')
 
-        # 4. Standard View Rendering (Transpose removed)
+        # Standard View Rendering
         if df_ident_stats.empty:
             st.info(f"No data available for archetype: {selected_arch}")
         else:
@@ -180,6 +183,7 @@ def render_row_3(df_all_decks):
 
     row_2_col_left, row_2_col_right = st.columns([1, 1], gap="small")
 
+    # By Color Widget
     with row_2_col_left:
         with st.container(border=True):
             # Custom Header
@@ -213,6 +217,7 @@ def render_row_3(df_all_decks):
             else:
                 st.info("No cards found for this selection.")
 
+    # By Card Type Widget
     with row_2_col_right:
 
         with st.container(border=True):
@@ -246,74 +251,27 @@ def render_row_3(df_all_decks):
 
 def render_row_4(df_all_decks):
 
+    # CMC widget
     with st.container(border=True):
         
-        c_head, c_f1, c_f2, c_f3 = st.columns([1, 1.5, 1.5, 0.8])
-        with c_head: 
+        # Header & Filter Row
+        row_3_col_title, row_3_col_2, row_3_col_3, row_3_col_4 = st.columns([1, 1.5, 1.5, 0.8])
+        with row_3_col_title: 
             st.markdown("### Mana Curve")
-        with c_f1:
-            sel_type = st.multiselect("Filter by Type:", options=['Creature', 'Instant', 'Sorcery', 'Artifact', 'Enchantment'], key="cmc_t_f", label_visibility="collapsed")
-        with c_f2:
-            sel_color = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="cmc_c_f", label_visibility="collapsed")
-        with c_f3:
-            is_cmc_transposed = st.toggle("Transpose", key="cmc_transpose")
+        with row_3_col_2:
+            type_select = st.multiselect("Filter by Type:", options=['Creature', 'Instant', 'Sorcery', 'Artifact', 'Enchantment'], key="ds_cmc_type", label_visibility="collapsed")
+        with row_3_col_3:
+            color_select = st.multiselect("Filter by Color:", options=['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless'], key="ds_cmc_color", label_visibility="collapsed")
+        with row_3_col_4:
+            is_trans = st.toggle("Transpose", key="ds_cmc_trans")
 
-        # 1. Apply Filtering
-        df_c = df_all_decks.copy()
-        
-        if sel_type:
-            df_c = df_c[df_c['type'].str.contains('|'.join(sel_type), case=False, na=False)]
-            
-        if sel_color:
-            # Map UI to DB Codes
-            ui_to_db = {
-                'White': 'W', 'Blue': 'U', 'Black': 'B', 
-                'Red': 'R', 'Green': 'G', 'Colorless': 'C'
-            }
-            selected_codes = [ui_to_db[c] for c in sel_color if c in ui_to_db]
-            
-            if selected_codes:
-                # Regex 'OR' check: a {W}{B} or {WB} card matches if 'White' OR 'Black' is selected
-                pattern = '|'.join(selected_codes)
-                df_c = df_c[df_c['color'].str.contains(pattern, na=False)]
+        # The clean refactored call
+        fig_cmc = features.get_mana_curve_widget(df_all_decks, type_select, color_select, is_trans)
 
-        # 2. Check for empty results AFTER filtering
-        filters_active = any([sel_type, sel_color])
-
-        if df_c.empty and filters_active:
-            st.write("") 
-            st.info("Mikelele has no such cards...")
-            st.write("")
+        if fig_cmc:
+            st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False}, key="ds_cmc_chart")
         else:
-            # 3. Get Stats and Render Chart
-            cmc_data = features.summarize_by_cmc(df_c)
-            
-            if not cmc_data.empty:
-                # Ensure CMC is treated as a category for proper discrete axis spacing
-                cmc_data = cmc_data.sort_values(by='CMC', ascending=not is_cmc_transposed)
-                
-                if is_cmc_transposed:
-                    fig_cmc = px.bar(cmc_data, x='Count', y='CMC', orientation='h', text_auto=True, custom_data=['Value'])
-                    fig_cmc.update_layout(yaxis=dict(type='category', title="CMC"))
-                    # Hover adjustment for horizontal mode
-                    h_template = "<b>CMC %{y}</b><br>Qty: %{x}<br>Value: $%{customdata[0]:,.2f}<extra></extra>"
-                else:
-                    fig_cmc = px.bar(cmc_data, x='CMC', y='Count', text_auto=True, custom_data=['Value'])
-                    fig_cmc.update_layout(xaxis=dict(tickmode='linear', dtick=1, title="CMC"))
-                    h_template = "<b>CMC %{x}</b><br>Qty: %{y}<br>Value: $%{customdata[0]:,.2f}<extra></extra>"
-
-                fig_cmc.update_traces(
-                    marker_color=METALLIC_GRAY, 
-                    hovertemplate=h_template
-                )
-                
-                fig_cmc.update_layout(
-                    height=400, 
-                    margin=dict(l=20, r=20, t=10, b=10), 
-                    paper_bgcolor='rgba(0,0,0,0)', 
-                    plot_bgcolor='rgba(0,0,0,0)'
-                )
-                st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False})
+            st.info("No cards match these filters...")
 
 
 def render_bb_stats_view(df_all_decks, df_battle_box):
