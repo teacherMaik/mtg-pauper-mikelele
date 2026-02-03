@@ -75,88 +75,7 @@ decks_map = {
         "priority": 2,
         "cards": {
             "Experimental Augury": [
-                {"qty": 4, "code": "ONE - 278"},
-            ],
-            "Manamorphose": [
-                {"qty": 4, "code": "SHM - 211"},
-            ],
-            "Prologue to Phyresis": [
-                {"qty": 1, "code": "ONE - 65"},
-            ],
-            "Snap": [
-                {"qty": 3, "code": "DMR - 66"},
-            ],
-            "Steady Progress": [
-                {"qty": 3, "code": "SOM - 45"},
-            ],
-            "Weather the Storm": [
-                {"qty": 4, "code": "H1R - 24"},
-            ],
-            "Contentious Plan": [
-                {"qty": 4, "code": "WAR - 46"},
-            ],
-            "Infectious Inquiry": [
-                {"qty": 4, "code": "ONE - 97"},
-            ],
-            "Lórien Revealed": [
-                {"qty": 4, "code": "LTR - 60"},
-            ],
-            "Thirsting Roots": [
-                {"qty": 4, "code": "ONE - 185"},
-            ],
-            "Vivisurgeon's Insight": [
-                {"qty": 4, "code": "ONE - 77"},
-            ],
-            "Pentad Prism": [
-                {"qty": 4, "code": "eoc - 56"},
-            ],
-            "Hickory Woodlot": [
-                {"qty": 4, "code": "MM - 319"},
-            ],
-            "Sandstone Needle": [
-                {"qty": 2, "code": "MM - 326"},
-            ],
-            "Peat Bog": [
-                {"qty": 2, "code": "MM - 322"},
-            ],
-            "Saprazzan Skerry": [
-                {"qty": 4, "code": "MM - 328"},
-            ],
-            "Snow-Covered Forest": [
-                {"qty": 1, "code": "MM - 254"},
-            ],
-            "Snow-Covered Mountain": [
-                {"qty": 1, "code": "MH1 - 253"},
-            ],
-            "Snow-Covered Swamp": [
-                {"qty": 1, "code": "MM - 252"},
-            ],
-            "Snow-Covered Island": [
-                {"qty": 2, "code": "MM - 251"},
-            ],
-            "Faerie Macabre": [
-                {"qty": 3, "code": "SHM - 66", "section": "sideboard"}
-            ],
-            "Dispel": [
-                {"qty": 4, "code": "RTR - 36", "section": "sideboard"}
-            ],
-            "Moment's Peace": [
-                {"qty": 3, "code": "OD - 251", "section": "sideboard"}
-            ],
-            "Pyroblast": [
-                {"qty": 3, "code": "IA - 213", "section": "sideboard"}
-            ],
-            "Breath Weapon": [
-                {"qty": 2, "code": "CLB - 165", "section": "sideboard"}
-            ]
-            
-        }
-    },
-    "Elves": {
-        "priority": 3,
-        "cards": {
-            "Avenging Hunter": [
-                {"qty": 3, "code": "ONE - 278", "section": "main"},
+                {"qty": 4, "code": "ONE - 278", "section": "main"},
             ],
             "Manamorphose": [
                 {"qty": 4, "code": "SHM - 211", "section": "main"},
@@ -214,7 +133,193 @@ decks_map = {
             ],
             "Snow-Covered Island": [
                 {"qty": 2, "code": "MM - 251", "section": "main"},
+            ],
+            "Faerie Macabre": [
+                {"qty": 3, "code": "SHM - 66", "section": "sideboard"}
+            ],
+            "Dispel": [
+                {"qty": 4, "code": "RTR - 36", "section": "sideboard"}
+            ],
+            "Moment's Peace": [
+                {"qty": 3, "code": "OD - 251", "section": "sideboard"}
+            ],
+            "Pyroblast": [
+                {"qty": 3, "code": "IA - 213", "section": "sideboard"}
+            ],
+            "Breath Weapon": [
+                {"qty": 2, "code": "CLB - 165", "section": "sideboard"}
             ]
+            
+        }
+    },
+    "Elves": {
+        "priority": 3,
+        "cards": {
+            "Avenging Hunter": [
+                {"qty": 3, "code": "CLB - 215", "section": "main"},
+            ],
+            "Elvish Mystic": [
+                {"qty": 3, "code": "CMA - 103", "section": "main"},
+            ],
+            "Essence Warden": [
+                {"qty": 2, "code": "CMA - 106", "section": "main"},
+            ],
+            "Fyndhorn Elves": [
+                {"qty": 4, "code": "IA - 132", "section": "main"},
+            ],
+            "Generous Ent": [
+                {"qty": 4, "code": "LTR - 169", "section": "main"},
+            ],
+            "Jaspera Sentinel": [
+                {"qty": 3, "code": "KHM - 178", "section": "main"},
+            ],
+            "Masked Vandal": [
+                {"qty": 4, "code": "KHM - 184", "section": "main"},
+            ],
+            "Nyxborn Hydra": [
+                {"qty": 3, "code": "MH3 - 164", "section": "main"},
+            ],
+            "Priest of Titania": [
+                {"qty": 4, "code": "CMA - 136", "section": "main"},
+            ],
+            "Quirion Ranger": [
+                {"qty": 4, "code": "VI - 67", "section": "main"},
+            ],
+            "Sagu Wildling // Roost Seek": [
+                {"qty": 2, "code": "tdm - 157", "section": "main"},
+            ],
+            "Salt Road Packbeast": [
+                {"qty": 1, "code": "tdm - 23", "section": "main"},
+            ],
+            "Timberwatch Elf": [
+                {"qty": 4, "code": "EMA - 190", "section": "main"},
+            ],
+            "Distant Melody": [
+                {"qty": 1, "code": "MOR - 32", "section": "main"},
+            ],
+            "Lead the Stampede": [
+                {"qty": 3, "code": "IMA - 173", "section": "main"},
+            ],
+            "Winding Way": [
+                {"qty": 4, "code": "MH1 - 193", "section": "main"},
+            ],
+            "Gingerbread Cabin": [
+                {"qty": 1, "code": "ELD - 245", "section": "main"},
+            ],
+            "Rimewood Falls": [
+                {"qty": 1, "code": "KHM - 266", "section": "main"},
+            ],
+            "Snow-Covered Forest": [
+                {"qty": 9, "code": "KHM - 284", "section": "main"},
+            ],
+            "Faerie Macabre": [
+                {"qty": 1, "code": "SHM - 66", "section": "sideboard"}
+            ],
+            "Relic of Progenitus": [
+                {"qty": 2, "code": "ALA - 218", "section": "sideboard"}
+            ],
+            "Hydroblast": [
+                {"qty": 3, "code": "IA - 72", "section": "sideboard"}
+            ],
+            "Vitu-Ghazi Inspector": [
+                {"qty": 3, "code": "MKM - 183", "section": "sideboard"}
+            ],
+            "Scattershot Archer": [
+                {"qty": 4, "code": "CON - 90", "section": "sideboard"}
+            ],
+            "Pulse of Murasa": [
+                {"qty": 2, "code": "M20 - 189", "section": "sideboard"}
+            ],
+        }
+    },
+    "Jund Wildfire": {
+        "priority": 4,
+        "cards": {
+            "Gixian Infiltrator": [
+                {"qty": 2, "code": "BRO - 98", "section": "main"},
+            ],
+            "Krark-Clan Shaman": [
+                {"qty": 2, "code": "MRD - 98", "section": "main"},
+            ],
+            "Nyxborn Hydra": [
+                {"qty": 1, "code": "MH3 - 164", "section": "main"},
+            ],
+            "Refurbished Familiar": [
+                {"qty": 4, "code": "MH3 - 105", "section": "main"},
+            ],
+            "Writhing Chrysalis": [
+                {"qty": 4, "code": "MH3 - 208", "section": "main"},
+            ],
+            "Cast Down": [
+                {"qty": 4, "code": "2XM - 79", "section": "main"},
+            ],
+            "Eviscerator's Insight": [
+                {"qty": 2, "code": "MH3 - 93", "section": "main"},
+            ],
+            "Fanatical Offering": [
+                {"qty": 4, "code": "LCI - 105", "section": "main"},
+            ],
+            "Toxin Analysis": [
+                {"qty": 2, "code": "MKM - 107", "section": "main"},
+            ],
+            "Cleansing Wildfire": [
+                {"qty": 4, "code": "ZNR - 137", "section": "main"},
+            ],
+            "Blood Fountain": [
+                {"qty": 1, "code": "VOW - 95", "section": "main"},
+            ],
+            "Ichor Wellspring": [
+                {"qty": 4, "code": "C14 - 241", "section": "main"},
+            ],
+            "Lembas": [
+                {"qty": 2, "code": "LTR - 243", "section": "main"},
+            ],
+            "Nihil Spellbomb": [
+                {"qty": 1, "code": "BRC - 152", "section": "main"},
+                {"qty": 1, "code": "SCD - 270", "section": "main"},
+            ],
+            "Makeshift Munitions": [
+                {"qty": 3, "code": "CMR - 191", "section": "main"},
+            ],
+            "Bojuka Bog": [
+                {"qty": 1, "code": "BRC - 176", "section": "main"},
+            ],
+            "Drossforge Bridge": [
+                {"qty": 4, "code": "MH2 - 246", "section": "main"},
+            ],
+            "Slagwoods Bridge": [
+                {"qty": 4, "code": "MH2 - 256", "section": "main"},
+            ],
+            "Twisted Landscape": [
+                {"qty": 4, "code": "MH3 - 232", "section": "main"},
+            ],
+            "Mountain": [
+                {"qty": 4, "code": "FBB - 290", "section": "main"},
+            ],
+            "Swamp": [
+                {"qty": 4, "code": "MH2 - 256", "section": "main"},
+            ],
+            "Twisted Landscape": [
+                {"qty": 4, "code": "MH3 - 232", "section": "main"},
+            ],
+            "Faerie Macabre": [
+                {"qty": 1, "code": "SHM - 66", "section": "sideboard"}
+            ],
+            "Relic of Progenitus": [
+                {"qty": 2, "code": "ALA - 218", "section": "sideboard"}
+            ],
+            "Hydroblast": [
+                {"qty": 3, "code": "IA - 72", "section": "sideboard"}
+            ],
+            "Vitu-Ghazi Inspector": [
+                {"qty": 3, "code": "MKM - 183", "section": "sideboard"}
+            ],
+            "Scattershot Archer": [
+                {"qty": 4, "code": "CON - 90", "section": "sideboard"}
+            ],
+            "Pulse of Murasa": [
+                {"qty": 2, "code": "M20 - 189", "section": "sideboard"}
+            ],
         }
     }
 }

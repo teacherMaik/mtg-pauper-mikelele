@@ -18,9 +18,10 @@ Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Sc
 9,Snow-Covered Forest,Basic Snow Land - Forest,"",Common,$0.69,main,https://s.deckbox.org/system/images/mtg/cards/2113366.jpg,2026-02-03 10:53:05 UTC,230105,fe241460-f7c1-4ba8-a156-6720b494ac97
 4,Timberwatch Elf,Creature - Elf,{2}{G},Common,$1.30,main,https://s.deckbox.org/system/images/mtg/cards/2070103.jpg,2019-11-30 23:17:24 UTC,10812,045ae4ec-07f2-4098-a2d9-4bfcbd0273b2
 4,Winding Way,Sorcery,{1}{G},Common,$0.42,main,https://s.deckbox.org/system/images/mtg/cards/2061637.jpg,2026-02-03 10:56:57 UTC,583330,0c1c6256-6302-4627-bfbb-bffdc124fab4
-3,Blue Elemental Blast,Instant,{U},Common,$0.78,sideboard,https://s.deckbox.org/system/images/mtg/cards/2073671.jpg,2019-11-30 23:21:30 UTC,1349,0892ec35-8bab-4fe5-8cc9-a25032d4bc8d
 1,Faerie Macabre,Creature - Faerie Rogue,{1}{B}{B},Common,$3.85,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060073.jpg,2026-02-03 11:03:32 UTC,563099,b666a543-6570-4789-9ec4-8d8922181274
+3,Hydroblast,Instant,{U},Uncommon,$3.78,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070380.jpg,2026-02-03 11:50:20 UTC,2204,89a30b8f-6594-42ea-8e60-13ccb1e7efc0
+2,Pulse of Murasa,Instant,{2}{G},Uncommon,$0.13,sideboard,https://s.deckbox.org/system/images/mtg/cards/2104783.jpg,2026-02-03 11:47:09 UTC,192568,99851c1b-8878-4c1e-906b-f6b70e53d714
 2,Relic of Progenitus,Artifact,{1},Common,$4.82,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2019-11-30 23:22:02 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
-4,Scattershot Archer,Creature - Elf Archer,{G},Common,$2.10,sideboard,https://s.deckbox.org/system/images/mtg/cards/2072010.jpg,2026-02-03 11:02:46 UTC,28598,d74d6cdb-a087-4b3d-bf25-509200ed6d93
-2,Wellwisher,Creature - Elf,{1}{G},Common,$1.54,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070079.jpg,2026-02-03 11:02:48 UTC,37757,a3378a5c-c661-4a0c-9d19-7da0d283bfeb
+4,Scattershot Archer,Creature - Elf Archer,{G},Common,$2.10,sideboard,https://s.deckbox.org/system/images/mtg/cards/2072010.jpg,2026-02-03 11:47:01 UTC,28598,d74d6cdb-a087-4b3d-bf25-509200ed6d93
+3,Vitu-Ghazi Inspector,Creature - Elf Detective,{1}{G},Common,$0.04,sideboard,https://s.deckbox.org/system/images/mtg/cards/2052102.jpg,2026-02-03 11:49:19 UTC,532926,664d15d7-2724-4a9b-b5a7-8042d4b7da7b
 
