@@ -1,0 +1,27 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Banehound,Creature - Nightmare Dog,{B},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2103954.jpg,2026-02-04 09:33:17 UTC,188120,b9e03567-c95a-40b8-a75a-971076093f57
+2,Blood Fountain,Artifact,{B},Common,$0.35,main,https://s.deckbox.org/system/images/mtg/cards/2023750.jpg,2026-02-04 09:42:14 UTC,253719,dd03651e-ada0-41dc-8722-0eba476943e3
+3,Cast Down,Instant,{1}{B},Uncommon,$0.32,main,https://s.deckbox.org/system/images/mtg/cards/2099205.jpg,2026-02-04 09:43:01 UTC,162900,116ce944-6871-4f51-a889-d9c4a5d7cff2
+4,Chittering Rats,Creature - Rat,{1}{B}{B},Common,$0.30,main,https://s.deckbox.org/system/images/mtg/cards/2077842.jpg,2026-02-04 09:29:19 UTC,11670,980135d5-dfaa-4beb-b4b3-1e256bb46e61
+4,Cuombajj Witches,Creature - Human Wizard,{B}{B},Uncommon,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2112378.jpg,2026-02-04 09:37:19 UTC,226860,6a26e910-275a-4981-831b-bfed936a7e3f
+2,Derelict Attic // Widow's Walk,Enchantment - Room // Enchantment - Room,{2}{B} // {3}{B},Common,$0.04,main,https://s.deckbox.org/system/images/mtg/cards/2059310.jpg,2026-02-04 09:46:26 UTC,579325,2cae24c1-53f1-4f3f-8795-b634c46a17c4
+1,Eviscerator's Insight,Instant,{1}{B},Common,$0.22,main,https://s.deckbox.org/system/images/mtg/cards/2056492.jpg,2026-02-04 09:43:20 UTC,552853,b00573bd-5bbb-4531-a0bb-a40f62b92b88
+3,Gray Merchant of Asphodel,Creature - Zombie,{3}{B}{B},Uncommon,$0.77,main,https://s.deckbox.org/system/images/mtg/cards/2108186.jpg,2026-02-04 09:32:33 UTC,206460,7c1a7dd8-8034-4f59-a351-33666b26ff5a
+2,Ill-Gotten Inheritance,Enchantment,{3}{B},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2103424.jpg,2026-02-04 09:46:35 UTC,183424,3d44b342-f611-4836-a9d5-83b00a24318f
+1,Marshmist Titan,Creature - Giant,{6}{B},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2087748.jpg,2026-02-04 09:39:40 UTC,79113,093d2e4c-f2c4-4d4e-a1b7-200327ce23b0
+1,Omen of the Dead,Enchantment,{B},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2108255.jpg,2026-02-04 09:42:41 UTC,207057,8023fc44-fb8e-420d-a68c-b45912c4e5bd
+4,Phyrexian Rager,Creature - Phyrexian Horror,{2}{B},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2030496.jpg,2025-06-04 14:54:29 UTC,283486,6fd574e7-705f-4a65-aad0-68ff6d63bf0f
+1,Reckoner's Bargain,Instant,{1}{B},Common,$0.74,main,https://s.deckbox.org/system/images/mtg/cards/2025604.jpg,2026-02-04 09:43:12 UTC,262771,6338942d-d650-4571-8ec6-4d658792c53e
+4,Seekers' Squire,Creature - Human Scout,{1}{B},Uncommon,$0.04,main,https://s.deckbox.org/system/images/mtg/cards/2097635.jpg,2026-02-04 09:34:19 UTC,145798,e37a6802-7a1d-4d37-bd65-f3e3e5127aca
+17,Swamp,Basic Land - Swamp,"",BasicLand,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2313156.jpg,2026-02-04 09:40:27 UTC,671040,1dd4d605-02a2-4183-b191-0bca8dfbf962
+2,Thorn of the Black Rose,Creature - Human Assassin,{3}{B},Common,$0.18,main,https://s.deckbox.org/system/images/mtg/cards/2107076.jpg,2025-06-04 14:54:53 UTC,204408,560fbefe-d534-4e07-9f2c-fd12eecaa929
+2,Tithing Blade // Consuming Sepulcher,Artifact // Artifact,{1}{B},Common,$0.32,main,https://s.deckbox.org/system/images/mtg/cards/2048492.jpg,2026-02-04 09:41:52 UTC,526379,dbaa9a2d-e9fd-4746-a26c-f99ae731f024
+3,Troll of Khazad-dûm,Creature - Troll,{5}{B},Common,$0.46,main,https://s.deckbox.org/system/images/mtg/cards/2042763.jpg,2026-02-04 09:38:17 UTC,498752,a6539e26-b63b-4725-9407-caaf451de084
+1,Witch's Cottage,Land - Swamp,"",Common,$0.70,main,https://s.deckbox.org/system/images/mtg/cards/2105826.jpg,2026-02-04 09:40:29 UTC,198390,b87891cd-b457-4dff-8d18-a7eaf6748fc6
+2,Bojuka Bog,Land,"",Common,$0.85,sideboard,https://s.deckbox.org/system/images/mtg/cards/2299327.jpg,2026-02-04 09:40:46 UTC,642036,b0c6fb5e-07e2-4d22-be19-60592f00584a
+3,Boot Nipper,Creature - Beast,{1}{B},Common,$0.06,sideboard,https://s.deckbox.org/system/images/mtg/cards/2108852.jpg,2026-02-04 09:56:58 UTC,212705,cff5a5b8-f823-4429-acd8-c4f34a676cb4
+1,Crypt Rats,Creature - Rat,{2}{B},Uncommon,$0.72,sideboard,https://s.deckbox.org/system/images/mtg/cards/2074480.jpg,2026-02-04 09:56:00 UTC,2864,f9b2f697-01cc-4610-b4aa-cae83b38647a
+3,Grim Bauble,Artifact,{B},Common,$0.11,sideboard,https://s.deckbox.org/system/images/mtg/cards/2099768.jpg,2026-02-04 09:54:10 UTC,616080,9bfdf60a-6f67-4872-8961-d63776b192c3
+1,Spinning Darkness,Instant,{4}{B}{B},Common,$0.74,sideboard,https://s.deckbox.org/system/images/mtg/cards/2077178.jpg,2026-02-04 09:57:30 UTC,6103,58e64a8e-84b1-416c-9fa7-8b10130dc9e9
+4,Trespasser's Curse,Enchantment - Aura Curse,{1}{B},Common,$0.28,sideboard,https://s.deckbox.org/system/images/mtg/cards/2096329.jpg,2025-06-04 15:02:08 UTC,130292,f6ef4c59-ab84-4d84-b795-015b21ae3fe0
+

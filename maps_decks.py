@@ -1616,6 +1616,81 @@ decks_map = {
             ],
         }
     },
+    "Moggwarts": {
+        "priority": 21,
+        "cards": {
+            "Balemurk Leech": [
+                {"qty": 4, "code": "DSK - 84", "section": "main"},
+            ],
+            "Fear of Lost Teeth": [
+                {"qty": 4, "code": "DSK - 97", "section": "main"},
+            ],
+            "Eagles of the North": [
+                {"qty": 1, "code": "TSP - 58", "section": "main"},
+            ],
+            "Slumbering Keepguard": [
+                {"qty": 4, "code": "WOE - 29", "section": "main"},
+            ],
+            "Spirited Companion": [
+                {"qty": 4, "code": "J25 - 256", "section": "main"},
+            ],
+            "Karametra's Blessing": [
+                {"qty": 4, "code": "THB - 26", "section": "main"},
+            ],
+            "Clawing Torment": [
+                {"qty": 3, "code": "NEO - 91", "section": "main"},
+            ],
+            "Derelict Attic // Widow's Walk": [
+                {"qty": 3, "code": "DSK - 93", "section": "main"},
+            ],
+            "Dog Umbra": [
+                {"qty": 2, "code": "MH3 - 22", "section": "main"},
+            ],
+            "Era of Enlightenment // Hand of Enlightenment": [
+                {"qty": 2, "code": "NEO - 11", "section": "main"},
+            ],
+            "Ethereal Armor": [
+                {"qty": 4, "code": "DSK - 7", "section": "main"},
+            ],
+            "Grand Entryway // Elegant Rotunda": [
+                {"qty": 3, "code": "DSK - 15", "section": "main"},
+            ],
+            "Okiba Reckoner Raid // Nezumi Road Captain": [
+                {"qty": 4, "code": "NEO - 117", "section": "main"},
+            ],
+            "Omen of the Dead": [
+                {"qty": 1, "code": "THB - 110", "section": "main"},
+                {"qty": 1, "code": "THB - 110", "section": "sideboard"},
+            ],
+            "Bojuka Bog": [
+                {"qty": 1, "code": "BRC - 176", "section": "main"},
+            ],
+            "Forlorn Flats": [
+                {"qty": 4, "code": "OTJ - 258", "section": "main"}
+            ],
+            "Snowfield Sinkhole": [
+                {"qty": 2, "code": "KHM - 276", "section": "main"},
+            ],
+            "Snow-Covered Plains": [
+                {"qty": 6, "code": "ELD - 259", "section": "main"},
+            ],
+            "Snow-Covered Swamp": [
+                {"qty": 4, "code": "KHM - 280", "section": "main"}
+            ],
+            "Hopeful Eidolon": [
+                {"qty": 4, "code": "THS - 19", "section": "sideboard"}
+            ],
+            "Duress": [
+                {"qty": 4, "code": "M10 - 96", "section": "sideboard"}
+            ],
+            "Trespasser's Curse": [
+                {"qty": 4, "code": "AKH - 112", "section": "sideboard"},
+            ],
+            "Dust to Dust": [
+                {"qty": 2, "code": "DK - 78", "section": "sideboard"}
+            ],
+        }
+    },
 }
 
 

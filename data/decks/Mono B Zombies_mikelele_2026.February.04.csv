@@ -1,0 +1,29 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+2,Accursed Marauder,Creature - Zombie Warrior,{1}{B},Common,$0.39,main,https://s.deckbox.org/system/images/mtg/cards/2056479.jpg,2026-02-04 08:49:10 UTC,553204,5da14d86-0780-4821-a799-96f64b377df4
+1,Blood Fountain,Artifact,{B},Common,$0.35,main,https://s.deckbox.org/system/images/mtg/cards/2023750.jpg,2026-02-04 08:57:49 UTC,253719,dd03651e-ada0-41dc-8722-0eba476943e3
+2,Carrion Feeder,Creature - Zombie,{B},Uncommon,$2.64,main,https://s.deckbox.org/system/images/mtg/cards/2104365.jpg,2026-02-04 08:49:18 UTC,191578,0a19da90-880e-4eca-8cf7-6d7baf090d53
+4,Changeling Outcast,Creature - Shapeshifter,{B},Common,$1.07,main,https://s.deckbox.org/system/images/mtg/cards/2055673.jpg,2025-05-16 15:21:54 UTC,545343,ab499df5-ed76-43ad-81b3-70afd0487ccd
+3,Corrupted Conviction,Instant,{B},Common,$0.26,main,https://s.deckbox.org/system/images/mtg/cards/2055049.jpg,2026-02-04 08:57:37 UTC,544718,8046f892-3317-4ef7-9cf7-97b9060540c8
+1,Crawl from the Cellar,Sorcery,{B},Common,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2117388.jpg,2026-02-04 09:02:02 UTC,248313,ed6c8942-d43e-4456-ac98-3220cb954c65
+1,Eviscerator's Insight,Instant,{1}{B},Common,$0.22,main,https://s.deckbox.org/system/images/mtg/cards/2056492.jpg,2026-02-04 09:01:45 UTC,552853,b00573bd-5bbb-4531-a0bb-a40f62b92b88
+1,Gempalm Polluter,Creature - Zombie,{5}{B},Common,$0.25,main,https://s.deckbox.org/system/images/mtg/cards/2076902.jpg,2026-02-04 08:51:19 UTC,10755,8e9943ac-9e3f-4ee0-b5fd-3b0fb17097d8
+1,Ghoulcaller's Chant,Sorcery,{B},Common,$0.16,main,https://s.deckbox.org/system/images/mtg/cards/2084403.jpg,2026-02-04 09:01:49 UTC,56272,2b8c1b10-2155-404a-8f20-eb8f643849d6
+4,Putrid Goblin,Creature - Zombie Goblin,{1}{B},Common,$0.35,main,https://s.deckbox.org/system/images/mtg/cards/2061628.jpg,2026-02-04 08:55:21 UTC,582825,b6c567e4-3aaa-4ac0-bdd8-ae79ea867859
+4,Refurbished Familiar,Artifact Creature - Zombie Rat,{3}{B},Common,$0.24,main,https://s.deckbox.org/system/images/mtg/cards/2056504.jpg,2025-05-16 15:22:39 UTC,553237,b338e078-629c-4cac-bd1d-e1f0a132728d
+4,Retrofitted Transmogrant,Artifact Creature - Zombie,{B},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2056505.jpg,2025-05-16 15:23:04 UTC,553242,12c1b83d-710b-4680-855a-02ba1f72abf0
+4,Shambling Ghast,Creature - Zombie,{B},Common,$0.47,main,https://s.deckbox.org/system/images/mtg/cards/2116319.jpg,2025-05-16 15:23:06 UTC,243154,d96198a7-dd19-4940-bf8f-23135011fc84
+3,Shepherd of Rot,Creature - Zombie Cleric,{1}{B},Common,$0.87,main,https://s.deckbox.org/system/images/mtg/cards/2076437.jpg,2026-02-04 08:56:36 UTC,10568,952c021f-74c9-455f-9cd9-f0d354e8bea8
+12,Swamp,Basic Land - Swamp,"",BasicLand,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2109044.jpg,2026-02-04 09:01:11 UTC,671040,1dd4d605-02a2-4183-b191-0bca8dfbf962
+4,Vault of Whispers,Artifact Land,"",Common,$2.32,main,https://s.deckbox.org/system/images/mtg/cards/2077817.jpg,2025-05-16 15:26:26 UTC,11311,73866487-33f4-4f64-b100-2c4ddadcd74e
+3,Village Rites,Instant,{B},Common,$0.48,main,https://s.deckbox.org/system/images/mtg/cards/2113198.jpg,2026-02-04 08:57:40 UTC,230172,0fab9ee8-776a-48e5-b309-bcd381e67bf7
+4,Walking Sarcophagus,Artifact Creature - Zombie Cat,{2},Common,$0.03,main,https://s.deckbox.org/system/images/mtg/cards/2099926.jpg,2025-05-16 15:23:19 UTC,616129,89ccbd73-9414-48a3-bdcf-e838fcffc08f
+1,Witch's Cottage,Land - Swamp,"",Common,$0.70,main,https://s.deckbox.org/system/images/mtg/cards/2105826.jpg,2026-02-04 09:01:16 UTC,198390,b87891cd-b457-4dff-8d18-a7eaf6748fc6
+1,Writhing Necromass,Creature - Zombie Giant,{6}{B},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2030512.jpg,2026-02-04 08:55:39 UTC,282821,a166abef-f068-47e9-8a65-43ebf4b015bd
+2,Accursed Marauder,Creature - Zombie Warrior,{1}{B},Common,$0.39,sideboard,https://s.deckbox.org/system/images/mtg/cards/2056479.jpg,2026-02-04 09:03:04 UTC,553204,5da14d86-0780-4821-a799-96f64b377df4
+4,Butcher Ghoul,Creature - Zombie,{1}{B},Common,$0.14,sideboard,https://s.deckbox.org/system/images/mtg/cards/2085037.jpg,2026-02-04 09:07:28 UTC,58905,44a91e62-e946-4101-8cef-d1c147caebf2
+2,Duress,Sorcery,{B},Common,$0.12,sideboard,https://s.deckbox.org/system/images/mtg/cards/2062721.jpg,2026-02-04 09:03:19 UTC,589335,34c3a894-ee75-4db9-a69f-711bb3cc150a
+1,Gempalm Polluter,Creature - Zombie,{5}{B},Common,$0.25,sideboard,https://s.deckbox.org/system/images/mtg/cards/2076902.jpg,2026-02-04 09:07:50 UTC,10755,8e9943ac-9e3f-4ee0-b5fd-3b0fb17097d8
+1,Ghoulcaller's Chant,Sorcery,{B},Common,$0.16,sideboard,https://s.deckbox.org/system/images/mtg/cards/2084403.jpg,2026-02-04 09:07:44 UTC,56272,2b8c1b10-2155-404a-8f20-eb8f643849d6
+3,Rotten Reunion,Instant,{B},Common,$0.12,sideboard,https://s.deckbox.org/system/images/mtg/cards/2117414.jpg,2026-02-04 09:07:26 UTC,248326,97398ad2-675b-4a34-aab7-935dd6714f1c
+2,Toxin Analysis,Instant,{B},Common,$0.16,sideboard,https://s.deckbox.org/system/images/mtg/cards/2052026.jpg,2026-02-04 09:03:41 UTC,535516,0eda1aff-c1f4-4171-a800-605396cc8168
+

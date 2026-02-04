@@ -1,0 +1,29 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Aether Spike,Instant,{1}{U},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2056823.jpg,2026-02-04 11:08:36 UTC,553169,cb10f7af-8c6d-4228-8600-5b1de3e3abcb
+2,Augur of Bolas,Creature - Merfolk Wizard,{1}{U},Uncommon,$0.17,main,https://s.deckbox.org/system/images/mtg/cards/2104019.jpg,2026-02-04 10:52:01 UTC,187183,d19fbfe6-69bb-452a-be3c-b9c625e23193
+2,Brainstorm,Instant,{U},Uncommon,$0.50,main,https://s.deckbox.org/system/images/mtg/cards/2296304.jpg,2026-02-04 10:58:50 UTC,631813,c14f8bce-d5b3-4d01-8346-8a4923ec03d9
+1,Circular Logic,Instant,{2}{U},Uncommon,$0.23,main,https://s.deckbox.org/system/images/mtg/cards/2106605.jpg,2026-02-04 11:14:06 UTC,203699,1186875c-8a42-4d4a-a619-f1d80bb9a1e5
+4,Consider,Instant,{U},Common,$0.41,main,https://s.deckbox.org/system/images/mtg/cards/2117339.jpg,2026-02-04 11:03:42 UTC,246015,a211d505-4d40-4914-a9da-220770d6ddbc
+2,Fling,Instant,{1}{R},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2105703.jpg,2026-02-04 10:59:19 UTC,199530,cb28fe03-8269-41de-b766-42c3421aeaef
+4,Frantic Inventory,Instant,{1}{U},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2109648.jpg,2025-10-14 17:05:12 UTC,215572,8f14abb0-0e9f-448e-85d7-6cb71f756c56
+4,Galvanic Discharge,Instant,{R},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2056521.jpg,2026-02-04 11:04:58 UTC,552669,32aa6e33-221f-414c-9b51-850d97a7e051
+4,Goblin Electromancer,Creature - Goblin Wizard,{U}{R},Common,$0.14,main,https://s.deckbox.org/system/images/mtg/cards/2102670.jpg,2025-11-19 16:18:35 UTC,175583,0ae987da-e4b5-4b82-843c-6aaa87262fc8
+4,Lórien Revealed,Sorcery,{3}{U}{U},Common,$2.99,main,https://s.deckbox.org/system/images/mtg/cards/2042712.jpg,2026-02-04 11:18:25 UTC,499960,0ce44270-a684-4489-9077-521456e6dfaa
+2,Memory Lapse,Instant,{1}{U},Common,$0.45,main,https://s.deckbox.org/system/images/mtg/cards/2074887.jpg,2026-02-04 11:11:04 UTC,2991,2d85cc30-ccae-4af8-834a-f7870dace679
+1,Negate,Instant,{1}{U},Common,$0.24,main,https://s.deckbox.org/system/images/mtg/cards/2062825.jpg,2026-02-04 11:10:50 UTC,589356,ff3b0dba-0207-4249-bdab-e807c76ce39e
+2,Perilous Landscape,Land,"",Common,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2291271.jpg,2025-10-14 17:03:48 UTC,624212,61fc78e0-d0db-4ecb-a29a-f1a437d7987c
+2,Pieces of the Puzzle,Sorcery,{2}{U},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2093496.jpg,2026-02-04 11:18:32 UTC,115911,69204c83-2e43-4ca1-a4cd-d75399a7d6dd
+2,Serpentine Curve,Sorcery,{3}{U},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2114250.jpg,2025-10-14 17:02:19 UTC,235871,d651b9e9-d723-4340-a010-d71b2a697e73
+9,Snow-Covered Island,Basic Snow Land - Island,"",Common,$0.77,main,https://s.deckbox.org/system/images/mtg/cards/2113360.jpg,2025-10-14 17:03:20 UTC,230100,0dcf8c0a-cf91-42a0-a54e-da5e7c697ee3
+3,Snow-Covered Mountain,Basic Snow Land - Mountain,"",Common,$0.43,main,https://s.deckbox.org/system/images/mtg/cards/2113364.jpg,2025-10-14 17:03:22 UTC,230103,f54aa46b-4b7c-4846-bf19-a289ed36c172
+2,Spell Pierce,Instant,{U},Uncommon,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2099744.jpg,2026-02-04 11:11:06 UTC,616070,8dd4374f-0301-4b2e-bc99-2cd19568cb3b
+4,Tune the Narrative,Instant,{U},Common,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2056474.jpg,2026-02-04 11:05:05 UTC,552656,40b13321-98f1-4e8c-802d-65498e43ec24
+2,Volatile Fjord,Snow Land - Island Mountain,"",Common,$0.63,main,https://s.deckbox.org/system/images/mtg/cards/2113354.jpg,2026-02-04 11:18:37 UTC,230112,f2392fbb-d9c4-4688-b99c-4e7614c60c12
+2,Annul,Instant,{U},Uncommon,$0.17,sideboard,https://s.deckbox.org/system/images/mtg/cards/2299162.jpg,2026-02-04 11:47:28 UTC,642436,26dd02c4-569b-437f-b9dd-bd2f1d86a968
+1,Dispel,Instant,{U},Common,$0.33,sideboard,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2026-02-04 11:49:03 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+2,End the Festivities,Sorcery,{R},Common,$0.84,sideboard,https://s.deckbox.org/system/images/mtg/cards/2023821.jpg,2026-02-04 11:47:54 UTC,253770,bec748e6-7245-4a71-aeee-cefed8346948
+2,Hydroblast,Instant,{U},Uncommon,$3.78,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070380.jpg,2026-02-04 11:48:59 UTC,2204,89a30b8f-6594-42ea-8e60-13ccb1e7efc0
+3,Red Elemental Blast,Instant,{R},Common,$3.58,sideboard,https://s.deckbox.org/system/images/mtg/cards/2073890.jpg,2026-02-04 11:47:25 UTC,1537,2d83a2a3-5495-4457-8eb7-9f9a75da6cc3
+3,Skred,Instant,{R},Common,$1.46,sideboard,https://s.deckbox.org/system/images/mtg/cards/2066969.jpg,2026-02-04 11:45:52 UTC,14113,b3d6d42a-7607-4361-acc4-7f3cb956bfc9
+2,Steel Sabotage,Instant,{U},Common,$0.17,sideboard,https://s.deckbox.org/system/images/mtg/cards/2083348.jpg,2026-02-04 11:47:36 UTC,39060,bb40de7c-1905-4615-844b-4abc231fb01e
+

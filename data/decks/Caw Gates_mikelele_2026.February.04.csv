@@ -1,0 +1,31 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+1,Azorius Guildgate,Land - Gate,"",Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2062798.jpg,2025-06-05 15:26:02 UTC,591088,f98a7264-0a83-42c8-a94d-05ad4c234242
+4,Basilisk Gate,Land - Gate,"",Common,$0.28,main,https://s.deckbox.org/system/images/mtg/cards/2060135.jpg,2025-06-05 15:25:01 UTC,563062,0f2587b5-ab79-4b14-8b49-83e94cef177f
+4,Brainstorm,Instant,{U},Uncommon,$0.50,main,https://s.deckbox.org/system/images/mtg/cards/2296304.jpg,2025-06-05 15:21:50 UTC,631813,c14f8bce-d5b3-4d01-8346-8a4923ec03d9
+2,Cast Down,Instant,{1}{B},Uncommon,$0.32,main,https://s.deckbox.org/system/images/mtg/cards/2099205.jpg,2026-01-23 16:51:23 UTC,162900,116ce944-6871-4f51-a889-d9c4a5d7cff2
+4,Citadel Gate,Land - Gate,"",Common,$0.51,main,https://s.deckbox.org/system/images/mtg/cards/2065419.jpg,2025-06-05 15:25:13 UTC,600069,7dca83ce-1b75-4dcc-a839-598106a92ca9
+4,Counterspell,Instant,{U}{U},Uncommon,$1.02,main,https://s.deckbox.org/system/images/mtg/cards/2296280.jpg,2025-06-05 15:22:22 UTC,633126,e1e48b21-1a4f-4708-a4b4-e2e296df924c
+1,Dispel,Instant,{U},Common,$0.33,main,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2026-01-23 16:51:36 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+2,Guardian of the Guildpact,Creature - Spirit,{3}{W},Common,$0.62,main,https://s.deckbox.org/system/images/mtg/cards/2066065.jpg,2026-01-23 12:42:24 UTC,13872,c8dd004b-01e4-4fe1-a164-9f2ea8d7d88e
+2,Heap Gate,Land - Gate,"",Common,$0.45,main,https://s.deckbox.org/system/images/mtg/cards/2065423.jpg,2025-06-05 15:23:20 UTC,600079,756a8e0a-f76e-4947-ac67-bc76d6fe98a6
+1,Idyllic Beachfront,Land - Plains Island,"",Common,$0.16,main,https://s.deckbox.org/system/images/mtg/cards/2030646.jpg,2025-06-05 15:25:34 UTC,283633,c50ec22c-decb-419f-ae52-78ea1706eb11
+4,Island,Basic Land - Island,"",BasicLand,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2313155.jpg,2025-06-05 15:25:39 UTC,671038,b0da67fb-1cb2-4105-ab5c-b7c680b8116c
+3,Journey to Nowhere,Enchantment,{1}{W},Common,$0.38,main,https://s.deckbox.org/system/images/mtg/cards/2081626.jpg,2026-01-23 12:42:44 UTC,33334,09cfe585-8a55-4b27-89e0-dfb6946fe1f3
+3,Lórien Revealed,Sorcery,{3}{U}{U},Common,$2.99,main,https://s.deckbox.org/system/images/mtg/cards/2042712.jpg,2026-01-23 12:42:51 UTC,499960,0ce44270-a684-4489-9077-521456e6dfaa
+2,Outlaw Medic,Creature - Human Rogue,{1}{W},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2054988.jpg,2025-06-05 15:18:06 UTC,544627,2feaa51e-47fb-4849-b420-ee7278f3489a
+3,Prismatic Strands,Instant,{2}{W},Common,$2.16,main,https://s.deckbox.org/system/images/mtg/cards/2060561.jpg,2026-01-23 12:44:16 UTC,582444,b977be9b-4848-4144-9a70-2e18fa6c22c9
+4,Sacred Cat,Creature - Cat,{W},Common,$0.37,main,https://s.deckbox.org/system/images/mtg/cards/2096172.jpg,2025-06-05 15:17:32 UTC,129753,08891c78-13c1-4d84-aa9c-78346b3b7d18
+4,Sea Gate,Land - Gate,"",Common,$1.09,main,https://s.deckbox.org/system/images/mtg/cards/2065426.jpg,2025-06-05 15:23:22 UTC,600085,dfc51143-c2cb-4cb6-836e-662bc1b15afb
+4,Squadron Hawk,Creature - Bird,{1}{W},Common,$0.20,main,https://s.deckbox.org/system/images/mtg/cards/2082739.jpg,2025-06-05 15:17:52 UTC,35508,beddd409-0154-45a5-a20d-833cf1b5e1f4
+2,Suffocating Fumes,Instant,{2}{B},Common,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2108876.jpg,2026-01-23 16:51:27 UTC,212763,66b562e4-35df-4aee-848d-ceb4204bbe58
+4,The Modern Age // Vector Glider,Enchantment - Saga // Enchantment Creature - Spirit,{1}{U},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2025546.jpg,2026-01-23 16:51:30 UTC,261985,ee60a8e9-3201-4a7e-8aa4-2c5e1042c8a5
+2,Thraben Charm,Instant,{1}{W},Common,$0.29,main,https://s.deckbox.org/system/images/mtg/cards/2056444.jpg,2025-06-05 15:22:46 UTC,552284,dd28a646-f38f-4cdf-948c-969cd979e5e6
+2,Dawnbringer Cleric,Creature - Human Cleric,{1}{W},Common,$0.10,sideboard,https://s.deckbox.org/system/images/mtg/cards/2116209.jpg,2026-01-23 16:52:34 UTC,243085,c00856f7-fef5-4ba5-9079-59a81d452c82
+1,Dispel,Instant,{U},Common,$0.33,sideboard,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2026-01-23 16:52:45 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+3,Dust to Dust,Sorcery,{1}{W}{W},Uncommon,$6.02,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070321.jpg,2025-06-05 15:26:54 UTC,2119,6e8a9a5c-0e5f-4498-88d8-6aac465923b1
+3,Essence Scatter,Instant,{1}{U},Uncommon,$0.09,sideboard,https://s.deckbox.org/system/images/mtg/cards/2062268.jpg,2025-06-05 15:26:51 UTC,591303,dd05c850-f91e-4ffb-b4cc-8418d49dad90
+1,Faerie Macabre,Creature - Faerie Rogue,{1}{B}{B},Common,$3.85,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060073.jpg,2026-01-23 16:53:23 UTC,563099,b666a543-6570-4789-9ec4-8d8922181274
+3,Hydroblast,Instant,{U},Uncommon,$3.78,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070380.jpg,2026-01-23 16:53:13 UTC,2204,89a30b8f-6594-42ea-8e60-13ccb1e7efc0
+1,Suffocating Fumes,Instant,{2}{B},Common,$0.15,sideboard,https://s.deckbox.org/system/images/mtg/cards/2108876.jpg,2026-01-23 16:53:00 UTC,212763,66b562e4-35df-4aee-848d-ceb4204bbe58
+1,Thraben Charm,Instant,{1}{W},Common,$0.29,sideboard,https://s.deckbox.org/system/images/mtg/cards/2056444.jpg,2026-01-23 16:53:05 UTC,552284,dd28a646-f38f-4cdf-948c-969cd979e5e6
+

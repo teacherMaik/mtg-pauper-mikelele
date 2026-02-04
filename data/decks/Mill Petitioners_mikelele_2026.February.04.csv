@@ -1,0 +1,25 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+1,Deep Analysis,Sorcery,{3}{U},Common,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2291038.jpg,2025-12-12 10:52:58 UTC,624163,2d93b071-d303-4892-bac4-77a75eaa91a1
+2,Forecasting Fortune Teller,Creature - Human Advisor Ally,{1}{U},Common,$0.03,main,https://s.deckbox.org/system/images/mtg/cards/2301049.jpg,2025-12-12 10:51:18 UTC,660716,023e7ad4-6af0-4f29-a716-27a313974227
+2,Forest,Basic Land - Forest,"",BasicLand,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2313158.jpg,2025-10-13 10:46:39 UTC,671047,b460f5f7-c7c9-400c-8419-23d614f45bf9
+4,Generous Ent,Creature - Treefolk,{5}{G},Common,$0.97,main,https://s.deckbox.org/system/images/mtg/cards/2042821.jpg,2025-10-13 10:44:44 UTC,498328,85d22d5d-3875-42ff-b51e-c6e21db201f5
+4,Glistener Seer,Creature - Phyrexian Advisor,{U},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2037206.jpg,2025-05-12 10:24:16 UTC,479565,c22aaaec-bad5-43e9-8e92-9c4bde95fcfd
+3,Gnaw to the Bone,Instant,{2}{G},Common,$0.23,main,https://s.deckbox.org/system/images/mtg/cards/2084471.jpg,2025-12-12 10:51:08 UTC,56313,416148c8-13d3-46d3-ac93-6eb7cbab2881
+7,Island,Basic Land - Island,"",BasicLand,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2313155.jpg,2025-10-13 10:46:41 UTC,671038,b0da67fb-1cb2-4105-ab5c-b7c680b8116c
+1,Lórien Revealed,Sorcery,{3}{U}{U},Common,$2.99,main,https://s.deckbox.org/system/images/mtg/cards/2042712.jpg,2025-10-13 10:46:07 UTC,499960,0ce44270-a684-4489-9077-521456e6dfaa
+4,Masked Vandal,Creature - Shapeshifter,{1}{G},Common,$1.07,main,https://s.deckbox.org/system/images/mtg/cards/2113265.jpg,2025-05-12 10:24:46 UTC,230134,f0a9c72a-e450-41e3-80e5-06f2f1171245
+4,Mothdust Changeling,Creature - Shapeshifter,{U},Common,$0.53,main,https://s.deckbox.org/system/images/mtg/cards/2060713.jpg,2025-10-13 10:45:00 UTC,581626,3b394bfc-b237-4002-8540-90e6e9c405cb
+11,Persistent Petitioners,Creature - Human Advisor,{1}{U},Common,$1.35,main,https://s.deckbox.org/system/images/mtg/cards/2103612.jpg,2026-02-04 10:10:19 UTC,183310,e93f0c57-eb80-4dde-bdb0-326970491621
+4,Pond Prophet,Creature - Frog Advisor,{GU}{GU},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2058233.jpg,2025-12-12 10:49:59 UTC,558431,fb959e74-61ea-453d-bb9f-ad0183c0e1b1
+4,Seraph Sanctuary,Land,,Common,$0.83,main,https://s.deckbox.org/system/images/mtg/cards/2085084.jpg,2025-10-13 10:47:00 UTC,58997,f903b04a-2733-4ce7-9d83-9db8d5e1e10d
+3,Tangled Islet,Land - Forest Island,"",Common,$0.31,main,https://s.deckbox.org/system/images/mtg/cards/2030655.jpg,2025-10-13 10:46:48 UTC,283642,4a325fb4-fe71-47f1-9a2f-05b8cfe88fe6
+2,Universal Automaton,Artifact Creature - Shapeshifter,{1},Common,$0.60,main,https://s.deckbox.org/system/images/mtg/cards/2296617.jpg,2025-12-12 10:50:03 UTC,631793,bdb05eed-4c00-485d-a519-293a18815324
+4,Winding Way,Sorcery,{1}{G},Common,$0.42,main,https://s.deckbox.org/system/images/mtg/cards/2061637.jpg,2025-10-13 10:46:04 UTC,583330,0c1c6256-6302-4627-bfbb-bffdc124fab4
+3,Blue Elemental Blast,Instant,{U},Common,$0.79,sideboard,https://s.deckbox.org/system/images/mtg/cards/2073671.jpg,2025-10-13 10:48:19 UTC,1349,0892ec35-8bab-4fe5-8cc9-a25032d4bc8d
+1,Dispel,Instant,{U},Common,$0.33,sideboard,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2026-02-04 10:22:01 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+3,Faerie Macabre,Creature - Faerie Rogue,{1}{B}{B},Common,$3.85,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060073.jpg,2026-02-04 10:23:06 UTC,563099,b666a543-6570-4789-9ec4-8d8922181274
+1,Gnaw to the Bone,Instant,{2}{G},Common,$0.23,sideboard,https://s.deckbox.org/system/images/mtg/cards/2084471.jpg,2025-10-13 10:48:16 UTC,56313,416148c8-13d3-46d3-ac93-6eb7cbab2881
+1,Moment's Peace,Instant,{1}{G},Common,$1.72,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060936.jpg,2026-02-04 10:22:49 UTC,564110,05087bc1-ac45-4405-9074-8272a321ab86
+4,Spellstutter Sprite,Creature - Faerie Wizard,{1}{U},Common,$4.30,sideboard,https://s.deckbox.org/system/images/mtg/cards/2045985.jpg,2025-10-13 10:47:28 UTC,513270,181434ed-65eb-4b47-9b12-7bbe6e0d262e
+2,Vitalize,Instant,{G},Common,$1.21,sideboard,https://s.deckbox.org/system/images/mtg/cards/2069322.jpg,2026-02-04 10:22:27 UTC,2788,435a4569-fa62-4e1a-b837-f68159cb270d
+
