@@ -52,7 +52,7 @@ decks_map = {
                 {"qty": 1, "code": "MH1 - 252", "section": "sideboard"}
             ],
             "Chitin Gravestalker": [
-                {"qty": 4, "code": "dft - 79", "section": "sideboard"}
+                {"qty": 4, "code": "DFT - 79", "section": "sideboard"}
             ],
             "Faerie Macabre": [
                 {"qty": 2, "code": "SHM - 66", "section": "sideboard"}
@@ -108,7 +108,7 @@ decks_map = {
                 {"qty": 4, "code": "ONE - 77", "section": "main"},
             ],
             "Pentad Prism": [
-                {"qty": 4, "code": "eoc - 56", "section": "main"},
+                {"qty": 4, "code": "EOC - 56", "section": "main"},
             ],
             "Hickory Woodlot": [
                 {"qty": 4, "code": "MM - 319", "section": "main"},
@@ -186,10 +186,10 @@ decks_map = {
                 {"qty": 4, "code": "VI - 67", "section": "main"},
             ],
             "Sagu Wildling // Roost Seek": [
-                {"qty": 2, "code": "tdm - 157", "section": "main"},
+                {"qty": 2, "code": "TDM - 157", "section": "main"},
             ],
             "Salt Road Packbeast": [
-                {"qty": 1, "code": "tdm - 23", "section": "main"},
+                {"qty": 1, "code": "TDM - 23", "section": "main"},
             ],
             "Timberwatch Elf": [
                 {"qty": 4, "code": "EMA - 190", "section": "main"},
@@ -399,7 +399,7 @@ decks_map = {
                 {"qty": 4, "code": "MH1 - 51", "section": "main"},
             ],
             "Humbling Elder": [
-                {"qty": 4, "code": "tdm - 48", "section": "main"},
+                {"qty": 4, "code": "TDM - 48", "section": "main"},
             ],
             "Moon-Circuit Hacker": [
                 {"qty": 4, "code": "NEO - 334", "section": "main"},
@@ -408,7 +408,7 @@ decks_map = {
                 {"qty": 4, "code": "IA - 64", "section": "main"},
             ],
             "Ninja of the Deep Hours": [
-                {"qty": 4, "code": "j25 - 108", "section": "main"},
+                {"qty": 4, "code": "J25 - 108", "section": "main"},
             ],
             "Spellstutter Sprite": [
                 {"qty": 4, "code": "LRW - 89", "section": "main"},
@@ -471,7 +471,7 @@ decks_map = {
                 {"qty": 4, "code": "ZEN - 23", "section": "main"},
             ],
             "Lunarch Veteran // Luminous Phantom": [
-                {"qty": 2, "code": "inr - 450", "section": "main"},
+                {"qty": 2, "code": "INR - 450", "section": "main"},
             ],
             "Novice Inspector": [
                 {"qty": 4, "code": "MKM - 29", "section": "main"},
@@ -480,16 +480,16 @@ decks_map = {
                 {"qty": 4, "code": "SNC - 26", "section": "main"},
             ],
             "Salt Road Packbeast": [
-                {"qty": 2, "code": "tdm - 23", "section": "main"},
+                {"qty": 2, "code": "TDM - 23", "section": "main"},
             ],
             "Thraben Inspector": [
-                {"qty": 4, "code": "inr - 45", "section": "main"},
+                {"qty": 4, "code": "INR - 45", "section": "main"},
             ],
             "Spider-Man, Web-Slinger": [
-                {"qty": 3, "code": "spm - 16", "section": "main"},
+                {"qty": 3, "code": "SPM - 16", "section": "main"},
             ],
             "Summon: Choco/Mog": [
-                {"qty": 3, "code": "fin - 35", "section": "main"},
+                {"qty": 3, "code": "FIN - 35", "section": "main"},
             ],
             "Guardians' Pledge": [
                 {"qty": 1, "code": "M12 - 22", "section": "main"},
@@ -512,11 +512,11 @@ decks_map = {
             "Idyllic Grange": [
                 {"qty": 2, "code": "ELD - 246", "section": "main"},
             ],
-            "Dust to Dust": [
-                {"qty": 4, "code": "DK - 78", "section": "sideboard"},
+            "Idyllic Beachfront": [
+                {"qty": 1, "code": "DMU - 249", "section": "main"},
             ],
             "Destroy Evil": [
-                {"qty": 1, "code": "j25 - 189", "section": "sideboard"},
+                {"qty": 1, "code": "J25 - 189", "section": "sideboard"},
             ],
             "Journey to Nowhere": [
                 {"qty": 1, "code": "ZEN - 14", "section": "sideboard"}
@@ -545,7 +545,7 @@ decks_map = {
                 {"qty": 4, "code": "MH2_E - 421", "section": "main"},
             ],
             "Spider Manifestation": [
-                {"qty": 2, "code": "spm - 148", "section": "main"},
+                {"qty": 2, "code": "SPM - 148", "section": "main"},
             ],
             "Thornscape Familiar": [
                 {"qty": 4, "code": "PS - 95", "section": "main"},
@@ -670,13 +670,13 @@ decks_map = {
                 {"qty": 4, "code": "AVR - 167", "section": "main"},
             ],
             "Mountain": [
-                {"qty": 2, "code": "pass", "section": "main"},
+                {"qty": 2, "code": "M19 - 273", "section": "main"},
             ],
             "Forest": [
-                {"qty": 6, "code": "pass", "section": "main"},
+                {"qty": 6, "code": "AKH - 269", "section": "main"},
             ],
             "Plains": [
-                {"qty": 3, "code": "pass", "section": "main"},
+                {"qty": 3, "code": "AKH - 255", "section": "main"},
             ],
             "Blossoming Sands": [
                 {"qty": 3, "code": "M21 - 244", "section": "main"},
@@ -903,6 +903,716 @@ decks_map = {
             ],
             "Contaminated Ground": [
                 {"qty": 3, "code": "GTC - 59", "section": "sideboard"},
+            ],
+        }
+    },
+    "Mono B Sac": {
+        "priority": 13,
+        "cards": {
+            "Accursed Marauder": [
+                {"qty": 2, "code": "MH3 - 80", "section": "main"},
+                {"qty": 1, "code": "MH3 - 80", "section": "sideboard"},
+            ],
+            "Bloodthrone Vampire": [
+                {"qty": 3, "code": "M13 - 83", "section": "main"},
+                {"qty": 1, "code": "ROE - 98", "section": "main"},
+            ],
+            "Carrion Feeder": [
+                {"qty": 4, "code": "SCG - 59", "section": "main"},
+            ],
+            "Infestation Sage": [
+                {"qty": 4, "code": "FDN - 64", "section": "main"},
+            ],
+            "Mortician Beetle": [
+                {"qty": 4, "code": "ROE - 117", "section": "main"},
+            ],
+            "Nested Shambler": [
+                {"qty": 4, "code": "MH2 - 95", "section": "main"},
+            ],
+            "Nezumi Linkbreaker": [
+                {"qty": 4, "code": "OTJ - 96", "section": "main"},
+            ],
+            "Perigee Beckoner": [
+                {"qty": 3, "code": "EOE - 112", "section": "main"},
+            ],
+            "Shambling Ghast": [
+                {"qty": 2, "code": "AFR - 119", "section": "main"},
+            ],
+            "Corrupted Conviction": [
+                {"qty": 2, "code": "OTJ - 84", "section": "main"},
+            ],
+            "Village Rites": [
+                {"qty": 4, "code": "M21 - 126", "section": "main"},
+            ],
+            "Supernatural Stamina": [
+                {"qty": 2, "code": "AKH - 111", "section": "main"},
+            ],
+            "Rotten Reunion": [
+                {"qty": 1, "code": "MID - 119", "section": "main"},
+            ],
+            "Rite of Consumption": [
+                {"qty": 1, "code": "SHM - 76", "section": "main"},
+            ],
+            "Unearth": [
+                {"qty": 1, "code": "2X2 - 96", "section": "main"},
+            ],
+            "Ghoulcaller's Chant": [
+                {"qty": 1, "code": "ISD - 101", "section": "main"},
+            ],
+            "Snow-Covered Swamp": [
+                {"qty": 17, "code": "MH1 - 252", "section": "main"},
+            ],
+            "Mesmeric Fiend": [
+                {"qty": 2, "code": "TOR - 69", "section": "sideboard"}
+            ],
+            "Serrated Scorpion": [
+                {"qty": 3, "code": "IKO - 99", "section": "sideboard"},
+            ],
+            "Snuff Out": [
+                {"qty": 3, "code": "MM - 162", "section": "sideboard"}
+            ],
+            "Spinning Darkness": [
+                {"qty": 1, "code": "WL - 23", "section": "sideboard"},
+            ],
+            "Nihil Spellbomb": [
+                {"qty": 2, "code": "SOM - 187", "section": "sideboard"},
+            ],
+            "Tragic Slip": [
+                {"qty": 1, "code": "DKA - 76", "section": "sideboard"},
+            ],
+            "Sadistic Glee": [
+                {"qty": 2, "code": "TE - 47", "section": "sideboard"},
+            ],
+        }
+    },
+    "Mono B Zombies": {
+        "priority": 14,
+        "cards": {
+            "Accursed Marauder": [
+                {"qty": 2, "code": "MH3 - 80", "section": "main"},
+                {"qty": 2, "code": "MH3 - 80", "section": "sideboard"},
+            ],
+            "Carrion Feeder": [
+                {"qty": 2, "code": "EMA - 84", "section": "main"},
+            ],
+            "Changeling Outcast": [
+                {"qty": 4, "code": "MH1 - 82", "section": "main"},
+            ],
+            "Gempalm Polluter": [
+                {"qty": 1, "code": "LGN - 70", "section": "main"},
+                {"qty": 1, "code": "DRC - 93", "section": "sideboard"},
+            ],
+            "Refurbished Familiar": [
+                {"qty": 4, "code": "MH3 - 105", "section": "main"},
+            ],
+            "Retrofitted Transmogrant": [
+                {"qty": 4, "code": "MH3 - 106", "section": "main"},
+            ],
+            "Shambling Ghast": [
+                {"qty": 4, "code": "J25 - 124", "section": "main"},
+            ],
+            "Walking Sarcophagus": [
+                {"qty": 4, "code": "DFT - 246", "section": "main"},
+            ],
+            "Putrid Goblin": [
+                {"qty": 4, "code": "MH1 - 101", "section": "main"},
+            ],
+            "Writhing Necromass": [
+                {"qty": 1, "code": "DMU - 115", "section": "main"},
+            ],
+            "Shepherd of Rot": [
+                {"qty": 3, "code": "ONS - 168", "section": "main"},
+            ],
+            "Corrupted Conviction": [
+                {"qty": 3, "code": "OTJ - 84", "section": "main"},
+            ],
+            "Village Rites": [
+                {"qty": 3, "code": "KHM - 117", "section": "main"},
+            ],
+            "Ghoulcaller's Chant": [
+                {"qty": 1, "code": "ISD - 101", "section": "main"},
+                {"qty": 1, "code": "ISD - 101", "section": "sideboard"},
+            ],
+            "Crawl from the Cellar": [
+                {"qty": 1, "code": "MID - 93", "section": "main"},
+            ],
+            "Eviscerator's Insight": [
+                {"qty": 1, "code": "MH3 - 93", "section": "main"},
+            ],
+            "Blood Fountain": [
+                {"qty": 1, "code": "SHM - 76", "section": "main"},
+            ],
+            "Swamp": [
+                {"qty": 12, "code": "ELD - 260", "section": "main"},
+            ],
+            "Vault of Whispers": [
+                {"qty": 4, "code": "MRD - 286", "section": "main"}
+            ],
+            "Witch's Cottage": [
+                {"qty": 1, "code": "ELD - 249", "section": "main"}
+            ],
+            "Butcher Ghoul": [
+                {"qty": 4, "code": "AVR - 89", "section": "sideboard"},
+            ],
+            "Rotten Reunion": [
+                {"qty": 3, "code": "DBL - 362", "section": "sideboard"},
+            ],
+            "Toxin Analysis": [
+                {"qty": 2, "code": "MKM - 107", "section": "sideboard"},
+            ],
+            "Duress": [
+                {"qty": 2, "code": "M10 - 96", "section": "sideboard"}
+            ],
+        }
+    },
+    "Mono B Devotion": {
+        "priority": 15,
+        "cards": {
+            "Banehound": [
+                {"qty": 4, "code": "WAR - 77", "section": "main"}
+            ],
+            "Chittering Rats": [
+                {"qty": 4, "code": "DST - 39", "section": "main"}
+            ],
+            "Cuombajj Witches": [
+                {"qty": 4, "code": "CH - 3", "section": "main"},
+            ],
+            "Gray Merchant of Asphodel": [
+                {"qty": 3, "code": "THB - 99", "section": "main"},
+            ],
+            "Phyrexian Rager": [
+                {"qty": 2, "code": "DMU - 99", "section": "main"},
+                {"qty": 2, "code": "JMP - 266", "section": "main"},
+            ],
+            "Seekers' Squire": [
+                {"qty": 2, "code": "2X2 - 87", "section": "main"},
+                {"qty": 2, "code": "XLN - 121", "section": "main"},
+            ],
+            "Thorn of the Black Rose": [
+                {"qty": 2, "code": "CMM - 190", "section": "main"},
+            ],
+            "Troll of Khazad-dûm": [
+                {"qty": 3, "code": "LTR - 111", "section": "main"},
+            ],
+            "Marshmist Titan": [
+                {"qty": 1, "code": "BNG - 76", "section": "main"},
+            ],
+            "Cast Down": [
+                {"qty": 3, "code": "2XM - 79", "section": "main"},
+            ],
+            "Eviscerator's Insight": [
+                {"qty": 1, "code": "MH3 - 93", "section": "main"},
+            ],
+            "Reckoner's Bargain": [
+                {"qty": 1, "code": "NEO - 120", "section": "main"},
+            ],
+            "Omen of the Dead": [
+                {"qty": 1, "code": "THB - 110", "section": "main"},
+            ],
+            "Derelict Attic // Widow's Walk": [
+                {"qty": 2, "code": "DSK - 93", "section": "main"},
+            ],
+            "Ill-Gotten Inheritance": [
+                {"qty": 2, "code": "J22 - 427", "section": "main"},
+            ],
+            "Blood Fountain": [
+                {"qty": 2, "code": "VOW - 95", "section": "main"},
+            ],
+            "Tithing Blade // Consuming Sepulcher": [
+                {"qty": 2, "code": "LCI - 128", "section": "main"},
+            ],
+            "Blood Fountain": [
+                {"qty": 2, "code": "SHM - 76", "section": "main"},
+            ],
+            "Swamp": [
+                {"qty": 16, "code": "M21 - 266", "section": "main"},
+            ],
+            "Witch's Cottage": [
+                {"qty": 1, "code": "ELD - 249", "section": "main"}
+            ],
+            "Boot Nipper": [
+                {"qty": 4, "code": "IKO - 76", "section": "sideboard"},
+            ],
+            "Grim Bauble": [
+                {"qty": 3, "code": "DFT - 88", "section": "sideboard"},
+            ],
+            "Trespasser's Curse": [
+                {"qty": 4, "code": "AKH - 112", "section": "sideboard"},
+            ],
+            "Bojuka Bog": [
+                {"qty": 2, "code": "BRC - 176", "section": "sideboard"},
+            ],
+            "Spinning Darkness": [
+                {"qty": 1, "code": "WL - 23", "section": "sideboard"},
+            ],
+            "Crypt Rats": [
+                {"qty": 1, "code": "MH1 - 84", "section": "sideboard"},
+            ],
+        }
+    },
+    "Mill Petitioners": {
+        "priority": 16,
+        "cards": {
+            "Forecasting Fortune Teller": [
+                {"qty": 2, "code": "TLA - 51", "section": "main"}
+            ],
+            "Generous Ent": [
+                {"qty": 4, "code": "LTR - 169", "section": "main"}
+            ],
+            "Glistener Seer": [
+                {"qty": 4, "code": "ONE - 54", "section": "main"},
+            ],
+            "Masked Vandal": [
+                {"qty": 4, "code": "KHM - 184", "section": "main"},
+            ],
+            "Mothdust Changeling": [
+                {"qty": 4, "code": "MOR - 42", "section": "main"},
+            ],
+            "Persistent Petitioners": [
+                {"qty": 11, "code": "RVR - 53", "section": "main"},
+            ],
+            "Pond Prophet": [
+                {"qty": 4, "code": "BLB - 229", "section": "main"},
+            ],
+            "Universal Automaton": [
+                {"qty": 2, "code": "MH1 - 235", "section": "main"},
+            ],
+            "Gnaw to the Bone": [
+                {"qty": 3, "code": "ISD - 183", "section": "main"},
+                {"qty": 1, "code": "ISD - 183", "section": "sideboard"},
+            ],
+            "Deep Analysis": [
+                {"qty": 1, "code": "DMR - 46", "section": "main"},
+            ],
+            "Lórien Revealed": [
+                {"qty": 1, "code": "LTR - 60", "section": "main"},
+            ],
+            "Winding Way": [
+                {"qty": 4, "code": "MH1 - 193", "section": "main"},
+            ],
+            "Seraph Sanctuary": [
+                {"qty": 4, "code": "AVR - 228", "section": "main"},
+            ],
+            "Tangled Islet": [
+                {"qty": 3, "code": "DMU - 258", "section": "main"},
+            ],
+            "Island": [
+                {"qty": 7, "code": "M19 - 268", "section": "main"},
+            ],
+            "Forest": [
+                {"qty": 2, "code": "ELD - 267", "section": "main"},
+            ],
+            "Faerie Macabre": [
+                {"qty": 3, "code": "SHM - 66", "section": "sideboard"}
+            ],
+            "Spellstutter Sprite": [
+                {"qty": 4, "code": "LRW - 89", "section": "sideboard"},
+            ],
+            "Blue Elemental Blast": [
+                {"qty": 3, "code": "4E - 63", "section": "sideboard"},
+            ],
+            "Dispel": [
+                {"qty": 1, "code": "RTR - 36", "section": "sideboard"}
+            ],
+            "Moment's Peace": [
+                {"qty": 1, "code": "OD - 251", "section": "sideboard"}
+            ],
+            "Vitalize": [
+                {"qty": 2, "code": "WL - 87", "section": "sideboard"},
+            ],
+        }
+    },
+    "Serpentine Energy": {
+        "priority": 17,
+        "cards": {
+            "Augur of Bolas": [
+                {"qty": 2, "code": "M13 - 43", "section": "main"}
+            ],
+            "Goblin Electromancer": [
+                {"qty": 4, "code": "GRN - 174", "section": "main"}
+            ],
+            "Brainstorm": [
+                {"qty": 2, "code": "IA - 61", "section": "main"},
+            ],
+            "Consider": [
+                {"qty": 4, "code": "MID - 44", "section": "main"},
+            ],
+            "Tune the Narrative": [
+                {"qty": 4, "code": "MH3 - 75", "section": "main"},
+            ],
+            "Galvanic Discharge": [
+                {"qty": 4, "code": "MH3 - 50", "section": "main"},
+            ],
+            "Aether Spike": [
+                {"qty": 4, "code": "BLB - 229", "section": "main"},
+            ],
+            "Fling": [
+                {"qty": 2, "code": "ELD - 126", "section": "main"},
+            ],
+            "Frantic Inventory": [
+                {"qty": 4, "code": "M21 - 50", "section": "main"},
+            ],
+            "Spell Pierce": [
+                {"qty": 2, "code": "ZEN - 67", "section": "main"},
+            ],
+            "Negate": [
+                {"qty": 1, "code": "STA - 18", "section": "main"},
+            ],
+            "Memory Lapse": [
+                {"qty": 2, "code": "MI - 74", "section": "main"},
+            ],
+            "Circular Logic": [
+                {"qty": 1, "code": "DMR - 42", "section": "main"},
+            ],
+            "Serpentine Curve": [
+                {"qty": 2, "code": "STX - 52", "section": "main"},
+            ],
+            "Lórien Revealed": [
+                {"qty": 4, "code": "LTR - 60", "section": "main"},
+            ],
+            "Pieces of the Puzzle": [
+                {"qty": 2, "code": "SOI - 78", "section": "main"},
+            ],
+            "Perilous Landscape": [
+                {"qty": 2, "code": "MH3 - 223", "section": "main"}
+            ],
+            "Volatile Fjord": [
+                {"qty": 2, "code": "KHM - 273", "section": "main"},
+            ],
+            "Snow-Covered Mountain": [
+                {"qty": 3, "code": "KHM - 282", "section": "main"},
+            ],
+            "Snow-Covered Island": [
+                {"qty": 6, "code": "KHM - 279", "section": "main"},
+                {"qty": 3, "code": "KHM - 278", "section": "main"},
+            ],
+            "Dispel": [
+                {"qty": 1, "code": "RTR - 36", "section": "sideboard"}
+            ],
+            "Annul": [
+                {"qty": 2, "code": "EOE - 46", "section": "sideboard"}
+            ],
+            "Hydroblast": [
+                {"qty": 2, "code": "IA - 72", "section": "sideboard"},
+            ],
+            "Pyroblast": [
+                {"qty": 3, "code": "IA - 213", "section": "sideboard"},
+            ],
+            "CSP,97": [
+                {"qty": 3, "code": "IA - 213", "section": "sideboard"},
+            ],
+            "End the Festivities": [
+                {"qty": 2, "code": "VOW - 155", "section": "sideboard"}
+            ],
+            "Steel Sabotage": [
+                {"qty": 2, "code": "MBS - 33", "section": "sideboard"},
+            ],
+        }
+    },
+    "Black Burn": {
+        "priority": 18,
+        "cards": {
+            "Serrated Scorpion": [
+                {"qty": 3, "code": "IKO - 99", "section": "main"},
+                {"qty": 1, "code": "IKO - 99", "section": "sideboard"},
+            ],
+            "Alms of the Vein": [
+                {"qty": 3, "code": "SOI - 98", "section": "main"},
+                {"qty": 1, "code": "SOI - 98", "section": "sideboard"},
+            ],
+            "Blightning": [
+                {"qty": 1, "code": "SALVAT_2011 - 12", "section": "main"},
+                {"qty": 3, "code": "ALA - 156", "section": "main"}
+            ],
+            "Bump in the Night": [
+                {"qty": 4, "code": "ISD - 92", "section": "main"},
+            ],
+            "Fruit of Tizerus": [
+                {"qty": 2, "code": "THB - 96", "section": "main"},
+            ],
+            "Risky Shortcut": [
+                {"qty": 3, "code": "DFT - 103", "section": "main"},
+            ],
+            "Soul Reap": [
+                {"qty": 2, "code": "EVE - 44", "section": "main"},
+                {"qty": 2, "code": "EVE - 44", "section": "sideboard"},
+            ],
+            "Sovereign's Bite": [
+                {"qty": 4, "code": "M19 - 120", "section": "main"},
+            ],
+            "Tyrant's Choice": [
+                {"qty": 4, "code": "CNS - 30", "section": "main"},
+            ],
+            "Vampire's Kiss": [
+                {"qty": 4, "code": "VOW - 136", "section": "main"},
+            ],
+            "Hopeless Nightmare": [
+                {"qty": 4, "code": "WOE - 95", "section": "main"},
+            ],
+            "Okiba Reckoner Raid // Nezumi Road Captain": [
+                {"qty": 4, "code": "NEO - 117", "section": "main"},
+            ],
+            "Jagged Barrens": [
+                {"qty": 4, "code": "OTJ - 259", "section": "main"},
+            ],
+            "Sunscorched Desert": [
+                {"qty": 4, "code": "AKH - 249", "section": "main"},
+            ],
+            "Rakdos Carnarium": [
+                {"qty": 4, "code": "C20 - 300", "section": "main"}
+            ],
+            "Swamp": [
+                {"qty": 7, "code": "ELD - 261", "section": "main"}
+            ],
+            "Trespasser's Curse": [
+                {"qty": 4, "code": "AKH - 112", "section": "sideboard"},
+            ],
+            "Cornered by Black Mages": [
+                {"qty": 3, "code": "FIN - 93", "section": "sideboard"},
+            ],
+            "Drown in Sorrow": [
+                {"qty": 3, "code": "CMM - 154", "section": "sideboard"},
+            ],
+            "Evincar's Justice": [
+                {"qty": 1, "code": "CMD - 80", "section": "sideboard"}
+            ],
+        }
+    },
+    "Caw Gates": {
+        "priority": 19,
+        "cards": {
+            "Guardian of the Guildpact": [
+                {"qty": 2, "code": "DIS - 10", "section": "main"},
+            ],
+            "Outlaw Medic": [
+                {"qty": 2, "code": "OTJ - 23", "section": "main"},
+            ],
+            "Sacred Cat": [
+                {"qty": 4, "code": "AKH - 27", "section": "main"},
+            ],
+            "Squadron Hawk": [
+                {"qty": 4, "code": "M11 - 33", "section": "main"},
+            ],
+            "Brainstorm": [
+                {"qty": 4, "code": "CSTD - 9", "section": "main"},
+            ],
+            "Cast Down": [
+                {"qty": 2, "code": "2XM - 79", "section": "main"},
+            ],
+            "Counterspell": [
+                {"qty": 4, "code": "CMM - 81", "section": "main"},
+            ],
+            "Dispel": [
+                {"qty": 1, "code": "RTR - 36", "section": "main"},
+                {"qty": 1, "code": "RTR - 36", "section": "sideboard"},
+            ],
+            "Prismatic Strands": [
+                {"qty": 3, "code": "JUD - 18", "section": "main"},
+            ],
+            "Suffocating Fumes": [
+                {"qty": 2, "code": "IKO - 100", "section": "main"},
+                {"qty": 1, "code": "IKO - 100", "section": "sideboard"},
+            ],
+            "Thraben Charm": [
+                {"qty": 2, "code": "MH3 - 45", "section": "main"},
+                {"qty": 1, "code": "MH3 - 45", "section": "sideboard"},
+            ],
+            "Lórien Revealed": [
+                {"qty": 3, "code": "LTR - 60", "section": "main"},
+            ],
+            "Journey to Nowhere": [
+                {"qty": 3, "code": "ZEN - 14", "section": "main"},
+            ],
+            "The Modern Age // Vector Glider": [
+                {"qty": 4, "code": "NEO - 66", "section": "main"},
+            ],
+            "Azorius Guildgate": [
+                {"qty": 1, "code": "RTR - 237", "section": "main"}
+            ],
+            "Basilisk Gate": [
+                {"qty": 4, "code": "M3C - 320", "section": "main"}
+            ],
+            "Citadel Gate": [
+                {"qty": 4, "code": "CLB - 349", "section": "main"},
+            ],
+            "Heap Gate": [
+                {"qty": 2, "code": "CLB - 354", "section": "main"},
+            ],
+            "Sea Gate": [
+                {"qty": 4, "code": "CLB - 359", "section": "main"},
+            ],
+            "Island": [
+                {"qty": 4, "code": "M20 - 266", "section": "main"}
+            ],
+            "Idyllic Beachfront": [
+                {"qty": 1, "code": "DMU - 249", "section": "main"}
+            ],
+            "Faerie Macabre": [
+                {"qty": 1, "code": "SHM - 66", "section": "sideboard"}
+            ],
+            "Dawnbringer Cleric": [
+                {"qty": 2, "code": "AFR - 9", "section": "sideboard"},
+            ],
+            "Essence Scatter": [
+                {"qty": 3, "code": "M19 - 54", "section": "sideboard"},
+            ],
+            "Hydroblast": [
+                {"qty": 3, "code": "IA - 72", "section": "sideboard"}
+            ],
+            "Dust to Dust": [
+                {"qty": 3, "code": "DK - 78", "section": "sideboard"}
+            ],
+        }
+    },
+    "Enchantments Prison": {
+        "priority": 20,
+        "cards": {
+            "Balemurk Leech": [
+                {"qty": 4, "code": "DSK - 84", "section": "main"},
+            ],
+            "Brine Giant": [
+                {"qty": 3, "code": "THB - 44", "section": "main"},
+            ],
+            "Dream Stalker": [
+                {"qty": 4, "code": "TSP - 58", "section": "main"},
+            ],
+            "Sea's Claim": [
+                {"qty": 4, "code": "ONS - 113", "section": "main"},
+            ],
+            "Evil Presence": [
+                {"qty": 4, "code": "NPH - 60", "section": "main"},
+            ],
+            "Weakstone's Subjugation": [
+                {"qty": 4, "code": "BRO - 72", "section": "main"},
+            ],
+            "Okiba Reckoner Raid // Nezumi Road Captain": [
+                {"qty": 4, "code": "NEO - 117", "section": "main"},
+            ],
+            "The Modern Age // Vector Glider": [
+                {"qty": 4, "code": "NEO - 66", "section": "main"},
+            ],
+            "Hopeless Nightmare": [
+                {"qty": 4, "code": "WOE - 95", "section": "main"},
+            ],
+            "Omen of the Sea": [
+                {"qty": 2, "code": "THB - 58", "section": "main"},
+            ],
+            "Derelict Attic // Widow's Walk": [
+                {"qty": 2, "code": "DSK - 93", "section": "main"},
+            ],
+            "Omen of the Dead": [
+                {"qty": 1, "code": "THB - 110", "section": "main"},
+            ],
+            "Clawing Torment": [
+                {"qty": 2, "code": "NEO - 91", "section": "main"},
+            ],
+            "Contaminated Landscape": [
+                {"qty": 4, "code": "MH3 - 218", "section": "main"}
+            ],
+            "Serpent's Pass": [
+                {"qty": 1, "code": "TLA - 279", "section": "main"}
+            ],
+            "Soured Springs": [
+                {"qty": 4, "code": "OTJ - 264", "section": "main"},
+            ],
+            "Swamp": [
+                {"qty": 6, "code": "ELD - 259", "section": "main"},
+            ],
+            "Island": [
+                {"qty": 3, "code": "C14 - 325", "section": "main"}
+            ],
+            "Annul": [
+                {"qty": 2, "code": "KHM - 42", "section": "sideboard"}
+            ],
+            "Fear of Lost Teeth": [
+                {"qty": 2, "code": "DSK - 97", "section": "sideboard"},
+            ],
+            "Spreading Seas": [
+                {"qty": 3, "code": "ZEN - 70", "section": "sideboard"},
+            ],
+            "Bind the Monster": [
+                {"qty": 3, "code": "KHM - 48", "section": "sideboard"}
+            ],
+            "Contaminated Ground": [
+                {"qty": 3, "code": "GTC - 59", "section": "sideboard"},
+            ],
+            "Dispel": [
+                {"qty": 2, "code": "RTR - 36", "section": "sideboard"}
+            ],
+        }
+    },
+    "Enchantments Aggro": {
+        "priority": 21,
+        "cards": {
+            "Balemurk Leech": [
+                {"qty": 4, "code": "DSK - 84", "section": "main"},
+            ],
+            "Fear of Lost Teeth": [
+                {"qty": 4, "code": "DSK - 97", "section": "main"},
+            ],
+            "Eagles of the North": [
+                {"qty": 1, "code": "TSP - 58", "section": "main"},
+            ],
+            "Slumbering Keepguard": [
+                {"qty": 4, "code": "WOE - 29", "section": "main"},
+            ],
+            "Spirited Companion": [
+                {"qty": 4, "code": "J25 - 256", "section": "main"},
+            ],
+            "Karametra's Blessing": [
+                {"qty": 4, "code": "THB - 26", "section": "main"},
+            ],
+            "Clawing Torment": [
+                {"qty": 3, "code": "NEO - 91", "section": "main"},
+            ],
+            "Derelict Attic // Widow's Walk": [
+                {"qty": 3, "code": "DSK - 93", "section": "main"},
+            ],
+            "Dog Umbra": [
+                {"qty": 2, "code": "MH3 - 22", "section": "main"},
+            ],
+            "Era of Enlightenment // Hand of Enlightenment": [
+                {"qty": 2, "code": "NEO - 11", "section": "main"},
+            ],
+            "Ethereal Armor": [
+                {"qty": 4, "code": "DSK - 7", "section": "main"},
+            ],
+            "Grand Entryway // Elegant Rotunda": [
+                {"qty": 3, "code": "DSK - 15", "section": "main"},
+            ],
+            "Okiba Reckoner Raid // Nezumi Road Captain": [
+                {"qty": 4, "code": "NEO - 117", "section": "main"},
+            ],
+            "Omen of the Dead": [
+                {"qty": 1, "code": "THB - 110", "section": "main"},
+                {"qty": 1, "code": "THB - 110", "section": "sideboard"},
+            ],
+            "Bojuka Bog": [
+                {"qty": 1, "code": "BRC - 176", "section": "main"},
+            ],
+            "Forlorn Flats": [
+                {"qty": 4, "code": "OTJ - 258", "section": "main"}
+            ],
+            "Snowfield Sinkhole": [
+                {"qty": 2, "code": "KHM - 276", "section": "main"},
+            ],
+            "Snow-Covered Plains": [
+                {"qty": 6, "code": "ELD - 259", "section": "main"},
+            ],
+            "Snow-Covered Swamp": [
+                {"qty": 4, "code": "KHM - 280", "section": "main"}
+            ],
+            "Hopeful Eidolon": [
+                {"qty": 4, "code": "THS - 19", "section": "sideboard"}
+            ],
+            "Duress": [
+                {"qty": 4, "code": "M10 - 96", "section": "sideboard"}
+            ],
+            "Trespasser's Curse": [
+                {"qty": 4, "code": "AKH - 112", "section": "sideboard"},
+            ],
+            "Dust to Dust": [
+                {"qty": 2, "code": "DK - 78", "section": "sideboard"}
             ],
         }
     },

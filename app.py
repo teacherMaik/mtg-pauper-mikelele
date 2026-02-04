@@ -5,7 +5,7 @@ import pandas as pd
 from data_manager import load_inventory, load_all_decks, load_battle_box
 
 # --- COMPONENT IMPORTS ---
-from decks_battle_box import render_decks_menu, render_decks_view
+from decks_battle_box import render_decks_menu
 from decks_stats import render_bb_stats_view
 from deck_details import render_deck_detail
 from inventory_full import render_inventory_stats_view
@@ -28,18 +28,13 @@ with st.sidebar:
     st.header('Decks')
     
     if st.button("My Battle Box", use_container_width=True, 
-                 type="primary" if current_view == "battle_box" else "secondary"):
+                 type="primary" if (current_view == "battle_box" or current_view.startswith("deck_")) else "secondary"):
         st.session_state.view = "battle_box"
         st.rerun()
 
     if st.button("Battle Box Stats", use_container_width=True, 
                  type="primary" if current_view == "battle_box_stats" else "secondary"):
         st.session_state.view = "battle_box_stats"
-        st.rerun()
-
-    if st.button("Test a Deck", use_container_width=True, 
-                 type="primary" if current_view == "test_deck" else "secondary"):
-        st.session_state.view = "test_deck"
         st.rerun()
 
     st.divider()
@@ -54,6 +49,7 @@ with st.sidebar:
                  type="primary" if current_view == "inventory_search" else "secondary"):
         st.session_state.view = "inventory_search"
         st.rerun()
+
 
 # --- HEADER ---
 if st.session_state.get('view', '').startswith("deck_"):
@@ -97,8 +93,6 @@ elif view.startswith("deck_"):
     render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box)
 elif view == "battle_box_stats":
     render_bb_stats_view(df_all_decks, df_battle_box)
-elif view == "test_deck":
-    render_deck_detail("Test Deck", df_inventory, df_all_decks)
 elif view == "inventory_stats":
     render_inventory_stats_view(df_inventory, df_all_decks)
 elif view == "inventory_search":

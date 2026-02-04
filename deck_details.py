@@ -11,28 +11,56 @@ def render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box):
     st.markdown(f"""
         <div style="line-height: 1.1;">
             <h2 style="margin: 0; padding: 3px; font-size: 2.2rem;">{deck_name}</h2>
-            <div style="font-size: 26px; font-weight: 700; color: #34495e; margin-top: padding: 3px;">
-                ~ ${deck_value:,.2f}
-            </div>
+            <h3 style="font-size: 26px; font-weight: 700; color: #34495e; margin-top: 0; padding: 0 0 7px;">~ ${deck_value:,.2f}</h3>
         </div>
     """, unsafe_allow_html=True)
 
-    deck_view_mode = st.radio(
+
+    """deck_view_mode = st.radio(
         "Select View:",
         ["Deck", "Analysis", "Test"],
         horizontal=True,
         label_visibility="collapsed"
+    )"""
+
+    # 3. INTERNAL NAVIGATION
+    if "deck_sub_view" not in st.session_state:
+        st.session_state.deck_sub_view = "Deck"
+
+    sub_view_options = {
+        "Deck": "Deck",
+        "Analysis": "Analysis", 
+        "test_deck": "Test"
+    }
+
+    # Use 'default' instead of 'value'
+    selected_label = st.segmented_control(
+        "Select View:",
+        options=list(sub_view_options.keys()),
+        format_func=lambda x: sub_view_options[x],
+        selection_mode="single",
+        default=st.session_state.deck_sub_view,
+        label_visibility="collapsed",
+        key="deck_internal_nav"
     )
+
+    # Sync state and rerun if changed
+    if selected_label and selected_label != st.session_state.deck_sub_view:
+        st.session_state.deck_sub_view = selected_label
+        st.rerun()
+
 
     st.divider()
 
     # --- VIEW ROUTING ---
-    if deck_view_mode == "Deck":
+    current_mode = st.session_state.deck_sub_view
+
+    if current_mode == "Deck":
         render_deck_list_view(deck_cards)
-    elif deck_view_mode == "Analysis":
+    elif current_mode == "Analysis":
         render_deck_stats_view(deck_cards)
-    elif deck_view_mode == "Test":
-        st.info("Test View - Coming next")
+    elif current_mode == "test_deck":
+        st.info("🧪 Playtest Mode - Shuffling logic will go here.")
 
 
 def render_deck_list_view(deck_cards):
