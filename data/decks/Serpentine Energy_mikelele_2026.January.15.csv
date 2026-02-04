@@ -1,0 +1,26 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Augur of Bolas,Creature - Merfolk Wizard,{1}{U},Uncommon,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2104019.jpg,2025-10-14 17:03:02 UTC,187183,d19fbfe6-69bb-452a-be3c-b9c625e23193
+4,Brainstorm,Instant,{U},Uncommon,$0.67,main,https://s.deckbox.org/system/images/mtg/cards/2296304.jpg,2025-10-14 17:04:17 UTC,631813,c14f8bce-d5b3-4d01-8346-8a4923ec03d9
+2,Breath Weapon,Instant,{2}{R},Common,$1.67,main,https://s.deckbox.org/system/images/mtg/cards/2028294.jpg,2025-10-14 17:05:11 UTC,273294,0174e40a-0ef5-4439-91e6-3fc39f482520
+4,Counterspell,Instant,{U}{U},Uncommon,$0.96,main,https://s.deckbox.org/system/images/mtg/cards/2296280.jpg,2025-10-14 17:04:52 UTC,633126,e1e48b21-1a4f-4708-a4b4-e2e296df924c
+1,Fling,Instant,{1}{R},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2105703.jpg,2025-10-14 17:05:30 UTC,199530,cb28fe03-8269-41de-b766-42c3421aeaef
+4,Frantic Inventory,Instant,{1}{U},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2109648.jpg,2025-10-14 17:05:12 UTC,215572,8f14abb0-0e9f-448e-85d7-6cb71f756c56
+4,Goblin Electromancer,Creature - Goblin Wizard,{U}{R},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2102670.jpg,2025-11-19 16:18:35 UTC,175583,0ae987da-e4b5-4b82-843c-6aaa87262fc8
+4,Lightning Bolt,Instant,{R},Uncommon,$0.45,main,https://s.deckbox.org/system/images/mtg/cards/2296316.jpg,2025-10-14 17:04:46 UTC,632180,e89794ab-6070-4916-936f-2b42fe41d31b
+4,Lórien Revealed,Sorcery,{3}{U}{U},Common,$3.03,main,https://s.deckbox.org/system/images/mtg/cards/2042712.jpg,2025-10-14 17:04:14 UTC,499960,0ce44270-a684-4489-9077-521456e6dfaa
+1,Lose Focus,Instant,{1}{U},Common,$0.14,main,https://s.deckbox.org/system/images/mtg/cards/2115476.jpg,2025-10-14 17:04:29 UTC,240145,985bdb0c-ce6c-4506-8163-76f3b2fdf5fb
+2,Perilous Landscape,Land,"",Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2291271.jpg,2025-10-14 17:03:48 UTC,624212,61fc78e0-d0db-4ecb-a29a-f1a437d7987c
+4,Pieces of the Puzzle,Sorcery,{2}{U},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2093496.jpg,2025-10-14 17:05:50 UTC,115911,69204c83-2e43-4ca1-a4cd-d75399a7d6dd
+4,Preordain,Sorcery,{U},Common,$0.86,main,https://s.deckbox.org/system/images/mtg/cards/2291049.jpg,2025-10-14 17:04:16 UTC,624170,dd29a0e5-c1de-4e8a-8866-715e9f9cde1f
+2,Serpentine Curve,Sorcery,{3}{U},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2114250.jpg,2025-10-14 17:02:19 UTC,235871,d651b9e9-d723-4340-a010-d71b2a697e73
+4,Skred,Instant,{R},Common,$1.41,main,https://s.deckbox.org/system/images/mtg/cards/2066969.jpg,2025-10-14 17:05:37 UTC,14113,b3d6d42a-7607-4361-acc4-7f3cb956bfc9
+9,Snow-Covered Island,Basic Snow Land - Island,"",Common,$0.83,main,https://s.deckbox.org/system/images/mtg/cards/2113359.jpg,2025-10-14 17:03:20 UTC,230148,3bfa5ebc-5623-4eec-89ea-dc187489ee4a
+3,Snow-Covered Mountain,Basic Snow Land - Mountain,"",Common,$0.46,main,https://s.deckbox.org/system/images/mtg/cards/2113364.jpg,2025-10-14 17:03:22 UTC,230103,f54aa46b-4b7c-4846-bf19-a289ed36c172
+4,Volatile Fjord,Snow Land - Island Mountain,"",Common,$0.66,main,https://s.deckbox.org/system/images/mtg/cards/2113354.jpg,2025-10-14 17:03:31 UTC,230112,f2392fbb-d9c4-4688-b99c-4e7614c60c12
+2,Annul,Instant,{U},Uncommon,$0.17,sideboard,https://s.deckbox.org/system/images/mtg/cards/2298814.jpg,2025-10-14 17:07:44 UTC,642435,4feeebea-aa55-4599-ab5a-4e41a54d0dfd
+2,Blue Elemental Blast,Instant,{U},Common,$0.60,sideboard,https://s.deckbox.org/system/images/mtg/cards/2073671.jpg,2025-10-14 17:09:51 UTC,1349,0892ec35-8bab-4fe5-8cc9-a25032d4bc8d
+3,Campfire,Artifact,{1},Common,$0.25,sideboard,https://s.deckbox.org/system/images/mtg/cards/2044499.jpg,2025-10-14 17:10:35 UTC,507225,34b64d10-c012-4370-b475-755c4025a348
+2,Cast into the Fire,Instant,{1}{R},Common,$0.55,sideboard,https://s.deckbox.org/system/images/mtg/cards/2042770.jpg,2025-10-14 17:10:11 UTC,498308,2ef878cb-27b6-47d8-ad11-bd20529b0e7e
+4,Red Elemental Blast,Instant,{R},Common,$4.92,sideboard,https://s.deckbox.org/system/images/mtg/cards/2073886.jpg,2025-10-14 17:09:50 UTC,1898,a54246c9-5e5c-484e-a546-ae1f9fd020f3
+2,Relic of Progenitus,Artifact,{1},Common,$4.89,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2025-10-14 17:10:57 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
+
