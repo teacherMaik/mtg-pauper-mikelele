@@ -159,8 +159,7 @@ LAND_DATA_MAP = {
     "North Pole Gates": {"mana": "UW", "tags": {"dual", "draw", "sacrifice", "tapped"}},
     "Omashu City": {"mana": "RG", "tags": {"dual", "draw", "sacrifice", "tapped"}},
     "Serpent's Pass": {"mana": "UB", "tags": {"dual", "draw", "sacrifice", "tapped"}},
-    "Sub-blessed Peak": {"mana": "RW", "tags": {"dual", "draw", "sacrifice", "tapped"}},
-
+    "Sun-blessed Peak": {"mana": "RW", "tags": {"dual", "draw", "sacrifice", "tapped"}},
     # Avatar Scry Fix
     "Rumble Arena": {"mana": "C", "tags": {"scry", "etb", "fixer"}},
 

@@ -1617,77 +1617,162 @@ decks_map = {
         }
     },
     "Moggwarts": {
-        "priority": 21,
+        "priority": 22,
         "cards": {
-            "Balemurk Leech": [
-                {"qty": 4, "code": "DSK - 84", "section": "main"},
+            "Dark-Dweller Oracle": [
+                {"qty": 1, "code": "M19 - 134", "section": "main"},
             ],
-            "Fear of Lost Teeth": [
-                {"qty": 4, "code": "DSK - 97", "section": "main"},
+            "Goblin Matron": [
+                {"qty": 4, "code": "UZ - 191", "section": "main"},
             ],
-            "Eagles of the North": [
-                {"qty": 1, "code": "TSP - 58", "section": "main"},
+            "Putrid Goblin": [
+                {"qty": 4, "code": "MH1 - 101", "section": "main"},
             ],
-            "Slumbering Keepguard": [
-                {"qty": 4, "code": "WOE - 29", "section": "main"},
+            "Skirk Prospector": [
+                {"qty": 4, "code": "DOM - 144", "section": "main"},
             ],
-            "Spirited Companion": [
-                {"qty": 4, "code": "J25 - 256", "section": "main"},
+            "Stormshriek Feral // Flush Out": [
+                {"qty": 4, "code": "TDM - 124", "section": "main"},
             ],
-            "Karametra's Blessing": [
-                {"qty": 4, "code": "THB - 26", "section": "main"},
+            "Eviscerator's Insight": [
+                {"qty": 4, "code": "MH3 - 93", "section": "main"},
             ],
-            "Clawing Torment": [
-                {"qty": 3, "code": "NEO - 91", "section": "main"},
-            ],
-            "Derelict Attic // Widow's Walk": [
-                {"qty": 3, "code": "DSK - 93", "section": "main"},
-            ],
-            "Dog Umbra": [
-                {"qty": 2, "code": "MH3 - 22", "section": "main"},
-            ],
-            "Era of Enlightenment // Hand of Enlightenment": [
-                {"qty": 2, "code": "NEO - 11", "section": "main"},
-            ],
-            "Ethereal Armor": [
-                {"qty": 4, "code": "DSK - 7", "section": "main"},
-            ],
-            "Grand Entryway // Elegant Rotunda": [
-                {"qty": 3, "code": "DSK - 15", "section": "main"},
-            ],
-            "Okiba Reckoner Raid // Nezumi Road Captain": [
-                {"qty": 4, "code": "NEO - 117", "section": "main"},
-            ],
-            "Omen of the Dead": [
-                {"qty": 1, "code": "THB - 110", "section": "main"},
-                {"qty": 1, "code": "THB - 110", "section": "sideboard"},
-            ],
-            "Bojuka Bog": [
-                {"qty": 1, "code": "BRC - 176", "section": "main"},
-            ],
-            "Forlorn Flats": [
-                {"qty": 4, "code": "OTJ - 258", "section": "main"}
-            ],
-            "Snowfield Sinkhole": [
-                {"qty": 2, "code": "KHM - 276", "section": "main"},
-            ],
-            "Snow-Covered Plains": [
-                {"qty": 6, "code": "ELD - 259", "section": "main"},
-            ],
-            "Snow-Covered Swamp": [
-                {"qty": 4, "code": "KHM - 280", "section": "main"}
-            ],
-            "Hopeful Eidolon": [
-                {"qty": 4, "code": "THS - 19", "section": "sideboard"}
+            "First Day of Class": [
+                {"qty": 4, "code": "STX - 102", "section": "main"},
             ],
             "Duress": [
-                {"qty": 4, "code": "M10 - 96", "section": "sideboard"}
+                {"qty": 3, "code": "M10 - 96", "section": "main"}
             ],
-            "Trespasser's Curse": [
-                {"qty": 4, "code": "AKH - 112", "section": "sideboard"},
+            "Unearth": [
+                {"qty": 4, "code": "2X2 - 96", "section": "main"},
             ],
-            "Dust to Dust": [
-                {"qty": 2, "code": "DK - 78", "section": "sideboard"}
+            "Chromatic Star": [
+                {"qty": 4, "code": "2XM - 239", "section": "main"},
+            ],
+            "Ichor Wellspring": [
+                {"qty": 4, "code": "2XM - 261", "section": "main"},
+            ],
+            "Makeshift Munitions": [
+                {"qty": 1, "code": "CMR - 191", "section": "main"},
+            ],
+            "Bojuka Bog": [
+                {"qty": 2, "code": "BRC - 176", "section": "main"},
+            ],
+            "Drossforge Bridge": [
+                {"qty": 4, "code": "MH2 - 246", "section": "main"},
+            ],
+            "Great Furnace": [
+                {"qty": 2, "code": "MRD - 282", "section": "main"}
+            ],
+            "Rakdos Carnarium": [
+                {"qty": 2, "code": "KHM - 280", "section": "main"}
+            ],
+            "Mountain": [
+                {"qty": 5, "code": "pass", "section": "main"}
+            ],
+            "Swamp": [
+                {"qty": 4, "code": "pass", "section": "main"}
+            ],
+            "Mesmeric Fiend": [
+                {"qty": 2, "code": "TOR - 69", "section": "sideboard"}
+            ],
+            "Abrade": [
+                {"qty": 2, "code": "VOW - 139", "section": "sideboard"},
+            ],
+            "Cast into the Fire": [
+                {"qty": 1, "code": "LTR - 118", "section": "sideboard"}
+            ],
+            "Pyroblast": [
+                {"qty": 3, "code": "IA - 213", "section": "sideboard"}
+            ],
+            "Divest": [
+                {"qty": 3, "code": "DOM - 87", "section": "sideboard"}
+            ],
+            "Introduction to Prophecy": [
+                {"qty": 2, "code": "STX - 4", "section": "sideboard"}
+            ],
+            "Nihil Spellbomb": [
+                {"qty": 2, "code": "SOM - 187", "section": "sideboard"},
+            ],
+        }
+    },
+    "Selesnya Affinity Weenie": {
+        "priority": 23,
+        "cards": {
+            "Arcbound Mouser": [
+                {"qty": 1, "code": "PLIST - 3", "section": "main"},
+            ],
+            "Arcbound Prototype": [
+                {"qty": 4, "code": "MH2 - 4", "section": "main"},
+            ],
+            "Ardent Recruit": [
+                {"qty": 4, "code": "MBS - 2", "section": "main"},
+            ],
+            "Auriok Sunchaser": [
+                {"qty": 4, "code": "SOM - 4", "section": "main"},
+            ],
+            "Court Homunculus": [
+                {"qty": 4, "code": "CON - 6", "section": "main"},
+            ],
+            "Gingerbrute": [
+                {"qty": 4, "code": "ELD - 219", "section": "main"},
+            ],
+            "Magitek Infantry": [
+                {"qty": 4, "code": "FIN,25", "section": "main"},
+            ],
+            "Myr Enforcer": [
+                {"qty": 3, "code": "M10 - 96", "section": "main"}
+            ],
+            "Unearth": [
+                {"qty": 4, "code": "2X2 - 96", "section": "main"},
+            ],
+            "Chromatic Star": [
+                {"qty": 4, "code": "2XM - 239", "section": "main"},
+            ],
+            "Ichor Wellspring": [
+                {"qty": 4, "code": "2XM - 261", "section": "main"},
+            ],
+            "Makeshift Munitions": [
+                {"qty": 1, "code": "CMR - 191", "section": "main"},
+            ],
+            "Bojuka Bog": [
+                {"qty": 2, "code": "BRC - 176", "section": "main"},
+            ],
+            "Drossforge Bridge": [
+                {"qty": 4, "code": "MH2 - 246", "section": "main"},
+            ],
+            "Great Furnace": [
+                {"qty": 2, "code": "MRD - 282", "section": "main"}
+            ],
+            "Rakdos Carnarium": [
+                {"qty": 2, "code": "KHM - 280", "section": "main"}
+            ],
+            "Mountain": [
+                {"qty": 5, "code": "pass", "section": "main"}
+            ],
+            "Swamp": [
+                {"qty": 4, "code": "pass", "section": "main"}
+            ],
+            "Mesmeric Fiend": [
+                {"qty": 2, "code": "TOR - 69", "section": "sideboard"}
+            ],
+            "Abrade": [
+                {"qty": 2, "code": "VOW - 139", "section": "sideboard"},
+            ],
+            "Cast into the Fire": [
+                {"qty": 1, "code": "LTR - 118", "section": "sideboard"}
+            ],
+            "Pyroblast": [
+                {"qty": 3, "code": "IA - 213", "section": "sideboard"}
+            ],
+            "Divest": [
+                {"qty": 3, "code": "DOM - 87", "section": "sideboard"}
+            ],
+            "Introduction to Prophecy": [
+                {"qty": 2, "code": "STX - 4", "section": "sideboard"}
+            ],
+            "Nihil Spellbomb": [
+                {"qty": 2, "code": "SOM - 187", "section": "sideboard"},
             ],
         }
     },
