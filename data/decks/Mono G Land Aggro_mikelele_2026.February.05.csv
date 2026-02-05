@@ -1,0 +1,24 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Bayou Groff,Creature - Plant Dog,{1}{G},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2114319.jpg,2025-05-11 07:51:23 UTC,235985,4a82b032-b1ba-456c-abab-c0f7430b0587
+4,Bequeathal,Enchantment - Aura,{G},Common,$0.50,main,https://s.deckbox.org/system/images/mtg/cards/2078949.jpg,2025-09-20 11:40:27 UTC,4296,20aae577-9683-4d9b-bfd5-52702b38d3a7
+4,Bountiful Landscape,Land,"",Common,$0.42,main,https://s.deckbox.org/system/images/mtg/cards/2291230.jpg,2026-02-05 14:28:44 UTC,624971,f1c99617-6e38-4af7-a064-6db9a5e2cc6a
+4,Brave the Wilds,Sorcery,{G},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2046201.jpg,2025-05-11 08:13:38 UTC,512716,821b9e86-d108-42e5-b642-c5e07ab16c37
+4,Flayer Husk,Artifact - Equipment,{1},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2083408.jpg,2026-02-05 14:29:51 UTC,39041,cbd47a02-5a6e-4daa-9877-f65c8639c569
+6,Forest,Basic Land - Forest,"",BasicLand,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2313158.jpg,2026-02-05 14:26:09 UTC,671047,b460f5f7-c7c9-400c-8419-23d614f45bf9
+1,Generous Ent,Creature - Treefolk,{5}{G},Common,$1.02,main,https://s.deckbox.org/system/images/mtg/cards/2042821.jpg,2026-02-05 13:39:46 UTC,498328,85d22d5d-3875-42ff-b51e-c6e21db201f5
+2,Hamlet Glutton,Creature - Giant,{5}{G}{G},Common,$0.04,main,https://s.deckbox.org/system/images/mtg/cards/2046209.jpg,2026-02-05 14:28:50 UTC,513929,a4ec5544-c138-44bb-a807-5798313c9a50
+4,Hooting Mandrills,Creature - Ape,{5}{G},Common,$0.14,main,https://s.deckbox.org/system/images/mtg/cards/2090086.jpg,2025-09-20 10:51:22 UTC,93026,090d678c-f0e4-4757-8900-93dfe67aefe9
+3,Horrific Assault,Sorcery,{G},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2056556.jpg,2026-02-05 13:48:57 UTC,553322,cfa6ed13-7bba-40c0-8e0e-4ffd3cea6241
+4,Implement of Ferocity,Artifact,{1},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2095584.jpg,2025-05-11 08:21:00 UTC,126410,bcdee084-0d1a-486a-8361-680d394a5e23
+4,Khalni Garden,Land,"",Common,$0.80,main,https://s.deckbox.org/system/images/mtg/cards/2081898.jpg,2025-05-11 08:19:25 UTC,34391,1cc6a5e6-0b73-4488-8954-4b168ce7106d
+4,Malevolent Rumble,Sorcery,{1}{G},Common,$0.41,main,https://s.deckbox.org/system/images/mtg/cards/2056560.jpg,2025-05-11 08:13:48 UTC,553328,a178cfe8-f9fa-4255-88d0-54a0bed079f5
+4,Nest Invader,Creature - Eldrazi Drone,{1}{G},Common,$0.29,main,https://s.deckbox.org/system/images/mtg/cards/2082334.jpg,2026-02-05 13:38:21 UTC,34895,24517d9c-6cde-41e8-9e82-ee73f069379a
+4,Rancor,Enchantment - Aura,{G},Uncommon,$0.78,main,https://s.deckbox.org/system/images/mtg/cards/2085601.jpg,2025-05-11 08:14:41 UTC,59810,b982558f-5b82-4918-9b54-c7ac1e6f8da5
+4,Tree of Tales,Artifact Land,"",Common,$0.83,main,https://s.deckbox.org/system/images/mtg/cards/2077819.jpg,2025-05-11 08:18:48 UTC,11309,94db07aa-43d3-41b5-924e-60f1756b9c69
+1,Feed the Clan,Instant,{1}{G},Common,$0.14,sideboard,https://s.deckbox.org/system/images/mtg/cards/2090073.jpg,2025-05-16 07:15:40 UTC,93242,52f7c53d-0b53-400f-aa67-967547f3e394
+4,Healer of the Glade,Creature - Elemental,{G},Common,$0.09,sideboard,https://s.deckbox.org/system/images/mtg/cards/2104809.jpg,2025-05-16 07:14:57 UTC,192910,cbe262f2-e35b-4c85-938d-3e9e9c764c1b
+3,Ram Through,Instant,{1}{G},Common,$0.36,sideboard,https://s.deckbox.org/system/images/mtg/cards/2108946.jpg,2026-02-05 14:29:16 UTC,212717,ac0b24e7-14e7-45ee-b5d8-bdb8674b669c
+3,Relic of Progenitus,Artifact,{1},Common,$4.82,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2025-05-16 07:15:04 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
+3,Troublemaker Ouphe,Creature - Ouphe,{1}{G},Common,$0.11,sideboard,https://s.deckbox.org/system/images/mtg/cards/2046230.jpg,2026-02-05 13:38:29 UTC,512310,7f7b2fc0-d3f6-4c4d-a163-986a372e5b12
+1,Voracious Typhon,Creature - Snake Beast,{2}{G}{G},Common,$0.02,sideboard,https://s.deckbox.org/system/images/mtg/cards/2108158.jpg,2026-02-05 14:29:06 UTC,207102,efa2bccb-0e01-4629-b9a8-5c0ea26239b3
+

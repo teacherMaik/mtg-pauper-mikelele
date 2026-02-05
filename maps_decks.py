@@ -465,7 +465,7 @@ decks_map = {
                 {"qty": 1, "code": "AFR - 9", "section": "main"},
             ],
             "Eagles of the North": [
-                {"qty": 2, "code": "LTR - 7", "section": "main"},
+                {"qty": 1, "code": "LTR - 7", "section": "main"},
             ],
             "Kor Skyfisher": [
                 {"qty": 4, "code": "ZEN - 23", "section": "main"},
@@ -536,10 +536,106 @@ decks_map = {
             "Standard Bearer": [
                 {"qty": 2, "code": "AP - 18", "section": "sideboard"}
             ],
+            "Dust to Dust": [
+                {"qty": 4, "code": "DK - 78", "section": "sideboard"}
+            ],
+        }
+    },
+    "Grixis Affinity": {
+        "priority": 8,
+        "cards": {
+            "Krark-Clan Shaman": [
+                {"qty": 3, "code": "MRD - 98", "section": "main"},
+            ],
+            "Gearseeker Serpent": [
+                {"qty": 1, "code": "KLD - 48", "section": "main"},
+            ],
+            "Myr Enforcer": [
+                {"qty": 4, "code": "MMA - 209", "section": "main"}
+            ],
+            "Refurbished Familiar": [
+                {"qty": 4, "code": "MH3 - 105", "section": "main"},
+            ],
+            "Eviscerator's Insight": [
+                {"qty": 1, "code": "MH3 - 93", "section": "main"},
+            ],
+            "Galvanic Blast": [
+                {"qty": 4, "code": "SOM - 91", "section": "main"},
+            ],
+            "Reckoner's Bargain": [
+                {"qty": 4, "code": "NEO - 120", "section": "main"},
+            ],
+            "Toxin Analysis": [
+                {"qty": 2, "code": "MKM - 107", "section": "main"},
+                {"qty": 1, "code": "MKM - 107", "section": "sideboard"},
+            ],
+            "Thoughtcast": [
+                {"qty": 4, "code": "DDF - 71", "section": "main"},
+            ],
+            "Black Mage's Rod": [
+                {"qty": 3, "code": "FIN - 90", "section": "main"},
+            ],
+            "Blood Fountain": [
+                {"qty": 2, "code": "VOW - 95", "section": "main"},
+            ],
+            "Cryogen Relic": [
+                {"qty": 1, "code": "EOE - 52", "section": "main"},
+            ],
+            "Hunter's Blowgun": [
+                {"qty": 1, "code": "LCI - 255", "section": "main"},
+            ],
+            "Ichor Wellspring": [
+                {"qty": 4, "code": "2XM - 261", "section": "main"},
+            ],
+            "Nihil Spellbomb": [
+                {"qty": 2, "code": "SOM - 187", "section": "main"},
+            ],
+            "Makeshift Munitions": [
+                {"qty": 1, "code": "CMR - 191", "section": "main"},
+            ],
+            "Drossforge Bridge": [
+                {"qty": 4, "code": "MH2 - 246", "section": "main"},
+            ],
+            "Great Furnace": [
+                {"qty": 3, "code": "EOC - 161", "section": "main"}
+            ],
+            "Mistvault Bridge": [
+                {"qty": 4, "code": "MH2 - 249", "section": "main"},
+            ],
+            "Seat of the Synod": [
+                {"qty": 2, "code": "DDU - 69", "section": "main"},
+            ],
+            "Silverbluff Bridge": [
+                {"qty": 2, "code": "MH2 - 255", "section": "main"},
+            ],
+            "Vault of Whispers": [
+                {"qty": 3, "code": "MRD - 286", "section": "main"}
+            ],
+            "Swamp": [
+                {"qty": 1, "code": "MOM - 287", "section": "main"},
+            ],
+            "Gorilla Shaman": [
+                {"qty": 2, "code": "AL - 106", "section": "sideboard"},
+            ],
+            "Fiery Cannonade": [
+                {"qty": 2, "code": "XLN - 143", "section": "sideboard"}
+            ],
+            "Hydroblast": [
+                {"qty": 3, "code": "IA - 72", "section": "sideboard"}
+            ],
+            "Metallic Rebuke": [
+                {"qty": 3, "code": "AER - 39", "section": "sideboard"}
+            ],
+            "Pyroblast": [
+                {"qty": 2, "code": "IA - 213", "section": "sideboard"}
+            ],
+            "Tithing Blade // Consuming Sepulcher": [
+                {"qty": 2, "code": "LCI - 128", "section": "sideboard"},
+            ],
         }
     },
     "Ruby Storm": {
-        "priority": 8,
+        "priority": 9,
         "cards": {
             "Goblin Anarchomancer": [
                 {"qty": 4, "code": "MH2_E - 421", "section": "main"},
@@ -622,7 +718,7 @@ decks_map = {
         }
     },
     "Slivers": {
-        "priority": 9,
+        "priority": 10,
         "cards": {
             "Bladeback Sliver": [
                 {"qty": 1, "code": "MH1 - 119", "section": "main"},
@@ -712,7 +808,7 @@ decks_map = {
         }
     },
     "Mono R Rally": {
-        "priority": 10,
+        "priority": 11,
         "cards": {
             "Burning-Tree Emissary": [
                 {"qty": 4, "code": "2X2 - 189", "section": "main"},
@@ -774,7 +870,7 @@ decks_map = {
         }
     },
     "Mono R Madness": {
-        "priority": 11,
+        "priority": 12,
         "cards": {
             "Guttersnipe": [
                 {"qty": 3, "code": "RVR - 110", "section": "main"},
@@ -830,7 +926,7 @@ decks_map = {
         }
     },
     "Rakdos Madness": {
-        "priority": 12,
+        "priority": 13,
         "cards": {
             "Kitchen Imp": [
                 {"qty": 4, "code": "MH2 - 89", "section": "main"},
@@ -907,7 +1003,7 @@ decks_map = {
         }
     },
     "Mono B Sac": {
-        "priority": 13,
+        "priority": 14,
         "cards": {
             "Accursed Marauder": [
                 {"qty": 2, "code": "MH3 - 80", "section": "main"},
@@ -986,7 +1082,7 @@ decks_map = {
         }
     },
     "Mono B Zombies": {
-        "priority": 14,
+        "priority": 15,
         "cards": {
             "Accursed Marauder": [
                 {"qty": 2, "code": "MH3 - 80", "section": "main"},
@@ -1066,7 +1162,7 @@ decks_map = {
         }
     },
     "Mono B Devotion": {
-        "priority": 15,
+        "priority": 16,
         "cards": {
             "Banehound": [
                 {"qty": 4, "code": "WAR - 77", "section": "main"}
@@ -1151,7 +1247,7 @@ decks_map = {
         }
     },
     "Mill Petitioners": {
-        "priority": 16,
+        "priority": 17,
         "cards": {
             "Forecasting Fortune Teller": [
                 {"qty": 2, "code": "TLA - 51", "section": "main"}
@@ -1223,7 +1319,7 @@ decks_map = {
         }
     },
     "Serpentine Energy": {
-        "priority": 17,
+        "priority": 18,
         "cards": {
             "Augur of Bolas": [
                 {"qty": 2, "code": "M13 - 43", "section": "main"}
@@ -1310,7 +1406,7 @@ decks_map = {
         }
     },
     "Black Burn": {
-        "priority": 18,
+        "priority": 19,
         "cards": {
             "Serrated Scorpion": [
                 {"qty": 3, "code": "IKO - 99", "section": "main"},
@@ -1379,7 +1475,7 @@ decks_map = {
         }
     },
     "Caw Gates": {
-        "priority": 19,
+        "priority": 20,
         "cards": {
             "Guardian of the Guildpact": [
                 {"qty": 2, "code": "DIS - 10", "section": "main"},
@@ -1465,7 +1561,7 @@ decks_map = {
         }
     },
     "Enchantments Prison": {
-        "priority": 20,
+        "priority": 21,
         "cards": {
             "Balemurk Leech": [
                 {"qty": 4, "code": "DSK - 84", "section": "main"},
@@ -1542,7 +1638,7 @@ decks_map = {
         }
     },
     "Enchantments Aggro": {
-        "priority": 21,
+        "priority": 22,
         "cards": {
             "Balemurk Leech": [
                 {"qty": 4, "code": "DSK - 84", "section": "main"},
@@ -1617,13 +1713,16 @@ decks_map = {
         }
     },
     "Moggwarts": {
-        "priority": 22,
+        "priority": 23,
         "cards": {
             "Dark-Dweller Oracle": [
                 {"qty": 1, "code": "M19 - 134", "section": "main"},
             ],
             "Goblin Matron": [
-                {"qty": 4, "code": "UZ - 191", "section": "main"},
+                {"qty": 3, "code": "UZ - 191", "section": "main"},
+            ],
+            "Impulsive Pilferer": [
+                {"qty": 4, "code": "CMM - 234", "section": "main"},
             ],
             "Putrid Goblin": [
                 {"qty": 4, "code": "MH1 - 101", "section": "main"},
@@ -1632,19 +1731,25 @@ decks_map = {
                 {"qty": 4, "code": "DOM - 144", "section": "main"},
             ],
             "Stormshriek Feral // Flush Out": [
-                {"qty": 4, "code": "TDM - 124", "section": "main"},
+                {"qty": 1, "code": "TDM - 124", "section": "main"},
+            ],
+            "Demand Answers": [
+                {"qty": 2, "code": "MKM - 122", "section": "main"},
             ],
             "Eviscerator's Insight": [
-                {"qty": 4, "code": "MH3 - 93", "section": "main"},
+                {"qty": 2, "code": "MH3 - 93", "section": "main"},
             ],
             "First Day of Class": [
                 {"qty": 4, "code": "STX - 102", "section": "main"},
             ],
-            "Duress": [
-                {"qty": 3, "code": "M10 - 96", "section": "main"}
+            "Manamorphose": [
+                {"qty": 3, "code": "SHM - 211", "section": "main"},
+            ],
+            "Temporal Intervention": [
+                {"qty": 3, "code": "EOE - 120", "section": "main"}
             ],
             "Unearth": [
-                {"qty": 4, "code": "2X2 - 96", "section": "main"},
+                {"qty": 3, "code": "2X2 - 96", "section": "main"},
             ],
             "Chromatic Star": [
                 {"qty": 4, "code": "2XM - 239", "section": "main"},
@@ -1655,23 +1760,22 @@ decks_map = {
             "Makeshift Munitions": [
                 {"qty": 1, "code": "CMR - 191", "section": "main"},
             ],
-            "Bojuka Bog": [
-                {"qty": 2, "code": "BRC - 176", "section": "main"},
-            ],
             "Drossforge Bridge": [
                 {"qty": 4, "code": "MH2 - 246", "section": "main"},
             ],
-            "Great Furnace": [
-                {"qty": 2, "code": "MRD - 282", "section": "main"}
+            "Shattered Landscape": [
+                {"qty": 3, "code": "MH3 - 226", "section": "main"},
             ],
-            "Rakdos Carnarium": [
-                {"qty": 2, "code": "KHM - 280", "section": "main"}
+            "Great Furnace": [
+                {"qty": 2, "code": "MRD - 282", "section": "main"},
             ],
             "Mountain": [
-                {"qty": 5, "code": "pass", "section": "main"}
+                {"qty": 3, "code": "VOW - 274", "section": "main"},
+                {"qty": 2, "code": "VOW - 275", "section": "main"},
             ],
             "Swamp": [
-                {"qty": 4, "code": "pass", "section": "main"}
+                {"qty": 1, "code": "VOW - 272", "section": "main"},
+                {"qty": 2, "code": "VOW - 273", "section": "main"},
             ],
             "Mesmeric Fiend": [
                 {"qty": 2, "code": "TOR - 69", "section": "sideboard"}
@@ -1697,10 +1801,10 @@ decks_map = {
         }
     },
     "Selesnya Affinity Weenie": {
-        "priority": 23,
+        "priority": 24,
         "cards": {
             "Arcbound Mouser": [
-                {"qty": 1, "code": "PLIST - 3", "section": "main"},
+                {"qty": 4, "code": "PLIST - 3", "section": "main"},
             ],
             "Arcbound Prototype": [
                 {"qty": 4, "code": "MH2 - 4", "section": "main"},
@@ -1709,71 +1813,406 @@ decks_map = {
                 {"qty": 4, "code": "MBS - 2", "section": "main"},
             ],
             "Auriok Sunchaser": [
-                {"qty": 4, "code": "SOM - 4", "section": "main"},
+                {"qty": 3, "code": "SOM - 4", "section": "main"},
             ],
             "Court Homunculus": [
                 {"qty": 4, "code": "CON - 6", "section": "main"},
+            ],
+            "Eagles of the North": [
+                {"qty": 1, "code": "LTR - 7", "section": "main"},
             ],
             "Gingerbrute": [
                 {"qty": 4, "code": "ELD - 219", "section": "main"},
             ],
             "Magitek Infantry": [
-                {"qty": 4, "code": "FIN,25", "section": "main"},
+                {"qty": 4, "code": "FIN - 25", "section": "main"},
             ],
             "Myr Enforcer": [
-                {"qty": 3, "code": "M10 - 96", "section": "main"}
+                {"qty": 2, "code": "MMA - 209", "section": "main"}
             ],
-            "Unearth": [
-                {"qty": 4, "code": "2X2 - 96", "section": "main"},
+            "Thraben Inspector": [
+                {"qty": 3, "code": "CMM - 66", "section": "main"},
+                {"qty": 1, "code": "CMM - 66", "section": "sideboard"},
             ],
-            "Chromatic Star": [
-                {"qty": 4, "code": "2XM - 239", "section": "main"},
+            "Thraben Charm": [
+                {"qty": 4, "code": "MH3 - 45", "section": "main"},
             ],
-            "Ichor Wellspring": [
-                {"qty": 4, "code": "2XM - 261", "section": "main"},
+            "Lead the Stampede": [
+                {"qty": 3, "code": "MBS - 82", "section": "main"},
             ],
-            "Makeshift Munitions": [
-                {"qty": 1, "code": "CMR - 191", "section": "main"},
+            "Survivors' Bond": [
+                {"qty": 1, "code": "IKO - 172", "section": "main"},
+                {"qty": 1, "code": "IKO - 172", "section": "sideboard"},
             ],
-            "Bojuka Bog": [
-                {"qty": 2, "code": "BRC - 176", "section": "main"},
+            "Winding Way": [
+                {"qty": 1, "code": "MH1 - 193", "section": "main"},
+                {"qty": 1, "code": "MH1 - 193", "section": "sideboard"},
             ],
-            "Drossforge Bridge": [
-                {"qty": 4, "code": "MH2 - 246", "section": "main"},
+            "Greatsword of Tyr": [
+                {"qty": 1, "code": "CLB - 22", "section": "main"},
             ],
-            "Great Furnace": [
-                {"qty": 2, "code": "MRD - 282", "section": "main"}
+            "Thornglint Bridge": [
+                {"qty": 4, "code": "MH2 - 258", "section": "main"},
             ],
-            "Rakdos Carnarium": [
-                {"qty": 2, "code": "KHM - 280", "section": "main"}
+            "Ancient Den": [
+                {"qty": 4, "code": "MRD - 278", "section": "main"},
+            ],
+            "Tree of Tales": [
+                {"qty": 2, "code": "MRD - 285", "section": "main"},
+            ],
+            "Plains": [
+                {"qty": 7, "code": "MOM - 277", "section": "main"},
+                {"qty": 1, "code": "MOM - 277", "section": "sideboard"},
+            ],
+            "Dust to Dust": [
+                {"qty": 3, "code": "DK - 78", "section": "sideboard"},
+            ],
+            "Dauntless Unity": [
+                {"qty": 1, "code": "ZNR - 9", "section": "sideboard"},
+            ],
+            "You Hear Something on Watch": [
+                {"qty": 2, "code": "AFR - 42", "section": "sideboard"}
+            ]
+        }
+    },
+    "Gruul Landfall": {
+        "priority": 25,
+        "cards": {
+            "Akoum Hellhound": [
+                {"qty": 4, "code": "ZNR - 133", "section": "main"},
+            ],
+            "Nest Invader": [
+                {"qty": 2, "code": "ROE - 201", "section": "main"},
+            ],
+            "Plated Geopede": [
+                {"qty": 4, "code": "ZEN - 141", "section": "main"},
+            ],
+            "Sabotender": [
+                {"qty": 4, "code": "FIN - 153", "section": "main"},
+            ],
+            "Tilling Treefolk": [
+                {"qty": 3, "code": "EVE - 78", "section": "main"},
+            ],
+            "Writhing Chrysalis": [
+                {"qty": 4, "code": "MH3 - 208", "section": "main"},
+            ],
+            "Apostle's Blessing": [
+                {"qty": 2, "code": "MM2 - 8", "section": "main"},
+            ],
+            "Crop Rotation": [
+                {"qty": 4, "code": "GU - 98", "section": "main"},
+            ],
+            "Lightning Bolt": [
+                {"qty": 1, "code": "3E - 161", "section": "main"},
+                {"qty": 1, "code": "4E - 226", "section": "main"},
+            ],
+            "Temur Battle Rage": [
+                {"qty": 2, "code": "2XM - 146", "section": "main"},
+            ],
+            "Adventuring Gear": [
+                {"qty": 4, "code": "ZEN - 195", "section": "main"},
+            ],
+            "Escape Tunnel": [
+                {"qty": 4, "code": "MKM - 261", "section": "main"},
+            ],
+            "Forest": [
+                {"qty": 3, "code": "ZNR - 280", "section": "main"},
+                {"qty": 1, "code": "ZNR - 278", "section": "main"},
             ],
             "Mountain": [
-                {"qty": 5, "code": "pass", "section": "main"}
+                {"qty": 3, "code": "ZNR - 276", "section": "main"},
+                {"qty": 4, "code": "ZNR - 277", "section": "main"},
             ],
-            "Swamp": [
-                {"qty": 4, "code": "pass", "section": "main"}
+            "Sejiri Steppe": [
+                {"qty": 1, "code": "WWK - 142", "section": "main"},
             ],
-            "Mesmeric Fiend": [
-                {"qty": 2, "code": "TOR - 69", "section": "sideboard"}
+            "Gruul Turf": [
+                {"qty": 1, "code": "MM2 - 244", "section": "main"},
             ],
-            "Abrade": [
-                {"qty": 2, "code": "VOW - 139", "section": "sideboard"},
+            "Twisted Landscape": [
+                {"qty": 4, "code": "MH3 - 232", "section": "main"},
+            ],
+            "Sheltering Landscape": [
+                {"qty": 4, "code": "MH3 - 227", "section": "main"},
+            ],
+            "Healer of the Glade": [
+                {"qty": 2, "code": "M20 - 176", "section": "sideboard"},
             ],
             "Cast into the Fire": [
-                {"qty": 1, "code": "LTR - 118", "section": "sideboard"}
+                {"qty": 3, "code": "LTR - 118", "section": "sideboard"}
             ],
-            "Pyroblast": [
-                {"qty": 3, "code": "IA - 213", "section": "sideboard"}
+            "Red Elemental Blast": [
+                {"qty": 4, "code": "3E - 170", "section": "sideboard"}
             ],
-            "Divest": [
-                {"qty": 3, "code": "DOM - 87", "section": "sideboard"}
+            "Weather the Storm": [
+                {"qty": 2, "code": "H1R - 24", "section": "sideboard"},
             ],
-            "Introduction to Prophecy": [
-                {"qty": 2, "code": "STX - 4", "section": "sideboard"}
+            "Relic of Progenitus": [
+                {"qty": 3, "code": "ALA - 218", "section": "sideboard"}
             ],
-            "Nihil Spellbomb": [
-                {"qty": 2, "code": "SOM - 187", "section": "sideboard"},
+            "Bojuka Bog": [
+                {"qty": 1, "code": "BRC - 176", "section": "sideboard"},
             ],
+        }
+    },
+    "Hot Dogs": {
+        "priority": 26,
+        "cards": {
+            "Festival Crasher": [
+                {"qty": 4, "code": "DBL - 140", "section": "main"},
+            ],
+            "Kiln Fiend": [
+                {"qty": 4, "code": "ROE - 153", "section": "main"},
+            ],
+            "Simian Spirit Guide": [
+                {"qty": 4, "code": "TSR - 190", "section": "main"},
+            ],
+            "Apostle's Blessing": [
+                {"qty": 3, "code": "NPH - 2", "section": "main"},
+                {"qty": 1, "code": "NPH - 2", "section": "sideboard"},
+            ],
+            "Expedite": [
+                {"qty": 4, "code": "OGW - 108", "section": "main"},
+            ],
+            "Manamorphose": [
+                {"qty": 4, "code": "SHM - 211", "section": "main"},
+            ],
+            "Mutagenic Growth": [
+                {"qty": 4, "code": "NPH - 116", "section": "main"},
+            ],
+            "Temur Battle Rage": [
+                {"qty": 4, "code": "FRF - 116", "section": "main"},
+            ],
+            "Ancestral Anger": [
+                {"qty": 4, "code": "VOW - 142", "section": "main"},
+            ],
+            "Assault Strobe": [
+                {"qty": 1, "code": "SOM - 82", "section": "main"},
+            ],
+            "Faithless Looting": [
+                {"qty": 2, "code": "CM2 - 96", "section": "main"},
+                {"qty": 1, "code": "C19 - 140", "section": "main"},
+            ],
+            "Reckless Charge": [
+                {"qty": 1, "code": "MH1 - 144", "section": "main"},
+            ],
+            "Rite of Flame": [
+                {"qty": 4, "code": "CSP - 96", "section": "main"},
+            ],
+            "Mountain": [
+                {"qty": 6, "code": "DDG - 78", "section": "main"},
+                {"qty": 10, "code": "DDG - 79", "section": "main"},
+            ],
+            "Immolating Souleater": [
+                {"qty": 4, "code": "NPH - 139", "section": "sideboard"}
+            ],
+            "Raze the Effigy": [
+                {"qty": 4, "code": "MID - 156", "section": "sideboard"}
+            ],
+            "Renegade Tactics": [
+                {"qty": 2, "code": "KLD - 127", "section": "sideboard"}
+            ],
+            "Lava Dart": [
+                {"qty": 4, "code": "MH1 - 134", "section": "sideboard"}
+            ],
+        }
+    },
+    "Mono G Devotion": {
+        "priority": 27,
+        "cards": {
+            "Arbor Elf": [
+                {"qty": 4, "code": "WWK - 95", "section": "main"},
+            ],
+            "Gallant Citizen": [
+                {"qty": 4, "code": "SPM - 129", "section": "main"},
+            ],
+            "Garruk's Companion": [
+                {"qty": 4, "code": "M12 - 175", "section": "main"},
+            ],
+            "Jewel Thief": [
+                {"qty": 4, "code": "SNC - 151", "section": "main"},
+            ],
+            "Nylea's Huntmaster": [
+                {"qty": 4, "code": "THB - 187", "section": "main"},
+            ],
+            "Nyxborn Hydra": [
+                {"qty": 4, "code": "MH3 - 164", "section": "main"},
+            ],
+            "Pond Prophet": [
+                {"qty": 4, "code": "BLB - 229", "section": "main"},
+            ],
+            "Aspect of Hydra": [
+                {"qty": 4, "code": "BNG - 117", "section": "main"},
+            ],
+            "Ram Through": [
+                {"qty": 2, "code": "CMM - 314", "section": "main"},
+                {"qty": 2, "code": "CMM - 314", "section": "sideboard"},
+            ],
+            "Winding Way": [
+                {"qty": 2, "code": "MH1 - 193", "section": "main"},
+            ],
+            "Utopia Sprawl": [
+                {"qty": 4, "code": "AFC - 172", "section": "main"},
+            ],
+            "Wild Growth": [
+                {"qty": 4, "code": "IA - 165", "section": "main"},
+            ],
+            "Forest": [
+                {"qty": 16, "code": "ELD - 267", "section": "main"},
+            ],
+            "Nylea's Disciple": [
+                {"qty": 4, "code": "THS - 167", "section": "sideboard"}
+            ],
+            "Shinen of Life's Roar": [
+                {"qty": 1, "code": "SOK - 149", "section": "sideboard"}
+            ],
+            "Tamiyo's Safekeeping": [
+                {"qty": 4, "code": "NEO - 211", "section": "sideboard"}
+            ],
+            "Weather the Storm": [
+                {"qty": 2, "code": "H1R - 24", "section": "sideboard"},
+            ],
+            "Tormod's Crypt ": [
+                {"qty": 2, "code": "DK - 109", "section": "sideboard"},
+            ],
+        }
+    },
+    "Mono G Land Aggro": {
+        "priority": 28,
+        "cards": {
+            "Bayou Groff": [
+                {"qty": 4, "code": "STX - 121", "section": "main"},
+            ],
+            "Generous Ent": [
+                {"qty": 1, "code": "LTR - 169", "section": "main"},
+            ],
+            "Hooting Mandrills": [
+                {"qty": 4, "code": "KTK - 137", "section": "main"},
+            ],
+            "Nest Invader": [
+                {"qty": 4, "code": "MM2 - 150", "section": "main"},
+            ],
+            "Hamlet Glutton": [
+                {"qty": 2, "code": "WOE - 173", "section": "main"},
+            ],
+            "Brave the Wilds": [
+                {"qty": 4, "code": "WOE - 165", "section": "main"},
+            ],
+            "Horrific Assault": [
+                {"qty": 3, "code": "MH3 - 157", "section": "main"},
+            ],
+            "Malevolent Rumble": [
+                {"qty": 4, "code": "MH3 - 161", "section": "main"},
+            ],
+            "Implement of Ferocity": [
+                {"qty": 4, "code": "AER - 157", "section": "main"},
+            ],
+            "Flayer Husk": [
+                {"qty": 4, "code": "MBS - 107", "section": "main"},
+            ],
+            "Bequeathal": [
+                {"qty": 4, "code": "EX - 106", "section": "main"},
+            ],
+            "Rancor": [
+                {"qty": 4, "code": "GU - 110", "section": "main"},
+            ],
+            "Forest": [
+                {"qty": 6, "code": "STX - 375", "section": "main"},
+            ],
+            "Khalni Garden": [
+                {"qty": 4, "code": "WWK - 138", "section": "main"},
+            ],
+            "Bountiful Landscape": [
+                {"qty": 2, "code": "MH3 - 217", "section": "main"},
+                {"qty": 2, "code": "TDC - 342", "section": "main"},
+            ],
+            "Tree of Tales": [
+                {"qty": 4, "code": "MRD - 285", "section": "main"},
+            ],
+            "Voracious Typhon": [
+                {"qty": 1, "code": "M20 - 176", "section": "sideboard"},
+            ],
+            "Healer of the Glade": [
+                {"qty": 4, "code": "M20 - 176", "section": "sideboard"},
+            ],
+            "Troublemaker Ouphe": [
+                {"qty": 3, "code": "WOE - 194", "section": "sideboard"},
+            ],
+            "Feed the Clan": [
+                {"qty": 1, "code": "KTK - 132", "section": "sideboard"}
+            ],
+            "Ram Through": [
+                {"qty": 3, "code": "IKO - 170", "section": "main"},
+            ],
+            "Relic of Progenitus": [
+                {"qty": 3, "code": "ALA - 218", "section": "sideboard"}
+            ],
+        }
+    },
+    "Gruul Ramp": {
+        "priority": 29,
+        "cards": {
+            "Arbor Elf": [
+                {"qty": 4, "code": "WWK - 95", "section": "main"},
+            ],
+            "Avenging Hunter": [
+                {"qty": 4, "code": "CLB - 215", "section": "main"},
+            ],
+            "Bannerhide Krushok": [
+                {"qty": 2, "code": "MH2 - 149", "section": "main"},
+            ],
+            "Boarding Party": [
+                {"qty": 3, "code": "CMR - 163", "section": "main"},
+            ],
+            "Eldrazi Repurposer": [
+                {"qty": 4, "code": "MH3 - 150", "section": "main"},
+            ],
+            "Jewel Thief": [
+                {"qty": 4, "code": "SNC - 151", "section": "main"},
+            ],
+            "Nyxborn Hydra": [
+                {"qty": 3, "code": "MH3 - 164", "section": "main"},
+            ],
+            "Sagu Wildling // Roost Seek": [
+                {"qty": 2, "code": "TDM - 157", "section": "main"},
+            ],
+            "Writhing Chrysalis": [
+                {"qty": 4, "code": "MH3 - 208", "section": "main"},
+            ],
+            "Ram Through": [
+                {"qty": 3, "code": "CMM - 314", "section": "main"},
+            ],
+            "Malevolent Rumble": [
+                {"qty": 4, "code": "MH3 - 161", "section": "main"},
+            ],
+            "Utopia Sprawl": [
+                {"qty": 4, "code": "AFC - 172", "section": "main"},
+            ],
+            "Wild Growth": [
+                {"qty": 3, "code": "IA - 165", "section": "main"},
+            ],
+            "Forest": [
+                {"qty": 14, "code": "DOM - 267", "section": "main"},
+            ],
+            "Mountain": [
+                {"qty": 2, "code": "AVR - 241", "section": "main"},
+            ],
+            "Breath Weapon": [
+                {"qty": 3, "code": "CLB - 165", "section": "sideboard"}
+            ],
+            "Deglame": [
+                {"qty": 4, "code": "MOR - 118", "section": "sideboard"}
+            ],
+            "Horrific Assault": [
+                {"qty": 4, "code": "MH3 - 157", "section": "sideboard"}
+            ],
+            "Suplex": [
+                {"qty": 1, "code": "FIN - 164", "section": "sideboard"}
+            ],
+            "Relic of Progenitus": [
+                {"qty": 3, "code": "ALA - 218", "section": "sideboard"}
+            ],
+            
         }
     },
 }

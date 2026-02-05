@@ -1,0 +1,29 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Chromatic Star,Artifact,{1},Uncommon,$0.20,main,https://s.deckbox.org/system/images/mtg/cards/2068724.jpg,2025-10-11 15:01:14 UTC,15071,3233db3e-ec30-4be5-867d-81855652a8b0
+1,Dark-Dweller Oracle,Creature - Goblin Shaman,{1}{R},Rare,$0.22,main,https://s.deckbox.org/system/images/mtg/cards/2101029.jpg,2025-10-11 15:12:47 UTC,168753,69a57bfc-1de2-4b3a-84bc-19ec41087f0d
+2,Demand Answers,Instant,{1}{R},Common,$0.39,main,https://s.deckbox.org/system/images/mtg/cards/2052225.jpg,2026-02-05 12:43:45 UTC,530025,2a35d1cb-5a61-49b7-a124-e8713655e4c3
+4,Drossforge Bridge,Artifact Land,"",Common,$0.67,main,https://s.deckbox.org/system/images/mtg/cards/2115673.jpg,2025-10-11 15:15:37 UTC,239716,5b46b8d8-723a-4752-b97d-29ef83bd294c
+2,Eviscerator's Insight,Instant,{1}{B},Common,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2056492.jpg,2026-02-05 12:43:39 UTC,552853,b00573bd-5bbb-4531-a0bb-a40f62b92b88
+4,First Day of Class,Instant,{1}{R},Common,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2114300.jpg,2025-10-09 11:49:52 UTC,235196,091eb13d-9318-4b12-9f94-6276b11981d1
+3,Goblin Matron,Creature - Goblin,{2}{R},Uncommon,$0.50,main,https://s.deckbox.org/system/images/mtg/cards/2070040.jpg,2026-02-05 12:50:48 UTC,2930,862409e1-33e0-474c-8627-b03d25b654b9
+2,Great Furnace,Artifact Land,"",Common,$2.04,main,https://s.deckbox.org/system/images/mtg/cards/2299339.jpg,2025-10-11 15:18:04 UTC,642853,74c5bb44-d72c-4c1a-a38f-86b4a8f49ae1
+4,Ichor Wellspring,Artifact,{2},Common,$0.70,main,https://s.deckbox.org/system/images/mtg/cards/2083374.jpg,2026-02-05 12:34:55 UTC,39104,2d1ea522-a0f6-45a8-8985-6fcca95d60cc
+4,Impulsive Pilferer,Creature - Goblin Pirate,{R},Common,$0.22,main,https://s.deckbox.org/system/images/mtg/cards/2055716.jpg,2026-02-05 12:50:50 UTC,545347,0f020359-5ad1-43c4-8588-172be635cccc
+1,Makeshift Munitions,Enchantment,{1}{R},Uncommon,$0.20,main,https://s.deckbox.org/system/images/mtg/cards/2097739.jpg,2025-10-11 15:19:15 UTC,145604,65689442-e679-4844-91a8-f6a39a7c1f9b
+3,Manamorphose,Instant,{1}{RG},Common,$4.82,main,https://s.deckbox.org/system/images/mtg/cards/2069845.jpg,2026-02-05 12:41:53 UTC,18700,50283122-b8c4-4fb3-8eba-6252b72222f4
+5,Mountain,Basic Land - Mountain,"",BasicLand,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2313157.jpg,2026-02-05 12:39:20 UTC,671046,295b92bc-d66f-45d8-9bbe-5f5f13e39fd4
+4,Putrid Goblin,Creature - Zombie Goblin,{1}{B},Common,$0.36,main,https://s.deckbox.org/system/images/mtg/cards/2061628.jpg,2025-10-09 11:49:45 UTC,582825,b6c567e4-3aaa-4ac0-bdd8-ae79ea867859
+3,Shattered Landscape,Land,"",Common,$0.12,main,https://s.deckbox.org/system/images/mtg/cards/2291278.jpg,2026-02-05 12:39:31 UTC,624318,f8373e5a-94bb-4aa0-bd09-13a01e0cb02a
+4,Skirk Prospector,Creature - Goblin,{R},Common,$0.21,main,https://s.deckbox.org/system/images/mtg/cards/2099329.jpg,2025-10-09 11:49:25 UTC,164400,1636d138-aa63-476f-a930-41b1be988032
+1,Stormshriek Feral // Flush Out,Creature - Dragon // Sorcery - Omen,{4}{R} // {1}{R},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2290564.jpg,2026-02-05 12:32:29 UTC,624736,0ec92c44-7cf0-48a5-a3ca-bc633496d887
+3,Swamp,Basic Land - Swamp,"",BasicLand,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2313156.jpg,2026-02-05 12:40:14 UTC,671040,1dd4d605-02a2-4183-b191-0bca8dfbf962
+3,Temporal Intervention,Sorcery,{2}{B},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2298888.jpg,2026-02-05 12:34:00 UTC,641766,79f9525a-4cb7-411e-b7b5-2113e93bcbc3
+3,Unearth,Sorcery,{B},Common,$0.55,main,https://s.deckbox.org/system/images/mtg/cards/2060882.jpg,2026-02-05 12:36:09 UTC,582970,a5a1ec89-c231-409b-91e1-158ce6abf558
+1,Abandon Attachments,Instant - Lesson,{1}{UR},Common,$0.17,sideboard,https://s.deckbox.org/system/images/mtg/cards/2301209.jpg,2026-02-05 12:57:47 UTC,649367,74ca45a4-97ab-4255-9129-884e8b42b984
+2,Abrade,Instant,{1}{R},Uncommon,$0.17,sideboard,https://s.deckbox.org/system/images/mtg/cards/2062303.jpg,2025-10-11 15:19:36 UTC,591656,548947dc-a5ca-43b5-9531-bcef20fa4ae5
+2,Cast into the Fire,Instant,{1}{R},Common,$0.67,sideboard,https://s.deckbox.org/system/images/mtg/cards/2042770.jpg,2026-02-05 12:57:31 UTC,498308,2ef878cb-27b6-47d8-ad11-bd20529b0e7e
+3,Divest,Sorcery,{B},Common,$0.04,sideboard,https://s.deckbox.org/system/images/mtg/cards/2099371.jpg,2026-02-04 16:41:44 UTC,164290,c6619810-7933-4844-8556-2a575ed7f18a
+2,Introduction to Prophecy,Sorcery - Lesson,{3},Common,$0.13,sideboard,https://s.deckbox.org/system/images/mtg/cards/2114202.jpg,2025-10-11 15:25:51 UTC,235205,7820923e-bad2-4d6a-92b3-97b9737d2ca9
+2,Nihil Spellbomb,Artifact,{1},Common,$1.73,sideboard,https://s.deckbox.org/system/images/mtg/cards/2083062.jpg,2025-10-11 15:26:25 UTC,36518,603d217b-6375-46fc-992a-8dbd779da1e5
+3,Pyroblast,Instant,{R},Uncommon,$7.18,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070395.jpg,2026-02-04 16:42:10 UTC,2332,15d2d7cd-d29d-4f19-8490-88bd526ff1c5
+

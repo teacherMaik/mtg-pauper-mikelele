@@ -60,7 +60,7 @@ def render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box):
     elif current_mode == "Analysis":
         render_deck_stats_view(deck_cards)
     elif current_mode == "test_deck":
-        st.info("🧪 Playtest Mode - Shuffling logic will go here.")
+        render_test_deck_view(deck_cards)
 
 
 def render_deck_list_view(deck_cards):
@@ -189,7 +189,7 @@ def render_deck_list_view(deck_cards):
 
 
 def render_deck_stats_view(deck_cards):
-    
+
     
     # Color and Card Type Stats Row
     row_2_col_left, row_2_col_right = st.columns(2)
@@ -297,4 +297,12 @@ def render_deck_stats_view(deck_cards):
         else:
             st.info("No cards match these filters...")
 
+    return
+
+
+def render_test_deck_view(deck_cards):
+
+    mainboard = deck_cards[deck_cards['section'].str.contains('Main', case=False, na=False)]
+
+    
     return
