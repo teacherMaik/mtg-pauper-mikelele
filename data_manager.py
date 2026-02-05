@@ -24,6 +24,14 @@ def load_all_decks():
     conn = sqlite3.connect(DB_PATH)
     try:
         df = pd.read_sql("SELECT * FROM all_decks", conn)
+
+        print(df['rarity'].head())
+        print(df.loc[df['rarity'].isna(), 'name'])
+
+        print(df.loc[
+            df['rarity'].astype(str).str.strip().eq(''),'name'
+        ])
+        df['rarity'] = df['rarity'].astype(str) # Force cast immediately
     except:
         return pd.DataFrame()
     finally:

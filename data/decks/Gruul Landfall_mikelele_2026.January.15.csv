@@ -1,27 +1,26 @@
 Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
-4,Adventuring Gear,Artifact - Equipment,{1},Uncommon,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2062364.jpg,2025-12-12 11:46:51 UTC,590874,361f9b99-5b5d-40da-b4b9-5ad90f6280ee
-4,Akoum Hellhound,Creature - Elemental Dog,{R},Common,$0.06,main,https://s.deckbox.org/system/images/mtg/cards/2111534.jpg,2025-12-12 11:44:28 UTC,221881,b5757230-08b8-4808-af61-d343f9748fb1
-2,Apostle's Blessing,Instant,{1}{WP},Common,$0.33,main,https://s.deckbox.org/system/images/mtg/cards/2083553.jpg,2026-01-09 09:58:59 UTC,39466,9f7c3571-925d-486e-80dd-bac47aa48283
-4,Crop Rotation,Instant,{G},Uncommon,$3.08,main,https://s.deckbox.org/system/images/mtg/cards/2036849.jpg,2026-01-09 09:59:07 UTC,457142,523414cb-f8db-407a-808a-01454e03d8b9
-4,Escape Tunnel,Land,"",Common,$0.22,main,https://s.deckbox.org/system/images/mtg/cards/2052180.jpg,2025-12-12 11:50:08 UTC,533379,93ddde4f-d35e-4128-8f43-d0eadbd715de
-4,Forest,Basic Land - Forest,"",BasicLand,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2301291.jpg,2025-12-12 11:49:49 UTC,662982,a305e44f-4253-4754-b83f-1e34103d77b0
-1,Gruul Turf,Land,"",Common,$0.36,main,https://s.deckbox.org/system/images/mtg/cards/2081068.jpg,2025-12-12 11:49:53 UTC,13706,550b70e0-ebd5-49de-b62c-5224b8bf8e98
-2,Lightning Bolt,Instant,{R},Uncommon,$0.45,main,https://s.deckbox.org/system/images/mtg/cards/2296316.jpg,2026-01-09 09:59:19 UTC,632180,e89794ab-6070-4916-936f-2b42fe41d31b
-7,Mountain,Basic Land - Mountain,"",BasicLand,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2301290.jpg,2025-12-12 11:49:42 UTC,662981,c44f81ca-f72f-445c-8901-3a894a2a47f9
-2,Nest Invader,Creature - Eldrazi Drone,{1}{G},Common,$0.34,main,https://s.deckbox.org/system/images/mtg/cards/2082334.jpg,2025-12-12 11:44:46 UTC,34895,24517d9c-6cde-41e8-9e82-ee73f069379a
-4,Plated Geopede,Creature - Insect,{1}{R},Common,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2081658.jpg,2025-12-12 11:43:56 UTC,33396,fd8b5c0c-acda-411e-9f17-6d9292628a56
-4,Sabotender,Creature - Plant,{1}{R},Common,$0.14,main,https://s.deckbox.org/system/images/mtg/cards/2295246.jpg,2025-12-12 11:45:18 UTC,634130,12df1295-8b08-4c8e-bac9-55b4f514c0be
-1,Sejiri Steppe,Land,"",Common,$0.23,main,https://s.deckbox.org/system/images/mtg/cards/2082000.jpg,2025-12-12 11:49:22 UTC,34432,668f5732-da88-4d42-9186-70cfef81f689
-4,Sheltering Landscape,Land,"",Common,$0.17,main,https://s.deckbox.org/system/images/mtg/cards/2056626.jpg,2025-12-12 11:49:15 UTC,553295,0fe070f4-8877-4280-b8fd-869f3ac34ab6
-2,Temur Battle Rage,Instant,{1}{R},Common,$0.14,main,https://s.deckbox.org/system/images/mtg/cards/2090705.jpg,2026-01-09 09:59:32 UTC,95420,8a1dd786-f4e3-4951-b87b-82442edec016
-3,Tilling Treefolk,Creature - Treefolk Druid,{2}{G},Common,$0.24,main,https://s.deckbox.org/system/images/mtg/cards/2069436.jpg,2025-12-12 11:45:21 UTC,27225,8e4a10d0-214d-4e7b-9683-c84034f8f6b7
-4,Twisted Landscape,Land,"",Common,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2056631.jpg,2025-12-12 11:47:20 UTC,553297,d0e3e7b3-7ba9-47a2-b46c-a40bffb445e2
-4,Writhing Chrysalis,Creature - Eldrazi Drone,{2}{R}{G},Common,$0.20,main,https://s.deckbox.org/system/images/mtg/cards/2056607.jpg,2025-12-12 11:44:40 UTC,551669,f54dbeb1-51f8-40e2-912a-ec25457de5a2
-1,Bojuka Bog,Land,"",Common,$0.76,sideboard,https://s.deckbox.org/system/images/mtg/cards/2299327.jpg,2026-01-09 10:00:17 UTC,642036,b0c6fb5e-07e2-4d22-be19-60592f00584a
-1,Cast into the Fire,Instant,{1}{R},Common,$0.55,sideboard,https://s.deckbox.org/system/images/mtg/cards/2042770.jpg,2026-01-09 10:00:09 UTC,498308,2ef878cb-27b6-47d8-ad11-bd20529b0e7e
-1,Healer of the Glade,Creature - Elemental,{G},Common,$0.11,sideboard,https://s.deckbox.org/system/images/mtg/cards/2104809.jpg,2026-01-09 10:00:42 UTC,192910,cbe262f2-e35b-4c85-938d-3e9e9c764c1b
-1,Pyroblast,Instant,{R},Uncommon,$6.90,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070395.jpg,2026-01-09 10:00:51 UTC,2332,15d2d7cd-d29d-4f19-8490-88bd526ff1c5
-1,Red Elemental Blast,Instant,{R},Common,$4.92,sideboard,https://s.deckbox.org/system/images/mtg/cards/2073886.jpg,2026-01-09 10:00:54 UTC,1898,a54246c9-5e5c-484e-a546-ae1f9fd020f3
-1,Relic of Progenitus,Artifact,{1},Common,$4.89,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2026-01-09 09:59:55 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
-1,Weather the Storm,Instant,{1}{G},Common,$0.82,sideboard,https://s.deckbox.org/system/images/mtg/cards/2104595.jpg,2026-01-09 10:00:00 UTC,191064,f6a9fa51-78c3-42e6-8c2e-39658f59ed87
+4,Adventuring Gear,Artifact - Equipment,{1},Uncommon,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2062364.jpg,2025-12-12 11:46:51 UTC,590874,361f9b99-5b5d-40da-b4b9-5ad90f6280ee
+4,Akoum Hellhound,Creature - Elemental Dog,{R},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2111534.jpg,2025-12-12 11:44:28 UTC,221881,b5757230-08b8-4808-af61-d343f9748fb1
+2,Apostle's Blessing,Instant,{1}{WP},Common,$0.30,main,https://s.deckbox.org/system/images/mtg/cards/2083553.jpg,2026-01-09 09:58:59 UTC,39466,9f7c3571-925d-486e-80dd-bac47aa48283
+4,Crop Rotation,Instant,{G},Uncommon,$2.81,main,https://s.deckbox.org/system/images/mtg/cards/2036849.jpg,2026-01-09 09:59:07 UTC,457142,523414cb-f8db-407a-808a-01454e03d8b9
+4,Escape Tunnel,Land,"",Common,$0.28,main,https://s.deckbox.org/system/images/mtg/cards/2052180.jpg,2025-12-12 11:50:08 UTC,533379,93ddde4f-d35e-4128-8f43-d0eadbd715de
+4,Forest,Basic Land - Forest,"",BasicLand,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2313158.jpg,2025-12-12 11:49:49 UTC,671047,b460f5f7-c7c9-400c-8419-23d614f45bf9
+1,Gruul Turf,Land,"",Common,$0.34,main,https://s.deckbox.org/system/images/mtg/cards/2081068.jpg,2025-12-12 11:49:53 UTC,13706,550b70e0-ebd5-49de-b62c-5224b8bf8e98
+2,Lightning Bolt,Instant,{R},Uncommon,$0.63,main,https://s.deckbox.org/system/images/mtg/cards/2296316.jpg,2026-01-09 09:59:19 UTC,632180,e89794ab-6070-4916-936f-2b42fe41d31b
+7,Mountain,Basic Land - Mountain,"",BasicLand,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2313157.jpg,2025-12-12 11:49:42 UTC,671046,295b92bc-d66f-45d8-9bbe-5f5f13e39fd4
+2,Nest Invader,Creature - Eldrazi Drone,{1}{G},Common,$0.29,main,https://s.deckbox.org/system/images/mtg/cards/2082334.jpg,2025-12-12 11:44:46 UTC,34895,24517d9c-6cde-41e8-9e82-ee73f069379a
+4,Plated Geopede,Creature - Insect,{1}{R},Common,$0.07,main,https://s.deckbox.org/system/images/mtg/cards/2081658.jpg,2025-12-12 11:43:56 UTC,33396,fd8b5c0c-acda-411e-9f17-6d9292628a56
+4,Sabotender,Creature - Plant,{1}{R},Common,$0.08,main,https://s.deckbox.org/system/images/mtg/cards/2295246.jpg,2025-12-12 11:45:18 UTC,634130,12df1295-8b08-4c8e-bac9-55b4f514c0be
+1,Sejiri Steppe,Land,"",Common,$0.19,main,https://s.deckbox.org/system/images/mtg/cards/2082000.jpg,2025-12-12 11:49:22 UTC,34432,668f5732-da88-4d42-9186-70cfef81f689
+4,Sheltering Landscape,Land,"",Common,$0.20,main,https://s.deckbox.org/system/images/mtg/cards/2056626.jpg,2025-12-12 11:49:15 UTC,553295,0fe070f4-8877-4280-b8fd-869f3ac34ab6
+2,Temur Battle Rage,Instant,{1}{R},Common,$0.25,main,https://s.deckbox.org/system/images/mtg/cards/2090705.jpg,2026-01-09 09:59:32 UTC,95420,8a1dd786-f4e3-4951-b87b-82442edec016
+3,Tilling Treefolk,Creature - Treefolk Druid,{2}{G},Common,$0.23,main,https://s.deckbox.org/system/images/mtg/cards/2069436.jpg,2025-12-12 11:45:21 UTC,27225,8e4a10d0-214d-4e7b-9683-c84034f8f6b7
+4,Twisted Landscape,Land,"",Common,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2056631.jpg,2025-12-12 11:47:20 UTC,553297,d0e3e7b3-7ba9-47a2-b46c-a40bffb445e2
+4,Writhing Chrysalis,Creature - Eldrazi Drone,{2}{R}{G},Common,$0.23,main,https://s.deckbox.org/system/images/mtg/cards/2056607.jpg,2025-12-12 11:44:40 UTC,551669,f54dbeb1-51f8-40e2-912a-ec25457de5a2
+1,Bojuka Bog,Land,"",Common,$0.85,sideboard,https://s.deckbox.org/system/images/mtg/cards/2299327.jpg,2026-01-09 10:00:17 UTC,642036,b0c6fb5e-07e2-4d22-be19-60592f00584a
+3,Cast into the Fire,Instant,{1}{R},Common,$0.67,sideboard,https://s.deckbox.org/system/images/mtg/cards/2042770.jpg,2026-01-30 14:28:50 UTC,498308,2ef878cb-27b6-47d8-ad11-bd20529b0e7e
+2,Healer of the Glade,Creature - Elemental,{G},Common,$0.09,sideboard,https://s.deckbox.org/system/images/mtg/cards/2104809.jpg,2026-01-30 14:28:55 UTC,192910,cbe262f2-e35b-4c85-938d-3e9e9c764c1b
+4,Red Elemental Blast,Instant,{R},Common,$3.56,sideboard,https://s.deckbox.org/system/images/mtg/cards/2073890.jpg,2026-01-30 14:29:01 UTC,1537,2d83a2a3-5495-4457-8eb7-9f9a75da6cc3
+3,Relic of Progenitus,Artifact,{1},Common,$4.82,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2026-01-30 14:29:21 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
+2,Weather the Storm,Instant,{1}{G},Common,$0.66,sideboard,https://s.deckbox.org/system/images/mtg/cards/2104595.jpg,2026-01-30 14:29:16 UTC,191064,f6a9fa51-78c3-42e6-8c2e-39658f59ed87
 

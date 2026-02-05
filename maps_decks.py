@@ -1,73 +1,73 @@
-decks_map = {
+DECKS_MAP = {
     "Cycle Storm": {
         "priority": 1,
         "cards": {
             "Drannith Stinger": [
-                {"qty": 4, "code": "IKO - 10", "section": "main"}
+                {"qty": 4, "code": "IKO - 10", "section": "main"},
             ],
             "Drannith Healer": [
-                {"qty": 4, "code": "IKO - 113", "section": "main"}
+                {"qty": 4, "code": "IKO - 113", "section": "main"},
             ],
             "Imposing Vantasaur": [
-                {"qty": 4, "code": "IKO - 17", "section": "main"}
+                {"qty": 4, "code": "IKO - 17", "section": "main"},
             ],
             "Street Wraith": [
-                {"qty": 4, "code": "DMR - 102", "section": "main"}
+                {"qty": 4, "code": "DMR - 102", "section": "main"},
             ],
             "Horror of the Broken Lands": [
-                {"qty": 4, "code": "AKH - 95", "section": "main"}
+                {"qty": 4, "code": "AKH - 95", "section": "main"},
             ],
             "Monstrous Carabid": [
-                {"qty": 4, "code": "ARB - 43", "section": "main"}
+                {"qty": 4, "code": "ARB - 43", "section": "main"},
             ],
             "Cabal Ritual": [
-                {"qty": 4, "code": "TOR - 51", "section": "main"}
+                {"qty": 4, "code": "TOR - 51", "section": "main"},
             ],
             "Songs of the Damned": [
-                {"qty": 4, "code": "UMA - 115", "section": "main"}
+                {"qty": 4, "code": "UMA - 115", "section": "main"},
             ],
             "Dark Ritual": [
                 {"qty": 3, "code": "MM - 129", "section": "main"},
-                {"qty": 1, "code": "IA - 8", "section": "main"}
+                {"qty": 1, "code": "IA - 8", "section": "main"},
             ],
             "Reaping the Graves": [
-                {"qty": 4, "code": "SCG - 72", "section": "main"}
+                {"qty": 4, "code": "SCG - 72", "section": "main"},
             ],
             "Rowan's Grim Search": [
-                {"qty": 4, "code": "WOE - 104", "section": "main"}
+                {"qty": 4, "code": "WOE - 104", "section": "main"},
             ],
             "Lotus Petal": [
-                {"qty": 4, "code": "TE - 284", "section": "main"}
+                {"qty": 4, "code": "TE - 284", "section": "main"},
             ],
             "Great Furnace": [
-                {"qty": 4, "code": "MRD - 282", "section": "main"}
+                {"qty": 4, "code": "MRD - 282", "section": "main"},
             ],
             "Vault of Whispers": [
-                {"qty": 4, "code": "MRD - 286", "section": "main"}
+                {"qty": 4, "code": "MRD - 286", "section": "main"},
             ],
             "Barren Moor": [
-                {"qty": 4, "code": "BLC - 292", "section": "main"}
+                {"qty": 4, "code": "BLC - 292", "section": "main"},
             ],
             "Snow-Covered Swamp": [
-                {"qty": 1, "code": "MH1 - 252", "section": "sideboard"}
+                {"qty": 1, "code": "MH1 - 252", "section": "sideboard"},
             ],
             "Chitin Gravestalker": [
-                {"qty": 4, "code": "DFT - 79", "section": "sideboard"}
+                {"qty": 4, "code": "DFT - 79", "section": "sideboard"},
             ],
             "Faerie Macabre": [
-                {"qty": 2, "code": "SHM - 66", "section": "sideboard"}
+                {"qty": 2, "code": "SHM - 66", "section": "sideboard"},
             ],
             "Duress": [
-                {"qty": 2, "code": "M10 - 96", "section": "sideboard"}
+                {"qty": 2, "code": "M10 - 96", "section": "sideboard"},
             ],
             "Siege Smash": [
-                {"qty": 2, "code": "MH3 - 136", "section": "sideboard"}
+                {"qty": 2, "code": "MH3 - 136", "section": "sideboard"},
             ],
             "Pyroblast": [
-                {"qty": 3, "code": "IA - 213", "section": "sideboard"}
+                {"qty": 3, "code": "IA - 213", "section": "sideboard"},
             ],
             "Blood Celebrant": [
-                {"qty": 1, "code": "LGN - 61", "section": "sideboard"}
+                {"qty": 1, "code": "LGN - 61", "section": "sideboard"},
             ]
         }
     },
@@ -135,19 +135,19 @@ decks_map = {
                 {"qty": 2, "code": "MM - 251", "section": "main"},
             ],
             "Faerie Macabre": [
-                {"qty": 3, "code": "SHM - 66", "section": "sideboard"}
+                {"qty": 3, "code": "SHM - 66", "section": "sideboard"},
             ],
             "Dispel": [
-                {"qty": 4, "code": "RTR - 36", "section": "sideboard"}
+                {"qty": 4, "code": "RTR - 36", "section": "sideboard"},
             ],
             "Moment's Peace": [
-                {"qty": 3, "code": "OD - 251", "section": "sideboard"}
+                {"qty": 3, "code": "OD - 251", "section": "sideboard"},
             ],
             "Pyroblast": [
-                {"qty": 3, "code": "IA - 213", "section": "sideboard"}
+                {"qty": 3, "code": "IA - 213", "section": "sideboard"},
             ],
             "Breath Weapon": [
-                {"qty": 2, "code": "CLB - 165", "section": "sideboard"}
+                {"qty": 2, "code": "CLB - 165", "section": "sideboard"},
             ]
             
         }
@@ -213,22 +213,22 @@ decks_map = {
                 {"qty": 9, "code": "KHM - 284", "section": "main"},
             ],
             "Faerie Macabre": [
-                {"qty": 1, "code": "SHM - 66", "section": "sideboard"}
+                {"qty": 1, "code": "SHM - 66", "section": "sideboard"},
             ],
             "Relic of Progenitus": [
-                {"qty": 2, "code": "ALA - 218", "section": "sideboard"}
+                {"qty": 2, "code": "ALA - 218", "section": "sideboard"},
             ],
             "Hydroblast": [
-                {"qty": 3, "code": "IA - 72", "section": "sideboard"}
+                {"qty": 3, "code": "IA - 72", "section": "sideboard"},
             ],
             "Vitu-Ghazi Inspector": [
-                {"qty": 3, "code": "MKM - 183", "section": "sideboard"}
+                {"qty": 3, "code": "MKM - 183", "section": "sideboard"},
             ],
             "Scattershot Archer": [
-                {"qty": 4, "code": "CON - 90", "section": "sideboard"}
+                {"qty": 4, "code": "CON - 90", "section": "sideboard"},
             ],
             "Pulse of Murasa": [
-                {"qty": 2, "code": "M20 - 189", "section": "sideboard"}
+                {"qty": 2, "code": "M20 - 189", "section": "sideboard"},
             ],
         }
     },
@@ -307,22 +307,22 @@ decks_map = {
                 {"qty": 2, "code": "MRD - 286", "section": "main"},
             ],
             "Faerie Macabre": [
-                {"qty": 1, "code": "SHM - 66", "section": "sideboard"}
+                {"qty": 1, "code": "SHM - 66", "section": "sideboard"},
             ],
             "Breath Weapon": [
-                {"qty": 2, "code": "CLB - 165", "section": "sideboard"}
+                {"qty": 2, "code": "CLB - 165", "section": "sideboard"},
             ],
             "Red Elemental Blast": [
-                {"qty": 4, "code": "3E - 170", "section": "sideboard"}
+                {"qty": 4, "code": "3E - 170", "section": "sideboard"},
             ],
             "Troublemaker Ouphe": [
-                {"qty": 1, "code": "WOE - 194", "section": "sideboard"}
+                {"qty": 1, "code": "WOE - 194", "section": "sideboard"},
             ],
             "Weather the Storm": [
                 {"qty": 4, "code": "H1R - 24", "section": "sideboard"},
             ],
             "Duress": [
-                {"qty": 3, "code": "M10 - 96", "section": "sideboard"}
+                {"qty": 3, "code": "M10 - 96", "section": "sideboard"},
             ],
         }
     },
@@ -375,17 +375,17 @@ decks_map = {
                 {"qty": 16, "code": "MH1 - 251", "section": "main"},
             ],
             "Murmuring Mystic": [
-                {"qty": 3, "code": "CMM - 107", "section": "sideboard"}
+                {"qty": 3, "code": "CMM - 107", "section": "sideboard"},
             ],
             "Annul": [
-                {"qty": 4, "code": "KHM - 42", "section": "sideboard"}
+                {"qty": 4, "code": "KHM - 42", "section": "sideboard"},
             ],
             "Gut Shot": [
                 {"qty": 2, "code": "MM2 - 117", "section": "sideboard"},
-                {"qty": 2, "code": "NPH - 86", "section": "sideboard"}
+                {"qty": 2, "code": "NPH - 86", "section": "sideboard"},
             ],
             "Hydroblast": [
-                {"qty": 4, "code": "IA - 72", "section": "sideboard"}
+                {"qty": 4, "code": "IA - 72", "section": "sideboard"},
             ],
         }
     },
@@ -448,13 +448,13 @@ decks_map = {
                 {"qty": 3, "code": "4E - 63", "section": "sideboard"},
             ],
             "Relic of Progenitus": [
-                {"qty": 3, "code": "ALA - 218", "section": "sideboard"}
+                {"qty": 3, "code": "ALA - 218", "section": "sideboard"},
             ],
             "Bind the Monster": [
-                {"qty": 2, "code": "KHM - 48", "section": "sideboard"}
+                {"qty": 2, "code": "KHM - 48", "section": "sideboard"},
             ],
             "Unable to Scream": [
-                {"qty": 1, "code": "DSK - 78", "section": "sideboard"}
+                {"qty": 1, "code": "DSK - 78", "section": "sideboard"},
             ],
         }
     },
@@ -519,25 +519,25 @@ decks_map = {
                 {"qty": 1, "code": "J25 - 189", "section": "sideboard"},
             ],
             "Journey to Nowhere": [
-                {"qty": 1, "code": "ZEN - 14", "section": "sideboard"}
+                {"qty": 1, "code": "ZEN - 14", "section": "sideboard"},
             ],
             "Relic of Progenitus": [
-                {"qty": 2, "code": "ALA - 218", "section": "sideboard"}
+                {"qty": 2, "code": "ALA - 218", "section": "sideboard"},
             ],
             "Revoke Existence": [
-                {"qty": 1, "code": "THB - 34", "section": "sideboard"}
+                {"qty": 1, "code": "THB - 34", "section": "sideboard"},
             ],
             "Palace Sentinels": [
-                {"qty": 2, "code": "CMM - 48", "section": "sideboard"}
+                {"qty": 2, "code": "CMM - 48", "section": "sideboard"},
             ],
             "Arashin Cleric": [
-                {"qty": 2, "code": "FRF - 5", "section": "sideboard"}
+                {"qty": 2, "code": "FRF - 5", "section": "sideboard"},
             ],
             "Standard Bearer": [
-                {"qty": 2, "code": "AP - 18", "section": "sideboard"}
+                {"qty": 2, "code": "AP - 18", "section": "sideboard"},
             ],
             "Dust to Dust": [
-                {"qty": 4, "code": "DK - 78", "section": "sideboard"}
+                {"qty": 4, "code": "DK - 78", "section": "sideboard"},
             ],
         }
     },
@@ -597,7 +597,7 @@ decks_map = {
                 {"qty": 4, "code": "MH2 - 246", "section": "main"},
             ],
             "Great Furnace": [
-                {"qty": 3, "code": "EOC - 161", "section": "main"}
+                {"qty": 3, "code": "EOC - 161", "section": "main"},
             ],
             "Mistvault Bridge": [
                 {"qty": 4, "code": "MH2 - 249", "section": "main"},
@@ -609,7 +609,7 @@ decks_map = {
                 {"qty": 2, "code": "MH2 - 255", "section": "main"},
             ],
             "Vault of Whispers": [
-                {"qty": 3, "code": "MRD - 286", "section": "main"}
+                {"qty": 3, "code": "MRD - 286", "section": "main"},
             ],
             "Swamp": [
                 {"qty": 1, "code": "MOM - 287", "section": "main"},
@@ -618,16 +618,16 @@ decks_map = {
                 {"qty": 2, "code": "AL - 106", "section": "sideboard"},
             ],
             "Fiery Cannonade": [
-                {"qty": 2, "code": "XLN - 143", "section": "sideboard"}
+                {"qty": 2, "code": "XLN - 143", "section": "sideboard"},
             ],
             "Hydroblast": [
-                {"qty": 3, "code": "IA - 72", "section": "sideboard"}
+                {"qty": 3, "code": "IA - 72", "section": "sideboard"},
             ],
             "Metallic Rebuke": [
-                {"qty": 3, "code": "AER - 39", "section": "sideboard"}
+                {"qty": 3, "code": "AER - 39", "section": "sideboard"},
             ],
             "Pyroblast": [
-                {"qty": 2, "code": "IA - 213", "section": "sideboard"}
+                {"qty": 2, "code": "IA - 213", "section": "sideboard"},
             ],
             "Tithing Blade // Consuming Sepulcher": [
                 {"qty": 2, "code": "LCI - 128", "section": "sideboard"},
@@ -695,22 +695,22 @@ decks_map = {
                 {"qty": 1, "code": "TLA - 138", "section": "sideboard"},
             ],
             "Flaring Pain": [
-                {"qty": 1, "code": "JUD - 89", "section": "sideboard"}
+                {"qty": 1, "code": "JUD - 89", "section": "sideboard"},
             ],
             "How to Start a Riot": [
-                {"qty": 1, "code": "TLA - 140", "section": "sideboard"}
+                {"qty": 1, "code": "TLA - 140", "section": "sideboard"},
             ],
             "Origin of Metalbending": [
-                {"qty": 1, "code": "TLA - 187", "section": "sideboard"}
+                {"qty": 1, "code": "TLA - 187", "section": "sideboard"},
             ],
             "Pyroblast": [
-                {"qty": 4, "code": "IA - 213", "section": "sideboard"}
+                {"qty": 4, "code": "IA - 213", "section": "sideboard"},
             ],
             "Red Elemental Blast": [
-                {"qty": 3, "code": "3E - 170", "section": "sideboard"}
+                {"qty": 3, "code": "3E - 170", "section": "sideboard"},
             ],
             "Waterbending Lesson": [
-                {"qty": 1, "code": "TLA - 80", "section": "sideboard"}
+                {"qty": 1, "code": "TLA - 80", "section": "sideboard"},
             ],
             "Weather the Storm": [
                 {"qty": 3, "code": "H1R - 24", "section": "sideboard"},
@@ -784,13 +784,13 @@ decks_map = {
                 {"qty": 2, "code": "OGW - 172", "section": "main"},
             ],
             "Crypt Sliver": [
-                {"qty": 2, "code": "LGN - 63", "section": "sideboard"}
+                {"qty": 2, "code": "LGN - 63", "section": "sideboard"},
             ],
             "Masked Vandal": [
                 {"qty": 3, "code": "KHM - 184", "section": "sideboard"},
             ],
             "Winged Sliver": [
-                {"qty": 1, "code": "TE - 106", "section": "sideboard"}
+                {"qty": 1, "code": "TE - 106", "section": "sideboard"},
             ],
             "Thraben Charm": [
                 {"qty": 2, "code": "MH3 - 45", "section": "sideboard"},
@@ -800,7 +800,7 @@ decks_map = {
                 {"qty": 1, "code": "NPH - 86", "section": "sideboard"}
             ],
             "Standard Bearer": [
-                {"qty": 2, "code": "AP - 18", "section": "sideboard"}
+                {"qty": 2, "code": "AP - 18", "section": "sideboard"},
             ],
             "Hallow": [
                 {"qty": 2, "code": "DST - 4", "section": "sideboard"},
@@ -853,13 +853,13 @@ decks_map = {
                 {"qty": 4, "code": "C18 - 250", "section": "main"},
             ],
             "Cast into the Fire": [
-                {"qty": 3, "code": "LTR - 118", "section": "sideboard"}
+                {"qty": 3, "code": "LTR - 118", "section": "sideboard"},
             ],
             "Pyroblast": [
                 {"qty": 4, "code": "IA - 213", "section": "sideboard"},
             ],
             "End the Festivities": [
-                {"qty": 4, "code": "VOW - 155", "section": "sideboard"}
+                {"qty": 4, "code": "VOW - 155", "section": "sideboard"},
             ],
             "Relic of Progenitus": [
                 {"qty": 2, "code": "ALA - 218", "section": "sideboard"},
@@ -909,13 +909,13 @@ decks_map = {
                 {"qty": 18, "code": "MH1 - 253", "section": "main"},
             ],
             "Cast into the Fire": [
-                {"qty": 3, "code": "LTR - 118", "section": "sideboard"}
+                {"qty": 3, "code": "LTR - 118", "section": "sideboard"},
             ],
             "Pyroblast": [
                 {"qty": 4, "code": "IA - 213", "section": "sideboard"},
             ],
             "End the Festivities": [
-                {"qty": 4, "code": "VOW - 155", "section": "sideboard"}
+                {"qty": 4, "code": "VOW - 155", "section": "sideboard"},
             ],
             "Relic of Progenitus": [
                 {"qty": 2, "code": "ALA - 218", "section": "sideboard"},
@@ -980,13 +980,13 @@ decks_map = {
                 {"qty": 8, "code": "ELD - 264", "section": "main"},
             ],
             "Cast into the Fire": [
-                {"qty": 2, "code": "LTR - 118", "section": "sideboard"}
+                {"qty": 2, "code": "LTR - 118", "section": "sideboard"},
             ],
             "Pyroblast": [
                 {"qty": 3, "code": "IA - 213", "section": "sideboard"},
             ],
             "Duress": [
-                {"qty": 2, "code": "M11 - 96", "section": "sideboard"}
+                {"qty": 2, "code": "M11 - 96", "section": "sideboard"},
             ],
             "Tectonic Hazard": [
                 {"qty": 1, "code": "LCI - 169", "section": "sideboard"},
@@ -1059,13 +1059,13 @@ decks_map = {
                 {"qty": 17, "code": "MH1 - 252", "section": "main"},
             ],
             "Mesmeric Fiend": [
-                {"qty": 2, "code": "TOR - 69", "section": "sideboard"}
+                {"qty": 2, "code": "TOR - 69", "section": "sideboard"},
             ],
             "Serrated Scorpion": [
                 {"qty": 3, "code": "IKO - 99", "section": "sideboard"},
             ],
             "Snuff Out": [
-                {"qty": 3, "code": "MM - 162", "section": "sideboard"}
+                {"qty": 3, "code": "MM - 162", "section": "sideboard"},
             ],
             "Spinning Darkness": [
                 {"qty": 1, "code": "WL - 23", "section": "sideboard"},
@@ -1142,10 +1142,10 @@ decks_map = {
                 {"qty": 12, "code": "ELD - 260", "section": "main"},
             ],
             "Vault of Whispers": [
-                {"qty": 4, "code": "MRD - 286", "section": "main"}
+                {"qty": 4, "code": "MRD - 286", "section": "main"},
             ],
             "Witch's Cottage": [
-                {"qty": 1, "code": "ELD - 249", "section": "main"}
+                {"qty": 1, "code": "ELD - 249", "section": "main"},
             ],
             "Butcher Ghoul": [
                 {"qty": 4, "code": "AVR - 89", "section": "sideboard"},
@@ -1157,7 +1157,7 @@ decks_map = {
                 {"qty": 2, "code": "MKM - 107", "section": "sideboard"},
             ],
             "Duress": [
-                {"qty": 2, "code": "M10 - 96", "section": "sideboard"}
+                {"qty": 2, "code": "M10 - 96", "section": "sideboard"},
             ],
         }
     },
@@ -1165,10 +1165,10 @@ decks_map = {
         "priority": 16,
         "cards": {
             "Banehound": [
-                {"qty": 4, "code": "WAR - 77", "section": "main"}
+                {"qty": 4, "code": "WAR - 77", "section": "main"},
             ],
             "Chittering Rats": [
-                {"qty": 4, "code": "DST - 39", "section": "main"}
+                {"qty": 4, "code": "DST - 39", "section": "main"},
             ],
             "Cuombajj Witches": [
                 {"qty": 4, "code": "CH - 3", "section": "main"},
@@ -1224,7 +1224,7 @@ decks_map = {
                 {"qty": 16, "code": "M21 - 266", "section": "main"},
             ],
             "Witch's Cottage": [
-                {"qty": 1, "code": "ELD - 249", "section": "main"}
+                {"qty": 1, "code": "ELD - 249", "section": "main"},
             ],
             "Boot Nipper": [
                 {"qty": 4, "code": "IKO - 76", "section": "sideboard"},
@@ -1250,10 +1250,10 @@ decks_map = {
         "priority": 17,
         "cards": {
             "Forecasting Fortune Teller": [
-                {"qty": 2, "code": "TLA - 51", "section": "main"}
+                {"qty": 2, "code": "TLA - 51", "section": "main"},
             ],
             "Generous Ent": [
-                {"qty": 4, "code": "LTR - 169", "section": "main"}
+                {"qty": 4, "code": "LTR - 169", "section": "main"},
             ],
             "Glistener Seer": [
                 {"qty": 4, "code": "ONE - 54", "section": "main"},
@@ -1299,7 +1299,7 @@ decks_map = {
                 {"qty": 2, "code": "ELD - 267", "section": "main"},
             ],
             "Faerie Macabre": [
-                {"qty": 3, "code": "SHM - 66", "section": "sideboard"}
+                {"qty": 3, "code": "SHM - 66", "section": "sideboard"},
             ],
             "Spellstutter Sprite": [
                 {"qty": 4, "code": "LRW - 89", "section": "sideboard"},
@@ -1308,10 +1308,10 @@ decks_map = {
                 {"qty": 3, "code": "4E - 63", "section": "sideboard"},
             ],
             "Dispel": [
-                {"qty": 1, "code": "RTR - 36", "section": "sideboard"}
+                {"qty": 1, "code": "RTR - 36", "section": "sideboard"},
             ],
             "Moment's Peace": [
-                {"qty": 1, "code": "OD - 251", "section": "sideboard"}
+                {"qty": 1, "code": "OD - 251", "section": "sideboard"},
             ],
             "Vitalize": [
                 {"qty": 2, "code": "WL - 87", "section": "sideboard"},
@@ -1322,10 +1322,10 @@ decks_map = {
         "priority": 18,
         "cards": {
             "Augur of Bolas": [
-                {"qty": 2, "code": "M13 - 43", "section": "main"}
+                {"qty": 2, "code": "M13 - 43", "section": "main"},
             ],
             "Goblin Electromancer": [
-                {"qty": 4, "code": "GRN - 174", "section": "main"}
+                {"qty": 4, "code": "GRN - 174", "section": "main"},
             ],
             "Brainstorm": [
                 {"qty": 2, "code": "IA - 61", "section": "main"},
@@ -1370,7 +1370,7 @@ decks_map = {
                 {"qty": 2, "code": "SOI - 78", "section": "main"},
             ],
             "Perilous Landscape": [
-                {"qty": 2, "code": "MH3 - 223", "section": "main"}
+                {"qty": 2, "code": "MH3 - 223", "section": "main"},
             ],
             "Volatile Fjord": [
                 {"qty": 2, "code": "KHM - 273", "section": "main"},
@@ -1383,26 +1383,26 @@ decks_map = {
                 {"qty": 3, "code": "KHM - 278", "section": "main"},
             ],
             "Dispel": [
-                {"qty": 1, "code": "RTR - 36", "section": "sideboard"}
+                {"qty": 1, "code": "RTR - 36", "section": "sideboard"},
             ],
             "Annul": [
-                {"qty": 2, "code": "EOE - 46", "section": "sideboard"}
+                {"qty": 2, "code": "EOE - 46", "section": "sideboard"},
             ],
             "Hydroblast": [
                 {"qty": 2, "code": "IA - 72", "section": "sideboard"},
             ],
-            "Pyroblast": [
-                {"qty": 3, "code": "IA - 213", "section": "sideboard"},
-            ],
-            "CSP,97": [
-                {"qty": 3, "code": "IA - 213", "section": "sideboard"},
-            ],
             "End the Festivities": [
-                {"qty": 2, "code": "VOW - 155", "section": "sideboard"}
+                {"qty": 2, "code": "VOW - 155", "section": "sideboard"},
             ],
             "Steel Sabotage": [
                 {"qty": 2, "code": "MBS - 33", "section": "sideboard"},
             ],
+            "Red Elemental Blast": [
+                {"qty": 3, "code": "3E - 170", "section": "sideboard"},
+            ],
+            "Skred": [
+                {"qty": 3, "code": "CSP - 97", "section": "sideboard"},
+            ]
         }
     },
     "Black Burn": {
@@ -1418,7 +1418,7 @@ decks_map = {
             ],
             "Blightning": [
                 {"qty": 1, "code": "SALVAT_2011 - 12", "section": "main"},
-                {"qty": 3, "code": "ALA - 156", "section": "main"}
+                {"qty": 3, "code": "ALA - 156", "section": "main"},
             ],
             "Bump in the Night": [
                 {"qty": 4, "code": "ISD - 92", "section": "main"},
@@ -1455,10 +1455,10 @@ decks_map = {
                 {"qty": 4, "code": "AKH - 249", "section": "main"},
             ],
             "Rakdos Carnarium": [
-                {"qty": 4, "code": "C20 - 300", "section": "main"}
+                {"qty": 4, "code": "C20 - 300", "section": "main"},
             ],
             "Swamp": [
-                {"qty": 7, "code": "ELD - 261", "section": "main"}
+                {"qty": 7, "code": "ELD - 261", "section": "main"},
             ],
             "Trespasser's Curse": [
                 {"qty": 4, "code": "AKH - 112", "section": "sideboard"},
@@ -1470,7 +1470,7 @@ decks_map = {
                 {"qty": 3, "code": "CMM - 154", "section": "sideboard"},
             ],
             "Evincar's Justice": [
-                {"qty": 1, "code": "CMD - 80", "section": "sideboard"}
+                {"qty": 1, "code": "CMD - 80", "section": "sideboard"},
             ],
         }
     },
@@ -1523,10 +1523,10 @@ decks_map = {
                 {"qty": 4, "code": "NEO - 66", "section": "main"},
             ],
             "Azorius Guildgate": [
-                {"qty": 1, "code": "RTR - 237", "section": "main"}
+                {"qty": 1, "code": "RTR - 237", "section": "main"},
             ],
             "Basilisk Gate": [
-                {"qty": 4, "code": "M3C - 320", "section": "main"}
+                {"qty": 4, "code": "M3C - 320", "section": "main"},
             ],
             "Citadel Gate": [
                 {"qty": 4, "code": "CLB - 349", "section": "main"},
@@ -1538,13 +1538,13 @@ decks_map = {
                 {"qty": 4, "code": "CLB - 359", "section": "main"},
             ],
             "Island": [
-                {"qty": 4, "code": "M20 - 266", "section": "main"}
+                {"qty": 4, "code": "M20 - 266", "section": "main"},
             ],
             "Idyllic Beachfront": [
-                {"qty": 1, "code": "DMU - 249", "section": "main"}
+                {"qty": 1, "code": "DMU - 249", "section": "main"},
             ],
             "Faerie Macabre": [
-                {"qty": 1, "code": "SHM - 66", "section": "sideboard"}
+                {"qty": 1, "code": "SHM - 66", "section": "sideboard"},
             ],
             "Dawnbringer Cleric": [
                 {"qty": 2, "code": "AFR - 9", "section": "sideboard"},
@@ -1553,10 +1553,10 @@ decks_map = {
                 {"qty": 3, "code": "M19 - 54", "section": "sideboard"},
             ],
             "Hydroblast": [
-                {"qty": 3, "code": "IA - 72", "section": "sideboard"}
+                {"qty": 3, "code": "IA - 72", "section": "sideboard"},
             ],
             "Dust to Dust": [
-                {"qty": 3, "code": "DK - 78", "section": "sideboard"}
+                {"qty": 3, "code": "DK - 78", "section": "sideboard"},
             ],
         }
     },
@@ -1603,10 +1603,10 @@ decks_map = {
                 {"qty": 2, "code": "NEO - 91", "section": "main"},
             ],
             "Contaminated Landscape": [
-                {"qty": 4, "code": "MH3 - 218", "section": "main"}
+                {"qty": 4, "code": "MH3 - 218", "section": "main"},
             ],
             "Serpent's Pass": [
-                {"qty": 1, "code": "TLA - 279", "section": "main"}
+                {"qty": 1, "code": "TLA - 279", "section": "main"},
             ],
             "Soured Springs": [
                 {"qty": 4, "code": "OTJ - 264", "section": "main"},
@@ -1615,10 +1615,10 @@ decks_map = {
                 {"qty": 6, "code": "ELD - 259", "section": "main"},
             ],
             "Island": [
-                {"qty": 3, "code": "C14 - 325", "section": "main"}
+                {"qty": 3, "code": "C14 - 325", "section": "main"},
             ],
             "Annul": [
-                {"qty": 2, "code": "KHM - 42", "section": "sideboard"}
+                {"qty": 2, "code": "KHM - 42", "section": "sideboard"},
             ],
             "Fear of Lost Teeth": [
                 {"qty": 2, "code": "DSK - 97", "section": "sideboard"},
@@ -1627,13 +1627,13 @@ decks_map = {
                 {"qty": 3, "code": "ZEN - 70", "section": "sideboard"},
             ],
             "Bind the Monster": [
-                {"qty": 3, "code": "KHM - 48", "section": "sideboard"}
+                {"qty": 3, "code": "KHM - 48", "section": "sideboard"},
             ],
             "Contaminated Ground": [
                 {"qty": 3, "code": "GTC - 59", "section": "sideboard"},
             ],
             "Dispel": [
-                {"qty": 2, "code": "RTR - 36", "section": "sideboard"}
+                {"qty": 2, "code": "RTR - 36", "section": "sideboard"},
             ],
         }
     },
@@ -1687,28 +1687,28 @@ decks_map = {
                 {"qty": 1, "code": "BRC - 176", "section": "main"},
             ],
             "Forlorn Flats": [
-                {"qty": 4, "code": "OTJ - 258", "section": "main"}
+                {"qty": 4, "code": "OTJ - 258", "section": "main"},
             ],
             "Snowfield Sinkhole": [
-                {"qty": 2, "code": "KHM - 276", "section": "main"},
+                {"qty": 2, "code": "KHM - 269", "section": "main"},
             ],
             "Snow-Covered Plains": [
-                {"qty": 6, "code": "ELD - 259", "section": "main"},
+                {"qty": 6, "code": "KHM - 276", "section": "main"},
             ],
             "Snow-Covered Swamp": [
-                {"qty": 4, "code": "KHM - 280", "section": "main"}
+                {"qty": 4, "code": "KHM - 280", "section": "main"},
             ],
             "Hopeful Eidolon": [
-                {"qty": 4, "code": "THS - 19", "section": "sideboard"}
+                {"qty": 4, "code": "THS - 19", "section": "sideboard"},
             ],
             "Duress": [
-                {"qty": 4, "code": "M10 - 96", "section": "sideboard"}
+                {"qty": 4, "code": "M10 - 96", "section": "sideboard"},
             ],
             "Trespasser's Curse": [
                 {"qty": 4, "code": "AKH - 112", "section": "sideboard"},
             ],
             "Dust to Dust": [
-                {"qty": 2, "code": "DK - 78", "section": "sideboard"}
+                {"qty": 2, "code": "DK - 78", "section": "sideboard"},
             ],
         }
     },
@@ -1746,7 +1746,7 @@ decks_map = {
                 {"qty": 3, "code": "SHM - 211", "section": "main"},
             ],
             "Temporal Intervention": [
-                {"qty": 3, "code": "EOE - 120", "section": "main"}
+                {"qty": 3, "code": "EOE - 120", "section": "main"},
             ],
             "Unearth": [
                 {"qty": 3, "code": "2X2 - 96", "section": "main"},
@@ -1777,23 +1777,23 @@ decks_map = {
                 {"qty": 1, "code": "VOW - 272", "section": "main"},
                 {"qty": 2, "code": "VOW - 273", "section": "main"},
             ],
-            "Mesmeric Fiend": [
-                {"qty": 2, "code": "TOR - 69", "section": "sideboard"}
+            "Abandon Attachments": [
+                {"qty": 1, "code": "TLA - 205", "section": "sideboard"},
             ],
             "Abrade": [
                 {"qty": 2, "code": "VOW - 139", "section": "sideboard"},
             ],
             "Cast into the Fire": [
-                {"qty": 1, "code": "LTR - 118", "section": "sideboard"}
+                {"qty": 1, "code": "LTR - 118", "section": "sideboard"},
             ],
             "Pyroblast": [
-                {"qty": 3, "code": "IA - 213", "section": "sideboard"}
+                {"qty": 3, "code": "IA - 213", "section": "sideboard"},
             ],
             "Divest": [
-                {"qty": 3, "code": "DOM - 87", "section": "sideboard"}
+                {"qty": 3, "code": "DOM - 87", "section": "sideboard"},
             ],
             "Introduction to Prophecy": [
-                {"qty": 2, "code": "STX - 4", "section": "sideboard"}
+                {"qty": 2, "code": "STX - 4", "section": "sideboard"},
             ],
             "Nihil Spellbomb": [
                 {"qty": 2, "code": "SOM - 187", "section": "sideboard"},
@@ -1828,7 +1828,7 @@ decks_map = {
                 {"qty": 4, "code": "FIN - 25", "section": "main"},
             ],
             "Myr Enforcer": [
-                {"qty": 2, "code": "MMA - 209", "section": "main"}
+                {"qty": 2, "code": "MMA - 209", "section": "main"},
             ],
             "Thraben Inspector": [
                 {"qty": 3, "code": "CMM - 66", "section": "main"},
@@ -1871,7 +1871,10 @@ decks_map = {
                 {"qty": 1, "code": "ZNR - 9", "section": "sideboard"},
             ],
             "You Hear Something on Watch": [
-                {"qty": 2, "code": "AFR - 42", "section": "sideboard"}
+                {"qty": 2, "code": "AFR - 42", "section": "sideboard"},
+            ],
+            "Fog": [
+                {"qty": 4, "code": "EMA - 167", "section": "sideboard"},
             ]
         }
     },
@@ -1939,16 +1942,16 @@ decks_map = {
                 {"qty": 2, "code": "M20 - 176", "section": "sideboard"},
             ],
             "Cast into the Fire": [
-                {"qty": 3, "code": "LTR - 118", "section": "sideboard"}
+                {"qty": 3, "code": "LTR - 118", "section": "sideboard"},
             ],
             "Red Elemental Blast": [
-                {"qty": 4, "code": "3E - 170", "section": "sideboard"}
+                {"qty": 4, "code": "3E - 170", "section": "sideboard"},
             ],
             "Weather the Storm": [
                 {"qty": 2, "code": "H1R - 24", "section": "sideboard"},
             ],
             "Relic of Progenitus": [
-                {"qty": 3, "code": "ALA - 218", "section": "sideboard"}
+                {"qty": 3, "code": "ALA - 218", "section": "sideboard"},
             ],
             "Bojuka Bog": [
                 {"qty": 1, "code": "BRC - 176", "section": "sideboard"},
@@ -2004,16 +2007,16 @@ decks_map = {
                 {"qty": 10, "code": "DDG - 79", "section": "main"},
             ],
             "Immolating Souleater": [
-                {"qty": 4, "code": "NPH - 139", "section": "sideboard"}
+                {"qty": 4, "code": "NPH - 139", "section": "sideboard"},
             ],
             "Raze the Effigy": [
-                {"qty": 4, "code": "MID - 156", "section": "sideboard"}
+                {"qty": 4, "code": "MID - 156", "section": "sideboard"},
             ],
             "Renegade Tactics": [
-                {"qty": 2, "code": "KLD - 127", "section": "sideboard"}
+                {"qty": 2, "code": "KLD - 127", "section": "sideboard"},
             ],
             "Lava Dart": [
-                {"qty": 4, "code": "MH1 - 134", "section": "sideboard"}
+                {"qty": 4, "code": "MH1 - 134", "section": "sideboard"},
             ],
         }
     },
@@ -2061,18 +2064,18 @@ decks_map = {
                 {"qty": 16, "code": "ELD - 267", "section": "main"},
             ],
             "Nylea's Disciple": [
-                {"qty": 4, "code": "THS - 167", "section": "sideboard"}
+                {"qty": 4, "code": "THS - 167", "section": "sideboard"},
             ],
             "Shinen of Life's Roar": [
-                {"qty": 1, "code": "SOK - 149", "section": "sideboard"}
+                {"qty": 1, "code": "SOK - 149", "section": "sideboard"},
             ],
             "Tamiyo's Safekeeping": [
-                {"qty": 4, "code": "NEO - 211", "section": "sideboard"}
+                {"qty": 4, "code": "NEO - 211", "section": "sideboard"},
             ],
             "Weather the Storm": [
                 {"qty": 2, "code": "H1R - 24", "section": "sideboard"},
             ],
-            "Tormod's Crypt ": [
+            "Tormod's Crypt": [
                 {"qty": 2, "code": "DK - 109", "section": "sideboard"},
             ],
         }
@@ -2139,13 +2142,13 @@ decks_map = {
                 {"qty": 3, "code": "WOE - 194", "section": "sideboard"},
             ],
             "Feed the Clan": [
-                {"qty": 1, "code": "KTK - 132", "section": "sideboard"}
+                {"qty": 1, "code": "KTK - 132", "section": "sideboard"},
             ],
             "Ram Through": [
                 {"qty": 3, "code": "IKO - 170", "section": "main"},
             ],
             "Relic of Progenitus": [
-                {"qty": 3, "code": "ALA - 218", "section": "sideboard"}
+                {"qty": 3, "code": "ALA - 218", "section": "sideboard"},
             ],
         }
     },
@@ -2198,27 +2201,27 @@ decks_map = {
                 {"qty": 2, "code": "AVR - 241", "section": "main"},
             ],
             "Breath Weapon": [
-                {"qty": 3, "code": "CLB - 165", "section": "sideboard"}
+                {"qty": 3, "code": "CLB - 165", "section": "sideboard"},
             ],
-            "Deglame": [
-                {"qty": 4, "code": "MOR - 118", "section": "sideboard"}
+            "Deglamer": [
+                {"qty": 4, "code": "MOR - 118", "section": "sideboard"},
             ],
             "Horrific Assault": [
-                {"qty": 4, "code": "MH3 - 157", "section": "sideboard"}
+                {"qty": 4, "code": "MH3 - 157", "section": "sideboard"},
             ],
             "Suplex": [
-                {"qty": 1, "code": "FIN - 164", "section": "sideboard"}
+                {"qty": 1, "code": "FIN - 164", "section": "sideboard"},
             ],
             "Relic of Progenitus": [
-                {"qty": 3, "code": "ALA - 218", "section": "sideboard"}
+                {"qty": 3, "code": "ALA - 218", "section": "sideboard"},
             ],
             
         }
     },
 }
 
-
-for deck_name, deck_info in decks_map.items():
+"""
+for deck_name, deck_info in DECKS_MAP.items():
 
     deck_main_total = 0
     deck_side_total = 0    
@@ -2246,3 +2249,4 @@ for deck_name, deck_info in decks_map.items():
         print(f"{deck_name} -> Main: {deck_main_total}, Side: {deck_side_total}")
     else:
         print(f"{deck_name} OK")
+        """

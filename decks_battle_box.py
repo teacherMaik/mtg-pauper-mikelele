@@ -123,6 +123,7 @@ def render_battle_box_gallery(df_battle_box):
                         st.write("") # Spacer
                         if st.button("View Details", key=f"btn_{deck_name}", use_container_width=True):
                             st.session_state.view = f"deck_{deck_name}"
+                            st.session_state.current_mode = "Deck"
                             st.rerun()
 
 

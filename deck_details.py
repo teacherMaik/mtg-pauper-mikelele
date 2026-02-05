@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import features
+import random
 
 def render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box):
 
@@ -56,136 +57,138 @@ def render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box):
     current_mode = st.session_state.deck_sub_view
 
     if current_mode == "Deck":
+        st.session_state.active_view = "Deck"
         render_deck_list_view(deck_cards)
     elif current_mode == "Analysis":
+        st.session_state.active_view = "Analysis"
         render_deck_stats_view(deck_cards)
     elif current_mode == "test_deck":
+        # 1. Check if we are "new" to this mode
+        if st.session_state.get("active_view") != "test_deck":
+            # Clear the old data
+            for key in ['shuffled_library', 'hand', 'ptr', 'draw_counter', 'hand_selector']:
+                st.session_state.pop(key, None)
+            
+            # 2. Set the 'gate' so this block doesn't run again while we are playtesting
+            st.session_state.active_view = "test_deck"
+
+        # 3. Now call the function
         render_test_deck_view(deck_cards)
 
 
 def render_deck_list_view(deck_cards):
+    # --- 1. SETUP & STATE ---
+    if deck_cards.empty:
+        st.error("Deck data not found.")
+        return
 
-    # 2. Status Logic (using your exact col names)
+    current_deck_id = deck_cards['DeckName'].iloc[0]
+    
+    # Wipe state if we switch decks
+    if "active_view_deck" not in st.session_state or st.session_state.active_view_deck != current_deck_id:
+        st.session_state.selected_card = None
+        st.session_state.active_view_deck = current_deck_id
+
+    # --- 2. DATA PREP ---
     deck_cards['status'] = deck_cards.apply(
         lambda x: "✅" if x['num_for_deck'] >= x['qty'] else f"({int(x['num_for_deck'])}/{int(x['qty'])})", 
         axis=1
     )
-
-    # Separate Main vs Side
+    
     mainboard = deck_cards[deck_cards['section'].str.contains('Main', case=False, na=False)]
     sideboard = deck_cards[deck_cards['section'].str.contains('Side', case=False, na=False)]
     
     cards_main = mainboard['qty'].sum()
-    cards_main_collected = mainboard['num_for_deck'].sum()
-    main_pct = (cards_main_collected / cards_main * 100) if cards_main > 0 else 0
     value_main = mainboard['total_cards_value'].sum()
+    main_pct = (mainboard['num_for_deck'].sum() / cards_main * 100) if cards_main > 0 else 0
 
-    cards_side = sideboard['qty'].sum()
-    cards_side_collected = sideboard['num_for_deck'].sum()
-    side_pct = (cards_side_collected / cards_side * 100) if cards_side > 0 else 0
-    value_side = sideboard['total_cards_value'].sum()
-
-    if deck_cards.empty:
-        st.error("Deck data not found.")
-        return
-    
+    # --- 3. HEADER ---
     st.markdown(f"""
         <div style="margin-top:-15px; margin-bottom:15px;">
-            <div style="font-size:26px; font-weight:500; margin-bottom:5px;">
-                Main ({int(cards_main)}) ~ ${value_main:,.2f}
-            </div>
+            <div style="font-size:26px; font-weight:500; margin-bottom:5px;">Main ({int(cards_main)}) ~ ${value_main:,.2f}</div>
             <div style="background-color: #e0e0e0; border-radius: 5px; width: 210px; height: 8px;">
                 <div style="background-color: #34495e; width: {main_pct}%; height: 8px; border-radius: 5px;"></div>
-            </div>
-            <div style="font-size: 12px; color: #666; margin-top: 2px;">
-                {int(cards_main_collected)} / {int(cards_main)} cards collected ({main_pct:.1f}%)
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-    # 4. Mainboard Layout (Wrapped by Type)
+    # --- 4. GRID CONFIG ---
     col_left, col_right = st.columns(2, gap="large")
-    
-    left_types = ['Creature', 'Instant', 'Sorcery']
-    right_types = ['Enchantment', 'Artifact', 'Land']
+    left_types = ['Creature', 'Instant', 'Sorcery', 'Sideboard']
+    right_types = ['Enchantment', 'Artifact', 'Land', 'ImgRender']
 
-    def draw_type_groups(df, types, ui_col):
-        
+    def draw_grid_groups(df, types, ui_col):
         with ui_col:
             for t in types:
-                # SPECIAL LOGIC: If checking Artifacts, exclude Lands
-                if t == 'Artifact':
-                    subset = df[
-                        (df['type'].str.contains('Artifact', case=False, na=False)) & 
-                        (~df['type'].str.contains('Land', case=False, na=False))
-                    ]
+                # CASE: Image Render
+                if t == 'ImgRender':
+                    st.markdown("#### Card Preview")
+                    selected = st.session_state.get('selected_card')
+                    with st.container(border=True):
+                        if selected is not None:
+                            # Handle potential NaN in image_url
+                            img = selected['image_url'] if pd.notna(selected['image_url']) else "https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg"
+                            st.image(img, use_container_width=False)
+                            st.markdown(f"**{selected['name']}**")
+                        else:
+                            st.info("Select a card to view.")
+                            st.image("https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg", use_container_width=False)
+                    continue
+
+                # CASE: Sideboard
+                if t == 'Sideboard':
+                    subset = sideboard
+                    label = f"Sideboard ({int(subset['qty'].sum())})"
+                    key = f"side_{current_deck_id}"
+                # CASE: Standard Types
                 else:
-                    subset = df[df['type'].str.contains(t, case=False, na=False)]
-                
+                    if t == 'Artifact':
+                        subset = df[(df['type'].str.contains('Artifact', case=False, na=False)) & (~df['type'].str.contains('Land', case=False, na=False))]
+                    else:
+                        subset = df[df['type'].str.contains(t, case=False, na=False)]
+                    label = f"{t}s ({int(subset['qty'].sum())})"
+                    key = f"df_{current_deck_id}_{t}"
+
                 if not subset.empty:
+                    st.markdown(f"#### {label}")
+                    display_df = subset[['qty', 'name', 'mana', 'total_cards_value', 'status', 'image_url', 'rarity']].sort_values("name")
                     
-                    st.markdown(f"#### {t}s ({int(subset['qty'].sum())})")
-                    st.dataframe(
-                        subset[['qty', 'name', 'mana', 'total_cards_value', 'status']].sort_values("name"),
+                    # Capture the event
+                    event = st.dataframe(
+                        display_df,
                         use_container_width=True,
                         hide_index=True,
+                        on_select="rerun",
+                        selection_mode="single-row",
+                        key=key,
                         column_config={
-                            "status": st.column_config.TextColumn("Collected", width=65),
-                            "qty": st.column_config.NumberColumn("Qty", format="%d", width=35),
-                            "name": st.column_config.TextColumn("Name"),
-                            "mana": st.column_config.TextColumn("Mana", width=80),
-                            "total_cards_value": st.column_config.NumberColumn("Value", format="$ %.2f", width=60)
+                            "image_url": None, "rarity": None,
+                            "qty": st.column_config.NumberColumn(width=35),
+                            "status": st.column_config.TextColumn("Coll.", width=55),
+                            "total_cards_value": st.column_config.NumberColumn("Value", format="$ %.2f", width=50)
                         }
                     )
+
+                    # --- THE FIX: Check if selection changed ---
+                    if event.selection.rows:
+                        new_selection = display_df.iloc[event.selection.rows[0]]
+                        current_selection = st.session_state.get('selected_card')
+                        
+                        # Only update and rerun if it's a new card
+                        if current_selection is None or current_selection['name'] != new_selection['name']:
+                            st.session_state.selected_card = new_selection
+                            st.rerun()
                 else:
+                    # RESTORED: Feedback when type is missing
                     st.markdown(f"""
-                        <div style="padding: 15px; border-left: 5px solid #ff4b4b;; background-color: #f8f9fa; color: #34495e; border-radius: 4px; margin-bottom: 20px;">
-                            No {t}s in this deck.
+                        <div style="padding: 10px; border-left: 5px solid #ff4b4b; background-color: #f8f9fa; color: #34495e; border-radius: 4px; margin-bottom: 20px; font-size: 14px;">
+                            {label}
                         </div>
                     """, unsafe_allow_html=True)
 
-    draw_type_groups(mainboard, left_types, col_left)
-    draw_type_groups(mainboard, right_types, col_right)
-
-    st.divider()
-
-    # 5. Sideboard (Full width below)
-    if not sideboard.empty:
-
-        side_col_left, side_col_right = st.columns(2, gap="large")
-        
-
-        with side_col_left:
-            st.markdown(f"""
-                <div style="margin-top:-15px; margin-bottom:15px;">
-                    <div style="font-size:26px; font-weight:500; margin-bottom:5px;">
-                        Side ({int(cards_side)}) ~ ${value_side:,.2f}
-                    </div>
-                    <div style="background-color: #e0e0e0; border-radius: 5px; width: 210px; height: 8px;">
-                        <div style="background-color: #34495e; width: {side_pct}%; height: 8px; border-radius: 5px;"></div>
-                    </div>
-                    <div style="font-size: 12px; color: #666; margin-top: 2px;">
-                        {int(cards_side_collected)} / {int(cards_side)} cards collected ({side_pct:.1f}%)
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-            
-            st.dataframe(
-                sideboard[['qty', 'name', 'type', 'mana', 'total_cards_value', 'status', ]].sort_values("name"),
-                use_container_width=True,
-                hide_index=True,
-                column_config={
-                    "status": st.column_config.TextColumn("Collected", width=45),
-                    "qty": st.column_config.NumberColumn("Qty", format="%d", width=35),
-                    "name": st.column_config.TextColumn("Name"),
-                    "type": st.column_config.TextColumn("Type"),
-                    "mana": st.column_config.TextColumn("Mana", width=60),
-                    "total_cards_value": st.column_config.NumberColumn("Value", format="$ %.2f", width=60)
-                }
-            )
-
-        with side_col_right:
-            pass
+    # Final Execution
+    draw_grid_groups(mainboard, left_types, col_left)
+    draw_grid_groups(mainboard, right_types, col_right)
 
 
 def render_deck_stats_view(deck_cards):
@@ -301,8 +304,93 @@ def render_deck_stats_view(deck_cards):
 
 
 def render_test_deck_view(deck_cards):
+    # 1. Prepare Deck
+    mainboard = deck_cards[deck_cards['section'].str.contains('main', case=False, na=False)].copy()
+    full_deck_df = mainboard.loc[mainboard.index.repeat(mainboard['qty'])].drop(columns=['qty'])
 
-    mainboard = deck_cards[deck_cards['section'].str.contains('Main', case=False, na=False)]
+    # 2. State Management
+    if 'shuffled_library' not in st.session_state:
+        st.session_state.shuffled_library = full_deck_df.sample(frac=1)
+        st.session_state.hand = pd.DataFrame()
+        st.session_state.ptr = 0
+        st.session_state.draw_counter = 0 
 
-    
-    return
+    # 3. Corrected Draw Logic (Descending Order)
+    def draw(n):
+        available = len(st.session_state.shuffled_library) - st.session_state.ptr
+        num = min(n, available)
+        if num <= 0: return
+
+        new_draw = st.session_state.shuffled_library.iloc[st.session_state.ptr : st.session_state.ptr + num].copy()
+        
+        # Increment index based on draw order
+        new_indices = range(st.session_state.draw_counter + 1, st.session_state.draw_counter + num + 1)
+        new_draw.index = new_indices
+        
+        # Newest cards on top
+        st.session_state.hand = pd.concat([new_draw, st.session_state.hand]).sort_index(ascending=False)
+        st.session_state.draw_counter += num
+        st.session_state.ptr += num
+
+    # --- INITIALIZE SELECTION TO PREVENT CRASH ---
+    selection = {"selection": {"rows": []}}
+
+    # --- LAYOUT ---
+    interact_col, card_view_col, curve_col = st.columns([1.2, 1, 1.2])
+
+    with interact_col:
+        st.subheader("Your Hand")
+        c1, c2 = st.columns(2)
+        if c1.button("Draw 7 (New)"):
+            st.session_state.shuffled_library = full_deck_df.sample(frac=1)
+            st.session_state.hand = pd.DataFrame()
+            st.session_state.ptr = 0
+            st.session_state.draw_counter = 0
+            draw(7)
+            st.rerun() # Refresh to update UI immediately
+            
+        if c2.button("Draw 1"):
+            draw(1)
+            st.rerun()
+
+        if not st.session_state.hand.empty:
+            # Overwrite the empty selection with the actual UI component
+            selection = st.dataframe(
+                st.session_state.hand[['name', 'type', 'mana']], 
+                on_select="rerun", 
+                selection_mode="single-row",
+                key="hand_selector",
+                hide_index=False,
+                use_container_width=True
+            )
+
+    with card_view_col:
+        st.subheader("Card Preview")
+        selected_rows = selection.get("selection", {}).get("rows", [])
+        
+        if selected_rows and not st.session_state.hand.empty:
+            idx_pos = selected_rows[0]
+            selected_card = st.session_state.hand.iloc[idx_pos]
+            
+            # Use your existing image/URL logic
+            img_url = selected_card.get('image_url', "https://placehold.co/488x680?text=MTG+Card")
+            st.image(img_url, use_container_width=True)
+            st.write(f"**{selected_card['name']}**")
+            st.caption(f"Draw Order: {selected_card.name}")
+        else:
+            st.info("Select a card in your hand to preview.")
+
+    with curve_col:
+        st.subheader("Hand Analysis")
+        if not st.session_state.hand.empty:
+            fig = get_mana_curve_widget(
+                st.session_state.hand, 
+                sel_type=None, 
+                sel_color=None, 
+                is_transposed=False
+            )
+            if fig:
+                st.plotly_chart(fig, use_container_width=True)
+
+
+

@@ -24,9 +24,10 @@ if "view" not in st.session_state:
 
 # --- SIDEBAR NAVIGATION ---
 with st.sidebar:
+
     current_view = st.session_state.view
-    st.header('Decks')
     
+    st.header('Decks')
     if st.button("My Battle Box", use_container_width=True, 
                  type="primary" if (current_view == "battle_box" or current_view.startswith("deck_")) else "secondary"):
         st.session_state.view = "battle_box"

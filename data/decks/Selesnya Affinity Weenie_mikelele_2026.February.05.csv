@@ -18,5 +18,12 @@ Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Sc
 3,Thraben Inspector,Creature - Human Soldier,{W},Common,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2093330.jpg,2026-02-05 09:06:02 UTC,114876,d140c3b7-ca78-483d-baeb-307b624fea8b
 2,Tree of Tales,Artifact Land,"",Common,$0.83,main,https://s.deckbox.org/system/images/mtg/cards/2077819.jpg,2025-09-17 05:26:20 UTC,11309,94db07aa-43d3-41b5-924e-60f1756b9c69
 1,Winding Way,Sorcery,{1}{G},Common,$0.42,main,https://s.deckbox.org/system/images/mtg/cards/2061637.jpg,2026-02-05 09:05:52 UTC,583330,0c1c6256-6302-4627-bfbb-bffdc124fab4
-4,Fog,Instant,{G},Common,$5.00,sideboard,https://s.deckbox.org/system/images/mtg/cards/2102377.jpg,2025-09-20 10:10:58 UTC,69151,8b55d04f-c52f-4b94-b25c-f5c7d8c1c18e
+1,Dauntless Unity,Instant,{1}{W},Common,$0.03,sideboard,https://s.deckbox.org/system/images/mtg/cards/2111244.jpg,2026-02-05 17:16:01 UTC,222064,b12a4d17-68e6-4133-99fd-e501e24e6c6b
+3,Dust to Dust,Sorcery,{1}{W}{W},Uncommon,$6.02,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070321.jpg,2026-02-05 17:15:35 UTC,2119,6e8a9a5c-0e5f-4498-88d8-6aac465923b1
+4,Fog,Instant,{G},Common,$0.21,sideboard,https://s.deckbox.org/system/images/mtg/cards/2086811.jpg,2026-02-05 17:16:21 UTC,69151,8b55d04f-c52f-4b94-b25c-f5c7d8c1c18e
+1,Plains,Basic Land - Plains,"",BasicLand,$0.11,sideboard,https://s.deckbox.org/system/images/mtg/cards/2313154.jpg,2026-02-05 17:15:24 UTC,671036,3a438199-54f8-4702-81cf-a9d42e7cd9f1
+1,Survivors' Bond,Sorcery,{1}{G},Common,$0.04,sideboard,https://s.deckbox.org/system/images/mtg/cards/2108948.jpg,2026-02-05 17:15:04 UTC,212707,530ff2a1-6447-4653-a661-d9a39156d6fa
+1,Thraben Inspector,Creature - Human Soldier,{W},Common,$0.15,sideboard,https://s.deckbox.org/system/images/mtg/cards/2093330.jpg,2026-02-05 17:14:43 UTC,114876,d140c3b7-ca78-483d-baeb-307b624fea8b
+1,Winding Way,Sorcery,{1}{G},Common,$0.42,sideboard,https://s.deckbox.org/system/images/mtg/cards/2061637.jpg,2026-02-05 17:15:13 UTC,583330,0c1c6256-6302-4627-bfbb-bffdc124fab4
+1,You Hear Something on Watch,Instant,{1}{W},Common,$0.04,sideboard,https://s.deckbox.org/system/images/mtg/cards/2116242.jpg,2026-02-05 17:16:09 UTC,243082,76e939ab-9d0c-4685-805c-c8bc4e6af163
 

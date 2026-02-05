@@ -7,6 +7,7 @@ def render_card_search_view(df_inventory, df_all_decks):
     col_left, col_right = st.columns([1.5, 1], gap="large")
 
     with col_left:
+
         search = st.text_input("Search card name...", key="inv_search")
         
         # --- DATA CLEANUP ---
@@ -99,8 +100,8 @@ def render_card_search_view(df_inventory, df_all_decks):
                         return [f'background-color: {METALLIC_GRAY}; color: white;'] * len(row)
                     elif row.name == 1:
                         return ['background-color: #516a89; color: white;'] * len(row)
-                    elif row.name >= n - 2 and n > 2:
-                        return ['background-color: #ff4b4b; color: white;'] * len(row)
+                    # elif row.name >= n - 2 and n > 2:
+                        # return ['background-color: #ff4b4b; color: white;'] * len(row)
                     return [''] * len(row)
 
                 # --- RENDER ---
@@ -115,13 +116,18 @@ def render_card_search_view(df_inventory, df_all_decks):
                 )
 
                 st.caption(f"*'In Collection' counts all printings of {card_name}. Price used: ${price_each:,.2f}")
+    
     with col_right:
+
         if event.selection.rows:
             card_data = display_df.iloc[event.selection.rows[0]]
             st.write(f"### {card_data['name']}")
+
             # Use a container to keep the image size stable
             with st.container():
+
                 st.image(card_data['image_url'], use_container_width=True)
+
         else:
             st.info("Select a card to view artwork.")
             st.image("https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg", width=420)

@@ -31,42 +31,68 @@ def render_row_1(df_inventory, df_all_decks):
 
     # Comparative Tables Widget
     with row_1_col_left:
+        # 1. CLEAN AND NORMALIZE BOTH DATAFRAMES
+        # Force everything to string, strip, title case, and handle potential NaNs
+        inv_clean = df_inventory.copy()
+        inv_clean['rarity'] = inv_clean['rarity'].fillna("Unknown").astype(str).str.strip().str.title()
         
-        # 1. PREP INVENTORY DATA (Total & Unique)
-        inv_total = df_inventory.groupby('rarity').agg(
+        decks_clean = df_all_decks.copy()
+        decks_clean['rarity'] = decks_clean['rarity'].fillna("Unknown").astype(str).str.strip().str.title()
+
+        # Mapping for consistency
+        rarity_map = {
+            'Mythicrare': 'Mythic', 
+            'Mythic Rare': 'Mythic',
+            'Basicland': 'Basic Land' # Fixing the spacing while we are at it
+        }
+
+        for df in [inv_clean, decks_clean]:
+            df['rarity'] = df['rarity'].astype(str).str.strip().str.title()
+            df['rarity'] = df['rarity'].replace(rarity_map)
+            
+        # 2. PREP INVENTORY DATA
+        inv_total = inv_clean.groupby('rarity').agg(
             Count=('qty', 'sum'),
             Value=('total_cards_value', 'sum')
         ).reset_index()
 
-        # Calculate Unique counts and Unique Value (Price of 1 copy per card)
-        inv_unq_base = df_inventory.assign(unq_qty=1)
-        inv_unq_base['unit_price'] = inv_unq_base['total_cards_value'] / df_inventory['qty']
+        inv_unq_base = inv_clean.assign(unq_qty=1)
+        inv_unq_base['unit_price'] = inv_unq_base['total_cards_value'] / inv_unq_base['qty'].replace(0, 1)
         
         inv_unq_agg = inv_unq_base.groupby('rarity').agg(
             Unique=('unq_qty', 'sum'),
             Unq_Val=('unit_price', 'sum')
         ).reset_index()
 
-        # Merge for Depth Table
+        # Create df_depth and ensure 'Stat' is solid
         df_depth = pd.merge(inv_total, inv_unq_agg, on='rarity').rename(columns={'rarity': 'Stat'})
         df_depth['Depth'] = (df_depth['Count'] / df_depth['Unique']).fillna(0)
 
-        # 2. PREP DECK DATA
-        deck_stats = df_all_decks.assign(unq_in_deck=1).groupby('rarity').agg(
+        # 3. PREP DECK DATA
+        deck_stats = decks_clean.assign(unq_in_deck=1).groupby('rarity').agg(
             In_Decks_Unq=('unq_in_deck', 'sum'),
             In_Decks_Qty=('qty', 'sum'),
             In_Decks_Val=('total_cards_value', 'sum')
         ).reset_index().rename(columns={'rarity': 'Stat'})
 
-        # 3. MERGE FOR INTEGRATION PERCENTAGES
-        # We merge only the columns we need for math to avoid extra 'None' columns in the UI
-        df_usage = pd.merge(deck_stats, df_depth[['Stat', 'Unique', 'Count']], on='Stat', how='left')
+        # 4. THE CRITICAL MERGE
+        # We use 'outer' here as a safety measure: if a rarity exists in decks but 
+        # somehow not in inventory, it will STILL show up in the table instead of vanishing.
+        df_usage = pd.merge(deck_stats, df_depth[['Stat', 'Unique', 'Count']], on='Stat', how='outer')
         
-        df_usage['Usage_Unq_Pct'] = (df_usage['In_Decks_Unq'] / df_usage['Unique'] * 100).fillna(0)
-        df_usage['Usage_Pct'] = (df_usage['In_Decks_Qty'] / df_usage['Count'] * 100).fillna(0)
+        # Fill missing merge keys (if any) so the row has a label
+        df_usage['Stat'] = df_usage['Stat'].fillna("Unknown")
         
-        # Drop helper columns used for math before display
-        df_usage_clean = df_usage.drop(columns=['Unique', 'Count'])
+        # Fill denominator NaNs with 0 then replace with 1 for division
+        df_usage['Unique'] = df_usage['Unique'].fillna(0)
+        df_usage['Count'] = df_usage['Count'].fillna(0)
+
+        # Calculate percentages
+        df_usage['Usage_Unq_Pct'] = (df_usage['In_Decks_Unq'] / df_usage['Unique'].replace(0, 1) * 100).fillna(0)
+        df_usage['Usage_Pct'] = (df_usage['In_Decks_Qty'] / df_usage['Count'].replace(0, 1) * 100).fillna(0)
+        
+        # Drop math helpers
+        df_usage_clean = df_usage.drop(columns=['Unique', 'Count']).fillna(0)
 
         # --- SUMMARY ROWS ---
         summary_depth = pd.DataFrame([{
@@ -80,11 +106,11 @@ def render_row_1(df_inventory, df_all_decks):
 
         summary_usage = pd.DataFrame([{
             'Stat': 'Total Cards',
-            'In_Decks_Unq': df_usage['In_Decks_Unq'].sum(),
-            'Usage_Unq_Pct': (df_usage['In_Decks_Unq'].sum() / df_depth['Unique'].sum() * 100) if df_depth['Unique'].sum() > 0 else 0,
-            'In_Decks_Qty': df_usage['In_Decks_Qty'].sum(),
-            'Usage_Pct': (df_usage['In_Decks_Qty'].sum() / df_depth['Count'].sum() * 100) if df_depth['Count'].sum() > 0 else 0,
-            'In_Decks_Val': df_usage['In_Decks_Val'].sum()
+            'In_Decks_Unq': deck_stats['In_Decks_Unq'].sum(),
+            'Usage_Unq_Pct': (deck_stats['In_Decks_Unq'].sum() / df_depth['Unique'].sum() * 100) if df_depth['Unique'].sum() > 0 else 0,
+            'In_Decks_Qty': deck_stats['In_Decks_Qty'].sum(),
+            'Usage_Pct': (deck_stats['In_Decks_Qty'].sum() / df_depth['Count'].sum() * 100) if df_depth['Count'].sum() > 0 else 0,
+            'In_Decks_Val': deck_stats['In_Decks_Val'].sum()
         }])
 
         # --- RENDER TABLES ---
@@ -97,8 +123,9 @@ def render_row_1(df_inventory, df_all_decks):
         )
 
         st.subheader("Deck Integration")
+        # Using 'summary_usage' which pulls directly from deck_stats to ensure the Total is always accurate
         st.dataframe(
-            pd.concat([summary_usage, df_usage_clean.sort_values('In_Decks_Qty', ascending=False)], ignore_index=True).style.apply(
+            pd.concat([summary_usage, df_usage_clean[df_usage_clean['Stat'] != 'Total Cards'].sort_values('In_Decks_Qty', ascending=False)], ignore_index=True).style.apply(
                 lambda s: [f'background-color: {METALLIC_GRAY}; color: white;' if s.name == 0 else '' for _ in s], axis=1
             ),
             use_container_width=True, hide_index=True, column_config=config_decks

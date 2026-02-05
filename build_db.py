@@ -4,10 +4,9 @@ import os
 import re
 from datetime import datetime
 from maps_utilities import LAND_DATA_MAP
-# Add this to your existing imports
+from maps_decks import DECKS_MAP
 from sync_git import sync_to_github
 
-# --- CONFIGURATION ---
 DB_PATH = os.path.join("data", "mtg_pauper.db")
 DATA_DIR = "data"
 CLASSIFICATION_DIR = "data" 
@@ -34,6 +33,7 @@ def rename_cols(df):
         'NumForBuild': 'num_for_deck'
     }, inplace=True, errors='ignore')
     return df
+
 
 def get_match_name(name):
     if not isinstance(name, str): return ""
@@ -72,94 +72,168 @@ def get_latest_file(directory, pattern):
     
 
 def clean_inventory(path):
+
     df = pd.read_csv(path)
-    df['Edition Code'] = df['Edition Code'].astype(str).str.strip().fillna('')
-    df['Card Number'] = df['Card Number'].astype(str).str.strip().fillna('')
+
+    df['Edition Code'] = df['Edition Code'].fillna('').astype(str).str.strip().str.upper()
+
+    df['Card Number'] = pd.to_numeric(df['Card Number'], errors='coerce').fillna(0).astype(int).astype(str)
     df['Code'] = df['Edition Code'] + " - " + df['Card Number']
-    
+
     df['Price'] = df['Price'].astype(str).str.replace('$', '', regex=False).str.replace(',', '', regex=False)
     df['Price'] = pd.to_numeric(df['Price'], errors='coerce').fillna(0.00)
     df['Count'] = pd.to_numeric(df['Count'], errors='coerce').fillna(0).astype(int)
     df['Total'] = df['Count'] * df['Price']
     df['MatchName'] = df['Name'].apply(get_match_name)
 
-    drop_cols = ['Tradelist Count', 'Decks Count Built', 'Decks Count All', 'Condition', 'Language', 'Foil', 'Signed', 'Artist Proof', 'Altered Art', 'Misprint', 'Promo', 'Textless', 'Printing Id','Printing Note', 'Tags', 'My Price', 'Last Updated', 'TcgPlayer ID']
+    drop_cols = ['Tradelist Count', 'Decks Count Built', 'Decks Count All', 'Condition', 'Language', 'Foil', 'Signed', 'Artist Proof', 'Altered Art', 'Misprint', 'Promo', 'Textless', 'Printing Id','Printing Note', 'Tags', 'My Price', 'Last Updated', 'TcgPlayer ID', 'Edition Code', 'Card Number']
     df.drop(columns=drop_cols, inplace=True, errors='ignore')
+
+    print("printing null codes:", df['Code'].isna().sum())
+    print(df.loc[df['Code'].isna(), 'Name'])
+
     return df
 
 
-def load_all_decks_cards(path):
+def load_all_decks_cards(path, df_inventory):
     if not os.path.exists(path): return pd.DataFrame(), False
 
     all_deck_data = []
     files = [f for f in os.listdir(path) if f.endswith(".csv")]
-
     if not files: return pd.DataFrame(), False
 
     prefixes = set(re.split(r'_mikelele', f)[0] for f in files)
-    
     any_new_deck = False
+
+    inv_ref = df_inventory.drop_duplicates('Code').set_index('Code')[
+        ['Edition', 'Image URL', 'Scryfall ID', 'Price', 'Rarity']
+    ].to_dict('index')
+
+    missing_inv = 0
     for prefix in prefixes:
-
+        deck_name = prefix.strip()
         latest_deck, status = get_latest_file(path, rf"^{re.escape(prefix)}_mikelele")
-        
         if status: any_new_deck = True
+
         if latest_deck:
-
             df = pd.read_csv(latest_deck)
-
-            # Eliminate any "Scratchpad" cards from decks
-            if 'Section' in df.columns:
-                df = df[df['Section'].str.lower() != 'scratchpad']
-            elif 'section' in df.columns:
-                df = df[df['section'].str.lower() != 'scratchpad']
-
+            deck_rules = DECKS_MAP.get(deck_name, {}).get("cards", {})
+            
             df['DeckName'] = prefix.strip()
+            
+            # Standardize Price/Count immediately so math works for EVERY row
             df['Price'] = df['Price'].astype(str).str.replace('$', '', regex=False).str.replace(',', '', regex=False)
             df['Price'] = pd.to_numeric(df['Price'], errors='coerce').fillna(0.00)
             df['Count'] = pd.to_numeric(df.get('Count', df.get('Qty', 0)), errors='coerce').fillna(0).astype(int)
-            df['Total'] = df['Count'] * df['Price']
+            df['Section'] = df.get('Section', df.get('section', 'Main')) # Safety for the KeyError
+    
             df['MatchName'] = df['Name'].apply(get_match_name)
             df.drop(['Last Updated', 'TcgPlayer ID'], axis=1, inplace=True, errors='ignore')
-            all_deck_data.append(df)
 
-        final_df = pd.concat(all_deck_data, ignore_index=True) if all_deck_data else pd.DataFrame()
+            purified_rows = []
+            for _, row in df.iterrows():
+                card_name = row['Name']
+
+                if card_name in deck_rules:
+                    # Logic for Mapped cards
+                    entries = deck_rules[card_name]
+                    for entry in entries:
+                        # Only process entries matching current CSV section
+                        if entry['section'].lower() != row['Section'].lower():
+                            continue
+                            
+                        new_row = row.copy()
+                        new_row['Count'] = entry['qty']
+                        new_row['Code'] = entry['code']
+                        new_row['Section'] = entry['section']
+                        
+                        info = inv_ref.get(entry['code'], {})
+
+                        if info:
+                            new_row['Edition'] = info.get('Edition', 'Unknown')
+                            new_row['Price'] = info.get('Price', row['Price'])
+                            new_row['Rarity'] = info.get('Rarity', row['Rarity'])
+                            new_row['Image URL'] = info.get('Image URL', row['Image URL'])
+                            new_row['Scryfall ID'] = info.get('Scryfall ID', row['Scryfall ID'])
+                        else:
+                            missing_inv += 1
+                            new_row['Code'] = 'UNKNOWN' # Flag for buildability
+                            new_row['Edition'] = 'UNKNOWN' # Flag for buildability
+
+                        new_row['Total'] = new_row['Count'] * new_row['Price']
+                        purified_rows.append(new_row)
+                else:
+                    # CRITICAL FIX: Append the original row if not in map
+                    # This prevents the empty DataFrame that causes the KeyError
+                    row['Code'] = 'UNKNOWN'
+                    row['Total'] = row['Count'] * row['Price']
+                    purified_rows.append(row)
+
+            all_deck_data.append(pd.DataFrame(purified_rows))
+
+    final_df = pd.concat(all_deck_data, ignore_index=True) if all_deck_data else pd.DataFrame()
     return final_df, any_new_deck
 
 
 def calculate_priority_buildability(df_inventory, df_all_decks, df_bb):
-    virtual_inv = df_inventory.groupby('MatchName')['Count'].sum().to_dict()
-    df_bb = df_bb.copy()
-    allocations = []
+    # 1. Map physical inventory by Code
+    virtual_inv = df_inventory.groupby('Code')['Count'].sum().to_dict()
     
-    main_completion, side_completion = [], []
+    # 2. Add the 'is_main' flag and priority for sorting
+    df_cards = df_all_decks.copy()
+    df_cards['is_main'] = df_cards['Section'].str.lower().str.contains('main', na=False)
+    
+    # Merge deck priority from df_bb (the dashboard map)
+    df_cards = df_cards.merge(df_bb[['DeckName', 'Priority']], on='DeckName', how='left')
 
-    for _, row in df_bb.iterrows():
-        deck_name = row['DeckName'].strip()
+    # 3. GLOBAL SORT: All Mains (True=1) first, then by deck priority
+    df_cards = df_cards.sort_values(
+        by=['is_main', 'Priority', 'DeckName'], 
+        ascending=[False, True, True]
+    )
+
+    # 4. Global Allocation
+    allocations = []
+    for idx, card in df_cards.iterrows():
+        code = card['Code']
+        needed = card['Count']
+        available = virtual_inv.get(code, 0)
         
-        def get_pct(section_name):
-            cards = df_all_decks[(df_all_decks['DeckName'] == deck_name) & (df_all_decks['Section'].str.contains(section_name, case=False, na=False))]
-            total = cards['Count'].sum()
+        taken = min(needed, available)
+        allocations.append({'temp_idx': idx, 'NumForBuild': taken})
+        
+        # Drain virtual inventory
+        virtual_inv[code] = available - taken
+
+    # 5. Map results back to the original index to preserve order
+    df_allocs = pd.DataFrame(allocations).set_index('temp_idx')
+    df_all_decks['NumForBuild'] = df_allocs['NumForBuild'].fillna(0).astype(int)
+    df_all_decks['need_buy'] = (
+        (df_all_decks['Count'] - df_all_decks['NumForBuild'])
+        .clip(lower=0)
+        .fillna(0)
+        .astype(int)
+    )
+
+    # 6. Calculate Pcts for the Dashboard (df_bb)
+    main_pcts, side_pcts = [], []
+    for _, deck in df_bb.iterrows():
+        d_name = deck['DeckName']
+        d_cards = df_all_decks[df_all_decks['DeckName'] == d_name]
+        
+        def get_section_pct(main_flag):
+            section = d_cards[d_cards['Section'].str.lower().str.contains('main', na=False) == main_flag]
+            total = section['Count'].sum()
             if total == 0: return 100
-            acquired = 0
-            for _, card in cards.iterrows():
-                m_name, needed = card['MatchName'], card['Count']
-                available = virtual_inv.get(m_name, 0)
-                taken = min(needed, available)
-                allocations.append({'DeckName': deck_name, 'MatchName': m_name, 'Section': card['Section'], 'NumForBuild': taken})
-                acquired += taken
-                virtual_inv[m_name] = available - taken
-            return int((acquired / total) * 100)
+            return int((section['NumForBuild'].sum() / total) * 100)
 
-        main_completion.append(get_pct('Main'))
-        side_completion.append(get_pct('Side'))
+        main_pcts.append(get_section_pct(True))
+        side_pcts.append(get_section_pct(False))
 
-    df_bb['CompletionPct'] = main_completion  
-    df_bb['SideboardPct'] = side_completion
+    df_bb['CompletionPct'] = main_pcts
+    df_bb['SideboardPct'] = side_pcts
 
-    df_allocs = pd.DataFrame(allocations)
-    updated_all_decks = df_all_decks.merge(df_allocs, on=['DeckName', 'MatchName', 'Section'], how='left').fillna({'NumForBuild': 0})
-    return df_bb, updated_all_decks
+    return df_bb, df_all_decks
 
 
 def get_card_cmc_and_color(df):
@@ -175,7 +249,7 @@ def get_card_cmc_and_color(df):
         
         # Default values for Lands
         if "Land" in type_line:
-            cmc_val = 0
+            cmc_val = ''
             final_color = "L" # 'L' keeps them out of the 'C' (Colorless) slice
             multi_color = False
         else:
@@ -215,11 +289,7 @@ def get_card_cmc_and_color(df):
 
 
 def enrich_land_data(df):
-    """
-    The 'Land Fanatic' Logic: 
-    Maps the LAND_DATA_MAP to the dataframe to create boolean columns and 
-    standardize land types for searching.
-    """
+    
     # Initialize all potential boolean columns based on tags in your map
     all_tags = set()
     for data in LAND_DATA_MAP.values():
@@ -253,12 +323,11 @@ def build_database():
     else:
         df_inventory = clean_inventory(inv_path)
 
-    df_all_decks, decks_sync = load_all_decks_cards(DECKS_DIR)
-    
-    
     df_inventory = get_card_cmc_and_color(df_inventory)
-    df_all_decks = get_card_cmc_and_color(df_all_decks)
     df_inventory = enrich_land_data(df_inventory)
+
+    df_all_decks, decks_sync = load_all_decks_cards(DECKS_DIR, df_inventory)
+    df_all_decks = get_card_cmc_and_color(df_all_decks)
     df_all_decks = enrich_land_data(df_all_decks)
     
     class_path = os.path.join(CLASSIFICATION_DIR, "Pauper_Playground_Decks_Classification.csv")
@@ -275,6 +344,14 @@ def build_database():
     # Generate the Long-Form Stats Table
     # We use a combined set for overall stats or just inventory
     # df_stats_expanded = build_expanded_stats_table(df_inventory)
+    print(df_inventory.columns)
+    print(df_all_decks.columns)
+
+    print(df_all_decks.loc[df_all_decks['rarity'].isna(), 'name'])
+
+    print(df_all_decks.loc[
+        df_all_decks['rarity'].astype(str).str.strip().eq(''),'name'
+    ])
 
     conn = sqlite3.connect(DB_PATH)
     df_inventory.to_sql('inventory', conn, if_exists='replace', index=False)
@@ -286,8 +363,7 @@ def build_database():
     pd.DataFrame([{'last_update': update_date}]).to_sql('metadata', conn, if_exists='replace', index=False)
     conn.close()
     print(f"\nDB Update Complete: {update_date}")
-    print(df_inventory.columns)
-    print(df_all_decks.columns)
+    
 
     if inv_sync or decks_sync:
         print("🚀 Changes detected in source files. Triggering GitHub Sync...")
