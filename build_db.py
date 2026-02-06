@@ -146,19 +146,17 @@ def load_all_decks_cards(path, df_inventory):
                         new_row['Count'] = entry['qty']
                         new_row['Code'] = entry['code']
                         new_row['Section'] = entry['section']
+                        new_row['Edition'] = entry['edition']
                         
                         info = inv_ref.get(entry['code'], {})
 
                         if info:
-                            new_row['Edition'] = info.get('Edition', 'Unknown')
                             new_row['Price'] = info.get('Price', row['Price'])
                             new_row['Rarity'] = info.get('Rarity', row['Rarity'])
                             new_row['Image URL'] = info.get('Image URL', row['Image URL'])
                             new_row['Scryfall ID'] = info.get('Scryfall ID', row['Scryfall ID'])
                         else:
                             missing_inv += 1
-                            new_row['Code'] = 'UNKNOWN' # Flag for buildability
-                            new_row['Edition'] = 'UNKNOWN' # Flag for buildability
 
                         new_row['Total'] = new_row['Count'] * new_row['Price']
                         purified_rows.append(new_row)
@@ -175,7 +173,7 @@ def load_all_decks_cards(path, df_inventory):
     return final_df, any_new_deck
 
 
-def calculate_priority_buildability(df_inventory, df_all_decks, df_bb):
+def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
     # 1. Map physical inventory by Code
     virtual_inv = df_inventory.groupby('Code')['Count'].sum().to_dict()
     
@@ -192,18 +190,40 @@ def calculate_priority_buildability(df_inventory, df_all_decks, df_bb):
         ascending=[False, True, True]
     )
 
+    # --- NEW: INITIALIZE COLOR TRACKER ---
+    # We will store the counts here, then merge them into df_bb at the end
+    color_stats = {} 
+    valid_colors = ['W', 'U', 'B', 'R', 'G', 'C', 'L']
+
     # 4. Global Allocation
     allocations = []
+
     for idx, card in df_cards.iterrows():
+        # --- YOUR ORIGINAL LOGIC (DO NOT TOUCH) ---
         code = card['Code']
         needed = card['Count']
         available = virtual_inv.get(code, 0)
         
         taken = min(needed, available)
         allocations.append({'temp_idx': idx, 'NumForBuild': taken})
-        
-        # Drain virtual inventory
         virtual_inv[code] = available - taken
+
+        # --- NEW: COLOR COUNTING LOGIC ---
+        d_name = card['DeckName']
+        if d_name not in color_stats:
+            color_stats[d_name] = {f"{s}_{c}": 0 for s in ['main', 'side'] for c in valid_colors}
+            color_stats[d_name]['main_card_count'] = 0
+            color_stats[d_name]['side_card_count'] = 0
+
+        # Determine if we are updating main or side columns
+        prefix = 'main' if card['is_main'] else 'side'
+        color_stats[d_name][f'{prefix}_card_count'] += needed
+        
+        # Check the card's color string (e.g., 'RG') and increment appropriate columns
+        card_color_str = str(card.get('color', ''))
+        for c in valid_colors:
+            if c in card_color_str:
+                color_stats[d_name][f'{prefix}_{c}'] += needed
 
     # 5. Map results back to the original index to preserve order
     df_allocs = pd.DataFrame(allocations).set_index('temp_idx')
@@ -214,6 +234,14 @@ def calculate_priority_buildability(df_inventory, df_all_decks, df_bb):
         .fillna(0)
         .astype(int)
     )
+
+    # --- NEW: MERGE COLOR STATS INTO DF_BB ---
+    df_color_summary = pd.DataFrame.from_dict(color_stats, orient='index').reset_index()
+    df_color_summary.rename(columns={'index': 'DeckName'}, inplace=True)
+    
+    # Remove old columns if they exist before merging to avoid .x .y duplicates
+    cols_to_drop = [c for c in df_color_summary.columns if c in df_bb.columns and c != 'DeckName']
+    df_bb = df_bb.drop(columns=cols_to_drop).merge(df_color_summary, on='DeckName', how='left')
 
     # 6. Calculate Pcts for the Dashboard (df_bb)
     main_pcts, side_pcts = [], []
@@ -233,13 +261,14 @@ def calculate_priority_buildability(df_inventory, df_all_decks, df_bb):
     df_bb['CompletionPct'] = main_pcts
     df_bb['SideboardPct'] = side_pcts
 
+
     return df_bb, df_all_decks
 
 
-def get_card_cmc_and_color(df):
+def get_card_cmc_color_primary_type(df):
     pattern = r'\{(.*?)\}'
     color_map = {'W':'W', 'U':'U', 'B':'B', 'R':'R', 'G':'G'}
-    cmcs, colors, is_multi_colored = [], [], []
+    cmcs, cmcs_with_x, colors, is_multi_colored, primary_types_for_deck = [], [], [], [], []
 
     df = df.copy()
 
@@ -249,20 +278,31 @@ def get_card_cmc_and_color(df):
         
         # Default values for Lands
         if "Land" in type_line:
-            cmc_val = ''
+            cmc_val = 0
+            cmc_has_x = False
             final_color = "L" # 'L' keeps them out of the 'C' (Colorless) slice
             multi_color = False
+            primary_type = 'Land'
+
         else:
-            # 1. CMC Calculation
+            # CMC Calculation
             parts = mana_str.split('//')
             parts_cmc = []
+            cmc_has_x = False
+
             for p in parts:
+
                 symbols = re.findall(pattern, p)
+
+                if any(s.upper() == 'X' for s in symbols):
+                    cmc_has_x = True
+                
                 val = sum(int(s) if s.isdigit() else (0 if s.upper() == 'X' else 1) for s in symbols if s)
                 parts_cmc.append(val)
+
             cmc_val = parts_cmc[0] if parts_cmc else 0
             
-            # 2. Color Classification
+            # Color Classification
             all_syms = re.findall(pattern, mana_str)
             found_colors = "".join(sorted(list({color_map[c] for s in all_syms for c in color_map if c in s.upper()})))
             
@@ -276,16 +316,35 @@ def get_card_cmc_and_color(df):
                 else:
                     final_color = str(found_colors)
                     multi_color = True
+
+            # Primary Type For Decks
+            front_face = type_line.split('//')[0].strip()
+            # Priority order is key
+            if "Creature" in front_face: 
+                primary_type = "Creature"
+            elif "Instant" in front_face: 
+                primary_type = "Instant"
+            elif "Sorcery" in front_face: 
+                primary_type = "Sorcery"
+            elif "Enchantment" in front_face: 
+                primary_type = "Enchantment"
+            elif "Artifact" in front_face: 
+                primary_type = "Artifact"
+            
         # These MUST run for every single row, including Lands
         cmcs.append(cmc_val)
+        cmcs_with_x.append(cmc_has_x)
         colors.append(final_color)
         is_multi_colored.append(multi_color)
+        primary_types_for_deck.append(primary_type)
 
-    df.loc[:, 'cmc'] = cmcs
-    df.loc[:, 'color'] = colors
-    df.loc[:, 'is_multi_colored'] = is_multi_colored
-    
-    return df
+    return df.assign(
+        cmc=cmcs,
+        cmc_has_x=cmcs_with_x,
+        color=colors,
+        is_multi_colored=is_multi_colored,
+        primary_type_for_deck=primary_types_for_deck
+    )
 
 
 def enrich_land_data(df):
@@ -323,18 +382,18 @@ def build_database():
     else:
         df_inventory = clean_inventory(inv_path)
 
-    df_inventory = get_card_cmc_and_color(df_inventory)
+    df_inventory = get_card_cmc_color_primary_type(df_inventory)
     df_inventory = enrich_land_data(df_inventory)
 
     df_all_decks, decks_sync = load_all_decks_cards(DECKS_DIR, df_inventory)
-    df_all_decks = get_card_cmc_and_color(df_all_decks)
+    df_all_decks = get_card_cmc_color_primary_type(df_all_decks)
     df_all_decks = enrich_land_data(df_all_decks)
     
     class_path = os.path.join(CLASSIFICATION_DIR, "Pauper_Playground_Decks_Classification.csv")
     df_bb_raw = pd.read_csv(class_path)
     df_bb_raw.columns = df_bb_raw.columns.str.strip()
 
-    df_battle_box, df_all_decks = calculate_priority_buildability(df_inventory, df_all_decks, df_bb_raw)
+    df_battle_box, df_all_decks = enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb_raw)
 
     # Apply renames
     rename_cols(df_all_decks)

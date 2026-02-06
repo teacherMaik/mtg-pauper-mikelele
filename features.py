@@ -14,22 +14,20 @@ BORDER_COLOR = "#1a1a1a"
 
 @st.cache_data
 def get_top_sets_donut(df, sort_metric, view_mode):
-    """
-    Handles grouping, Top 12 logic, and Plotly generation for Set Edition distribution.
-    """
-    df_f = df.copy()
+    
+    df_sets = df.copy()
 
     # 1. Apply Count Mode Logic
     if view_mode == "Unique":
-        df_f['qty'] = 1
-        if 'price' in df_f.columns:
-            df_f['total_cards_value'] = df_f['price']
+        df_sets['qty'] = 1
+        if 'price' in df_sets.columns:
+            df_sets['total_cards_value'] = df_sets['price']
 
     # 2. Grouping & Selecting Top 12
     # Use 'qty' or 'total_cards_value' based on sort_metric radio button
     col_key = 'qty' if sort_metric == "Qty" else 'total_cards_value'
     
-    set_data = df_f.groupby('edition').agg(
+    set_data = df_sets.groupby('edition').agg(
         qty=('qty', 'sum'),
         total_cards_value=('total_cards_value', 'sum')
     ).reset_index().sort_values(by=col_key, ascending=False).head(12)
@@ -37,7 +35,7 @@ def get_top_sets_donut(df, sort_metric, view_mode):
     if set_data.empty:
         return None
 
-    # 3. Your 12-shade Metallic Gray Palette
+    # 12-shade Metallic Gray Palette
     metallic_rgba = [
         'rgba(44, 62, 80, 1.0)', 'rgba(44, 62, 80, 0.9)', 'rgba(44, 62, 80, 0.8)',
         'rgba(44, 62, 80, 0.7)', 'rgba(44, 62, 80, 0.6)', 'rgba(44, 62, 80, 0.5)',
@@ -55,11 +53,11 @@ def get_top_sets_donut(df, sort_metric, view_mode):
     )
 
     # 5. Dynamic Hover Template based on metric
-    h_temp = "<b>%{label}</b><br>Qty: %{value}<extra></extra>" if sort_metric == "Qty" \
+    hover_template = "<b>%{label}</b><br>Qty: %{value}<extra></extra>" if sort_metric == "Qty" \
              else "<b>%{label}</b><br>Value: $%{value:.2f}<extra></extra>"
 
     fig.update_traces(
-        hovertemplate=h_temp,
+        hovertemplate=hover_template,
         marker=dict(line=dict(color='white', width=1)),
         textinfo='percent'
     )
@@ -195,13 +193,13 @@ def get_color_saturation_widget(
         remainder_qty = grand_total_qty - total_present_qty
 
         # Utility function to add segment (3 segments) to  each bar (7 bars) in figure
-        def add_seg(s_name, val, col, h_temp):
+        def add_seg(s_name, val, col, hover_template):
             if val <= 0: return
             x_v, y_v = ([val], [name]) if is_transposed else ([name], [val])
             fig.add_trace(go.Bar(
                 name=s_name, x=x_v, y=y_v, orientation=bar_orient,
                 marker=dict(color=col, line=dict(color=BORDER_COLOR, width=1.5)),
-                hovertemplate=h_temp, showlegend=False))
+                hovertemplate=hover_template, showlegend=False))
             
         
         # Color segment starts at bottom
@@ -322,7 +320,7 @@ def get_type_distribution_widget(
     if type_data.empty:
         return None
     
-    # Only 8 card types Max
+    # 8-shade Metallic Gray Palette
     metallic_rgba = [
         'rgba(44, 62, 80, 1.0)',
         'rgba(44, 62, 80, 0.9)',
@@ -364,79 +362,86 @@ def get_type_distribution_widget(
     return fig
 
 
-@st.cache_data
-def summarize_by_cmc(df):
-    """Summarizes CMC distribution, excluding lands."""
-    if df is None or df.empty: return pd.DataFrame()
-    
-    df_non_land = df[~df['type'].str.contains('Land', na=False, case=False)]
-    if df_non_land.empty: return pd.DataFrame()
+def get_mana_curve_widget(df, page_view, is_transposed, sel_type=None, sel_color=None):
+    """
+    Standardized Mana Curve Logic.
+    page_view: 'Inventory', 'Deck View', or 'Deck Test'
+    """
+    if df is None or df.empty:
+        return None
 
-    return df_non_land.groupby('cmc').agg(
-        Count=('qty', 'sum'), 
-        Value=('total_cards_value', 'sum')
-    ).reset_index().rename(columns={'cmc': 'CMC'})
+    # 1. Filter out Lands
+    df_f = df[df['primary_type_for_deck'] != 'Land'].copy()
 
-
-@st.cache_data
-def get_mana_curve_widget(
-    df,
-    sel_type,
-    sel_color,
-    is_transposed):
-    
-    if df is None or df.empty: return pd.DataFrame()
-
-    df_f = df.copy()
-
-    # 1. Type Filtering
+    # 2. Apply Filters (if provided)
     if sel_type:
-        df_f = df_f[df_f['type'].str.contains('|'.join(sel_type), case=False, na=False)]
-            
-    # 2. Color Filtering (Matches {W}{B} and {WB} logic)
+        df_f = df_f[df_f['primary_type_for_deck'].isin(sel_type)]
     if sel_color:
-        ui_to_db = {
-            'White': 'W', 'Blue': 'U', 'Black': 'B', 
-            'Red': 'R', 'Green': 'G', 'Colorless': 'C'
-        }
-        selected_codes = [ui_to_db[c] for c in sel_color if c in ui_to_db]
-        if selected_codes:
-            pattern = '|'.join(selected_codes)
-            df_f = df_f[df_f['color'].str.contains(pattern, na=False)]
+        ui_to_db = {'White':'W', 'Blue':'U', 'Black':'B', 'Red':'R', 'Green':'G', 'Colorless':'C'}
+        codes = [ui_to_db[c] for c in sel_color if c in ui_to_db]
+        pattern = '|'.join(codes)
+        df_f = df_f[df_f['color'].str.contains(pattern, na=False)]
 
     if df_f.empty:
         return None
 
-    # 3. Summarize using your existing internal feature
-    cmc_data = summarize_by_cmc(df_f)
-    
-    if cmc_data.empty:
-        return None
+    # 3. Labeling & Sorting (X handling)
+    df_f['chart_label'] = df_f.apply(lambda x: 'X' if x['cmc_has_x'] else str(int(x['cmc'])), axis=1)
+    df_f['chart_sort'] = df_f.apply(lambda x: 99 if x['cmc_has_x'] else int(x['cmc']), axis=1)
 
-    # 4. Sort and Plot
-    cmc_data = cmc_data.sort_values(by='CMC', ascending=not is_transposed)
+    # 4. Aggregation
+    agg_map = {'qty': 'sum', 'total_cards_value': 'sum'}
     
-    if is_transposed:
-        fig = px.bar(cmc_data, x='Count', y='CMC', orientation='h', text_auto=True, custom_data=['Value'])
-        fig.update_layout(yaxis=dict(type='category', title="CMC"))
-        h_template = "<b>CMC %{y}</b><br>Qty: %{x}<br>Value: $%{customdata[0]:,.2f}<extra></extra>"
+    # Contextual Hover Data
+    if 'Deck' in page_view:
+        agg_map['name'] = lambda x: "<br>".join([f"• {n}" for n in sorted(x.unique())])
     else:
-        fig = px.bar(cmc_data, x='CMC', y='Count', text_auto=True, custom_data=['Value'])
-        fig.update_layout(xaxis=dict(tickmode='linear', dtick=1, title="CMC"))
-        h_template = "<b>CMC %{x}</b><br>Qty: %{y}<br>Value: $%{customdata[0]:,.2f}<extra></extra>"
+        agg_map['name'] = lambda x: ""
 
+    curve_data = df_f.groupby(['chart_label', 'chart_sort']).agg(agg_map).reset_index()
+    curve_data = curve_data.sort_values('chart_sort', ascending=not is_transposed)
+
+    # 5. Plotly Render
+    METALLIC_GRAY = '#2c3e50' 
+    x_col, y_col = ('qty', 'chart_label') if is_transposed else ('chart_label', 'qty')
+    
+    fig = px.bar(
+        curve_data, x=x_col, y=y_col, 
+        orientation='h' if is_transposed else 'v',
+        text_auto=True, 
+        custom_data=['total_cards_value', 'name']
+    )
+
+    l_ref = "%{y}" if is_transposed else "%{x}"
+    q_ref = "%{x}" if is_transposed else "%{y}"
+    
+    # --- DYNAMIC HOVER CONSTRUCTION ---
+    # Start with CMC and Qty
+    hover_tmpl = f"<b>CMC {l_ref}</b><br>Qty: {q_ref}"
+    
+    # Only add Value if NOT in Deck Test mode
+    if page_view != 'Deck Test':
+        hover_tmpl += f"<br>Value: $%{'{customdata[0]:,.2f}'}"
+    
+    # Add Card Names for any Deck-related view
+    if 'Deck' in page_view:
+        hover_tmpl += "<br><br><b>Cards:</b><br>%{customdata[1]}"
+    
     fig.update_traces(
         marker_color=METALLIC_GRAY, 
-        hovertemplate=h_template
+        hovertemplate=hover_tmpl + "<extra></extra>"
     )
-    
+
     fig.update_layout(
-        height=400, 
-        margin=dict(l=20, r=20, t=10, b=10), 
-        paper_bgcolor='rgba(0,0,0,0)', 
-        plot_bgcolor='rgba(0,0,0,0)'
+        height=400,
+        margin=dict(l=10, r=10, t=10, b=10),
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        xaxis_title=None, yaxis_title=None,
+        xaxis={'type': 'category'} if not is_transposed else None,
+        yaxis={'type': 'category'} if is_transposed else None
     )
-    
+
     return fig
 
 
@@ -471,48 +476,6 @@ def summarize_battle_box(df_battle_box, df_all_decks, section):
                            "cards": c_q, "cards collected": c_c, "% cards": c_pct})
 
     return pd.DataFrame(stats_list)
-
-
-@st.cache_data
-def summarize_color_identity(df_all_decks, df_battle_box, section):
-    
-    # 1. Identity based ONLY on the filtered section (e.g., 'main')
-    def get_identity(mana_series):
-        colors = set()
-        all_mana = "".join(mana_series.dropna().astype(str))
-        for char in "WUBRG":
-            if char in all_mana: colors.add(char)
-        if not colors: return "Colorless"
-        if len(colors) >= 4: return "4+ Colors"
-        return maps_utilities.COLOR_NAME_MAP.get(frozenset(colors), "Unknown")
-
-    # Filter by section before calculating identity
-    df_filtered = df_all_decks[df_all_decks['section'] == section]
-    deck_ids = df_filtered.groupby('DeckName')['mana'].apply(get_identity).reset_index(name='Identity')
-    
-    # 2. Completeness (Specific to the section)
-    completeness = df_filtered.groupby('DeckName').apply(lambda x: (x['num_for_deck'] >= x['qty']).all())
-
-    stats = []
-    bb_decks = df_battle_box['DeckName'].unique()
-    present_idents = deck_ids[deck_ids['DeckName'].isin(bb_decks)]['Identity'].unique()
-    
-    for ident in sorted(present_idents):
-        names = deck_ids[deck_ids['Identity'] == ident]['DeckName'].unique()
-        # Summing data for the specific section only
-        sub = df_filtered[df_filtered['DeckName'].isin(names)]
-        
-        if not sub.empty:
-            q, c = sub['qty'].sum(), sub['num_for_deck'].sum()
-            stats.append({
-                "Identity": ident,
-                "nº": len(names),
-                "nº complete": int(completeness.reindex(names).fillna(False).sum()),
-                "cards": int(q),
-                "cards collected": int(c),
-                "% cards": (c / q * 100) if q > 0 else 0
-            })
-    return pd.DataFrame(stats).sort_values("nº", ascending=False)
 
 
 @st.cache_data

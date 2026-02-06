@@ -133,9 +133,20 @@ def render_row_1(df_inventory, df_all_decks):
 
     # Top 12 Sets Widget
     with row_1_col_right:
+        
+        total_unique_sets = df_inventory['edition'].nunique()
+
+        st.subheader(f"Sets in Collection: {total_unique_sets}")
+        
+        
         with st.container(border=True):
-            st.markdown("### Top 12 Sets")
-    
+
+            st.markdown(f'''
+                    <h3 style="margin: 0; padding-bottom: 0">Top 12 Sets</h3>
+            ''', unsafe_allow_html=True)
+
+            
+            
             f_col1, f_col2 = st.columns(2)
             with f_col1:
                 sort_m = st.radio("Rank Sets:", options=["Qty", "Val"], horizontal=True, key="set_rank_unique")
@@ -171,11 +182,11 @@ def render_row_2(df_inventory):
             
             is_trans = st.toggle("Transpose", key="inv_trans")
 
-            filter_col_left, filter_col_right = st.columns(2)
+            rarity_select_col, count_select_col = st.columns(2)
 
-            with filter_col_left:
+            with rarity_select_col:
                 rarity_select = st.multiselect("Filter Rarity:", ['Common', 'Uncommon', 'Rare', 'Mythic'], key="inv_rarity")
-            with filter_col_right:
+            with count_select_col:
                 count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_view")
 
             # Calling the single refactored function
@@ -223,12 +234,12 @@ def render_row_2(df_inventory):
 
 
 def render_row_3(df_inventory):
-
+    
     # CMC widget
     with st.container(border=True):
-
         # Header & Filter Row
         row_3_col_title, row_3_col_2, row_3_col_3, row_3_col_4 = st.columns([1, 1.5, 1.5, 0.8])
+        
         with row_3_col_title: 
             st.markdown("### Mana Curve")
         with row_3_col_2:
@@ -239,7 +250,14 @@ def render_row_3(df_inventory):
             is_trans = st.toggle("Transpose", key="ds_cmc_trans")
 
         # The clean refactored call
-        fig_cmc = features.get_mana_curve_widget(df_inventory, type_select, color_select, is_trans)
+        # Adding sel_type and sel_color to the call to match the logic below
+        fig_cmc = features.get_mana_curve_widget(
+            df_inventory, 
+            'Inventory', 
+            is_trans, 
+            sel_type=type_select, 
+            sel_color=color_select
+        )
 
         if fig_cmc:
             st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False}, key="ds_cmc_chart")

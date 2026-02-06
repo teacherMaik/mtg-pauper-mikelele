@@ -8,61 +8,220 @@ METALLIC_GRAY = "#2c3e50"
 
 def render_row_1(df_all_decks, df_battle_box):
 
-    df_main_stats = features.summarize_battle_box(df_battle_box, df_all_decks, 'main')
-    df_side_stats = features.summarize_battle_box(df_battle_box, df_all_decks, 'sideboard')
-
     row_1_col_left, row_1_col_right = st.columns([1, 1], gap="small")
     
     # Comparative Tables Widget
     with row_1_col_left:
         
-        st.markdown("## Battle Box Stats")
-    
-        # Radio filter to switch context
+        st.markdown(f"## Battle Box Stats")
+        # Radio Filters Main/Side
         view_section = st.radio(
-            "Section",
-            ["Main", "Sideboard"],
-            horizontal=True,
-            label_visibility="collapsed",
-            key="bb_stats_toggle"
+            "Section", ["Main", "Sideboard"],
+            horizontal=True, label_visibility="collapsed", key="bb_stats_toggle"
         )
+        pct_col = 'CompletionPct' if view_section == "Main" else 'SideboardPct'
 
-        # Fetch the appropriate data based on radio selection
-        # (Using the logic from your get_battle_box_stats function)
-        if view_section == "Main":
-            display_df = df_main_stats
-        else:
-            display_df = df_side_stats
+        # Build the Summary Tables
+        def get_stats(df, group_col, label):
+            # We define 'Complete' as having 100% in the chosen pct_col
+            stats = df.groupby(group_col).agg({
+                'DeckName': 'count',
+                pct_col: lambda x: (x == 100).sum() # Count of 100% complete decks
+            }).reset_index()
+            
+            # Add the average completion percentage
+            avg_pct = df.groupby(group_col)[pct_col].mean().reset_index()
+            stats = stats.merge(avg_pct, on=group_col)
+            
+            stats.columns = ['Cat', 'nº', 'nº complete', '% cards']
+            return stats
 
-        # Apply your metallic gray theme to the "Decks" row
-        styled_df = display_df.style.apply(
-            lambda x: ['background-color: #34495e; color: white; font-weight: bold' 
-                    if x['Cat'] == 'Decks' else '' for _ in x], axis=1
-        )
+        # First Row -> Overall
+        overall_row = pd.DataFrame([{
+            "Cat": "OVERALL", 
+            "nº": len(df_battle_box),
+            "nº complete": len(df_battle_box[df_battle_box[pct_col] == 100]),
+            "% cards": df_battle_box[pct_col].mean()
+        }])
 
+        # Rows 2 & 3 -> Brew Type, Rest -> and Archetypes
+        brew_stats = get_stats(df_battle_box, 'Brew', 'Brew Type')
+        arch_stats = get_stats(df_battle_box, 'Archetype', 'Archetype')
+
+        # Combine into the full stats table
+        display_df = pd.concat([overall_row, brew_stats, arch_stats], ignore_index=True)
+
+        # 3. Metallic Gray Styling
+        def style_headers(row):
+            if row['Cat'] == 'OVERALL':
+                return ['background-color: rgba(44, 62, 80, 1); color: white;'] * len(row)
+            elif (row['Cat'] == 'Meta' or row['Cat'] == 'Brew'):
+                  return ['background-color: rgba(44, 62, 80, 0.63); color: white;'] * len(row)
+            return [''] * len(row)
+
+        styled_df = display_df.style.apply(style_headers, axis=1)
+        
         st.dataframe(
             styled_df,
             use_container_width=True,
             hide_index=True,
             column_config={
                 "Cat": "Category",
-                "nº": st.column_config.NumberColumn("Decks", format="%d"),
-                "nº complete": st.column_config.NumberColumn("Complete", format="%d"),
-                "cards": st.column_config.NumberColumn("Qty", format="%d"),
-                "cards collected": st.column_config.NumberColumn("Collected", format="%d"),
+                "nº": st.column_config.NumberColumn("Decks", format="%d", width=60),
+                "nº complete": st.column_config.NumberColumn("Done", format="%d", width=60),
                 "% cards": st.column_config.ProgressColumn(
-                    f"% {view_section}", 
+                    "Completion", 
                     format="%.1f%%", 
                     min_value=0, 
-                    max_value=100
+                    max_value=100,
+                    color="rgb(255, 75, 75)"
                 )
             }
         )
 
-    # Top 12 Staples Widget
+    # Top 12 Sets Widget
     with row_1_col_right:
+        
+        total_unique_sets = df_all_decks['edition'].nunique()
+
+        st.markdown(f"## Sets in Battle Box: {total_unique_sets}")
+        
+        
         with st.container(border=True):
-            st.markdown("## Top 12 Staples")
+
+            st.markdown(f'''
+                    <h3 style="margin: 0; padding-bottom: 0">Top 12 Sets</h3>
+            ''', unsafe_allow_html=True)
+
+            
+            
+            val_qty_select_col, count_select_col = st.columns(2)
+            with val_qty_select_col:
+                sort_m = st.radio("Rank Sets:", options=["Qty", "Val"], horizontal=True, key="set_rank_unique")
+            with count_select_col:
+                view_m = st.radio("Count Mode:", options=["All", "Unique"], horizontal=True, key="set_view_unique")
+
+            # The clean one-line call
+            fig_sets = features.get_top_sets_donut(df_all_decks, sort_m, view_m)
+            
+            if fig_sets:
+                st.plotly_chart(fig_sets, use_container_width=True, key="sets_plot_unique")
+            else:
+                st.info("No set data available for this selection.")
+
+
+def render_row_2(df_all_decks, df_battle_box):
+    
+    row_2_col_left, row_2_col_right = st.columns([1, 1], gap="small")
+    
+    with row_2_col_left:
+
+        df_filtered_bb = df_battle_box.copy()
+
+        with st.container(border=True):
+
+            st.markdown("### Decks by Colors")
+            
+            # Archetype Filter
+            archetypes = ["All", "Aggro", "Midrange", "Tempo", "Control", "Combo"]
+            selected_arch = st.radio(
+                "Filter by Archetype", 
+                options=archetypes, 
+                horizontal=True, 
+                key="stats_arch_filter"
+            )
+
+            if selected_arch != "All":
+
+                if 'Archetype' in df_filtered_bb.columns:
+                    df_filtered_bb = df_filtered_bb[df_filtered_bb['Archetype'] == selected_arch]
+                else:
+                    st.warning("Archetype column not found in data.")
+
+            if not df_filtered_bb.empty:
+
+                # Named aggregation
+                df_deck_identities = df_filtered_bb.groupby('Identity').agg(
+                    n_decks=('DeckName', 'count'),
+                    n_decks_complete=('CompletionPct', lambda x: (x == 100).sum()),
+                    avg_main_complete=('CompletionPct', 'mean'),
+                    avg_side_complete=('SideboardPct', 'mean')
+                ).reset_index()
+
+                df_deck_identities.columns = ['Identity', 'nº', 'nº complete', 'Main %', 'Side %']
+
+                st.dataframe(
+                    df_deck_identities.sort_values('nº', ascending=False),
+                    use_container_width=True,
+                    hide_index=True,
+                    column_config={
+                        "Identity": st.column_config.TextColumn("Color Identity", width="medium"),
+                        "nº": st.column_config.NumberColumn("Decks", format="%d", width=70),
+                        "nº complete": st.column_config.NumberColumn("Complete", format="%d", width=70), # Added this
+                        "Main %": st.column_config.ProgressColumn(
+                            "Mainboard", 
+                            format="%.1f%%", 
+                            min_value=0, 
+                            max_value=100,
+                            color="#34495e" # Dark Metallic Gray
+                        ),
+                        "Side %": st.column_config.ProgressColumn(
+                            "Sideboard", 
+                            format="%.1f%%", 
+                            min_value=0, 
+                            max_value=100,
+                            color="#7f8c8d" 
+                        )
+                    }
+                )
+            else:
+                st.info(f"No data available for archetype: {selected_arch}")
+
+    with row_2_col_right:
+
+        with st.container(border=True):
+
+            st.markdown(f'''
+                <div style="display: flex; justify-content: flex-start; align-items: flex-end; flex-wrap: wrap; margin-bottom: 10px;">
+                    <h3 style="margin: 0; padding-bottom: 0">Cards by Colors</h3>
+                    <p style="padding-bottom: 0; margin-bottom: 0; margin-left: 10px;">
+                        <em style="font-size: 0.85rem; color: #888;">*Lands Excluded</em>
+                    </p>
+                </div>
+            ''', unsafe_allow_html=True)
+            
+            is_trans = st.toggle("Transpose", key="inv_trans")
+
+            rarity_select_col, counte_select_col = st.columns(2)
+
+            with rarity_select_col:
+                rarity_select = st.multiselect("Filter Rarity:", ['Common', 'Uncommon', 'Rare', 'Mythic'], key="inv_rarity")
+            with counte_select_col:
+                count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_view")
+
+            # Calling the single refactored function
+            fig_colors = features.get_color_saturation_widget(
+                df_all_decks,
+                is_trans,
+                rarity_select,
+                count_select=count_select
+            )
+            if fig_colors:
+                st.plotly_chart(fig_colors, use_container_width=True, key="inv_color_plot")
+            else:
+                st.info("No cards found for this selection.")
+
+
+def render_row_3(df_all_decks, df_battle_box):
+
+    row_2_col_left, row_2_col_right = st.columns([1, 1], gap="small")
+
+    with row_2_col_left:
+
+        # Top 12 Staples Widget
+        with st.container(border=True):
+
+            st.markdown("### Top 12 Staples")
             
             section_filter = st.radio("Section:", ["Main", "Sideboard"], horizontal=True, label_visibility="collapsed")
             archetype_filter = st.radio("Archetype:", ["All", "Aggro", "Midrange", "Tempo", "Control", "Combo"], horizontal=True, label_visibility="collapsed")
@@ -125,114 +284,23 @@ def render_row_1(df_all_decks, df_battle_box):
                 
                 st.plotly_chart(fig_heat, use_container_width=True, config={'displayModeBar': False})
 
-
-def render_row_2(df_all_decks, df_battle_box):
-
-    # Deck Color Identity Table
-    with st.container(border=True):
-
-        # Header and Archetype Filter
-        st.markdown("## Deck Colors (Main)")
-        
-        archetypes = ["All", "Aggro", "Midrange", "Tempo", "Control", "Combo"]
-        selected_arch = st.radio(
-            "Filter by Archetype", 
-            options=archetypes, 
-            horizontal=True, 
-            key="stats_arch_filter"
-        )
-
-        # Filter the Battle Box dataframe based on selection
-        # This ensures the stats only count decks within the chosen archetype
-        df_filtered_bb = df_battle_box.copy()
-
-        if selected_arch != "All":
-            if 'Archetype' in df_filtered_bb.columns:
-                df_filtered_bb = df_filtered_bb[df_filtered_bb['Archetype'] == selected_arch]
-            else:
-                st.warning("Archetype column not found in data.")
-
-        # Fetch the data using the filtered Battle Box
-        df_ident_stats = features.summarize_deck_color_identity(df_all_decks, df_filtered_bb, 'main')
-
-        # Standard View Rendering
-        if df_ident_stats.empty:
-            st.info(f"No data available for archetype: {selected_arch}")
-        else:
-            st.dataframe(
-                df_ident_stats,
-                use_container_width=True,
-                hide_index=True,
-                column_config={
-                    "Identity": "Identity",
-                    "nº": st.column_config.NumberColumn("Nº Decks", format="%d"),
-                    "nº complete": st.column_config.NumberColumn("Nº Complete", format="%d"),
-                    "cards": st.column_config.NumberColumn("Total Cards", format="%d"),
-                    "cards collected": st.column_config.NumberColumn("Cards Collected", format="%d"),
-                    "% cards": st.column_config.ProgressColumn(
-                        "% Cards Collected", 
-                        format="%.1f%%", 
-                        min_value=0, 
-                        max_value=100
-                    )
-                }
-            )
-
-
-def render_row_3(df_all_decks):
-
-    row_2_col_left, row_2_col_right = st.columns([1, 1], gap="small")
-
-    # By Color Widget
-    with row_2_col_left:
-        with st.container(border=True):
-            # Custom Header
-            st.markdown(f'''
-                <div style="display: flex; justify-content: flex-start; align-items: flex-end; flex-wrap: wrap; margin-bottom: 10px;">
-                    <h3 style="margin: 0; padding-bottom: 0">Cards by Colors</h3>
-                    <p style="padding-bottom: 0; margin-bottom: 0; margin-left: 10px;">
-                        <em style="font-size: 0.85rem; color: #888;">*Lands Excluded</em>
-                    </p>
-                </div>
-            ''', unsafe_allow_html=True)
-            
-            is_trans = st.toggle("Transpose", key="inv_trans")
-
-            filter_col_left, filter_col_right = st.columns(2)
-
-            with filter_col_left:
-                rarity_select = st.multiselect("Filter Rarity:", ['Common', 'Uncommon', 'Rare', 'Mythic'], key="inv_rarity")
-            with filter_col_right:
-                count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_view")
-
-            # Calling the single refactored function
-            fig_colors = features.get_color_saturation_widget(
-                df_all_decks,
-                is_trans,
-                rarity_select,
-                count_select=count_select
-            )
-            if fig_colors:
-                st.plotly_chart(fig_colors, use_container_width=True, key="inv_color_plot")
-            else:
-                st.info("No cards found for this selection.")
+        pass
 
     # By Card Type Widget
     with row_2_col_right:
 
         with st.container(border=True):
-            # Custom Header
-            st.markdown('<h3 style="margin: 0; margin-bottom: 10px;">Cards By Type</h3>', unsafe_allow_html=True)
-            
-            # --- INVENTORY VIEW CALL ---
-            filter_col_left, filter_col_right = st.columns(2)
 
-            with filter_col_left:
+            st.markdown("### Cards by Type")
+            # --- INVENTORY VIEW CALL ---
+            color_select_col, count_select_col = st.columns(2)
+
+            with color_select_col:
                 # Inventory usually shows all possible colors
                 color_options = ['White', 'Blue', 'Black', 'Red', 'Green', 'Colorless', 'Multicolor']
                 color_select = st.multiselect("Filter Color:", color_options, key="inv_type_col")
 
-            with filter_col_right:
+            with count_select_col:
                 # Inventory needs the toggle for Unique cards vs Total Qty
                 count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_type_view")
 
@@ -250,12 +318,11 @@ def render_row_3(df_all_decks):
 
 
 def render_row_4(df_all_decks):
-
     # CMC widget
     with st.container(border=True):
-        
         # Header & Filter Row
         row_3_col_title, row_3_col_2, row_3_col_3, row_3_col_4 = st.columns([1, 1.5, 1.5, 0.8])
+        
         with row_3_col_title: 
             st.markdown("### Mana Curve")
         with row_3_col_2:
@@ -266,7 +333,14 @@ def render_row_4(df_all_decks):
             is_trans = st.toggle("Transpose", key="ds_cmc_trans")
 
         # The clean refactored call
-        fig_cmc = features.get_mana_curve_widget(df_all_decks, type_select, color_select, is_trans)
+        # Adding sel_type and sel_color to the call to match the logic below
+        fig_cmc = features.get_mana_curve_widget(
+            df_all_decks, 
+            'Inventory', 
+            is_trans, 
+            sel_type=type_select, 
+            sel_color=color_select
+        )
 
         if fig_cmc:
             st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False}, key="ds_cmc_chart")
@@ -279,5 +353,5 @@ def render_bb_stats_view(df_all_decks, df_battle_box):
     render_row_1(df_all_decks, df_battle_box) 
     render_row_2(df_all_decks, df_battle_box)
     st.divider()
-    render_row_3(df_all_decks)
+    render_row_3(df_all_decks, df_battle_box)
     render_row_4(df_all_decks)
