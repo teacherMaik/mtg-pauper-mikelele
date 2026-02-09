@@ -5,13 +5,12 @@ import maps_utilities
 import plotly.graph_objects as go
 import plotly.express as px
 
-
 METALLIC_GRAY = "#2c3e50"
 LIGHT_GRAY = "#90ADBB"
 POP_GOLD = "#FFD700"
 BORDER_COLOR = "#1a1a1a"
 
-# Cache Aggregate data
+# Cache Aggregate data but not plotly figures
 @st.cache_data
 def get_top_sets_aggregate(df):
     """Aggregate set data for top 12 sets. Cache only depends on DF, not sort_metric."""
@@ -77,31 +76,23 @@ def get_color_saturation_aggregate(df):
 
 @st.cache_data
 def get_land_mana_saturation_agg(df):
-    """
-    Caches the filtered land data.
-    Directly uses 'land_mana' as the production identity.
-    """
+    
     if df.empty:
         return pd.DataFrame(), 0
         
-    # 1. Filter for Lands only
+    # Filter for Lands only
     land_df = df[df['color'] == 'L'].copy()
     
     # 2. Point 'color' to 'land_mana' for the widget's logic
-    # We fillna('C') just in case a land has no production data (like Evolving Wilds)
-    land_df['color'] = land_df['land_mana'].fillna('C').astype(str)
-    
-    # 3. Boolean flag: True if it produces > 1 color
-    # This is used by the widget to split mono vs multi segments
+    # We fillna('U') for null mana (Evolving Wilds)
+    land_df['color'] = land_df['land_mana'].fillna('U').astype(str)
     land_df['is_multi_colored'] = land_df['color'].str.len() > 1
-    
     grand_total = land_df['qty'].sum()
     
     return land_df, grand_total
 
 
 def get_color_saturation_widget(df_colors, grand_total_qty, is_transposed):
-    """Render stacked bar chart from aggregated color data. Not cached."""
     
     if df_colors.empty:
         return None
@@ -172,7 +163,6 @@ def get_color_saturation_widget(df_colors, grand_total_qty, is_transposed):
 
 @st.cache_data
 def get_type_distribution_aggregate(df):
-    """Aggregate card type distribution. Caller filters DF before passing."""
     
     if df.empty:
         return pd.DataFrame()
@@ -196,7 +186,6 @@ def get_type_distribution_aggregate(df):
 
 
 def get_type_distribution_widget(type_data):
-    """Render donut chart from aggregated type data. Not cached."""
     
     if type_data.empty:
         return None
@@ -239,7 +228,6 @@ def get_type_distribution_widget(type_data):
 
 @st.cache_data
 def get_mana_curve_aggregate(df):
-    """Aggregate mana curve. Caller filters by type/color/section first."""
     
     if df is None or df.empty:
         return pd.DataFrame()
@@ -253,7 +241,7 @@ def get_mana_curve_aggregate(df):
     df_cmc['chart_label'] = df_cmc.apply(lambda x: 'X' if x['cmc_has_x'] else str(int(x['cmc'])), axis=1)
     df_cmc['chart_sort'] = df_cmc.apply(lambda x: 99 if x['cmc_has_x'] else int(x['cmc']), axis=1)
 
-    # Always aggregate names for hover
+    # Aggregate names for hover
     curve_data = df_cmc.groupby(['chart_label', 'chart_sort']).agg({
         'qty': 'sum',
         'total_cards_value': 'sum',
@@ -264,7 +252,6 @@ def get_mana_curve_aggregate(df):
 
 
 def get_mana_curve_widget(curve_data, page_view, is_transposed):
-    """Render mana curve from aggregated data. Not cached."""
     
     if curve_data.empty:
         return None
@@ -312,7 +299,6 @@ def get_mana_curve_widget(curve_data, page_view, is_transposed):
 
 @st.cache_data
 def get_top_12_staples_aggregate(df):
-    """Aggregate top staples by card name. Caller filters DF before passing."""
     
     if df.empty:
         return pd.DataFrame()
@@ -336,7 +322,6 @@ def get_top_12_staples_aggregate(df):
 
 
 def get_top_12_staples_widget(top_12_data, deck_col):
-    """Render treemap from aggregated staples data. Not cached."""
     
     if top_12_data.empty:
         return None
@@ -367,7 +352,7 @@ def get_top_12_staples_widget(top_12_data, deck_col):
 
 @st.cache_data
 def summarize_battle_box(df_battle_box, df_all_decks, section):
-    """Aggregates completion percentages by Brew/Meta and Archetype."""
+
     categories = ["Meta", "Brew", "Aggro", "Midrange", "Tempo", "Control", "Combo"]
     stats_list = []
 
@@ -395,13 +380,9 @@ def summarize_battle_box(df_battle_box, df_all_decks, section):
     for cat in categories:
 
         col = 'Archetype' if cat in ["Aggro", "Midrange", "Tempo", "Control", "Combo"] else 'Brew'
-
         deck_categories = df_battle_box[df_battle_box[col] == cat]['DeckName'].unique()
-
         deck_cat_inventory, deck_cat_needed, deck_cat_pct = calc_card_stats(deck_categories)
-
         deck_cat_complete = deck_completeness.reindex(deck_categories).fillna(False).sum()
-
         stats_list.append({"Cat": cat, "nº": len(deck_categories), "nº complete": int(deck_cat_complete), 
                            "cards": deck_cat_inventory, "cards collected": deck_cat_needed, "% cards": deck_cat_pct})
 
@@ -410,7 +391,7 @@ def summarize_battle_box(df_battle_box, df_all_decks, section):
 
 @st.cache_data
 def filter_land_cards(df):
-    """Returns only cards that are lands, including MDFCs."""
+
     if df is None or df.empty: return pd.DataFrame()
     return df[df['type'].str.contains('Land', na=False, case=False)]
 

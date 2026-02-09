@@ -1,14 +1,11 @@
 import streamlit as st
 import pandas as pd
 import features
-import plotly.express as px
-import random
 
-def render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box):
+def render_deck_detail(deck_name, df_all_decks):
 
     deck_cards = df_all_decks[df_all_decks['DeckName'] == deck_name].copy()
     
-    # --- ROW 1: HEADER & NAVIGATION ---
     deck_value = deck_cards['total_cards_value'].sum()
     st.markdown(f"""
         <div style="line-height: 1.1;">
@@ -25,7 +22,7 @@ def render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box):
         label_visibility="collapsed"
     )"""
 
-    # 3. INTERNAL NAVIGATION
+    # Deck View Navigation button set
     if "deck_sub_view" not in st.session_state:
         st.session_state.deck_sub_view = "Deck"
 
@@ -54,20 +51,25 @@ def render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box):
 
     st.divider()
 
-    # --- VIEW ROUTING ---
+    # View Routing
     current_mode = st.session_state.deck_sub_view
 
     if current_mode == "Deck":
+
         st.session_state.active_view = "Deck"
         render_deck_list_view(deck_cards)
     elif current_mode == "Analysis":
+
         st.session_state.active_view = "Analysis"
         render_deck_stats_view(deck_cards)
     elif current_mode == "test_deck":
-        # 1. Check if we are "new" to this mode
+
+        # Check if we are "new" to this mode
         if st.session_state.get("active_view") != "test_deck":
+
             # Clear the old data
             for key in ['shuffled_library', 'hand', 'ptr', 'draw_counter', 'hand_selector']:
+
                 st.session_state.pop(key, None)
             
             # 2. Set the 'gate' so this block doesn't run again while we are playtesting
@@ -90,7 +92,6 @@ def render_deck_list_view(deck_cards):
         st.session_state.selected_card = None
         st.session_state.active_view_deck = current_deck_id
 
-    # --- 2. DATA PREP ---
     deck_cards['status'] = deck_cards.apply(
         lambda x: "✅" if x['num_for_deck'] >= x['qty'] else f"({int(x['num_for_deck'])}/{int(x['qty'])})", 
         axis=1
@@ -103,7 +104,6 @@ def render_deck_list_view(deck_cards):
     value_main = mainboard['total_cards_value'].sum()
     main_pct = (mainboard['num_for_deck'].sum() / cards_main * 100) if cards_main > 0 else 0
     
-    # --- 3. HEADER ---
     st.markdown(f"""
         <div style="margin-top:-15px; margin-bottom:15px;">
             <div style="font-size:26px; font-weight:500; margin-bottom:5px;">Main ({int(cards_main)}) ~ ${value_main:,.2f}</div>
@@ -116,7 +116,6 @@ def render_deck_list_view(deck_cards):
         </div>
         """, unsafe_allow_html=True)
 
-    # --- 4. CSS FOR CENTERING ---
     st.markdown("""
         <style>
         .centered-preview {
@@ -129,18 +128,19 @@ def render_deck_list_view(deck_cards):
         </style>
     """, unsafe_allow_html=True)
 
-    # --- 5. MAINBOARD GRID ---
+    # Mainboard grid
     col_left, col_right = st.columns(2, gap="large")
     left_types = ['Creature', 'Instant', 'Sorcery']
     right_types = ['Enchantment', 'Artifact', 'Land', 'Planeswalker']
 
-    def draw_type_table(df, t, ui_col):
+    def draw_type_table(df, type, ui_col):
+
         with ui_col:
-            # ONLY CHANGE: Swapping the contains() logic for your new primary_type_for_deck col
-            subset = df[df['primary_type_for_deck'] == t]
             
-            label = f"{t}s"
-            key = f"df_{current_deck_id}_{t}"
+            subset = df[df['primary_type_for_deck'] == type]
+            
+            label = f"{type}s"
+            key = f"df_{current_deck_id}_{type}"
 
             if not subset.empty:
                 st.markdown(f"#### {label} ({int(subset['qty'].sum())})")
@@ -238,17 +238,18 @@ def render_deck_list_view(deck_cards):
 
 def render_deck_stats_view(deck_cards):
 
-    # --- ROW 1: SUMMARY TABLE & TOP SETS ---
     row_1_col_left, row_1_col_right = st.columns([1, 1], gap="small")
     
-    # LEFT COLUMN: Summary Table (pass for now)
+    # ROW 1: Summary Table and Top Sets
     with row_1_col_left:
+
         with st.container(border=True):
             st.markdown("<h3 style='margin: 0; margin-bottom: 10px;'>Summary</h3>", unsafe_allow_html=True)
             st.info("Summary table coming soon")
 
-    # RIGHT COLUMN: Top Sets Donut
+    # Top Sets in Deck
     with row_1_col_right:
+
         with st.container(border=True):
             st.markdown("<h3 style='margin: 0; margin-bottom: 10px;'>Top Sets</h3>", unsafe_allow_html=True)
             
@@ -284,14 +285,14 @@ def render_deck_stats_view(deck_cards):
     
     st.divider()
     
-    # Color and Card Type Stats Row
+    # ROW 2: Color and Card Type Stats
     row_2_col_left, row_2_col_right = st.columns(2)
 
-    # --- LEFT COLUMN: COLOR SATURATION ---
+    # Cards by Color
     with row_2_col_left:
+
         with st.container(border=True):
 
-            # Header
             st.markdown('''
                 <div style="display: flex; justify-content: flex-start; align-items: flex-end; flex-wrap: wrap; margin-bottom: 10px;">
                     <h3 style="margin: 0; padding-bottom: 0">Cards by Colors</h3>
@@ -310,46 +311,49 @@ def render_deck_stats_view(deck_cards):
 
             # 2. Controls
             is_trans = st.toggle("Transpose", key="ds_trans")
-            c1, c2 = st.columns(2)
+            rarity_select_col, deck_section_mode_col = st.columns(2)
             
-            with c1:
-                sel_r = st.multiselect("Filter Rarity:", options=dynamic_rarities, key="ds_rarity")
+            with rarity_select_col:
+                rarity_select = st.multiselect("Filter Rarity:", options=dynamic_rarities, key="ds_rarity")
             
-            with c2:
+            with deck_section_mode_col:
                 deck_section_mode = st.radio("Section:", ["Main", "Side", "Both"], horizontal=True, key="ds_view")
 
-            # --- CALLER FILTERS THE DF ---
             df_to_use = deck_cards.copy()
             
             # Handle section filter
             if deck_section_mode != "Both":
+                
                 section_val = "main" if deck_section_mode == "Main" else "sideboard"
                 df_to_use = df_to_use[df_to_use['section'].str.lower() == section_val]
             
             # Handle rarity filter
-            if sel_r:
+            if rarity_select:
+
                 rarity_map = {'Common': 'Common', 'Uncommon': 'Uncommon', 'Rare': 'Rare', 'Mythic': 'MythicRare'}
-                df_to_use = df_to_use[df_to_use['rarity'].isin([rarity_map[r] for r in sel_r])]
+                df_to_use = df_to_use[df_to_use['rarity'].isin([rarity_map[r] for r in rarity_select])]
 
             # --- AGGREGATE AND RENDER ---
             df_colors_agg, grand_total = features.get_color_saturation_aggregate(df_to_use)
             fig_color = features.get_color_saturation_widget(df_colors_agg, grand_total, is_trans)
             
             if fig_color:
+
                 st.plotly_chart(fig_color, use_container_width=True, key="ds_color_plot")
             else:
+
                 st.info("No cards match the selected filters.")
 
-    # --- RIGHT COLUMN: TYPE DISTRIBUTION ---
+    # Cards By Type
     with row_2_col_right:
+
         with st.container(border=True):
 
             st.markdown('<h3 style="margin: 0; margin-bottom: 10px;">Cards by Type</h3>', unsafe_allow_html=True)
             
-            # --- DECK VIEW CALL ---
-            t1, t2 = st.columns(2)
+            color_select_col, deck_section_mode_col = st.columns(2)
 
-            with t1:
+            with color_select_col:
                 # Logic to only show colors actually present in this specific deck
                 present_codes = deck_cards['color'].unique()
                 db_to_ui = {'W': 'White', 'U': 'Blue', 'B': 'Black', 'R': 'Red', 'G': 'Green', 'C': 'Colorless'}
@@ -357,28 +361,32 @@ def render_deck_stats_view(deck_cards):
                 if (deck_cards['is_multi_colored'] == True).any():
                     available_colors.append('Multicolor')
                 
-                sel_c = st.multiselect("Filter Color:", available_colors, key="ds_type_col")
+                color_select = st.multiselect("Filter Color:", available_colors, key="ds_type_col")
 
-            with t2:
-                ds_section = st.radio("Section:", ["Main", "Side", "Both"], horizontal=True, key="ds_type_sec")
+            with deck_section_mode_col:
+                deck_section_mode = st.radio("Section:", ["Main", "Side", "Both"], horizontal=True, key="ds_type_sec")
 
             # --- CALLER FILTERS THE DF ---
             df_to_use = deck_cards.copy()
             
             # Handle section filter
-            if ds_section != "Both":
-                section_val = "main" if ds_section == "Main" else "sideboard"
+            if deck_section_mode != "Both":
+
+                section_val = "main" if deck_section_mode == "Main" else "sideboard"
                 df_to_use = df_to_use[df_to_use['section'].str.lower() == section_val]
             
             # Handle color filter
-            if sel_c:
+            if color_select:
+
                 ui_to_db = {'White': 'W', 'Blue': 'U', 'Black': 'B', 'Red': 'R', 'Green': 'G', 'Colorless': 'C'}
-                codes = [ui_to_db[c] for c in sel_c if c in ui_to_db]
-                wants_multi = 'Multicolor' in sel_c
+                codes = [ui_to_db[c] for c in color_select if c in ui_to_db]
+                wants_multi = 'Multicolor' in color_select
                 pattern = '|'.join(codes) if codes else None
                 mask = df_to_use['color'].str.contains(pattern, na=False) if pattern else pd.Series(False, index=df_to_use.index)
+
                 if wants_multi:
                     mask = mask | (df_to_use['is_multi_colored'] == True)
+
                 df_to_use = df_to_use[mask]
 
             # --- AGGREGATE AND RENDER ---
@@ -390,7 +398,7 @@ def render_deck_stats_view(deck_cards):
             else:
                 st.info("No cards match the selected filters.")
 
-    # ROW 3: TOP SETS (Full Width or Column based on your preference)
+    # ROW 3: Mana Curve
     with st.container(border=True):
         # Header & Filter Row
         row_3_col_title, row_3_col_2, row_3_col_3, row_3_col_4 = st.columns([1, 1.5, 1.5, 0.8])
@@ -431,11 +439,11 @@ def render_deck_stats_view(deck_cards):
 
 
 def render_test_deck_view(deck_cards):
-    # 1. Prepare Deck
+    
     mainboard = deck_cards[deck_cards['section'].str.contains('main', case=False, na=False)].copy()
     full_deck_df = mainboard.loc[mainboard.index.repeat(mainboard['qty'])].drop(columns=['qty'])
 
-    # 2. State Management
+    # State Management
     if 'shuffled_library' not in st.session_state:
         st.session_state.shuffled_library = full_deck_df.sample(frac=1)
         st.session_state.hand = pd.DataFrame()
@@ -459,16 +467,18 @@ def render_test_deck_view(deck_cards):
         st.session_state.draw_counter += num
         st.session_state.ptr += num
 
-    # --- INITIALIZE SELECTION TO PREVENT CRASH ---
+    # INITIALIZE SELECTION TO PREVENT CRASH
     selection = {"selection": {"rows": []}}
 
-    # --- LAYOUT ---
     interact_col, card_view_col, curve_col = st.columns([1.2, 1, 1.2])
 
     with interact_col:
+
         st.subheader("Your Hand")
-        c1, c2 = st.columns(2)
-        if c1.button("Draw 7 (New)"):
+        draw_seven_btn_col, draw_one_btn_col = st.columns(2)
+
+        if draw_seven_btn_col.button("Draw 7 (New)"):
+
             st.session_state.shuffled_library = full_deck_df.sample(frac=1)
             st.session_state.hand = pd.DataFrame()
             st.session_state.ptr = 0
@@ -476,11 +486,12 @@ def render_test_deck_view(deck_cards):
             draw(7)
             st.rerun() # Refresh to update UI immediately
             
-        if c2.button("Draw 1"):
+        if draw_one_btn_col.button("Draw 1"):
             draw(1)
             st.rerun()
 
         if not st.session_state.hand.empty:
+
             # Overwrite the empty selection with the actual UI component
             selection = st.dataframe(
                 st.session_state.hand[['name', 'mana']], 
@@ -510,8 +521,10 @@ def render_test_deck_view(deck_cards):
             st.info("Select a card in your hand to preview.")
 
     with curve_col:
+
         st.subheader("Hand Curve")
         if not st.session_state.hand.empty:
+            
             # 1. We prepare a temporary 'qty' column because the hand DF has 1 row per card
             hand_to_plot = st.session_state.hand.copy()
             hand_to_plot['qty'] = 1 

@@ -7,7 +7,8 @@ from maps_utilities import LAND_DATA_MAP
 DB_PATH = os.path.join("data", "mtg_pauper.db")
 
 def get_db_last_update():
-    """Return the DB 'last_update' metadata string used to invalidate caches after builds."""
+
+    # Return the DB 'last_update' metadata string used to invalidate caches after builds.
     conn = sqlite3.connect(DB_PATH)
     try:
         meta = pd.read_sql("SELECT last_update FROM metadata LIMIT 1", conn)
@@ -21,6 +22,7 @@ def get_db_last_update():
 
 @st.cache_data
 def load_inventory(db_last_update):
+
     # db_last_update used only for cache key invalidation
     _ = db_last_update
 
@@ -37,6 +39,8 @@ def load_inventory(db_last_update):
 
 @st.cache_data
 def load_all_decks(db_last_update):
+
+    # db_last_update used only for cache key invalidation
     _ = db_last_update
 
     conn = sqlite3.connect(DB_PATH)
@@ -54,6 +58,8 @@ def load_all_decks(db_last_update):
 
 @st.cache_data
 def load_battle_box(db_last_update):
+
+    # db_last_update used only for cache key invalidation
     _ = db_last_update
 
     conn = sqlite3.connect(DB_PATH)

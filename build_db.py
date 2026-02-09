@@ -58,7 +58,7 @@ def get_latest_file(directory, pattern):
     latest_file = files[0]
     
     sync_github = False
-    # --- DELETE OLDER VERSIONS ---
+    # Delete Older Versions and set sync_github true to remove from remote repo
     if len(files) > 1:
         for old_file in files[1:]:
             try:
@@ -132,11 +132,11 @@ def load_all_decks_cards(path, df_inventory):
 
             purified_rows = []
             for _, row in df.iterrows():
-                card_name = row['Name']
+                cardeck_name = row['Name']
 
-                if card_name in deck_rules:
+                if cardeck_name in deck_rules:
                     # Logic for Mapped cards
-                    entries = deck_rules[card_name]
+                    entries = deck_rules[cardeck_name]
                     for entry in entries:
                         # Only process entries matching current CSV section
                         if entry['section'].lower() != row['Section'].lower():
@@ -174,10 +174,10 @@ def load_all_decks_cards(path, df_inventory):
 
 
 def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
-    # 1. Map physical inventory by Code
+    # Map physical inventory by Code
     virtual_inv = df_inventory.groupby('Code')['Count'].sum().to_dict()
     
-    # 2. Add the 'is_main' flag and priority for sorting
+    # Add the 'is_main' flag and priority for sorting. Copies go to Main Decks before Sideboards
     df_cards = df_all_decks.copy()
     df_cards['is_main'] = df_cards['Section'].str.lower().str.contains('main', na=False)
     
@@ -190,12 +190,11 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
         ascending=[False, True, True]
     )
 
-    # --- NEW: INITIALIZE COLOR TRACKER ---
-    # We will store the counts here, then merge them into df_bb at the end
+    # We will store color counts, then merge them into df_bb at the end
     color_stats = {} 
     valid_colors = ['W', 'U', 'B', 'R', 'G', 'C', 'L']
 
-    # 4. Global Allocation
+    #  Allocation
     allocations = []
 
     for idx, card in df_cards.iterrows():
@@ -212,24 +211,23 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
         })
         virtual_inv[code] = available - taken
 
-        # --- NEW: COLOR COUNTING LOGIC ---
-        d_name = card['DeckName']
-        if d_name not in color_stats:
-            color_stats[d_name] = {f"{s}_{c}": 0 for s in ['main', 'side'] for c in valid_colors}
-            color_stats[d_name]['main_card_count'] = 0
-            color_stats[d_name]['side_card_count'] = 0
+        deck_name = card['DeckName']
+        if deck_name not in color_stats:
+            color_stats[deck_name] = {f"{s}_{c}": 0 for s in ['main', 'side'] for c in valid_colors}
+            color_stats[deck_name]['main_card_count'] = 0
+            color_stats[deck_name]['side_card_count'] = 0
 
         # Determine if we are updating main or side columns
         prefix = 'main' if card['is_main'] else 'side'
-        color_stats[d_name][f'{prefix}_card_count'] += needed
+        color_stats[deck_name][f'{prefix}_card_count'] += needed
         
         # Check the card's color string (e.g., 'RG') and increment appropriate columns
         card_color_str = str(card.get('color', ''))
         for c in valid_colors:
             if c in card_color_str:
-                color_stats[d_name][f'{prefix}_{c}'] += needed
+                color_stats[deck_name][f'{prefix}_{c}'] += needed
 
-    # 5. Map results back to the original index to preserve order
+    # Map results back to the original index to preserve order
     df_allocs = pd.DataFrame(allocations).set_index('temp_idx')
     df_all_decks['NumForBuild'] = df_allocs['NumForBuild'].fillna(0).astype(int)
     df_all_decks['Priority'] = df_allocs['Priority'].fillna(9999).astype(int)
@@ -240,7 +238,6 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
         .astype(int)
     )
 
-    # --- NEW: MERGE COLOR STATS INTO DF_BB ---
     df_color_summary = pd.DataFrame.from_dict(color_stats, orient='index').reset_index()
     df_color_summary.rename(columns={'index': 'DeckName'}, inplace=True)
     
@@ -248,11 +245,11 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
     cols_to_drop = [c for c in df_color_summary.columns if c in df_bb.columns and c != 'DeckName']
     df_bb = df_bb.drop(columns=cols_to_drop).merge(df_color_summary, on='DeckName', how='left')
 
-    # 6. Calculate Pcts for the Dashboard (df_bb)
+    # Calculate Pcts for the Dashboard (df_bb)
     main_pcts, side_pcts = [], []
     for _, deck in df_bb.iterrows():
-        d_name = deck['DeckName']
-        d_cards = df_all_decks[df_all_decks['DeckName'] == d_name]
+        deck_name = deck['DeckName']
+        d_cards = df_all_decks[df_all_decks['DeckName'] == deck_name]
         
         def get_section_pct(main_flag):
             section = d_cards[d_cards['Section'].str.lower().str.contains('main', na=False) == main_flag]
@@ -379,7 +376,7 @@ def enrich_land_data(df):
 
 
 def build_database():
-    print("--- Initializing ETL ---")
+    
     inv_path, inv_sync = get_latest_file(DATA_DIR, r"Inventory_mikelele")
 
     if not inv_path:
@@ -406,30 +403,21 @@ def build_database():
     rename_cols(df_inventory)
     rename_cols(df_battle_box)
 
-    # Generate the Long-Form Stats Table
-    # We use a combined set for overall stats or just inventory
-    # df_stats_expanded = build_expanded_stats_table(df_inventory)
     print(df_inventory.columns)
     print(df_all_decks.columns)
 
-    print(df_all_decks.loc[df_all_decks['rarity'].isna(), 'name'])
-
-    print(df_all_decks.loc[
-        df_all_decks['rarity'].astype(str).str.strip().eq(''),'name'
-    ])
-
+    # Rebuild DB on each run
     conn = sqlite3.connect(DB_PATH)
     df_inventory.to_sql('inventory', conn, if_exists='replace', index=False)
     df_all_decks.to_sql('all_decks', conn, if_exists='replace', index=False)
     df_battle_box.to_sql('battle_box', conn, if_exists='replace', index=False)
-    # df_stats_expanded.to_sql('stats_expanded', conn, if_exists='replace', index=False)
     
     update_date = datetime.now().strftime("%b %d, %Y")
     pd.DataFrame([{'last_update': update_date}]).to_sql('metadata', conn, if_exists='replace', index=False)
     conn.close()
     print(f"\nDB Update Complete: {update_date}")
     
-
+    # Sync Github repo if new files were detected
     if inv_sync or decks_sync:
         print("🚀 Changes detected in source files. Triggering GitHub Sync...")
         sync_to_github()

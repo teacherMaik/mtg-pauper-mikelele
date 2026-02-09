@@ -220,7 +220,7 @@ def render_row_3(df_inventory, df_all_decks):
     col_left, col_right = st.columns([2, 1], gap="medium")
 
     with col_left:
-        st.markdown("### 🔍 Global Land Explorer")
+        st.markdown("### Explore")
         
         df_display = df_explorer[[
             'name', 'edition', 'land_mana', 'type', 'qty', 'price'

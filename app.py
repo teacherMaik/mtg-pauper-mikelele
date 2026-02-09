@@ -16,10 +16,10 @@ from inventory_search import render_card_search_view
 
 st.set_page_config(page_title="MTG Pauper Playground", layout="wide")
 
-db_last = get_db_last_update()
-df_inventory = load_inventory(db_last)
-df_all_decks = load_all_decks(db_last)
-df_battle_box = load_battle_box(db_last)
+db_last_update = get_db_last_update()
+df_inventory = load_inventory(db_last_update)
+df_all_decks = load_all_decks(db_last_update)
+df_battle_box = load_battle_box(db_last_update)
 
 if "view" not in st.session_state:
     st.session_state.view = "battle_box" 
@@ -68,11 +68,11 @@ with st.sidebar:
 # --- HEADER ---
 if st.session_state.get('view', '').startswith("deck_"):
     # Split header: Title on left, Back button on right
-    h_c1, h_c2 = st.columns([4, 1], vertical_alignment="center")
-    with h_c1:
+    title_col, bb_return_btn_col = st.columns([4, 1], vertical_alignment="center")
+    with title_col:
         st.title("Mikelele's Pauper Playground")
-        st.caption(f"*Last update on {db_last}*")
-    with h_c2:
+        st.caption(f"*Last update on {db_last_update}*")
+    with bb_return_btn_col:
         st.markdown("""
             <style>
             button[kind="secondary"] {
@@ -93,7 +93,7 @@ if st.session_state.get('view', '').startswith("deck_"):
 else:
     # Standard view: Full width title
     st.title("Mikelele's Pauper Playground")
-    st.caption(f"*Last update on {db_last}*")
+    st.caption(f"*Last update on {db_last_update}*")
 
 # --- ROUTER ---
 view = st.session_state.view
@@ -102,7 +102,7 @@ if view == "battle_box":
     render_decks_menu(df_battle_box)
 elif view.startswith("deck_"):
     deck_name = view.replace("deck_", "")
-    render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box)
+    render_deck_detail(deck_name, df_all_decks)
 elif view == "battle_box_stats":
     render_bb_stats_view(df_all_decks, df_battle_box)
 elif view == 'wish_list':
