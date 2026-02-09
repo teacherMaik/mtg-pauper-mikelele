@@ -86,23 +86,25 @@ def render_row_1(df_all_decks, df_battle_box):
 
         st.markdown(f"## Sets in Battle Box: {total_unique_sets}")
         
-        
         with st.container(border=True):
 
             st.markdown(f'''
                     <h3 style="margin: 0; padding-bottom: 0">Top 12 Sets</h3>
             ''', unsafe_allow_html=True)
 
-            
-            
             val_qty_select_col, count_select_col = st.columns(2)
             with val_qty_select_col:
                 sort_m = st.radio("Rank Sets:", options=["Qty", "Val"], horizontal=True, key="set_rank_unique")
             with count_select_col:
                 view_m = st.radio("Count Mode:", options=["All", "Unique"], horizontal=True, key="set_view_unique")
 
-            # The clean one-line call
-            fig_sets = features.get_top_sets_donut(df_all_decks, sort_m, view_m)
+            df_to_use = df_all_decks.copy()
+            if view_m == "Unique":
+                df_to_use['qty'] = 1
+                df_to_use['total_cards_value'] = df_to_use['price']
+            
+            set_data = features.get_top_sets_aggregate(df_to_use)
+            fig_sets = features.get_top_sets_donut(set_data, sort_m)
             
             if fig_sets:
                 st.plotly_chart(fig_sets, use_container_width=True, key="sets_plot_unique")
@@ -190,24 +192,34 @@ def render_row_2(df_all_decks, df_battle_box):
                 </div>
             ''', unsafe_allow_html=True)
             
-            is_trans = st.toggle("Transpose", key="inv_trans")
+            is_trans = st.toggle("Transpose", key="bb_trans")
 
-            rarity_select_col, counte_select_col = st.columns(2)
+            rarity_select_col, count_select_col = st.columns(2)
 
             with rarity_select_col:
-                rarity_select = st.multiselect("Filter Rarity:", ['Common', 'Uncommon', 'Rare', 'Mythic'], key="inv_rarity")
-            with counte_select_col:
-                count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_view")
+                rarity_select = st.multiselect("Filter Rarity:", ['Common', 'Uncommon', 'Rare', 'Mythic'], key="bb_rarity")
+            with count_select_col:
+                count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="bb_view")
 
-            # Calling the single refactored function
-            fig_colors = features.get_color_saturation_widget(
-                df_all_decks,
-                is_trans,
-                rarity_select,
-                count_select=count_select
-            )
+            # --- CALLER FILTERS THE DF ---
+            df_to_use = df_all_decks.copy()
+            
+            # Handle Unique mode
+            if count_select == "Unique":
+                df_to_use['qty'] = 1
+                df_to_use['total_cards_value'] = df_to_use['price']
+            
+            # Handle rarity filter
+            if rarity_select:
+                rarity_map = {'Common': 'Common', 'Uncommon': 'Uncommon', 'Rare': 'Rare', 'Mythic': 'MythicRare'}
+                df_to_use = df_to_use[df_to_use['rarity'].isin([rarity_map[r] for r in rarity_select])]
+
+            # --- AGGREGATE AND RENDER ---
+            df_colors_agg, grand_total = features.get_color_saturation_aggregate(df_to_use)
+            fig_colors = features.get_color_saturation_widget(df_colors_agg, grand_total, is_trans)
+            
             if fig_colors:
-                st.plotly_chart(fig_colors, use_container_width=True, key="inv_color_plot")
+                st.plotly_chart(fig_colors, use_container_width=True, key="bb_color_plot")
             else:
                 st.info("No cards found for this selection.")
 
@@ -226,65 +238,33 @@ def render_row_3(df_all_decks, df_battle_box):
             section_filter = st.radio("Section:", ["Main", "Sideboard"], horizontal=True, label_visibility="collapsed")
             archetype_filter = st.radio("Archetype:", ["All", "Aggro", "Midrange", "Tempo", "Control", "Combo"], horizontal=True, label_visibility="collapsed")
 
-            # 1. MERGE deck metadata to get Archetypes for the cards
-            # We merge df_all_decks with df_battle_box on the deck name column
+            # --- CALLER FILTERS THE DF ---
             deck_col = 'deck_name' if 'deck_name' in df_all_decks.columns else 'DeckName'
-            df_with_meta = df_all_decks.merge(
+            df_to_use = df_all_decks.merge(
                 df_battle_box[[deck_col, 'Archetype']], 
                 on=deck_col, 
                 how='left'
             )
-
-            # 2. APPLY BOTH FILTERS
-            # Filter: No Lands + Section + (Archetype if not "All")
-            mask = (
-                (~df_with_meta['type'].str.contains('Land', case=False, na=False)) & 
-                (df_with_meta['section'].str.lower() == section_filter.lower())
-            )
             
+            # Filter: No Lands + Section
+            df_to_use = df_to_use[
+                (~df_to_use['type'].str.contains('Land', case=False, na=False)) & 
+                (df_to_use['section'].str.lower() == section_filter.lower())
+            ]
+            
+            # Filter by Archetype if not "All"
             if archetype_filter != "All":
-                mask = mask & (df_with_meta['Archetype'] == archetype_filter)
+                df_to_use = df_to_use[df_to_use['Archetype'] == archetype_filter]
 
-            df_filtered_staples = df_with_meta[mask].copy()
+            # --- AGGREGATE AND RENDER ---
+            top_12_data = features.get_top_12_staples_aggregate(df_to_use)
             
-            # 3. AGGREGATE
-            top_cards = df_filtered_staples.groupby('name').agg({'qty': 'sum', deck_col: 'nunique'}).reset_index()
-            
-            top_12 = top_cards.sort_values(
-                by=[deck_col, 'qty'], 
-                ascending=[False, False]
-            ).head(12).iloc[::-1]
-
-            if top_12.empty:
+            if top_12_data.empty:
                 st.info(f"No {archetype_filter} cards found in {section_filter}")
             else:
-                # --- THE TREEMAP ---
-                # Using your gradient instruction: metallic gray for the top staples
-                fig_heat = px.treemap(
-                    top_12,
-                    path=[px.Constant("Top Staples"), 'name'],
-                    values='qty',
-                    color=deck_col,
-                    # Metallic gray gradient as requested
-                    color_continuous_scale=[[0, 'rgba(44, 62, 80, 0.2)'], [1, 'rgba(44, 62, 80, 1.0)']], 
-                    custom_data=['qty', deck_col]
-                )
-                
-                fig_heat.update_traces(
-                    textinfo="label+value",
-                    textfont=dict(color='white', size=14),
-                    hovertemplate="<b>%{label}</b><br>Total Copies: %{customdata[0]}<br>In %{customdata[1]} Decks<extra></extra>"
-                )
-                
-                fig_heat.update_layout(
-                    coloraxis_showscale=False,
-                    margin=dict(l=0, r=0, t=0, b=0),
-                    height=420 # Slightly reduced to account for double radio rows
-                )
-                
+                fig_heat = features.get_top_12_staples_widget(top_12_data, deck_col)
                 st.plotly_chart(fig_heat, use_container_width=True, config={'displayModeBar': False})
 
-        pass
 
     # By Card Type Widget
     with row_2_col_right:
@@ -301,15 +281,30 @@ def render_row_3(df_all_decks, df_battle_box):
                 color_select = st.multiselect("Filter Color:", color_options, key="inv_type_col")
 
             with count_select_col:
-                # Inventory needs the toggle for Unique cards vs Total Qty
                 count_select = st.radio("Count Mode:", ["All", "Unique"], horizontal=True, key="inv_type_view")
 
-            # The call passes count_select. is_deck remains None (default).
-            fig_types = features.get_type_distribution_widget(
-                df_all_decks, 
-                color_select, 
-                count_select=count_select
-            )
+            # --- CALLER FILTERS THE DF ---
+            df_to_use = df_all_decks.copy()
+            
+            # Handle Unique mode
+            if count_select == "Unique":
+                df_to_use['qty'] = 1
+                df_to_use['total_cards_value'] = df_to_use['price']
+            
+            # Handle color filter
+            if color_select:
+                ui_to_db = {'White': 'W', 'Blue': 'U', 'Black': 'B', 'Red': 'R', 'Green': 'G', 'Colorless': 'C'}
+                codes = [ui_to_db[c] for c in color_select if c in ui_to_db]
+                wants_multi = 'Multicolor' in color_select
+                pattern = '|'.join(codes) if codes else None
+                mask = df_to_use['color'].str.contains(pattern, na=False) if pattern else pd.Series(False, index=df_to_use.index)
+                if wants_multi:
+                    mask = mask | (df_to_use['is_multi_colored'] == True)
+                df_to_use = df_to_use[mask]
+
+            # --- AGGREGATE AND RENDER ---
+            type_data = features.get_type_distribution_aggregate(df_to_use)
+            fig_types = features.get_type_distribution_widget(type_data)
 
             if fig_types:
                 st.plotly_chart(fig_types, use_container_width=True, key="inv_type_plot")
@@ -332,15 +327,23 @@ def render_row_4(df_all_decks):
         with row_3_col_4:
             is_trans = st.toggle("Transpose", key="ds_cmc_trans")
 
-        # The clean refactored call
-        # Adding sel_type and sel_color to the call to match the logic below
-        fig_cmc = features.get_mana_curve_widget(
-            df_all_decks, 
-            'Inventory', 
-            is_trans, 
-            sel_type=type_select, 
-            sel_color=color_select
-        )
+        # --- CALLER FILTERS THE DF ---
+        df_to_use = df_all_decks.copy()
+        
+        # Filter by type
+        if type_select:
+            df_to_use = df_to_use[df_to_use['primary_type_for_deck'].isin(type_select)]
+        
+        # Filter by color
+        if color_select:
+            ui_to_db = {'White':'W', 'Blue':'U', 'Black':'B', 'Red':'R', 'Green':'G', 'Colorless':'C'}
+            codes = [ui_to_db[c] for c in color_select if c in ui_to_db]
+            pattern = '|'.join(codes)
+            df_to_use = df_to_use[df_to_use['color'].str.contains(pattern, na=False)]
+
+        # --- AGGREGATE AND RENDER ---
+        curve_data = features.get_mana_curve_aggregate(df_to_use)
+        fig_cmc = features.get_mana_curve_widget(curve_data, 'Inventory', is_trans)
 
         if fig_cmc:
             st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False}, key="ds_cmc_chart")

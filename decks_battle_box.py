@@ -8,26 +8,28 @@ from deck_details import render_deck_detail
 
 CARD_BACK_URL = "https://gamepedia.cursecdn.com/mtgsalvation_gamepedia/f/f8/Magic_card_back.jpg"
 
-# --- HELPERS ---
-def img_to_bytes(img):
-    buf = BytesIO()
-    img.save(buf, format="PNG")
-    return base64.b64encode(buf.getvalue()).decode()
 
-
-@st.cache_data(show_spinner=False)
-def create_deck_tile(url, opacity=1.0):
+@st.cache_data(ttl=3600, show_spinner=False)
+def create_deck_tile_bytes(url, opacity=1.0):
+    """Return PNG bytes (thumbnail) for a deck image. TTL avoids indefinite retention."""
     try:
-        response = requests.get(url, timeout=5)
+        response = requests.get(url, timeout=6)
+        response.raise_for_status()
         img = Image.open(BytesIO(response.content)).convert("RGBA")
         img.thumbnail((300, 300))
-        return img
-    except Exception:
-        return None
+        buf = BytesIO()
+        img.save(buf, format="PNG")
+        return buf.getvalue()
+    except requests.RequestException as e:
+        print(f"create_deck_tile_bytes request error: {e}")
+    except Exception as e:
+        print(f"create_deck_tile_bytes error: {e}")
+    return None
 
 
 # --- GALLERY VIEW ---
 def render_battle_box_gallery(df_battle_box):
+
     # 1. Inject CSS for progress bars
     st.markdown("""
         <style>
@@ -74,8 +76,9 @@ def render_battle_box_gallery(df_battle_box):
     # Sort by Priority
     filtered_df = filtered_df.sort_values("Priority")
     
-    # --- THE MISSING LINE ---
-    decks = filtered_df['DeckName'].unique()
+    # --- PRECOMPUTE DECK SUMMARIES (one per unique DeckName in filtered data) ---
+    deck_summaries = filtered_df.drop_duplicates(subset=['DeckName'], keep='first').reset_index(drop=True)
+    decks = deck_summaries['DeckName'].tolist()
 
     if len(decks) == 0:
         st.info(f"No decks categorized as {filter_type} found.")
@@ -86,8 +89,9 @@ def render_battle_box_gallery(df_battle_box):
         cols = st.columns(3)
         for j in range(3):
             if i + j < len(decks):
-                deck_name = decks[i + j]
-                deck_data = filtered_df[filtered_df['DeckName'] == deck_name].iloc[0]
+                
+                deck_data = deck_summaries.iloc[i + j]
+                deck_name = deck_data['DeckName']
                 
                 # Stats & Dynamic Colors
                 # Note: These columns must exist in your DB from the build_db.py update
@@ -98,8 +102,9 @@ def render_battle_box_gallery(df_battle_box):
 
                 # Image Processing
                 img_url = deck_data['bb_deck_img'] if pd.notna(deck_data['bb_deck_img']) else CARD_BACK_URL
-                tile = create_deck_tile(img_url)
-                img_src = f"data:image/png;base64,{img_to_bytes(tile)}" if tile else CARD_BACK_URL
+                tile_bytes = create_deck_tile_bytes(img_url)
+
+                ## img_src = f"data:image/png;base64,{img_to_bytes(tile)}" if tile else CARD_BACK_URL
 
                 with cols[j]:
                     with st.container(border=True):
@@ -118,7 +123,8 @@ def render_battle_box_gallery(df_battle_box):
                             st.markdown(f'<div class="pb-bg"><div class="pb-fill" style="width:{s_pct}%; background-color:{s_color};"></div></div>', unsafe_allow_html=True)
 
                         with c_img:
-                            st.markdown(f'<img src="{img_src}" style="width:100%; border-radius:4px; border:1px solid #444; margin-top:10px;">', unsafe_allow_html=True)
+                            st.image(tile_bytes)
+                            ## st.markdown(f'<img src="{img_src}" style="width:100%; border-radius:4px; border:1px solid #444; margin-top:10px;">', unsafe_allow_html=True)
                         
                         st.write("") # Spacer
                         if st.button("View Details", key=f"btn_{deck_name}", use_container_width=True):

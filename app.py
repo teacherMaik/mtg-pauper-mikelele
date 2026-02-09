@@ -2,7 +2,8 @@
 
 import streamlit as st
 import pandas as pd
-from data_manager import load_inventory, load_all_decks, load_battle_box
+from data_manager import load_inventory, load_all_decks, load_battle_box, get_db_last_update
+from wish_list import render_wish_list_view
 
 # --- COMPONENT IMPORTS ---
 from decks_battle_box import render_decks_menu
@@ -14,10 +15,10 @@ from inventory_search import render_card_search_view
 
 st.set_page_config(page_title="MTG Pauper Playground", layout="wide")
 
-# --- DATA LOADING ---
-df_inventory, last_update = load_inventory()
-df_all_decks = load_all_decks()
-df_battle_box = load_battle_box()
+db_last = get_db_last_update()
+df_inventory = load_inventory(db_last)
+df_all_decks = load_all_decks(db_last)
+df_battle_box = load_battle_box(db_last)
 
 if "view" not in st.session_state:
     st.session_state.view = "battle_box" 
@@ -51,6 +52,12 @@ with st.sidebar:
         st.session_state.view = "inventory_search"
         st.rerun()
 
+    st.divider()
+    st.header("Wish List")
+    if st.button("Needs/Wants", use_container_width=True, 
+                 type="primary" if current_view == "wish_list" else "secondary"):
+        st.session_state.view = "wish_list"
+        st.rerun()
 
 # --- HEADER ---
 if st.session_state.get('view', '').startswith("deck_"):
@@ -58,7 +65,7 @@ if st.session_state.get('view', '').startswith("deck_"):
     h_c1, h_c2 = st.columns([4, 1], vertical_alignment="center")
     with h_c1:
         st.title("Mikelele's Pauper Playground")
-        st.caption(f"*Last update on {last_update}*")
+        st.caption(f"*Last update on {db_last}*")
     with h_c2:
         st.markdown("""
             <style>
@@ -80,7 +87,7 @@ if st.session_state.get('view', '').startswith("deck_"):
 else:
     # Standard view: Full width title
     st.title("Mikelele's Pauper Playground")
-    st.caption(f"*Last update on {last_update}*")
+    st.caption(f"*Last update on {db_last}*")
 
 # --- ROUTER ---
 view = st.session_state.view
@@ -98,4 +105,5 @@ elif view == "inventory_stats":
     render_inventory_stats_view(df_inventory, df_all_decks)
 elif view == "inventory_search":
     render_card_search_view(df_inventory, df_all_decks)
-# ... other views
+elif view == 'wish_list':
+    render_wish_list_view(df_all_decks)

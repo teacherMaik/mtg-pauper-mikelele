@@ -238,6 +238,52 @@ def render_deck_list_view(deck_cards):
 
 def render_deck_stats_view(deck_cards):
 
+    # --- ROW 1: SUMMARY TABLE & TOP SETS ---
+    row_1_col_left, row_1_col_right = st.columns([1, 1], gap="small")
+    
+    # LEFT COLUMN: Summary Table (pass for now)
+    with row_1_col_left:
+        with st.container(border=True):
+            st.markdown("<h3 style='margin: 0; margin-bottom: 10px;'>Summary</h3>", unsafe_allow_html=True)
+            st.info("Summary table coming soon")
+
+    # RIGHT COLUMN: Top Sets Donut
+    with row_1_col_right:
+        with st.container(border=True):
+            st.markdown("<h3 style='margin: 0; margin-bottom: 10px;'>Top Sets</h3>", unsafe_allow_html=True)
+            
+            # Section filter for sets
+            section_mode_sets = st.radio(
+                "Section:",
+                ["Main", "Side", "Both"],
+                horizontal=True,
+                key="deck_sets_section"
+            )
+            
+            sort_metric_sets = st.radio(
+                "Rank by:",
+                ["Qty", "Val"],
+                horizontal=True,
+                key="deck_sets_sort"
+            )
+            
+            # Filter by section first
+            df_to_use = deck_cards.copy()
+            if section_mode_sets != "Both":
+                section_val = "main" if section_mode_sets == "Main" else "sideboard"
+                df_to_use = df_to_use[df_to_use['section'].str.lower() == section_val]
+
+            # Then aggregate
+            set_data = features.get_top_sets_aggregate(df_to_use)
+            fig_sets = features.get_top_sets_donut(set_data, sort_metric_sets)
+            
+            if fig_sets:
+                st.plotly_chart(fig_sets, use_container_width=True, key="deck_sets_plot")
+            else:
+                st.info("No sets in this section.")
+    
+    st.divider()
+    
     # Color and Card Type Stats Row
     row_2_col_left, row_2_col_right = st.columns(2)
 
@@ -267,26 +313,32 @@ def render_deck_stats_view(deck_cards):
             c1, c2 = st.columns(2)
             
             with c1:
-                # Only displays rarities that exist in deck_cards
                 sel_r = st.multiselect("Filter Rarity:", options=dynamic_rarities, key="ds_rarity")
             
             with c2:
-                # This string ("Main", "Side", or "Both") is passed to the 'is_deck' parameter
                 deck_section_mode = st.radio("Section:", ["Main", "Side", "Both"], horizontal=True, key="ds_view")
 
-            # 3. The Refactored One-Line Call
-            # Note: count_select defaults to "All", so we don't need to pass it for Decks
-            fig_color = features.get_color_saturation_widget(
-                deck_cards,
-                is_trans,
-                sel_r,
-                is_deck=deck_section_mode
-            )
+            # --- CALLER FILTERS THE DF ---
+            df_to_use = deck_cards.copy()
+            
+            # Handle section filter
+            if deck_section_mode != "Both":
+                section_val = "main" if deck_section_mode == "Main" else "sideboard"
+                df_to_use = df_to_use[df_to_use['section'].str.lower() == section_val]
+            
+            # Handle rarity filter
+            if sel_r:
+                rarity_map = {'Common': 'Common', 'Uncommon': 'Uncommon', 'Rare': 'Rare', 'Mythic': 'MythicRare'}
+                df_to_use = df_to_use[df_to_use['rarity'].isin([rarity_map[r] for r in sel_r])]
+
+            # --- AGGREGATE AND RENDER ---
+            df_colors_agg, grand_total = features.get_color_saturation_aggregate(df_to_use)
+            fig_color = features.get_color_saturation_widget(df_colors_agg, grand_total, is_trans)
             
             if fig_color:
                 st.plotly_chart(fig_color, use_container_width=True, key="ds_color_plot")
             else:
-                st.info("No cards match the selected type filters.")
+                st.info("No cards match the selected filters.")
 
     # --- RIGHT COLUMN: TYPE DISTRIBUTION ---
     with row_2_col_right:
@@ -308,20 +360,35 @@ def render_deck_stats_view(deck_cards):
                 sel_c = st.multiselect("Filter Color:", available_colors, key="ds_type_col")
 
             with t2:
-                # In Deck View, we filter by Section instead of Count Mode
                 ds_section = st.radio("Section:", ["Main", "Side", "Both"], horizontal=True, key="ds_type_sec")
 
-            # The call uses the 'is_deck' parameter. count_select defaults to 'All' internally.
-            fig_type = features.get_type_distribution_widget(
-                deck_cards, 
-                sel_c, 
-                is_deck=ds_section
-            )
+            # --- CALLER FILTERS THE DF ---
+            df_to_use = deck_cards.copy()
+            
+            # Handle section filter
+            if ds_section != "Both":
+                section_val = "main" if ds_section == "Main" else "sideboard"
+                df_to_use = df_to_use[df_to_use['section'].str.lower() == section_val]
+            
+            # Handle color filter
+            if sel_c:
+                ui_to_db = {'White': 'W', 'Blue': 'U', 'Black': 'B', 'Red': 'R', 'Green': 'G', 'Colorless': 'C'}
+                codes = [ui_to_db[c] for c in sel_c if c in ui_to_db]
+                wants_multi = 'Multicolor' in sel_c
+                pattern = '|'.join(codes) if codes else None
+                mask = df_to_use['color'].str.contains(pattern, na=False) if pattern else pd.Series(False, index=df_to_use.index)
+                if wants_multi:
+                    mask = mask | (df_to_use['is_multi_colored'] == True)
+                df_to_use = df_to_use[mask]
+
+            # --- AGGREGATE AND RENDER ---
+            type_data = features.get_type_distribution_aggregate(df_to_use)
+            fig_type = features.get_type_distribution_widget(type_data)
 
             if fig_type:
                 st.plotly_chart(fig_type, use_container_width=True, key="ds_type_plot")
             else:
-                st.info("No cards match the selected filters for this deck.")
+                st.info("No cards match the selected filters.")
 
     # ROW 3: TOP SETS (Full Width or Column based on your preference)
     with st.container(border=True):
@@ -337,15 +404,23 @@ def render_deck_stats_view(deck_cards):
         with row_3_col_4:
             is_trans = st.toggle("Transpose", key="ds_cmc_trans")
 
-        # The clean refactored call
-        # Adding sel_type and sel_color to the call to match the logic below
-        fig_cmc = features.get_mana_curve_widget(
-            deck_cards, 
-            'Deck View', 
-            is_trans, 
-            sel_type=type_select, 
-            sel_color=color_select
-        )
+        # --- CALLER FILTERS THE DF ---
+        df_to_use = deck_cards.copy()
+        
+        # Filter by type
+        if type_select:
+            df_to_use = df_to_use[df_to_use['primary_type_for_deck'].isin(type_select)]
+        
+        # Filter by color
+        if color_select:
+            ui_to_db = {'White':'W', 'Blue':'U', 'Black':'B', 'Red':'R', 'Green':'G', 'Colorless':'C'}
+            codes = [ui_to_db[c] for c in color_select if c in ui_to_db]
+            pattern = '|'.join(codes)
+            df_to_use = df_to_use[df_to_use['color'].str.contains(pattern, na=False)]
+
+        # --- AGGREGATE AND RENDER ---
+        curve_data = features.get_mana_curve_aggregate(df_to_use)
+        fig_cmc = features.get_mana_curve_widget(curve_data, 'Deck View', is_trans)
 
         if fig_cmc:
             st.plotly_chart(fig_cmc, use_container_width=True, config={'displayModeBar': False}, key="ds_cmc_chart")
@@ -441,26 +516,19 @@ def render_test_deck_view(deck_cards):
             hand_to_plot = st.session_state.hand.copy()
             hand_to_plot['qty'] = 1 
             
-            # 2. Call the refactored widget from your features file
-            # Pass 'Deck View' as the string to ensure the hover shows card names
-            # Pass is_transposed=True if you want the vertical look for a side column
-            fig_hand = features.get_mana_curve_widget(
-                hand_to_plot, 
-                page_view='Deck Test', 
-                is_transposed=True, # Transposed looks great in narrow side columns
-                sel_type=None,      # No filters needed for the hand
-                sel_color=None
-            )
+            # Caller prepares the DF (already filtered to just the hand cards)
+            curve_data = features.get_mana_curve_aggregate(hand_to_plot)
+            fig_hand = features.get_mana_curve_widget(curve_data, 'Deck Test', is_transposed=True)
 
             if fig_hand:
                 st.plotly_chart(
                     fig_hand, 
                     use_container_width=True, 
-                    config={'displayModeBar': False}, 
-                    key="hand_curve_plot"
+                    config={'displayModeBar': False},
+                    key="hand_cmc_chart"
                 )
             else:
-                st.info("No non-land cards in hand.")
+                st.info("No cards in hand to display.")
 
 
 
