@@ -301,8 +301,9 @@ def render_row_3(df_inventory):
 
 
 def render_inventory_stats_view(df_inventory, df_all_decks):
-    # Pass df_inventory and df_all_decks to your existing render_row_1 logic
-    render_row_1(df_inventory, df_all_decks) 
+
+    render_row_1(df_inventory, df_all_decks)
+    st.divider()
     render_row_2(df_inventory)
     st.divider()
     render_row_3(df_inventory)

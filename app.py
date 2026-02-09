@@ -61,7 +61,7 @@ with st.sidebar:
     st.divider()
     st.header("Land Fan")
     if st.button("Love Me Lands", use_container_width=True, 
-                 type="primary" if current_view == "wish_list" else "secondary"):
+                 type="primary" if current_view == "land_fan" else "secondary"):
         st.session_state.view = "land_fan"
         st.rerun()
 
@@ -112,4 +112,4 @@ elif view == "inventory_stats":
 elif view == "inventory_search":
     render_card_search_view(df_inventory, df_all_decks)
 elif view == "land_fan":
-    render_land_fan_view(df_inventory, df_all_decks)
+    render_land_fan_view(df_inventory, df_all_decks, df_battle_box)

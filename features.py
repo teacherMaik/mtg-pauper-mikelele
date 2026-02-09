@@ -75,6 +75,31 @@ def get_color_saturation_aggregate(df):
     return df_colors, grand_total_qty
 
 
+@st.cache_data
+def get_land_mana_saturation_agg(df):
+    """
+    Caches the filtered land data.
+    Directly uses 'land_mana' as the production identity.
+    """
+    if df.empty:
+        return pd.DataFrame(), 0
+        
+    # 1. Filter for Lands only
+    land_df = df[df['color'] == 'L'].copy()
+    
+    # 2. Point 'color' to 'land_mana' for the widget's logic
+    # We fillna('C') just in case a land has no production data (like Evolving Wilds)
+    land_df['color'] = land_df['land_mana'].fillna('C').astype(str)
+    
+    # 3. Boolean flag: True if it produces > 1 color
+    # This is used by the widget to split mono vs multi segments
+    land_df['is_multi_colored'] = land_df['color'].str.len() > 1
+    
+    grand_total = land_df['qty'].sum()
+    
+    return land_df, grand_total
+
+
 def get_color_saturation_widget(df_colors, grand_total_qty, is_transposed):
     """Render stacked bar chart from aggregated color data. Not cached."""
     

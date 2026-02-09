@@ -354,9 +354,10 @@ def get_card_cmc_color_primary_type(df):
 
 def enrich_land_data(df):
     
+    NORMALIZED_MAP = {k.lower().strip(): v for k, v in LAND_DATA_MAP.items()}
     # Initialize all potential boolean columns based on tags in your map
     all_tags = set()
-    for data in LAND_DATA_MAP.values():
+    for data in NORMALIZED_MAP.values():
         all_tags.update(data['tags'])
     
     for tag in all_tags:
@@ -365,9 +366,9 @@ def enrich_land_data(df):
     df['land_mana'] = ""
 
     def apply_land_logic(row):
-        name = row['MatchName'].title() # LAND_DATA_MAP uses Title Case keys
-        if name in LAND_DATA_MAP:
-            data = LAND_DATA_MAP[name]
+        name = row['MatchName']
+        if name in NORMALIZED_MAP:
+            data = NORMALIZED_MAP[name]
             row['land_mana'] = data['mana']
             for tag in data['tags']:
                 row[f'is_{tag}'] = True
