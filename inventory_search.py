@@ -131,3 +131,6 @@ def render_card_search_view(df_inventory, df_all_decks):
         else:
             st.info("Select a card to view artwork.")
             st.image("https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg", width=420)
+
+
+            

@@ -199,13 +199,17 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
     allocations = []
 
     for idx, card in df_cards.iterrows():
-        # --- YOUR ORIGINAL LOGIC (DO NOT TOUCH) ---
+        
         code = card['Code']
         needed = card['Count']
         available = virtual_inv.get(code, 0)
         
         taken = min(needed, available)
-        allocations.append({'temp_idx': idx, 'NumForBuild': taken})
+        allocations.append({
+            'temp_idx': idx,
+            'NumForBuild': taken,
+            'Priority': card['Priority']
+        })
         virtual_inv[code] = available - taken
 
         # --- NEW: COLOR COUNTING LOGIC ---
@@ -228,6 +232,7 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
     # 5. Map results back to the original index to preserve order
     df_allocs = pd.DataFrame(allocations).set_index('temp_idx')
     df_all_decks['NumForBuild'] = df_allocs['NumForBuild'].fillna(0).astype(int)
+    df_all_decks['Priority'] = df_allocs['Priority'].fillna(9999).astype(int)
     df_all_decks['need_buy'] = (
         (df_all_decks['Count'] - df_all_decks['NumForBuild'])
         .clip(lower=0)

@@ -4,6 +4,7 @@ import streamlit as st
 import pandas as pd
 from data_manager import load_inventory, load_all_decks, load_battle_box, get_db_last_update
 from wish_list import render_wish_list_view
+from land_fan import render_land_fan_view
 
 # --- COMPONENT IMPORTS ---
 from decks_battle_box import render_decks_menu
@@ -39,6 +40,11 @@ with st.sidebar:
         st.session_state.view = "battle_box_stats"
         st.rerun()
 
+    if st.button("Cards Needed", use_container_width=True, 
+                 type="primary" if current_view == "wish_list" else "secondary"):
+        st.session_state.view = "wish_list"
+        st.rerun()
+
     st.divider()
     st.header("Collection")
 
@@ -53,10 +59,10 @@ with st.sidebar:
         st.rerun()
 
     st.divider()
-    st.header("Wish List")
-    if st.button("Needs/Wants", use_container_width=True, 
+    st.header("Land Fan")
+    if st.button("Love Me Lands", use_container_width=True, 
                  type="primary" if current_view == "wish_list" else "secondary"):
-        st.session_state.view = "wish_list"
+        st.session_state.view = "land_fan"
         st.rerun()
 
 # --- HEADER ---
@@ -95,15 +101,15 @@ view = st.session_state.view
 if view == "battle_box":
     render_decks_menu(df_battle_box)
 elif view.startswith("deck_"):
-    # Strip the prefix to get the actual deck name
     deck_name = view.replace("deck_", "")
-    # Call the detail view directly or ensure the intermediary has all 3
     render_deck_detail(deck_name, df_inventory, df_all_decks, df_battle_box)
 elif view == "battle_box_stats":
     render_bb_stats_view(df_all_decks, df_battle_box)
+elif view == 'wish_list':
+    render_wish_list_view(df_all_decks)
 elif view == "inventory_stats":
     render_inventory_stats_view(df_inventory, df_all_decks)
 elif view == "inventory_search":
     render_card_search_view(df_inventory, df_all_decks)
-elif view == 'wish_list':
-    render_wish_list_view(df_all_decks)
+elif view == "land_fan":
+    render_land_fan_view(df_inventory, df_all_decks)
