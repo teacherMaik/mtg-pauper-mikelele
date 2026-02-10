@@ -102,6 +102,7 @@ def load_all_decks_cards(path, df_inventory):
     files = [f for f in os.listdir(path) if f.endswith(".csv")]
     if not files: return pd.DataFrame(), False
 
+    ## ADAPT PREFIX AS NEEDED FOR CSV FILES
     prefixes = set(re.split(r'_mikelele', f)[0] for f in files)
     any_new_deck = False
 

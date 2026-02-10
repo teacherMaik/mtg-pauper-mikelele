@@ -67,4 +67,7 @@ The dashboard utilizes a sophisticated filtering engine that adapts based on the
 
 ---
 
+## 🛠️ Getting Started
+To fork this project and use it with your own collection, please see the [Setup & Usage Guide](SETUP.md) for data formatting and environment requirements.
+
 *Generated for Masters in Data Science & AI @EBIS Business School*
