@@ -1,47 +1,50 @@
-# MTG Pauper Playground
+# MTG Pauper Playground (2026)
 
-An advanced, Streamlit-powered analytical dashboard for Magic: The Gathering collections. This tool provides deep insights into my personal collection and Decks.
-
----
-
-## Areas
-
-### 1. Battle Box
-I am buildng a Pauper Battle Box, to be able to grab any 2 decks and play. My goal is to have enough copies of needed cards to not have to switch between decks. I track how many of each cards I need for the decks according to a personal priority of the decks.
-
-### 2. Collection
-Inspect my entire MTG collection, viewing Total cards, % of cards in decks, etc. Great to see how many rare or unncommmon cards have been downgraded to Pauper
-
-### 3. Land Fan
-Lands are my favorite cards to collect. You can inspect my full land collection, lands in decks, and search by features such as "Cycling, Surveil, Scry, etc..."
+An advanced, Streamlit-powered analytical dashboard for Magic: The Gathering. This tool provides deep insights into a personal collection and a specialized Pauper Battle Box ecosystem.
 
 ---
 
-## Main Features
-* **Cards by Color:** Instantly switch between **Inventory** (total potential) and **Decks** (actual usage) via radio filters.
-* **Pip-Level Analysis:** Unlike standard tools, this counts actual production pips (e.g., *Vault of Whispers* contributes to Black, *Tundra* contributes to White and Blue).
-* **Saturation Visualization:** Uses a custom Plotly widget to show how much of your total land base provides access to specific colors, using a dark metallic gray remainder bar.
+## Project Areas
 
-### 2. Global Land Explorer (Row 3)
-* **Boolean Tag Search:** Power-user search bar. Typing `surveil`, `fetch`, `cycler`, or `artifact` triggers background boolean columns (`is_artifact`, etc.).
-* **Interactive Selection:** Selection mode is set to `single-row` with `on_select="rerun"`. Clicking a land instantly updates the card art and usage stats.
-* **Allocation Tracking:** A specialized usage table appears under the explorer showing:
-    * **Required:** Total copies needed by the decklist.
-    * **Allocated:** Actual copies assigned to that deck (`num_for_deck`).
-    * **Global Inv:** Total copies owned across all sets in your inventory.
-
-### 3. Top 12 Land Staples
-* **Archetype Intelligence:** Filterable heatmap showing which non-basic lands are most critical to specific archetypes (Aggro, Control, etc.).
-* **Automatic Filtering:** Automatically excludes basic lands to focus strictly on utility and fixing "staples."
+* **Battle Box:** A curated environment designed for "grab-and-play" deck pairings. The system tracks card requirements based on **personal deck priorities**, ensuring I own enough physical copies to keep all decks built simultaneously without card-swapping.
+* **Collection:** A high-level view of my entire MTG inventory. It tracks total cards, unique counts, and the percentage of the collection currently "active" in decks. It highlights rarity shifts, such as rare/uncommon cards downgraded to Pauper legality.
+* **Land Fan:** A dedicated view for land enthusiasts such s myself. Features include a specialized explorer for lands with properties like "Cycling," "Surveil," or "Scry."
 
 ---
 
+## Features
 
+### Data Intelligence & Metrics
+* **Inventory Overview:** High-level tracking of **Unique Card Counts**, **Total Card Quantities**, and real-time **Card Values** (Price) from enriched data.
+* **Deck Integration:** Maps decklists to physical inventory, calculating exactly how many copies are "In Decks".
 
+### Multi-Dimensional Analysis
+* **By Colors:** Dynamic WUBRG distribution charts. Instantly switch between **Inventory** (total potential) and **Decks** (actual usage) via radio filters.
+* **By Type:** Analysis of card types (Creatures, Instants, Sorceries, etc.) across the collection or specific archetypes.
+* **Mana Curve:** Visual representation of Mana Value (CMC) distribution to ensure deck health and Battle Box balance.
+* **Staples Heatmap:** A "Top 12" view of the most played cards from decks in my Battle Box. Includes **Archetype Intelligence** to see which cards are critical to Aggro, Control, or Midrange strategies.
+* **Sets Analysis:** A breakdown of collection density by set, featuring a gradient-styled view of the top 12 sets in the inventory.
 
+### Dynamic Filtering System
+The dashboard utilizes a sophisticated filtering engine that adapts based on the active chart:
+* **Conditions:** Filters by **Section** (Main/Sideboard), **Archetype**, and **Rarity**.
+* **Smart Search:** A "Global Explorer" that supports **Boolean Tagging**. Search for `artifact`, `gate`, or `fetch` to instantly query pre-engineered boolean columns.
+* **Interactive Context:** Selecting a card in a table updates the UI to show card art and a **Deck Usage Table**, comparing **Required** copies vs. **Allocated** copies (`num_for_deck`).
 
+---
 
-
+## 🛠️ Data Structure
+```text
+.
+├── data/
+│   ├── inventory/      # CSV exports from deckbox.org
+│   ├── battle_box/     # CSV from Google Sheets (Deck Priorities)
+│   └── decks/          # Individual .csv files for specific decklists
+├── build_db.py         # DB ingestion and manual enrichment pipeline
+├── data_manager.py     # Global state management; caches the 3 main DataFrames
+├── app.py              # Main Streamlit entry and navigation
+├── land_fan.py         # Dedicated Land Fan dashboard logic
+└── features.py         # Plotly widgets and specialized aggregation logic
 
 ---
 
