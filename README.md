@@ -1,4 +1,5 @@
 # MTG Pauper Playground (2026)
+**Live Dashboard:** [pauper-playground.streamlit.app](https://pauper-playground.streamlit.app/)
 
 An advanced, Streamlit-powered analytical dashboard for Magic: The Gathering. This tool provides deep insights into a personal collection and a specialized Pauper Battle Box ecosystem.
 
@@ -33,39 +34,24 @@ The dashboard utilizes a sophisticated filtering engine that adapts based on the
 
 ---
 
-## 🛠️ Data Structure
-```text
-.
-├── data/
-│   ├── inventory/      # CSV exports from deckbox.org
-│   ├── battle_box/     # CSV from Google Sheets (Deck Priorities)
-│   └── decks/          # Individual .csv files for specific decklists
-├── build_db.py         # DB ingestion and manual enrichment pipeline
-├── data_manager.py     # Global state management; caches the 3 main DataFrames
-├── app.py              # Main Streamlit entry and navigation
-├── land_fan.py         # Dedicated Land Fan dashboard logic
-└── features.py         # Plotly widgets and specialized aggregation logic
-
----
-
 ## Data Structure
 ```text
 .
 ├── data/
-│   └── inventory (full innventory csv file downloaded from deckbox.org)
-│   └── battle_box (csv downloaded from personal Google Sheets for prioritizing decks)
-│   └── decks/
-│       └── deck_name (csv file for specific decks)
-│       └── ...
-├── build_db.py (DB ingestion, Manual run)
-├── data_manager.py (Caches 3 main DF from db)
-├── app.py (Main Streamlit entry and navigation)
+│   ├── inventory.csv       # CSV exports from deckbox.org
+│   ├── battle_box.csv      # CSV from Google Sheets (Deck Priorities)
+│   └── decks/              # Individual .csv files for specific decklists
+├── build_db.py             # DB ingestion and manual enrichment pipeline to sqlite
+├── data_manager.py         # Global state management; caches the 3 main DataFrames
+├── app.py                  # Main Streamlit entry and navigation
+└── features.py             # Plotly widgets and specialized aggregation logic
 ```
+---
 
-## Data Enrichment Pipeline + Feature Engineering
-* **Specific Cards in Decks:** `DECKS_MAP` ensures cards in decks coincide with same set version from inventory
-* **Land Mapping:** `LAND_DATA_MAP` Manual tags are exploded into `is_[tag]` boolean columns for high-speed filtering.
-* **String Cleanup:** Mana production strings like `{W}{B}` are cleaned to `WB` to support `.str.contains()` logic in the saturation widgets.
+## Data Enrichment Pipeline & Engineering
+* **Deck Mapping** (`DECKS_MAP`): Ensures deck cards are correctly matched to the specific set versions in my inventory.
+* **Land Mapping** (`LAND_DATA_MAP`): Manual tags are exploded into `is_[tag]` boolean columns for high-speed filtering.
+* **String Cleanup:** Mana production strings like `{W}{B}` are cleaned to `WB` to support vectorized searches.
 
 ## Optimization & Caching
 * **@st.cache_data:** Used for the heavy lifting of filtering and aggregating the Inventory and Deck dataframes.
@@ -79,4 +65,5 @@ The dashboard utilizes a sophisticated filtering engine that adapts based on the
 * **Image Source:** Uses the `image_url` column directly from the enriched database.
 
 ---
-*Generated for the 2026 MTG Collab.*
+
+*Generated for Masters in Data Science & AI @EBIS Business School*
