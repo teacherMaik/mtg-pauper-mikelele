@@ -8,6 +8,7 @@ An advanced, Streamlit-powered analytical dashboard for Magic: The Gathering. Th
 ## Project Areas
 
 * **Battle Box:** A curated environment designed for "grab-and-play" deck pairings. The system tracks card requirements based on **personal deck priorities**, ensuring I own enough physical copies to keep all decks built simultaneously without card-swapping.
+* **Deck Engine:** Toolset for analyzing and testing specific decklists within the Battle Box. Includes a state-managed library simulator that allows for shuffling, "Goldfishing" (drawing opening hands), and turn-by-turn draws. Includes a **Hand Curve** widget to visualize the mana health of your current hand.
 * **Collection:** A high-level view of my entire MTG inventory. It tracks total cards, unique counts, and the percentage of the collection currently "active" in decks. It highlights rarity shifts, such as rare/uncommon cards downgraded to Pauper legality.
 * **Land Fan:** A dedicated view for land enthusiasts such s myself. Features include a specialized explorer for lands with properties like "Cycling," "Surveil," or "Scry."
 
