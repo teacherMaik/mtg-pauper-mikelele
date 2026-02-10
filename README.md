@@ -4,22 +4,6 @@ An advanced, Streamlit-powered analytical dashboard for Magic: The Gathering col
 
 ---
 
-## Data Structure
-```text
-.
-├── data/
-│   └── inventory (full innventory csv file downloaded from deckbox.org)
-│   └── battle_box (csv downloaded from personal Google Sheets for prioritizing decks)
-│   └── decks/
-│       └── deck_name (csv file for specific decks)
-│       └── ...
-├── build_db.py (DB ingestion, Manual run)
-├── data_manager.py (Caches 3 main DF from db)
-├── app.py (Main Streamlit entry and navigation)
-```
-
----
-
 ## Areas
 
 ### 1. Battle Box
@@ -52,20 +36,37 @@ Lands are my favorite cards to collect. You can inspect my full land collection,
 
 ---
 
-## Technical Architecture
 
-### Data Enrichment Pipeline
-The system runs a normalization process during the DB build:
-* **Key Normalization:** `LAND_DATA_MAP` keys are programmatically lowercased to ensure perfect matches with `MatchName` (e.g., "Vault of Whispers" matches "vault of whispers").
-* **Boolean Mapping:** Manual tags are exploded into `is_[tag]` boolean columns for high-speed filtering.
-* **String Cleanup:** Mana production strings like `{W}{B}` are cleaned to `WB` to support `.str.contains()` logic in the saturation widgets.
 
-### Optimization & Caching
-* **@st.cache_data:** Used for the heavy lifting of filtering and aggregating the Inventory and Deck dataframes.
-* **Vectorized Pandas:** All pip-counting and multi-color logic is handled via vectorized operations rather than Python loops for near-instant UI updates.
+
+
+
+
 
 ---
 
+## Data Structure
+```text
+.
+├── data/
+│   └── inventory (full innventory csv file downloaded from deckbox.org)
+│   └── battle_box (csv downloaded from personal Google Sheets for prioritizing decks)
+│   └── decks/
+│       └── deck_name (csv file for specific decks)
+│       └── ...
+├── build_db.py (DB ingestion, Manual run)
+├── data_manager.py (Caches 3 main DF from db)
+├── app.py (Main Streamlit entry and navigation)
+```
+
+## Data Enrichment Pipeline + Feature Engineering
+* **Specific Cards in Decks:** `DECKS_MAP` ensures cards in decks coincide with same set version from inventory
+* **Land Mapping:** `LAND_DATA_MAP` Manual tags are exploded into `is_[tag]` boolean columns for high-speed filtering.
+* **String Cleanup:** Mana production strings like `{W}{B}` are cleaned to `WB` to support `.str.contains()` logic in the saturation widgets.
+
+## Optimization & Caching
+* **@st.cache_data:** Used for the heavy lifting of filtering and aggregating the Inventory and Deck dataframes.
+* **Vectorized Pandas:** All pip-counting and multi-color logic is handled via vectorized operations rather than Python loops for near-instant UI updates.
 
 ---
 
