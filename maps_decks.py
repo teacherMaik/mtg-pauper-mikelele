@@ -2227,61 +2227,85 @@ DECKS_MAP = {
             "Refurbished Familiar": [
                 {"qty": 4, "code": "MH3 - 105", "edition": "Modern Horizons 3", "section": "main"},
             ],
+            "Thorn of the Black Rose": [
+                {"qty": 1, "code": "CMM - 190", "edition": "Commander Masters", "section": "main"},
+            ],
             "Thraben Inspector": [
                 {"qty": 4, "code": "INR - 45", "edition": "Innistrad Remastered", "section": "main"},
             ],
             "Cast Down": [
-                {"qty": 3, "code": "2XM - 79", "edition": "Double Masters", "section": "main"},
+                {"qty": 4, "code": "2XM - 79", "edition": "Double Masters", "section": "main"},
+            ],
+            "Eviscerator's Insight": [
+                {"qty": 1, "code": "MH3 - 93", "edition": "Modern Horizons 3", "section": "main"},
+            ],
+            "Fanatical Offering": [
+                {"qty": 3, "code": "LCI - 105", "edition": "The Lost Caverns of Ixalan", "section": "main"},
+            ],
+            "Suffocating Fumes": [
+                {"qty": 1, "code": "IKO - 100", "edition": "Ikoria: Lair of Behemoths", "section": "main"},
+                {"qty": 1, "code": "IKO - 100", "edition": "Ikoria: Lair of Behemoths", "section": "sideboard"},
+            ],
+            "Thraben Charm": [
+                {"qty": 2, "code": "MH3 - 45", "edition": "Modern Horizons 3", "section": "main"},
             ],
             "Blood Fountain": [
                 {"qty": 1, "code": "VOW - 95", "edition": "Innistrad: Crimson Vow", "section": "main"},
             ],
             "Grim Bauble": [
-                {"qty": 3, "code": "DFT - 88", "edition": "Aetherdrift", "section": "sideboard"},
+                {"qty": 2, "code": "DFT - 88", "edition": "Aetherdrift", "section": "main"},
             ],
             "Lembas": [
                 {"qty": 3, "code": "LTR - 243", "edition": "The Lord of the Rings: Tales of Middle-earth", "section": "main"},
             ],
             "Tithing Blade // Consuming Sepulcher": [
-                {"qty": 3, "code": "LCI - 128", "edition": "The Lost Caverns of Ixalan", "section": "sideboard"},
+                {"qty": 3, "code": "LCI - 128", "edition": "The Lost Caverns of Ixalan", "section": "main"},
             ],
-            "Writhing Chrysalis": [
-                {"qty": 4, "code": "MH3 - 208", "edition": "Modern Horizons 3", "section": "main"},
-            ],
-            "Ram Through": [
-                {"qty": 3, "code": "CMM - 314", "edition": "Commander Masters", "section": "main"},
-            ],
-            "Malevolent Rumble": [
-                {"qty": 4, "code": "MH3 - 161", "edition": "Modern Horizons 3", "section": "main"},
-            ],
-            "Utopia Sprawl": [
-                {"qty": 4, "code": "AFC - 172", "edition": "Adventures in the Forgotten Realms Commander",  "section": "main"},
-            ],
-            "Orzhov Basilica": [
-                {"qty": 2, "code": "C20 - 297", "edition": "Commander 2020", "section": "main"},
+            "Omen of the Dead": [
+                {"qty": 1, "code": "THB - 110", "edition": "Theros Beyond Death", "section": "main"},
             ],
             "Ancient Den": [
                 {"qty": 2, "code": "MRD - 278", "edition": "Mirrodin", "section": "main"},
             ],
+            "Bojuka Bog": [
+                {"qty": 1, "code": "BRC - 176", "edition": "The Brothers' War Commander", "section": "main"},
+            ],
+            "Deceptive Landscape": [
+                {"qty": 1, "code": "MH3 - 216", "edition": "Modern Horizons 3", "section": "main"},
+            ],
+            "Goldmire Bridge ": [
+                {"qty": 4, "code": "MH2 - 247", "edition": "Modern Horizons 2", "section": "main"},
+            ],
+            "Orzhov Basilica": [
+                {"qty": 2, "code": "C20 - 297", "edition": "Commander 2020", "section": "main"},
+            ],
+            "Plains": [
+                {"qty": 4, "code": "DOM - 251", "edition": "Dominaria", "section": "main"},
+            ],
+            "Radiant Fountain": [
+                {"qty": 2, "code": "M21 - 248", "edition": "Core Set 2021", "section": "main"},
+            ],
+            "Swamp": [
+                {"qty": 3, "code": "DM20 - 272", "edition": "Core Set 2020", "section": "main"},
+            ],
             "Vault of Whispers": [
                 {"qty": 2, "code": "MRD - 286", "edition": "Mirrodin", "section": "main"},
             ],
-            "Breath Weapon": [
-                {"qty": 3, "code": "CLB - 165", "edition": "Commander Legends: Battle for Baldur's Gate", "section": "sideboard"},
+            "Shrivel": [
+                {"qty": 2, "code": "M14 - 116", "edition": "Magic 2014 Core Set", "section": "sideboard"},
             ],
-            "Deglamer": [
-                {"qty": 4, "code": "MOR - 118", "edition": "Morningtide", "section": "sideboard"},
+            "Duress": [
+                {"qty": 3, "code": "M10 - 96", "edition": "Magic 2010", "section": "sideboard"},
             ],
-            "Horrific Assault": [
-                {"qty": 4, "code": "MH3 - 157", "edition": "Modern Horizons 3", "section": "sideboard"},
-            ],
-            "Suplex": [
-                {"qty": 1, "code": "FIN - 164", "edition": "Final Fantasy", "section": "sideboard"},
+            "Dust to Dust": [
+                {"qty": 4, "code": "DK - 78", "edition": "The Dark", "section": "sideboard"},
             ],
             "Relic of Progenitus": [
-                {"qty": 3, "code": "ALA - 218", "edition": "Shards of Alara", "section": "sideboard"},
+                {"qty": 2, "code": "ALA - 218", "edition": "Shards of Alara", "section": "sideboard"},
             ],
-            
+            "Navigator's Compass": [
+                {"qty": 3, "code": "DOM - 225", "edition": "Dominaria", "section": "sideboard"},
+            ]
         }
     },
     "Big Tron": {

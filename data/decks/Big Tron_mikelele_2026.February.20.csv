@@ -1,0 +1,26 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+4,Boulderbranch Golem,Artifact Creature - Golem,{7},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2033540.jpg,2026-02-19 11:04:41 UTC,453138,6e6e5338-9b95-4ac7-a57c-5efaa6423531
+1,Campfire,Artifact,{1},Common,$0.26,main,https://s.deckbox.org/system/images/mtg/cards/2044499.jpg,2026-02-19 11:05:34 UTC,507225,34b64d10-c012-4370-b475-755c4025a348
+4,Candy Trail,Artifact - Food Clue,{1},Common,$0.38,main,https://s.deckbox.org/system/images/mtg/cards/2046279.jpg,2026-02-19 11:05:00 UTC,513362,1a860925-d912-49e5-9ddc-41ab26916bb3
+4,Expedition Map,Artifact,{1},Common,$0.75,main,https://s.deckbox.org/system/images/mtg/cards/2062839.jpg,2026-02-19 11:05:41 UTC,591079,08e66835-c228-48fa-bcaa-eb96edbd4f5a
+1,Forest,Basic Land - Forest,"",BasicLand,$0.10,main,https://s.deckbox.org/system/images/mtg/cards/2313158.jpg,2026-02-19 11:12:59 UTC,671047,b460f5f7-c7c9-400c-8419-23d614f45bf9
+3,Haunted Fengraf,Land,,Common,$0.15,main,https://s.deckbox.org/system/images/mtg/cards/2084761.jpg,2026-02-19 11:13:30 UTC,57896,84bca9e1-c0b7-4dce-9ee4-370db2c322b6
+4,Lembas,Artifact - Food,{2},Common,$1.20,main,https://s.deckbox.org/system/images/mtg/cards/2042895.jpg,2026-02-19 11:04:59 UTC,499443,3b46aacf-b31a-4380-9e4b-82795fbaba3b
+4,Maelstrom Colossus,Artifact Creature - Golem,{8},Common,$0.31,main,https://s.deckbox.org/system/images/mtg/cards/2063685.jpg,2026-02-19 11:03:07 UTC,594234,d7e724d7-05e7-4717-b4d9-dc7a5cf00e3b
+1,Mountain,Basic Land - Mountain,"",BasicLand,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2313157.jpg,2026-02-19 11:12:57 UTC,671046,295b92bc-d66f-45d8-9bbe-5f5f13e39fd4
+4,Pinnacle Kill-Ship,Artifact - Spacecraft,{7},Common,$0.14,main,https://s.deckbox.org/system/images/mtg/cards/2299012.jpg,2026-02-19 11:05:10 UTC,644592,bf784de8-5ae2-4c07-92bb-a5b7f593b773
+4,Relic of Progenitus,Artifact,{1},Common,$4.83,main,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2026-02-19 11:05:17 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
+1,Rumble Arena,Land,"",Common,$0.27,main,https://s.deckbox.org/system/images/mtg/cards/2301282.jpg,2026-02-19 11:13:26 UTC,662614,3f5d2c38-663c-4f64-8cfc-c102462e82ef
+4,Scour from Existence,Instant,{7},Common,$0.17,main,https://s.deckbox.org/system/images/mtg/cards/2092310.jpg,2026-02-19 11:13:39 UTC,105379,6e47edb2-e43d-479f-a911-e72b67a06c3b
+2,Ulamog's Crusher,Creature - Eldrazi,{8},Common,$0.21,main,https://s.deckbox.org/system/images/mtg/cards/2082250.jpg,2026-02-19 11:04:12 UTC,34707,76bacedb-9fa8-4a21-b0eb-e7ead64360b4
+4,Urza's Mine,Land - Urza’s Mine,,Uncommon,$0.55,main,https://s.deckbox.org/system/images/mtg/cards/2080140.jpg,2026-02-19 11:08:56 UTC,12867,7a235785-b720-483b-bb28-6de440be2129
+4,Urza's Power Plant,Land - Urza’s Power-Plant,,Uncommon,$0.80,main,https://s.deckbox.org/system/images/mtg/cards/2080151.jpg,2026-02-19 11:08:58 UTC,12868,3115c04a-ac26-4361-aecd-c6fb5f03a96f
+4,Urza's Tower,Land - Urza’s Tower,,Uncommon,$0.91,main,https://s.deckbox.org/system/images/mtg/cards/2080162.jpg,2026-02-19 11:08:59 UTC,12869,513e063c-b328-4e5f-8806-b232c38645f5
+4,World Map,Artifact,{1},Common,$0.24,main,https://s.deckbox.org/system/images/mtg/cards/2295376.jpg,2026-02-19 11:05:49 UTC,633411,70d9ab99-ec8a-402e-ba1d-ffa6c4c84a3f
+3,Wretched Gryff,Creature - Eldrazi Hippogriff,{7},Common,$0.05,main,https://s.deckbox.org/system/images/mtg/cards/2094050.jpg,2026-02-19 11:04:45 UTC,119684,9d65efec-018f-485c-906c-460379b4af87
+4,Breath Weapon,Instant,{2}{R},Common,$2.29,sideboard,https://s.deckbox.org/system/images/mtg/cards/2028294.jpg,2026-02-19 13:40:37 UTC,273294,0174e40a-0ef5-4439-91e6-3fc39f482520
+2,Faerie Macabre,Creature - Faerie Rogue,{1}{B}{B},Common,$3.47,sideboard,https://s.deckbox.org/system/images/mtg/cards/2060073.jpg,2026-02-19 13:42:28 UTC,563099,b666a543-6570-4789-9ec4-8d8922181274
+4,Gut Shot,Instant,{RP},Uncommon,$3.65,sideboard,https://s.deckbox.org/system/images/mtg/cards/2083513.jpg,2026-02-19 13:42:07 UTC,39528,a54a2a30-b96a-49c7-9151-1f4b0d4a4413
+1,Staunch Throneguard,Artifact Creature - Construct,{5},Common,$0.09,sideboard,https://s.deckbox.org/system/images/mtg/cards/2044537.jpg,2026-02-19 13:41:39 UTC,507496,d60160a6-8786-4488-b373-6599221341e5
+4,Weather the Storm,Instant,{1}{G},Common,$0.79,sideboard,https://s.deckbox.org/system/images/mtg/cards/2104595.jpg,2026-02-19 13:42:26 UTC,191064,f6a9fa51-78c3-42e6-8c2e-39658f59ed87
+
