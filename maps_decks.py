@@ -155,11 +155,20 @@ DECKS_MAP = {
     "Elves": {
         "priority": 3,
         "cards": {
-            "Avenging Hunter": [
-                {"qty": 3, "code": "CLB - 215", "edition": "Commander Legends: Battle for Baldur's Gate", "section": "main"},
+            "Birchlore Rangers": [
+                {"qty": 1, "code": "ONS - 248", "edition": "Onslaught", "section": "main"},
             ],
             "Elvish Mystic": [
                 {"qty": 3, "code": "CMA - 103", "edition": "Commander Anthology", "section": "main"},
+            ],
+            "Elvish Vanguard": [
+                {"qty": 3, "code": "EMA - 164", "edition": "Eternal Masters", "section": "main"},
+            ],
+            "Elvish Visionary": [
+                {"qty": 1, "code": "M13 - 169", "edition": "Magic 2013", "section": "main"},
+            ],
+            "Entourage of Trest": [
+                {"qty": 2, "code": "CMM - 285", "edition": "Commander Masters", "section": "main"},
             ],
             "Essence Warden": [
                 {"qty": 2, "code": "CMA - 106", "edition": "Commander Anthology", "section": "main"},
@@ -171,64 +180,61 @@ DECKS_MAP = {
                 {"qty": 4, "code": "LTR - 169", "edition": "The Lord of the Rings: Tales of Middle-earth", "section": "main"},
             ],
             "Jaspera Sentinel": [
-                {"qty": 3, "code": "KHM - 178", "edition": "Kaldheim", "section": "main"},
+                {"qty": 4, "code": "KHM - 178", "edition": "Kaldheim", "section": "main"},
             ],
-            "Masked Vandal": [
-                {"qty": 4, "code": "KHM - 184", "edition": "Kaldheim", "section": "main"},
+            "Lys Alana Huntmaster": [
+                {"qty": 1, "code": "EMA - 176", "edition": "Eternal Masters", "section": "main"},
             ],
             "Nyxborn Hydra": [
-                {"qty": 3, "code": "MH3 - 164", "edition": "Modern Horizons 3", "section": "main"},
+                {"qty": 2, "code": "MH3 - 164", "edition": "Modern Horizons 3", "section": "main"},
             ],
             "Priest of Titania": [
-                {"qty": 4, "code": "CMA - 136", "edition": "Commander Anthology", "section": "main"},
+                {"qty": 3, "code": "CMA - 136", "edition": "Commander Anthology", "section": "main"},
             ],
             "Quirion Ranger": [
                 {"qty": 4, "code": "VI - 67", "edition": "Visions", "section": "main"},
             ],
-            "Sagu Wildling // Roost Seek": [
-                {"qty": 2, "code": "TDM - 157", "edition": "Tarkir: Dragonstorm", "section": "main"},
-            ],
             "Salt Road Packbeast": [
-                {"qty": 1, "code": "TDM - 23", "edition": "Tarkir: Dragonstorm", "section": "main"},
+                {"qty": 2, "code": "TDM - 23", "edition": "Tarkir: Dragonstorm", "section": "main"},
             ],
             "Timberwatch Elf": [
                 {"qty": 4, "code": "EMA - 190", "edition": "Eternal Masters", "section": "main"},
             ],
+            "Wellwisher": [
+                {"qty": 1, "code": "ONS - 300", "edition": "Onslaught", "section": "main"},
+            ],
             "Distant Melody": [
-                {"qty": 1, "code": "MOR - 32", "edition": "Morningtide", "section": "main"},
+                {"qty": 2, "code": "MOR - 32", "edition": "Morningtide", "section": "main"},
             ],
             "Lead the Stampede": [
                 {"qty": 3, "code": "IMA - 173", "edition": "Iconic Masters", "section": "main"},
             ],
-            "Winding Way": [
-                {"qty": 4, "code": "MH1 - 193", "edition": "Modern Horizons", "section": "main"},
-            ],
-            "Gingerbread Cabin": [
-                {"qty": 1, "code": "ELD - 245", "edition": "Throne of Eldraine", "section": "main"},
-            ],
-            "Rimewood Falls": [
-                {"qty": 1, "code": "KHM - 266", "edition": "Kaldheim", "section": "main"},
-            ],
             "Snow-Covered Forest": [
-                {"qty": 9, "code": "KHM - 284", "edition": "Kaldheim", "section": "main"},
+                {"qty": 13, "code": "MH1 - 254", "edition": "Modern Horizons", "section": "main"},
             ],
-            "Faerie Macabre": [
-                {"qty": 1, "code": "SHM - 66", "edition": "Shadowmoor", "section": "sideboard"},
+            "Masked Vandal": [
+                {"qty": 4, "code": "KHM - 184", "edition": "Kaldheim", "section": "sideboard"},
             ],
-            "Relic of Progenitus": [
-                {"qty": 2, "code": "ALA - 218", "edition": "Shards of Alara", "section": "sideboard"},
-            ],
-            "Hydroblast": [
-                {"qty": 3, "code": "IA - 72", "edition": "Ice Age", "section": "sideboard"},
-            ],
-            "Vitu-Ghazi Inspector": [
-                {"qty": 3, "code": "MKM - 183", "edition": "Murders at Karlov Manor", "section": "sideboard"},
+            "Nyxborn Hydra": [
+                {"qty": 1, "code": "MH3 - 164", "edition": "Modern Horizons 3", "section": "sideboard"},
             ],
             "Scattershot Archer": [
                 {"qty": 4, "code": "CON - 90", "edition": "Conflux", "section": "sideboard"},
             ],
+            "Dispel": [
+                {"qty": 1, "code": "RTR - 36", "edition": "Return to Ravnica", "section": "sideboard"},
+            ],
+            "Hydroblast": [
+                {"qty": 1, "code": "IA - 72", "edition": "Ice Age", "section": "sideboard"},
+            ],
+            "Vitu-Ghazi Inspector": [
+                {"qty": 1, "code": "MKM - 183", "edition": "Murders at Karlov Manor", "section": "sideboard"},
+            ],
             "Pulse of Murasa": [
                 {"qty": 2, "code": "M20 - 189", "edition": "Core Set 2020", "section": "sideboard"},
+            ],
+            "Relic of Progenitus": [
+                {"qty": 2, "code": "ALA - 218", "edition": "Shards of Alara", "section": "sideboard"},
             ],
         }
     },

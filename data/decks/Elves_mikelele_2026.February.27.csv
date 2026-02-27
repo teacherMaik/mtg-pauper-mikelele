@@ -1,0 +1,28 @@
+Count,Name,Type,Cost,Rarity,Price,Section,Image URL,Last Updated,TcgPlayer ID,Scryfall ID
+1,Birchlore Rangers,Creature - Elf Druid Ranger,{G},Common,$0.74,main,https://s.deckbox.org/system/images/mtg/cards/2076588.jpg,2026-02-27 12:23:17 UTC,10635,8ce3a3a1-3569-4909-a604-f78d4888781e
+2,Distant Melody,Sorcery,{3}{U},Common,$0.36,main,https://s.deckbox.org/system/images/mtg/cards/2313364.jpg,2026-02-27 12:21:40 UTC,671148,f1d7e8c9-0936-47eb-8996-309e7a7edcad
+3,Elvish Mystic,Creature - Elf Druid,{G},Common,$0.45,main,https://s.deckbox.org/system/images/mtg/cards/2089509.jpg,2019-11-30 23:14:09 UTC,90945,deb5ca6a-f91d-443d-ad84-6fe1e80bfb51
+3,Elvish Vanguard,Creature - Elf Warrior,{1}{G},Common,$0.61,main,https://s.deckbox.org/system/images/mtg/cards/2099120.jpg,2026-02-27 12:24:57 UTC,162821,838a8d40-5268-467e-8d14-d9fd72253df6
+1,Elvish Visionary,Creature - Elf Shaman,{1}{G},Common,$0.11,main,https://s.deckbox.org/system/images/mtg/cards/2091821.jpg,2026-02-27 12:25:04 UTC,99909,367ef35a-528b-407c-8b8d-679109662bae
+2,Entourage of Trest,Creature - Elf Soldier,{4}{G},Common,$0.09,main,https://s.deckbox.org/system/images/mtg/cards/2044410.jpg,2026-02-27 12:25:11 UTC,507101,78075b31-8145-4053-90dd-6a34bd48fa7c
+2,Essence Warden,Creature - Elf Shaman,{G},Common,$4.12,main,https://s.deckbox.org/system/images/mtg/cards/2067005.jpg,2019-11-30 23:14:25 UTC,14720,da2a65d6-0887-4fe8-a6e6-909208fddd90
+4,Fyndhorn Elves,Creature - Elf Druid,{G},Common,$1.69,main,https://s.deckbox.org/system/images/mtg/cards/2061492.jpg,2026-02-03 10:50:14 UTC,582964,53c31b33-d947-4776-8953-da5bc84ca5ca
+4,Generous Ent,Creature - Treefolk,{5}{G},Common,$1.35,main,https://s.deckbox.org/system/images/mtg/cards/2042821.jpg,2026-02-03 10:59:41 UTC,498328,85d22d5d-3875-42ff-b51e-c6e21db201f5
+4,Jaspera Sentinel,Creature - Elf Rogue,{G},Common,$0.24,main,https://s.deckbox.org/system/images/mtg/cards/2113259.jpg,2026-02-27 12:23:06 UTC,230447,1a68615d-9808-479d-aa80-50651246954e
+4,Lead the Stampede,Sorcery,{2}{G},Uncommon,$0.29,main,https://s.deckbox.org/system/images/mtg/cards/2108939.jpg,2026-02-27 12:20:40 UTC,212626,9e76b676-c7a3-4de6-a78d-3059a0df83f2
+1,Lys Alana Huntmaster,Creature - Elf Warrior,{2}{G}{G},Common,$0.98,main,https://s.deckbox.org/system/images/mtg/cards/2035229.jpg,2026-02-27 12:25:25 UTC,454915,42df23b1-7d28-403f-bf12-d4ec81500c36
+2,Nyxborn Hydra,Enchantment Creature - Hydra,{X}{G},Common,$0.23,main,https://s.deckbox.org/system/images/mtg/cards/2056563.jpg,2026-02-27 12:23:40 UTC,552872,902a969e-9f22-4e92-93eb-9d4536ca82e5
+3,Priest of Titania,Creature - Elf Druid,{1}{G},Uncommon,$0.96,main,https://s.deckbox.org/system/images/mtg/cards/2056710.jpg,2026-02-27 12:23:53 UTC,541278,eb11921b-1b28-483f-a707-4de21a6daa31
+4,Quirion Ranger,Creature - Elf Ranger,{G},Common,$1.12,main,https://s.deckbox.org/system/images/mtg/cards/2061130.jpg,2026-02-03 10:50:55 UTC,583216,11da032d-1cd5-48ed-ace7-fc042c4859e8
+2,Salt Road Packbeast,Creature - Beast,{5}{W},Common,$0.13,main,https://s.deckbox.org/system/images/mtg/cards/2290463.jpg,2026-02-27 12:21:24 UTC,623956,98d548c9-42bc-4155-8211-0aea801c3724
+13,Snow-Covered Forest,Basic Snow Land - Forest,"",Common,$0.75,main,https://s.deckbox.org/system/images/mtg/cards/2113365.jpg,2026-02-27 12:22:00 UTC,230146,ca17acea-f079-4e53-8176-a2f5c5c408a1
+4,Timberwatch Elf,Creature - Elf,{2}{G},Uncommon,$1.35,main,https://s.deckbox.org/system/images/mtg/cards/2107637.jpg,2019-11-30 23:17:24 UTC,203536,43794d12-ea79-4939-8d2d-5ca30a61675a
+1,Wellwisher,Creature - Elf,{1}{G},Common,$2.66,main,https://s.deckbox.org/system/images/mtg/cards/2070080.jpg,2026-02-27 12:25:34 UTC,10363,be95ab7c-0e77-4293-aa48-ee54902a363f
+1,Dispel,Instant,{U},Common,$0.36,sideboard,https://s.deckbox.org/system/images/mtg/cards/2092181.jpg,2026-02-27 12:28:09 UTC,105594,bceab6b3-6b64-4964-a501-ce806a6c13ad
+1,Hydroblast,Instant,{U},Uncommon,$4.08,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070380.jpg,2026-02-27 12:38:14 UTC,2204,89a30b8f-6594-42ea-8e60-13ccb1e7efc0
+4,Masked Vandal,Creature - Shapeshifter,{1}{G},Common,$1.61,sideboard,https://s.deckbox.org/system/images/mtg/cards/2113265.jpg,2026-02-27 12:27:18 UTC,230134,f0a9c72a-e450-41e3-80e5-06f2f1171245
+2,Pulse of Murasa,Instant,{2}{G},Uncommon,$0.15,sideboard,https://s.deckbox.org/system/images/mtg/cards/2104783.jpg,2026-02-03 11:47:09 UTC,192568,99851c1b-8878-4c1e-906b-f6b70e53d714
+2,Relic of Progenitus,Artifact,{1},Common,$4.89,sideboard,https://s.deckbox.org/system/images/mtg/cards/2070899.jpg,2019-11-30 23:22:02 UTC,27769,90c41192-64ef-43aa-9af0-75f0d3f56688
+4,Scattershot Archer,Creature - Elf Archer,{G},Common,$2.01,sideboard,https://s.deckbox.org/system/images/mtg/cards/2072010.jpg,2026-02-03 11:47:01 UTC,28598,d74d6cdb-a087-4b3d-bf25-509200ed6d93
+1,Vitu-Ghazi Inspector,Creature - Elf Detective,{1}{G},Common,$0.13,sideboard,https://s.deckbox.org/system/images/mtg/cards/2052102.jpg,2026-02-27 12:39:47 UTC,532926,664d15d7-2724-4a9b-b5a7-8042d4b7da7b
+
