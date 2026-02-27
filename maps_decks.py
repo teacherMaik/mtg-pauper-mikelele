@@ -763,7 +763,7 @@ DECKS_MAP = {
                 {"qty": 4, "code": "MH1 - 193", "edition": "Modern Horizons", "section": "main"},
             ],
             "Abundant Growth": [
-                {"qty": 4, "code": "AVR - 167", "edition": "Avacyn Restored", "section": "main"},
+                {"qty": 4, "code": "INR - 184", "edition": "Innistrad Remastered", "section": "main"},
             ],
             "Mountain": [
                 {"qty": 2, "code": "M19 - 273", "edition": "Core Set 2019", "section": "main"},
@@ -1337,7 +1337,7 @@ DECKS_MAP = {
                 {"qty": 4, "code": "MH3 - 50", "edition": "Modern Horizons 3", "section": "main"},
             ],
             "Aether Spike": [
-                {"qty": 4, "code": "BLB - 229", "edition": "Bloomburrow", "section": "main"},
+                {"qty": 4, "code": "MH3 - 50", "edition": "Modern Horizons 3", "section": "main"},
             ],
             "Fling": [
                 {"qty": 2, "code": "ELD - 126", "edition": "Throne of Eldraine", "section": "main"},

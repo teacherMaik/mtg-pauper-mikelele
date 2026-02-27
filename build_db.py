@@ -113,6 +113,9 @@ def load_all_decks_cards(path, df_inventory):
     missing_inv = 0
     for prefix in prefixes:
         deck_name = prefix.strip()
+
+        print(deck_name)
+
         latest_deck, status = get_latest_file(path, rf"^{re.escape(prefix)}_mikelele")
         if status: any_new_deck = True
 
@@ -120,7 +123,7 @@ def load_all_decks_cards(path, df_inventory):
             df = pd.read_csv(latest_deck)
             deck_rules = DECKS_MAP.get(deck_name, {}).get("cards", {})
             
-            df['DeckName'] = prefix.strip()
+            df['DeckName'] = deck_name
             
             # Standardize Price/Count immediately so math works for EVERY row
             df['Price'] = df['Price'].astype(str).str.replace('$', '', regex=False).str.replace(',', '', regex=False)
@@ -136,6 +139,10 @@ def load_all_decks_cards(path, df_inventory):
                 cardeck_name = row['Name']
 
                 if cardeck_name in deck_rules:
+
+                    if (cardeck_name == "Pond Prophet"):
+                        print("Found Pond Prophet in deck rules, processing entry:")
+                        print(deck_rules[cardeck_name])
                     # Logic for Mapped cards
                     entries = deck_rules[cardeck_name]
                     for entry in entries:
@@ -171,6 +178,8 @@ def load_all_decks_cards(path, df_inventory):
             all_deck_data.append(pd.DataFrame(purified_rows))
 
     final_df = pd.concat(all_deck_data, ignore_index=True) if all_deck_data else pd.DataFrame()
+
+    print(final_df["DeckName"].unique())
     return final_df, any_new_deck
 
 
@@ -191,6 +200,9 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
         ascending=[False, True, True]
     )
 
+    # print(df_cards[df_cards["name"] == "Abundant Growth"])
+    # print(virtual_inv[virtual_inv["name"] == "Abundant Growth"])
+
     # We will store color counts, then merge them into df_bb at the end
     color_stats = {} 
     valid_colors = ['W', 'U', 'B', 'R', 'G', 'C', 'L']
@@ -201,6 +213,7 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
     for idx, card in df_cards.iterrows():
         
         code = card['Code']
+        
         needed = card['Count']
         available = virtual_inv.get(code, 0)
         
@@ -211,6 +224,13 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
             'Priority': card['Priority']
         })
         virtual_inv[code] = available - taken
+
+        if (code == 'BLB - 229'):
+            print("Pond Prophet")
+            print(card["DeckName"])
+            print(needed)
+            print(taken)
+            print(available)
 
         deck_name = card['DeckName']
         if deck_name not in color_stats:

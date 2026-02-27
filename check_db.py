@@ -8,11 +8,13 @@ def check_raw_data():
     print("--- RAW DB CHECK ---")
     
     # Check what's actually in the table
-    df = pd.read_sql("SELECT * FROM all_decks LIMIT 20", conn)
+    df = pd.read_sql("SELECT * FROM all_decks", conn)
     
     print("Column names found:", df.columns.tolist())
     print("\nFirst 20 rows:")
-    print(df)
+    print(df.head(20))
+
+    print(df[df["name"] == "Pond Prophet"])
     
     """ Count empty values properly
     nan_count = df['rarity'].isna().sum()
