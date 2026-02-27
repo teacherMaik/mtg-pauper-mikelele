@@ -207,16 +207,13 @@ DECKS_MAP = {
                 {"qty": 2, "code": "MOR - 32", "edition": "Morningtide", "section": "main"},
             ],
             "Lead the Stampede": [
-                {"qty": 3, "code": "IMA - 173", "edition": "Iconic Masters", "section": "main"},
+                {"qty": 4, "code": "IMA - 173", "edition": "Iconic Masters", "section": "main"},
             ],
             "Snow-Covered Forest": [
                 {"qty": 13, "code": "MH1 - 254", "edition": "Modern Horizons", "section": "main"},
             ],
             "Masked Vandal": [
                 {"qty": 4, "code": "KHM - 184", "edition": "Kaldheim", "section": "sideboard"},
-            ],
-            "Nyxborn Hydra": [
-                {"qty": 1, "code": "MH3 - 164", "edition": "Modern Horizons 3", "section": "sideboard"},
             ],
             "Scattershot Archer": [
                 {"qty": 4, "code": "CON - 90", "edition": "Conflux", "section": "sideboard"},
