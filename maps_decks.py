@@ -1334,7 +1334,7 @@ DECKS_MAP = {
                 {"qty": 4, "code": "MH3 - 75", "edition": "Modern Horizons 3", "section": "main"},
             ],
             "Galvanic Discharge": [
-                {"qty": 4, "code": "MH3 - 50", "edition": "Modern Horizons 3", "section": "main"},
+                {"qty": 4, "code": "MH3 - 122", "edition": "Modern Horizons 3", "section": "main"},
             ],
             "Aether Spike": [
                 {"qty": 4, "code": "MH3 - 50", "edition": "Modern Horizons 3", "section": "main"},
@@ -2268,15 +2268,15 @@ DECKS_MAP = {
                 {"qty": 1, "code": "THB - 110", "edition": "Theros Beyond Death", "section": "main"},
             ],
             "Ancient Den": [
-                {"qty": 2, "code": "MRD - 278", "edition": "Mirrodin", "section": "main"},
+                {"qty": 2, "code": "PLIST - 278", "edition": "The List", "section": "main"},
             ],
             "Bojuka Bog": [
                 {"qty": 1, "code": "BRC - 176", "edition": "The Brothers' War Commander", "section": "main"},
             ],
             "Deceptive Landscape": [
-                {"qty": 1, "code": "MH3 - 216", "edition": "Modern Horizons 3", "section": "main"},
+                {"qty": 1, "code": "MH3 - 219", "edition": "Modern Horizons 3", "section": "main"},
             ],
-            "Goldmire Bridge ": [
+            "Goldmire Bridge": [
                 {"qty": 4, "code": "MH2 - 247", "edition": "Modern Horizons 2", "section": "main"},
             ],
             "Orzhov Basilica": [

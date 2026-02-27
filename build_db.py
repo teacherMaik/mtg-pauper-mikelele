@@ -114,7 +114,7 @@ def load_all_decks_cards(path, df_inventory):
     for prefix in prefixes:
         deck_name = prefix.strip()
 
-        print(deck_name)
+        # print(deck_name)
 
         latest_deck, status = get_latest_file(path, rf"^{re.escape(prefix)}_mikelele")
         if status: any_new_deck = True
@@ -140,8 +140,8 @@ def load_all_decks_cards(path, df_inventory):
 
                 if cardeck_name in deck_rules:
 
-                    if (cardeck_name == "Pond Prophet"):
-                        print("Found Pond Prophet in deck rules, processing entry:")
+                    if (cardeck_name == "Goldmire Bridge"):
+                        print("Found Goldmire Bridge in deck rules, processing entry:")
                         print(deck_rules[cardeck_name])
                     # Logic for Mapped cards
                     entries = deck_rules[cardeck_name]
@@ -225,8 +225,8 @@ def enrich_buildability_deck_colors(df_inventory, df_all_decks, df_bb):
         })
         virtual_inv[code] = available - taken
 
-        if (code == 'BLB - 229'):
-            print("Pond Prophet")
+        if (code == 'MH2 - 247'):
+            print("Goldmire Bridge")
             print(card["DeckName"])
             print(needed)
             print(taken)
