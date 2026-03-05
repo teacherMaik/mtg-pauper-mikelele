@@ -1975,7 +1975,7 @@ DECKS_MAP = {
                 {"qty": 4, "code": "OGW - 108", "edition": "Oath of the Gatewatch", "section": "main"},
             ],
             "Manamorphose": [
-                {"qty": 4, "code": "SHM - 211", "edition": "Shadowmoor", "section": "main"},
+                {"qty": 4, "code": "PLIST - 211", "edition": "Shadowmoor", "section": "main"},
             ],
             "Mutagenic Growth": [
                 {"qty": 4, "code": "NPH - 116", "edition": "New Phyrexia", "section": "main"},
