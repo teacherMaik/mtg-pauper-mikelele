@@ -90,7 +90,7 @@ DECKS_MAP = {
                 {"qty": 3, "code": "SOM - 45", "edition": "Scars of Mirrodin", "section": "main"},
             ],
             "Weather the Storm": [
-                {"qty": 4, "code": "H1R - 24", "edition": "Modern Horizons 1 Timeshifts", "section": "main"},
+                {"qty": 4, "code": "MH1 - 191", "edition": "Modern Horizons", "section": "main"},
             ],
             "Contentious Plan": [
                 {"qty": 4, "code": "WAR - 46", "edition": "War of the Spark", "section": "main"},
@@ -322,7 +322,7 @@ DECKS_MAP = {
                 {"qty": 1, "code": "WOE - 194", "edition": "Wilds of Eldraine", "section": "sideboard"},
             ],
             "Weather the Storm": [
-                {"qty": 4, "code": "H1R - 24", "edition": "Modern Horizons 1 Timeshifts", "section": "sideboard"},
+                {"qty": 4, "code": "MH1 - 191", "edition": "Modern Horizons", "section": "sideboard"},
             ],
             "Duress": [
                 {"qty": 3, "code": "M10 - 96", "edition": "Magic 2010", "section": "sideboard"},
@@ -713,7 +713,7 @@ DECKS_MAP = {
                 {"qty": 1, "code": "TLA - 80", "edition": "Avatar: The Last Airbender", "section": "sideboard"},
             ],
             "Weather the Storm": [
-                {"qty": 3, "code": "H1R - 24", "edition": "Modern Horizons 1 Timeshifts", "section": "sideboard"},
+                {"qty": 3, "code": "MH1 - 191", "edition": "Modern Horizons", "section": "sideboard"},
             ],
         }
     },
@@ -1945,7 +1945,7 @@ DECKS_MAP = {
                 {"qty": 4, "code": "3E - 170", "edition": "Revised Edition", "section": "sideboard"},
             ],
             "Weather the Storm": [
-                {"qty": 2, "code": "H1R - 24", "edition": "Modern Horizons 1 Timeshifts", "section": "sideboard"},
+                {"qty": 2, "code": "MH1 - 191", "edition": "Modern Horizons", "section": "sideboard"},
             ],
             "Relic of Progenitus": [
                 {"qty": 3, "code": "ALA - 218", "edition": "Shards of Alara", "section": "sideboard"},
@@ -2070,7 +2070,7 @@ DECKS_MAP = {
                 {"qty": 4, "code": "NEO - 211", "edition": "Kamigawa: Neon Dynasty", "section": "sideboard"},
             ],
             "Weather the Storm": [
-                {"qty": 2, "code": "H1R - 24", "edition": "Modern Horizons 1 Timeshifts", "section": "sideboard"},
+                {"qty": 2, "code": "MH1 - 191", "edition": "Modern Horizons", "section": "sideboard"},
             ],
             "Tormod's Crypt": [
                 {"qty": 2, "code": "DK - 109", "edition": "The Dark", "section": "sideboard"},
@@ -2386,7 +2386,7 @@ DECKS_MAP = {
                 {"qty": 4, "code": "NPH - 86", "edition": "New Phyrexia", "section": "sideboard"},
             ],
             "Weather the Storm": [
-                {"qty": 4, "code": "H1R - 24", "edition": "Modern Horizons 1 Timeshifts", "section": "sideboard"},
+                {"qty": 4, "code": "MH1 - 191", "edition": "Modern Horizons", "section": "sideboard"},
             ],
             "Staunch Throneguard": [
                 {"qty": 1, "code": "CMM - 412", "edition": "Commander Masters", "section": "sideboard"},
